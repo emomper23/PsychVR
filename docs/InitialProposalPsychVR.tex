@@ -1,5 +1,11 @@
+%this is a comment
+%this is a latex live doc bcz rush bcz merges are too much work rn
+%write raw latex here and we can build and fix it later
+%bcz html doesnt care lol
 \documentclass[a4paper,10pt]{article}
 \usepackage[utf8x]{inputenc} 
+\usepackage{graphicx}
+\usepackage{float}
 
 %opening
 \title{Group 12 Project Proposal and Requirements Document}
@@ -41,7 +47,12 @@
 	\pagebreak
 	
 	\section{Status of Virtual Reality in Psychology}
-	The first use of Virtual Reality therapy in Psychology was in 1995 by psychologist Barbara Rothbaum and computer scientist Larry Hodges. They found that virtual reality therapy could help patients overcome phobias such as arachnophobia or a fear of heights. Since then many others have used virtual reality as a tool in psychology. The main use of virtual reality in psychology is a form of treatment called Exposure Therapy. This type of treatment can be used to address psychological issues such as Autism spectrum disorder, Obsessive Compulsive Disorder, various phobias, post-traumatic stress disorder, and phantom limb pain. The greatest issue facing treatment with Exposure Therapy is that it requires a high level of diligence and repetition. Typically patients cannot make time for appointments as frequently as is required.
+	The first use of Virtual Reality therapy in Psychology was in 1995 by psychologist Barbara Rothbaum and computer scientist Larry Hodges. T
+	hey found that virtual reality therapy could help patients overcome phobias such as arachnophobia or a fear of heights. Since then many others 
+	have used virtual reality as a tool in psychology. The main use of virtual reality in psychology is a form of treatment called Exposure Therapy. 
+	This type of treatment can be used to address psychological issues such as Autism spectrum disorder, Obsessive Compulsive Disorder, various phobias, 
+	post-traumatic stress disorder, and phantom limb pain. The greatest issue facing treatment with Exposure Therapy is that it requires a high level of diligence and
+	repetition. Typically patients cannot make time for appointments as frequently as is required.
 	
 	\subsection{Exposure Therapy}
 	\subsection{Immersion Therapy}
@@ -111,7 +122,7 @@
 	%qualitative, avoid numbers, conceptual discussion specific to project. example descriptions "“lightweight, portable, programmable, low cost, flexible, high resolution, scalable, low power, accurate, mobile, peer-to-peer, autonomic”
 	
 	Our project would have an impact on the field of psychology as it relates to certain emotional disorders or struggles and the deployment of self-administered therapy for those disorders. It would not only be relevant to those diagnosed with a psychological condition, but also those seeking stress relief or a unique environment to immerse themselves in. By bringing treatment therapies to the end user in their own home and allowing them to perform therapy at their leisure we will have an impact on many people seeking these services who may not have the time to schedule appointments or those who simply won't try due to the stigma surrounding therapy.
-	
+	\pagebreak
 	\section{Requirements}
 	\subsection{Functinal Requirements}
 	\begin{enumerate}
@@ -133,31 +144,58 @@
 		\item Some user interactions must be desktop based to be simpler (ex file menus).
 		\item The models in the app must be decent quality.
 	\end{enumerate}
+	
+    \pagebreak
+    \section{Diagrams}
+	\subsection{Block Diagrams:}
+	\begin{figure}[ht!]
+	\includegraphics[width=\linewidth]{HardwareConfig.png}
+	\caption{Hardware Block Diagram}
+	%to ref fig number
+	%Figure \ref{fig:block1} shows our blockDiagram.
+	\label{fig:hblock}
+	\end{figure}
+	\begin{figure}[ht!]
+	\includegraphics[width=\linewidth]{SoftwareConfig.png}
+	\caption{Software Block Diagram}
+	%to ref fig number
+	%Figure \ref{fig:block1} shows our blockDiagram.
+	\label{fig:sblock}
+	\end{figure}
+	\pagebreak
+	\subsection{Schedules:}
+	\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{scheduleSR.png}
+	\caption{Prototype Phase Gantt Chart:}
+	%to ref fig number
+	%Figure \ref{fig:block1} shows our blockDiagram.
+	\label{fig:pchart}
+	\end{figure}
+	\pagebreak
+	
 	\subsection{Specs}
 	%some design reqs go here
-	\subsection{Charts}
+	
 	%project block diagrams - gantt chart goes here
 	%prototype illustration?
-	\subsubsection{Block Diagram}
-	%detailed project block diagram
-	%separate software and hardware
-	%indicate where software is running, how pieces communicate, what is being communicated,
 	
-	\begin{enumerate}
-		\item The name of the Group member administratively responsible for the block.
-		\item Block name, which is descriptive of its function.
-		\item Block status:
-		\begin{enumerate}
-			\item To be acquired – meaning the block will be purchased or donated
-			\item Acquired – block has been donated or purchased
-			\item Research – block design approach is being investigated
-			\item Design – block is currently being designed
-			\item Prototype – block is currently being prototyped
-			\item Completed – block design is a finished prototype
-		\end{enumerate}
-		\item Name each input and output associated with each block
-		\item Diagram Legend. The legend should expand all acronyms and describe all named entities in the block diagram by giving brief definitions.
-	\end{enumerate}
+	
+	
+	%\begin{enumerate}
+	%	\item The name of the Group member administratively responsible for the block.
+	%	\item Block name, which is descriptive of its function.
+	%	\item Block status:
+	%	\begin{enumerate}
+	%		\item To be acquired – meaning the block will be purchased or donated
+	%		\item Acquired – block has been donated or purchased
+	%		\item Research – block design approach is being investigated
+	%		\item Design – block is currently being designed
+	%		\item Prototype – block is currently being prototyped
+	%		\item Completed – block design is a finished prototype
+	%	\end{enumerate}
+	%	\item Name each input and output associated with each block
+	%	\item Diagram Legend. The legend should expand all acronyms and describe all named entities in the block diagram by giving brief definitions.
+	%\end{enumerate}
 	%Include any additional information that would increase the understanding of the block diagram. The use of identifier grouping and color may be helpful. 
 	\section{Budget and Financing}
 	%software licensing costs, cloud based service costs, code repo's, graphic design costs

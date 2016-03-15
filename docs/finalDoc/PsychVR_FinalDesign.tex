@@ -1,13 +1,33 @@
-%this is a comment
-%this is a latex live doc bcz rush bcz merges are too much work rn
-%write raw latex here and we can build and fix it later
-%bcz html doesnt care lol
+
+% binding info: NO NOTEBOOKS OR RING BINDERS, proefssional appearance, non-paper cover, bound. 8.5x11 w/ 1 inch margins, left side 1.5in margin.
+
+% text formatting info: The paragraphs are to be fully justified (both left and right sides). New paragraphs may begin by indenting the line or by not indenting but leaving a space. However, DO NOT do both. The body font must be Times Roman, Arial, Helvetica, or be approved by the instructor with a font size of 10-12 pts. Heading fonts can be no larger than 20 pts. The document must be single-spaced and printing can be single or double sided. Color printing is optional and left to the discretion of the groups.
+
+% sources info: 5. The appendix must contain written authorization (emails, letters, or explicit permission citations) for rights to include or use copyrighted content. 6. All copyrighted contents must display the content’s origin or author, and an appropriate phrase such as “reprinted with permission.” 
+
+% citing info: 7. All elements of the document that support the written text, such as figures, table, illustrations, code segment, charts, etc., must be cited in the body of the text, and the citation must appear before the element is shown. Supportive elements cannot begin a chapter, section, or paragraph. All supportive material must be captioned, which include the element name and number and a description. If you do not author the element, the caption must contain wording identifying that you have permission to use the element. The actually permission authorization must be included in the appendices.
+
+% reference format info: 8. Your document should contain a “References” section at the end that lists all of the source material cited in your document. The references should be listed in the order that they first appear in your document in a format like the following (first is a book, second is an article): [1] J. Hennessy and D. Patterson. Computer Architecture: A Quantitative Approach, 5 th edition, Morgan Kaufman publishers, 2014. [2] M. Heinrich et al. “The Performance Impact of Flexibility in the Stanford FLASH Mujltiprocessor”, In Proceedings of the 6th International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS), pages 274-285, 1994
+
+% citation formatting: When citing the references in the text use a non-breakable space (e.g. Ctrl-shift-space in Word, \&; in HTML) before the citation and then square brackets and the number: Some researchers say that the occupancy of the node controller is the parameter most critical to the performance of the overall machine [2]. If you want to cite multiple references at once just separate them by commas like so [1,3,7].
+
 \documentclass[a4paper,10pt]{article}
 \usepackage[utf8x]{inputenc} 
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{geometry}
+	\geometry{
+	letterpaper,
+	total={8.5in,11in},
+	left=1.5in,
+	top=1in,
+	right=1in,
+	bottom=1in
+}
 
 %opening
+\pagenumbering{roman}
+%1. Cover page with title, group number, team members, date, and any other relevant information, such as participating organizations and sponsors.
 \title{Group 12 Project Final Design Document}
 \author{Eric Momper, Peter Lomason, John Barber}
 \setlength{\parindent}{0pt}
@@ -20,97 +40,62 @@
 	\pagebreak
 	
 	\section{Introduction}
-Project Documentation Guidelines
-Your project goals and objectives, specifications and requirements, research, and
-design documentation should conform to the following guidelines, but should have
-additions or deletions where appropriate for your specific project case:
-Format:
-1. The document should be of professional appearance, with a non-paper cover and
-bound. Notebooks or ring binders are not permitted.
-2. The length has a minimum of ninety originally authored pages for a group with
-three members and one hundred and twenty originally authored pages for a group
-with four members. Even thought the document has multiple authors the document
-must be of a uniform and consistent format, such that it appears that a single
-author wrote it. Page count begins with the Executive Summary, which must be
-shown as page 1. Pages prior to the Executive Summary, such as the title page and
-table of contents, must be shown using lower case roman numeral. Appendices can
-be of any length but are not included in the page count. Preface pages, table of
-contents and other similar pages are not included in the page count.
-3. Paper size must be 8.5” x 11”, with 1” margins on the top, right, and bottom of
-each page. The left margin may be 1.5” for binding. The paragraphs are to be fully
-justified (both left and right sides). New paragraphs may begin by indenting the line
-or by not indenting but leaving a space. However, DO NOT do both. The body font
-must be Times Roman, Arial, Helvetica, or be approved by the instructor with a font
-size of 10-12 pts. Heading fonts can be no larger than 20 pts. The document must be
-single-spaced and printing can be single or double sided. Color printing is optional
-and left to the discretion of the groups.
-4. Any supplementary material, such as CDs or diskettes must be attached in a
-sound manner.
-5. The appendix must contain written authorization (emails, letters, or explicit
-permission citations) for rights to include or use copyrighted content.
-6. All copyrighted contents must display the content’s origin or author, and an
-appropriate phrase such as “reprinted with permission.”
-7. All elements of the document that support the written text, such as figures, table,
-illustrations, code segment, charts, etc., must be cited in the body of the text, and
-the citation must appear before the element is shown. Supportive elements cannot
-begin a chapter, section, or paragraph. All supportive material must be captioned,
-which include the element name and number and a description. If you do not author
-the element, the caption must contain wording identifying that you have permission
-to use the element. The actually permission authorization must be included in the
-appendices.
-8. Your document should contain a “References” section at the end that lists all of
-the source material cited in your document. The references should be listed in the
-order that they first appear in your document in a format like the following (first is a
-book, second is an article):
-[1] J. Hennessy and D. Patterson. Computer Architecture: A Quantitative Approach,
-5 th edition, Morgan Kaufman publishers, 2014.
-[2] M. Heinrich et al. “The Performance Impact of Flexibility in the Stanford FLASH
-Mujltiprocessor”, In Proceedings of the 6th International Conference on Architectural
-Support for Programming Languages and Operating Systems (ASPLOS), pages 274-
-285, 1994
-When citing the references in the text use a non-breakable space (e.g. Ctrl-shift-
-space in Word, \&; in HTML) before the citation and then square brackets and
-the number:
-Some researchers say that the occupancy of the node controller is the
-parameter most critical to the performance of the overall machine [2].
-If you want to cite multiple references at once just separate them by commas like
-so [1,3,7].
-Content:
-1. Cover page with title, group number, team members, date, and any other relevant
-information, such as participating organizations and sponsors.
-2. Executive summary: An administrative and technical abstract, which includes a
-brief description of the project, the project objectives, and the technical approach.
-This is really an overview of 3A, 3B, 3C, and 3D. This is page number 1.
-3. Technical content (This is NOT an outline, just a list of what needs to be included)
-A. Identification of the project and its significance, motivation, etc. (mostly
-text). Please include personal motivation statements for each project member here.
-Also you MUST include a separately labeled section or subsection with the title
-“Broader Impacts” that describes in a minimum of 1 paragraph, the broader
-implications or impact of your project on society both local and global. How might
-your project impact underrepresented groups (within science and technology (STEM)
-or society as a whole), the disabled, non-profit organizations, the environment,
-diversity, increased participation in STEM fields or the workforce, public
-engagement in STEM areas, improved national security, enhanced infrastructure, or
-improved education are all examples.
-B. Technical objectives, goals, specifications, and requirements (mostly text
-and numbers)
-C. Research and investigations (text, numbers, tables, charts, figures,
-diagrams)
-D. Detailed design content (text, numbers, tables, charts, figures, diagrams)
-E. Explicit Design Summary with diagrams
-F. Build, prototype, test, and evaluation plan
-G. Personnel and bibliography of related work, if any (mostly text)
-H. Facilities and Equipment (text, numbers, tables, charts, figures, diagrams)
-I. Consultants, subcontractors, and suppliers (mostly text)
-4. Administrative content
-A. Budget and financing (text, numbers, tables, charts, figures, diagrams).
-B. Milestone chart for all activities related to the project
-5. Project Summary and conclusions.
-6. References
-7. Appendices
-A. Copyright permissions
-B. Data-sheets (if necessary)
-C. Software (if necessary)
-D. Other
+\pagebreak
+\pagenumbering{arabic}
+
+%Project Documentation Guidelines
+%additions / deletions where appropriate
+
+%2. Executive summary: An administrative and technical abstract, which includes a brief description of the project, the project objectives, and the technical approach. This is really an overview of 3A, 3B, 3C, and 3D. This is page number 1.
+\section{Executive Summary}
+
+\pagebreak
+%3. Technical content (This is NOT an outline, just a list of what needs to be included)
+%A. Identification of the project and its significance, motivation, etc. (mostly text). Please include personal motivation statements for each project member here. Also you MUST include a separately labeled section or subsection with the title “Broader Impacts” that describes in a minimum of 1 paragraph, the broader implications or impact of your project on society both local and global. How might your project impact underrepresented groups (within science and technology (STEM) or society as a whole), the disabled, non-profit organizations, the environment, diversity, increased participation in STEM fields or the workforce, public engagement in STEM areas, improved national security, enhanced infrastructure, or improved education are all examples.
+%B. Technical objectives, goals, specifications, and requirements (mostly text and numbers) FIRST PAPER HERE EZPZ
+\section{Project Goals and Objectives}
+
+\pagebreak
+%D. Detailed design content (text, numbers, tables, charts, figures, diagrams)
+\section{Specifications and Requirements}
+
+\pagebreak
+%C. Research and investigations (text, numbers, tables, charts, figures, diagrams)
+\section{Research}
+
+\pagebreak
+%E. Explicit Design Summary with diagrams
+%F. Build, prototype, test, and evaluation plan
+\section{Design Documentation}
+
+\pagebreak
+%4. Administrative content
+%G. Personnel and bibliography of related work, if any (mostly text)
+%H. Facilities and Equipment (text, numbers, tables, charts, figures, diagrams)
+%I. Consultants, subcontractors, and suppliers (mostly text)
+%A. Budget and financing (text, numbers, tables, charts, figures, diagrams).
+%B. Milestone chart for all activities related to the project
+\section{Administrative Content}
+
+\pagebreak
+%5. Project Summary and conclusions.
+\section{Project Summary and Conclusions}
+
+\pagebreak
+\pagenumbering{Alph}
+\setcounter{page}{1}
+%6. References
+\section{References}
+
+%7. Appendices
+\section{Appendices}
+
+%A. Copyright permissions
+\section{Copyright Permissions}
+
+%B. Data-sheets (if necessary)
+%C. Software (if necessary)
+%D. Other
+\section{Extras}
 
 \end{document}

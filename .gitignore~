@@ -5,3 +5,11 @@
 *.pdf
 *.backup
 *.gz
+#Qt Files
+*.release
+*.debug
+Makefile
+[Dd]ebug/
+[Rr]elease/
+*.exe
+

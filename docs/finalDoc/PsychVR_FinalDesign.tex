@@ -134,7 +134,10 @@
 	
 	%qualitative, avoid numbers, conceptual discussion specific to project. example descriptions "“lightweight, portable, programmable, low cost, flexible, high resolution, scalable, low power, accurate, mobile, peer-to-peer, autonomic”
 	
-	Our project would have an impact on the field of psychology as it relates to certain emotional disorders or struggles and the deployment of self-administered therapy for those disorders. It would not only be relevant to those diagnosed with a psychological condition, but also those seeking stress relief or a unique environment to immerse themselves in. By bringing treatment therapies to the end user in their own home and allowing them to perform therapy at their leisure we will have an impact on many people seeking these services who may not have the time to schedule appointments or those who simply won't try due to the stigma surrounding therapy.
+	Our project would have an impact on the field of psychology as it relates to certain emotional disorders or struggles and the deployment of self-administered therapy for those disorders. It would not only be relevant to people diagnosed with a psychological condition, but also those seeking stress relief or a unique environment to immerse themselves in. By bringing treatment therapies to the end user in their own home and allowing them to perform therapy at their leisure we will have an impact on many people seeking these services who may not have the time to schedule appointments or those who simply won't try due to the stigma surrounding therapy.
+	
+	
+	
 	\pagebreak
 	\section{Function}
 	Make a customizable environment which includes settings for some or all of following:
@@ -168,6 +171,206 @@
 		\item The pre-built environments will allow users to modify and change certain settings then save those preferences.
 		\item There will be controls to allow the user to interact with menus and the environment as well as make modifications or adjustments.
 	\end{enumerate}
+	
+	\begin{comment}
+	3.8 Security Requirements:
+	Number 1: (User Session)
+	
+	Statement: Properly using that we have a user in both the web application and game application.
+	
+	Source: Concept of Operations
+	3.3 Physical Environment Requirements:
+	No:1 Meet minimum hardware requirements
+	Statement: Devices should meet minimum requirements mentioned in assumptions section.
+	Source: Required to run software
+	Dependency: Need to have powerful enough hardware with ample resources to run the game nicely
+	Supporting Materials: None
+	Evaluation Method: Testing and getting statistics on real devices.  
+	
+	Revision History: Initial Creation: 10/8/15
+	
+	
+	3.4 Users and Human Factors Requirements:
+	
+	No:1 UI simplicity
+	Statement: The game should have a simple UI with design in mind for running on different devices.  
+	Source: Needed to make sure buttons are not too small or hard to press on different android devices.
+	Dependency: Need to have powerful enough hardware with ample resources to run the game nicely
+	
+	Conflicts : None
+	Supporting Materials: None
+	Evaluation Method: Testing the game on different devices
+	
+	Revision History: Initial Creation: 10/8/15
+	
+	No: 2 Clear documentation/ user guides
+	Statement: Introduction/ Instructions for beginners should be clear
+	Source: Making the game easy for new users.
+	Dependency: Having intro user guides on the companion website.
+	Conflicts: None
+	Supporting Materials: None
+	Evaluation Method: Any jargon or advanced terms should be defined. 
+	
+	Revision History: Initial Creation: 10/8/15
+	
+	3.5 Documentation Requirements:
+	No:1 Accessibility  
+	Statement: Introduction/ Instructions for beginners should be accessible on the website
+	Source: Making sure the users can access documentation
+	Dependency: Creating user guides
+	Conflicts: None
+	Supporting Materials: None
+	Evaluation Method: Testing if pages are viewable on the website. 
+	
+	Revision History: Initial Creation: 10/8/15
+	
+	
+	3.6 Data Requirements:
+	No:1 In game updating  
+	Statement: Locations heath, damage and other game state related data shall be maintained as float and vectors of floats. 
+	Source: Gameplay related calculations
+	Dependency: Ensuring in game calculations are accurate. 
+	Conflicts: Some of this precision may be lost on certain Android processors, but should be accurate enough for the purposes of the game.
+	
+	Supporting Materials: None
+	Evaluation Method: Testing gameplay with debugger on a device.
+	
+	Revision History: Initial Creation: 10/8/15
+	
+	No:2 Game Statistic Synchronization 
+	Statement: Other statistics related to overall game stats and achievements will be synced on the companion website.
+	Source: Adding game information to the website
+	Dependency: Need to communicate with web database. 
+	Conflicts: Some issues with Postgres Driver (.dll) and the Mono subset of .NET
+	Supporting Materials: None
+	Evaluation Method: Testing data for test user
+	
+	Revision History: Initial Creation: 10/8/15
+	
+	3.7 Resource Requirements:
+	
+	ZombieBox Game
+	No:1 Software Tools
+	Statement: Software tools shall be used for development of the Android app, which include the Unity Engine development platform, android phone or emulator for running/ testing the game.
+	Source: Application development tools. 
+	Dependency: All needed tools for development are free, and easy to use. 
+	Conflicts: None
+	
+	Supporting Materials: None
+	Evaluation Method: None
+	
+	Revision History: Initial Creation: 10/8/15
+	
+	No:2 Media Assets
+	Statement: Game Character models need to be designed or purchased. Autodesk Maya or blender should be used for designing additional models. 
+	Source: Game assets for display
+	Dependency: Game visuals 
+	Conflicts: None
+	
+	Supporting Materials: None
+	Evaluation Method: None
+	
+	Revision History: Initial Creation: 10/8/15
+	
+	ZombieBox Web Application
+	
+	Number 1: (Backend, Server)
+	Statement: Team members shall be able to program the web application with Ruby on Rails, utilizing HTML, and CSS.
+	
+	Source: Application development tools
+	Dependency: None
+	Conflicts: None
+	Supporting Materials: None
+	Evaluation Method: Concept of Operations
+	Revision History: Initial Creation: 10/8/15
+
+	Number 2: (Frontend, Clientside)
+	Statement: Team members shall be able to program the client side of the application with Angular.js, utilizing angular resources and services to perform HTTP GET and POST to the backend application.
+	Source: Application development tools
+	Dependency: None
+	Conflicts: None
+	Supporting Materials: None
+	Evaluation Method: Concept of Operations
+	Revision History: Initial Creation: 10/8/15
+	
+	Number 3: (Postgresql)
+	Statement: Team members must be able to properly query the database as well as insert and update rows in the database. Active Record must be utilized for handling SQL queries.
+	Source: Application development tools
+	Dependency: None
+	Conflicts: None
+	Supporting Materials: None
+	Evaluation Method: Concept of Operations
+	Revision History: Initial Creation: 10/8/15
+	
+	Number 4: (Heroku)
+	Statement: Team members must be familiar with Git and be able to properly push the application onto Heroku, our application hosting platform.
+	Source: Application development tools
+	Dependency: None
+	Conflicts: None
+	Supporting Materials: None
+	Evaluation Method: Concept of Operations
+	Revision History: Initial Creation: 10/8/15
+	Dependency: None
+	Conflicts: None
+	Supporting Materials: None
+	Evaluation Method: Utilize Devise to ensure that the user passwords are secure and tokenize them using SALT methods to ensure top notch security. Web application and game testing done by team.
+	Revision History: Initial Creation: 10/8/15
+	
+	Number 2: (HTTP Requests)
+	Statement: Properly check for ids and nulls when performing GET and POST requests between the applications and server.
+	Source: Concept of Operations and Development Tools
+	Dependency: None
+	Conflicts: None
+	Supporting Materials: None
+	Evaluation Method: Ensure that all GET and POST requests verify the incoming parameters before accessing the database. Team tests all situations.
+	Revision History: Initial Creation: 10/8/15
+	
+	3.9 Quality Assurance Requirements:
+	Zombie Box Game
+	Number 1: (Login)
+	Statement: User must be able to log into the game.
+	Source: User must be able to login to the game to be able to enjoy and play the game.
+	Dependency: None
+	Conflicts: None
+	Evaluation Method: None
+	Revision History: Initial Creation: 10/8/15
+	
+	Number 2: (Rounds)
+	Statement: User must be able to complete a round to move on.
+	Source: Rounds must be able to be beaten to ensure that users enjoy playing the game.
+	Dependency: None
+	Conflicts: None
+	Supporting Materials: None
+	Evaluation Method: None
+	Revision History: Initial Creation: 10/8/15
+	
+	Number 3: (Weapons)
+	Statement: User must be able to select and switch between different weapons.
+	Source: User must be allowed to customize the manner in which they play the game to ensure they that do not get tired of playing the game.
+	Dependency: None
+	Conflicts: None
+	Supporting Materials: None
+	Evaluation Method: None
+	Revision History: Initial Creation: 10/8/15
+	
+	Number 4: (Frame rate)
+	Statement: The game must have at least 24 frames per second while the user is playing the game.
+	Source: Game must not lag while user is playing to ensure the quality of the game is good.
+	Dependency: None
+	Conflicts: None
+	Supporting Material: None
+	Evaluation Method: None
+	Revision History: Initial Creation: 10/8/15
+	
+	Number 5: (Bugs)
+	Statement: The game must not have any bugs/errors.
+	Source: The game must allow users to move around between the different aspects of the game in a smooth manner, to ensure the quality stays high.
+	Dependency: None
+	Conflicts: None
+	Supporting Materials: None
+	Evaluation Method: None
+	Revision History: Initial Creation: 10/8/15
+	\end{comment}
 	
 	\subsection{Performance Requirements}
 	\begin{enumerate}
@@ -213,13 +416,19 @@ lots of vr things being sold... numbers here
 \subsection{VR Headset Options}
 minspec, platform, sync rates.
 \subsubsection{Oculus Rift}
+	
 \subsubsection{Gear VR}
+	The Samsung Gear VR is powered by the same technology in the Oculus Rift.
 \subsubsection{HTC Vive}
+	High end fooffy, requires crazy powerful computer.
 
 \subsection{VR Peripherial Options}
 precision, inputs, basic info
 \subsubsection{Leap Motion}
+	Using Leap Motion on a PC is viable in Unity and very well supported, however using Leap Motion and the Gear VR simultaneously on Android is not feasible.
 \subsubsection{Oculus Rift Move}
+\subsubsection{Red Samurai Bluetooth Controller}
+	A cheap, 8\$ bluetooth controller, that pairs very well with the Gear VR on Android.
 \subsubsection{Gear VR Peripherials?}
 \pagebreak
 \subsection {Psychology research}
@@ -305,7 +514,15 @@ info about proteus like thing here
 	\label{fig:sblock}
 	\end{figure}
 	This diagram represents the software design of our project and the various functional modules that should exist in order to fulfill the user interaction requirements. 
-	The application will have two main modes of operation, edit mode and view mode.  
+	The application will have two main modes of operation, edit mode and view mode. 
+	\subsection{Qt Design Plan}
+		\subsubsection{High Level Diagram}
+		\subsubsection{Activity Diagram}
+	\subsection{Unity Hierarchy}
+		\subsubsection{High Level Design}
+		\subsubsection{Activity Diagram}
+		\subsubsection{Scene Shared Assets}
+		
 \pagebreak
 
 %4. Administrative content
@@ -340,17 +557,30 @@ info about proteus like thing here
 	\label{fig:pchart}
 	\end{figure}
 	\section{Milestones}
-	\begin{itemize}
-	  \item Finding funding or available UCF facilities
-\item Creating basic 3d world
-\item Getting virtual reality hardware to display world
-\item Connecting user input to world
-\item Allowing for users to add models to world, and design said world
-\item Testing with psychologists to confirm project is beneficial
-\item Combining all aspects of project into cohesive whole
-\item Finalize and begin testing of project
-	\end{itemize}
-
+	\subsection{Tech Milestones}
+		\begin{itemize}
+			\item Finding funding or available UCF facilities
+			\item Obtaining Oculus Rift
+			\item Obtaining Gear VR
+			\item Obtaining LeapMotion
+			\item Getting virtual reality hardware to display world
+			\item Connecting user input to world
+		\end{itemize}
+	\subsection{Research Milestones}
+		\begin{itemize}
+			\item Choose the most important scenes to develop
+			\item Testing with psychologists to confirm project is beneficial
+		\end{itemize}
+	\subsection{Development Milestones}
+		\begin{itemize}
+			\item Allowing for users to add models to world, and design said world
+			\item Combining all aspects of project into cohesive whole
+			\item Finalize and begin testing of project
+		\end{itemize}
+	\subsection{Overall Milestones}
+		\begin{itemize}
+			\item 
+		\end{itemize}
 
 \pagebreak
 %5. Project Summary and conclusions.

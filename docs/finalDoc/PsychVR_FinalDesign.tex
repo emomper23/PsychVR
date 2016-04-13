@@ -164,226 +164,67 @@
 \pagebreak
 %D. Detailed design reqs add more here...
 \section{Specifications and Requirements}
-\subsection{Functional Requirements}
-	\begin{enumerate}
+	\subsection{Functional Requirements}
+	\begin{itemize}
 		\item Project will create some 3D environment that the user can see and interact with in 3D space.
 		\item The project must have modules that provide some kind of psychological treatment for end users at home.
 		\item The pre-built environments will allow users to modify and change certain settings then save those preferences.
 		\item There will be controls to allow the user to interact with menus and the environment as well as make modifications or adjustments.
+	\end{itemize}
+	\subsection{System Requirements}
+	\begin{enumerate}
+	 \item Hardware Minimum Spec for Running VR
+	 \begin{itemize}
+	  \item Description: Quality and frame rate can vary but should be good enough to be playable
+	  \item Dependency: Minimum supported GPU, CPU, RAM, OS Specs (See Specific Headset Research 9.x.x) 
+	  \item Evaluation Method: Test app on Real Hardware (VR Headset, with Controls)
+	 \end{itemize}
+	 \item Low Latency Controls
+	 \begin{itemize}
+	  \item Description: Minimum system requirements to Peripherial input processing
+	  \item Dependency: Minimum supported GPU, CPU, RAM, OS Specs (See Specific Peripherial Research 9.x.x) 
+	  \item Evaluation Method: Test app on Real Hardware (VR Headset, with Controls)
+	 \end{itemize}
 	\end{enumerate}
 	
-	\begin{comment}
-	3.8 Security Requirements:
-	Number 1: (User Session)
-	
-	Statement: Properly using that we have a user in both the web application and game application.
-	
-	Source: Concept of Operations
-	3.3 Physical Environment Requirements:
-	No:1 Meet minimum hardware requirements
-	Statement: Devices should meet minimum requirements mentioned in assumptions section.
-	Source: Required to run software
-	Dependency: Need to have powerful enough hardware with ample resources to run the game nicely
-	Supporting Materials: None
-	Evaluation Method: Testing and getting statistics on real devices.  
-	
-	Revision History: Initial Creation: 10/8/15
-	
-	
-	3.4 Users and Human Factors Requirements:
-	
-	No:1 UI simplicity
-	Statement: The game should have a simple UI with design in mind for running on different devices.  
-	Source: Needed to make sure buttons are not too small or hard to press on different android devices.
-	Dependency: Need to have powerful enough hardware with ample resources to run the game nicely
-	
-	Conflicts : None
-	Supporting Materials: None
-	Evaluation Method: Testing the game on different devices
-	
-	Revision History: Initial Creation: 10/8/15
-	
-	No: 2 Clear documentation/ user guides
-	Statement: Introduction/ Instructions for beginners should be clear
-	Source: Making the game easy for new users.
-	Dependency: Having intro user guides on the companion website.
-	Conflicts: None
-	Supporting Materials: None
-	Evaluation Method: Any jargon or advanced terms should be defined. 
-	
-	Revision History: Initial Creation: 10/8/15
-	
-	3.5 Documentation Requirements:
-	No:1 Accessibility  
-	Statement: Introduction/ Instructions for beginners should be accessible on the website
-	Source: Making sure the users can access documentation
-	Dependency: Creating user guides
-	Conflicts: None
-	Supporting Materials: None
-	Evaluation Method: Testing if pages are viewable on the website. 
-	
-	Revision History: Initial Creation: 10/8/15
-	
-	
-	3.6 Data Requirements:
-	No:1 In game updating  
-	Statement: Locations heath, damage and other game state related data shall be maintained as float and vectors of floats. 
-	Source: Gameplay related calculations
-	Dependency: Ensuring in game calculations are accurate. 
-	Conflicts: Some of this precision may be lost on certain Android processors, but should be accurate enough for the purposes of the game.
-	
-	Supporting Materials: None
-	Evaluation Method: Testing gameplay with debugger on a device.
-	
-	Revision History: Initial Creation: 10/8/15
-	
-	No:2 Game Statistic Synchronization 
-	Statement: Other statistics related to overall game stats and achievements will be synced on the companion website.
-	Source: Adding game information to the website
-	Dependency: Need to communicate with web database. 
-	Conflicts: Some issues with Postgres Driver (.dll) and the Mono subset of .NET
-	Supporting Materials: None
-	Evaluation Method: Testing data for test user
-	
-	Revision History: Initial Creation: 10/8/15
-	
-	3.7 Resource Requirements:
-	
-	ZombieBox Game
-	No:1 Software Tools
-	Statement: Software tools shall be used for development of the Android app, which include the Unity Engine development platform, android phone or emulator for running/ testing the game.
-	Source: Application development tools. 
-	Dependency: All needed tools for development are free, and easy to use. 
-	Conflicts: None
-	
-	Supporting Materials: None
-	Evaluation Method: None
-	
-	Revision History: Initial Creation: 10/8/15
-	
-	No:2 Media Assets
-	Statement: Game Character models need to be designed or purchased. Autodesk Maya or blender should be used for designing additional models. 
-	Source: Game assets for display
-	Dependency: Game visuals 
-	Conflicts: None
-	
-	Supporting Materials: None
-	Evaluation Method: None
-	
-	Revision History: Initial Creation: 10/8/15
-	
-	ZombieBox Web Application
-	
-	Number 1: (Backend, Server)
-	Statement: Team members shall be able to program the web application with Ruby on Rails, utilizing HTML, and CSS.
-	
-	Source: Application development tools
-	Dependency: None
-	Conflicts: None
-	Supporting Materials: None
-	Evaluation Method: Concept of Operations
-	Revision History: Initial Creation: 10/8/15
+	\subsection{Resource Requirements}
+	\begin{enumerate}
+	 \item Software tools
+	 \begin{itemize}
+	 \item Description: tools shall be used for development of the Desktop and Android app, which include 
+	 the Unity Engine development platform, android phone or emulator for running/ testing the Unity App,
+	  along with the Qt Tool kit for the configuration tool.
+	 \item  Dependency: needed tools for development are free, and easy to use. 
+	 \item Evaluation Method: Make sure all team members are able to use and access development tools/
+	  \end{itemize}
+	 \item Media Assets
+	\begin{itemize}
+	  \item Description: Game Character models need to be designed or purchased. Autodesk Maya, Google Sketchup or blender should be used for designing additional models. 
+	  \item Dependency: Creating realistic visuals 
+	  \item Evaluation Method: Test app and make sure it looks good.
+	 \end{itemize}
+	\end{enumerate}
 
-	Number 2: (Frontend, Clientside)
-	Statement: Team members shall be able to program the client side of the application with Angular.js, utilizing angular resources and services to perform HTTP GET and POST to the backend application.
-	Source: Application development tools
-	Dependency: None
-	Conflicts: None
-	Supporting Materials: None
-	Evaluation Method: Concept of Operations
-	Revision History: Initial Creation: 10/8/15
-	
-	Number 3: (Postgresql)
-	Statement: Team members must be able to properly query the database as well as insert and update rows in the database. Active Record must be utilized for handling SQL queries.
-	Source: Application development tools
-	Dependency: None
-	Conflicts: None
-	Supporting Materials: None
-	Evaluation Method: Concept of Operations
-	Revision History: Initial Creation: 10/8/15
-	
-	Number 4: (Heroku)
-	Statement: Team members must be familiar with Git and be able to properly push the application onto Heroku, our application hosting platform.
-	Source: Application development tools
-	Dependency: None
-	Conflicts: None
-	Supporting Materials: None
-	Evaluation Method: Concept of Operations
-	Revision History: Initial Creation: 10/8/15
-	Dependency: None
-	Conflicts: None
-	Supporting Materials: None
-	Evaluation Method: Utilize Devise to ensure that the user passwords are secure and tokenize them using SALT methods to ensure top notch security. Web application and game testing done by team.
-	Revision History: Initial Creation: 10/8/15
-	
-	Number 2: (HTTP Requests)
-	Statement: Properly check for ids and nulls when performing GET and POST requests between the applications and server.
-	Source: Concept of Operations and Development Tools
-	Dependency: None
-	Conflicts: None
-	Supporting Materials: None
-	Evaluation Method: Ensure that all GET and POST requests verify the incoming parameters before accessing the database. Team tests all situations.
-	Revision History: Initial Creation: 10/8/15
-	
-	3.9 Quality Assurance Requirements:
-	Zombie Box Game
-	Number 1: (Login)
-	Statement: User must be able to log into the game.
-	Source: User must be able to login to the game to be able to enjoy and play the game.
-	Dependency: None
-	Conflicts: None
-	Evaluation Method: None
-	Revision History: Initial Creation: 10/8/15
-	
-	Number 2: (Rounds)
-	Statement: User must be able to complete a round to move on.
-	Source: Rounds must be able to be beaten to ensure that users enjoy playing the game.
-	Dependency: None
-	Conflicts: None
-	Supporting Materials: None
-	Evaluation Method: None
-	Revision History: Initial Creation: 10/8/15
-	
-	Number 3: (Weapons)
-	Statement: User must be able to select and switch between different weapons.
-	Source: User must be allowed to customize the manner in which they play the game to ensure they that do not get tired of playing the game.
-	Dependency: None
-	Conflicts: None
-	Supporting Materials: None
-	Evaluation Method: None
-	Revision History: Initial Creation: 10/8/15
-	
-	Number 4: (Frame rate)
-	Statement: The game must have at least 24 frames per second while the user is playing the game.
-	Source: Game must not lag while user is playing to ensure the quality of the game is good.
-	Dependency: None
-	Conflicts: None
-	Supporting Material: None
-	Evaluation Method: None
-	Revision History: Initial Creation: 10/8/15
-	
-	Number 5: (Bugs)
-	Statement: The game must not have any bugs/errors.
-	Source: The game must allow users to move around between the different aspects of the game in a smooth manner, to ensure the quality stays high.
-	Dependency: None
-	Conflicts: None
-	Supporting Materials: None
-	Evaluation Method: None
-	Revision History: Initial Creation: 10/8/15
-	\end{comment}
-	
-	\subsection{Performance Requirements}
+	\subsection{Data Requirements}
 	\begin{enumerate}
-		\item User must have a computer that runs windows (for now) and has sufficient GPU and other system specs to run a VR headset.
-		\item The VR environment must run at least 30 FPS on an appropriate platform.
-		\item User control interactions must be responsive and fluid (reasonable interaction responses).
+	 \item Saving Scene configurations
+	 \item Placing configured scenes With accurate locations
 	\end{enumerate}
-	\subsection{Users and Human Factors Requirements}
+
+	\subsection{Human Factors Requirements}
 	\begin{enumerate}
-		\item The dialogs and menus must be easy to see and use.
-		\item Some user interactions must be desktop based, rather than within VR, to be simpler (ex file menus).
-		\item The models, textures, and graphics in the environment must be decent quality to help immerse the user.
+	 \item UI Simplicity
+	 \item VR Sickness	 
+	 \item The models, textures, and graphics in the environment must be decent quality to help immerse the user.
+	 \end{enumerate}
+	\subsection{Documnetation Requirements}
+	\begin{enumerate}
+	 \item Clear Simple User Guides
+	 \item Accessibility of Guides
 	\end{enumerate}
+	\subsection{Quality Assurance Requirements}
+
+	
 	
 \pagebreak
 %C. Research and investigations (text, numbers, tables, charts, figures, diagrams)

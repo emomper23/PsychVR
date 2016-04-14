@@ -139,38 +139,88 @@
 	
 	
 	\pagebreak
-	\section{Function}
-	Make a customizable environment which includes settings for some or all of following:
-	\subsection{Therapeutic Art Deign Environment}
-	This calming art suite allows users to relax and design art in a creative 
-	\begin{itemize}
-		\item The user can use hand controls or a controller to draw colors and shapes in a 3D space around them. 
-		\item This can be used on a variety of platforms including Ouculus Rift, HTC Vive, and PS VR.
-	\end{itemize}   
-	\subsection{Music Visualization}
-	This module would be related to music visualization. 
-	\begin{itemize}
-		\item The different sound or frequencies that could be visualized via colors and waves that are around the user as music is playing in real time.
-		\item The user can interact with these sounds in some way possible a puzzle.(see auditorium game)
-	\end{itemize}   
-	\subsection{Virtual 3D Worlds Specific to Various Conditions}
-	This module would consist of a variety of 3D worlds that the user could move in and interact with. 
-	\begin{itemize}
-		\item Environments will have some sort of editable creative mode interface where some customization is allowed and saved.
-		\item The user is loaded into a 3D pre-designed environment.
-		\item The user can use hand controls to interact with the created environment and move around. 
-		\item This can be used on a variety of platforms including Ouculus Rift, HTC Vive, and PS VR
-	\end{itemize}
-\pagebreak
 %D. Detailed design reqs add more here...
 \section{Specifications and Requirements}
 	\subsection{Functional Requirements}
-	\begin{itemize}
-		\item Project will create some 3D environment that the user can see and interact with in 3D space.
-		\item The project must have modules that provide some kind of psychological treatment for end users at home.
-		\item The pre-built environments will allow users to modify and change certain settings then save those preferences.
-		\item There will be controls to allow the user to interact with menus and the environment as well as make modifications or adjustments.
-	\end{itemize}
+	\begin{enumerate}
+		\item Interactive Environemnts
+		\begin{itemize}
+		 \item Description: The user should be presented with a realistic interactive 3D Environment. 
+		 \item Dependency: Assets should be high quality, and the Unity scenes should run well.
+		 \item Evaluation: Testing scenes by using them with VR.
+		\end{itemize}
+		\item Psychological Treatment
+		\begin{itemize}
+		 \item Description: The scenes should be useful for some sort of psychological testing or treatment.
+		 \item Dependency:  Psychology professors or UCF staff should be consulted for approval or input.
+		 \item Evaluation:  Approval from professors. 
+		\end{itemize}
+		\item Configurable Environments
+		\begin{itemize} 
+		 \item Description: Scenes should be configurable with the use of an external tool, that should change the environment. 
+		 \item Dependency:  Scene loads assets or changes layouts from Qt GUI configuration app's config file. 
+		 \item Evaluation:  Test a configurable scene.
+		\end{itemize}
+		\item Realistic User Interactions
+		\begin{itemize}
+		 \item Description: User controls shoud be simple and feel realistic. 
+		 \item Dependency:  Dealing with latency and processing of user input in Unity. 
+		 \item Evaluation:  Testing scenes with controls.
+		\end{itemize}
+		\item Qt Environment maps
+		\begin{itemize}
+		 \item Description: The Qt configuration tool should have drag and drop maps that allow the user to change the layout of configured maps.
+		 \item Dependency:  Qt drag and drop and OpenGL drawing widgets. 
+		 \item Evaluation:  Testing this feature.
+		\end{itemize}
+		\item Qt Object Lists
+		\begin{itemize}
+		 \item Description: The Qt app should have a list of available objects to be placed or moved in the Scene, (this can be done by another configuration tool 
+		 (Creator module) or be a hardcoded list of assets linked with the scene), this will need to be stored in a different config file. 
+		 \item Dependency:  The environment map needs a list of Objects to configure. 
+		 \item Evaluation:  Try this feature with a list of objects.
+		\end{itemize}
+
+		\item Qt Usablilty
+		\begin{itemize}
+		 \item Description: The Qt Desktop app should be usable at various resolutions with easy simple controls. 
+		 \item Dependency:  Making the tool usable.
+		 \item Evaluation:  Test the tool, make sure it is easy to use.
+		\end{itemize}
+		
+		\item Qt Configuration Files
+		\begin{itemize}
+		 \item Description: Scene layouts and other details related to configuration of the scenes must be saved in a file to be read in by Unity.
+		 \item Dependency:  Making the scenes configurable.
+		 \item Evaluation:  Save map editor configurations and read them in in Unity.
+		\end{itemize}
+		\item Qt Portability (If Configuration is supported on Android)
+		\begin{itemize}
+		 \item Description: If we support configurable scenes on android, we need to build and android version of the Qt app, this may already be supported by Qt, as it is highly portable.
+		 \item Dependency:  Portablilty of the configuration tool.
+		 \item Evaluation:  Build the Qt app to Android, or write another one. 
+		\end{itemize}
+		\item Scene 1 Functional Reqs
+		\begin{itemize}
+		 \item Description: write some
+		 \item Dependency:  
+		 \item Evaluation:
+		\end{itemize}
+		
+		\item Scene 2 Functional Reqs
+		\begin{itemize}
+		 \item Description: write some
+		 \item Dependency:  
+		 \item Evaluation:
+		\end{itemize}
+		\item Scene 3 Functional Reqs
+		\begin{itemize}
+		 \item Description: write some
+		 \item Dependency:  
+		 \item Evaluation:
+		\end{itemize}
+	\end{enumerate}
+
 	\subsection{System Requirements}
 	\begin{enumerate}
 	 \item Hardware Minimum Spec for Running VR

@@ -202,12 +202,20 @@
 		\end{itemize}
 		\textbf{ Now that these basic functional requirements have been defined, specific module requirements are as follows:}
 		
+		\item Scene 1 Fear of Heights Movement 
+		\begin{itemize}
+		 \item Description: The scene shall use some sort of movement tracking camera to create deeper immersion for the user, (ex xbox kinect or DK2+ IR camera).
+		 \item Dependency: Usablilty of the scene.
+		 \item Evaluation: Test the scene with subjects and show to Psychology department. 
+		\end{itemize}
+		
 		\item Scene 1 Fear of Heights Interaction 
 		\begin{itemize}
 		 \item Description: The user shall be put into some sort of simulated high up place with configurable scenery, they should be able to move around and interact with the scene.
 		 \item Dependency: Usablilty of the scene.
 		 \item Evaluation: Test the scene with subjects and show to Psychology department. 
 		\end{itemize}
+		
 		
 		\item Scene 1 Fear of Heights Objective 
 		\begin{itemize}
@@ -236,10 +244,18 @@
 		 \item Dependency: Usablilty of the scene.
 		 \item Evaluation: Test the scene with subjects and show to Psychology department. 
 		\end{itemize}
+		
 		\item Scene 3 Calming Environment Interactions 
 		\begin{itemize}
 		 \item Description: The scene shall have configurable calming sounds and visuals
 		 \item Dependency: Calming art/ experience for the user.
+		 \item Evaluation: Test the scene with subjects and show to Psychology department. 
+		\end{itemize}
+		
+		\item Scene 3 Calming Environment Terrain generation
+		\begin{itemize}
+		 \item Description: The scene shall have some sort of procedurally generated terrain. 
+		 \item Dependency: Large environments for the user to explore, creating a more indepth experience. Probably using computer shaders that are supported in Unity!!!
 		 \item Evaluation: Test the scene with subjects and show to Psychology department. 
 		\end{itemize}
 		
@@ -341,6 +357,7 @@ market stuff
  \item Controls: Oculus Touch (not included)
  \item Release Date: Q1 2016 (Delayed)
  \item Manufacturer: Oculus VR
+ \item Unity Support: Yes
  \item Cross Platfrom: Probably not (Occulus Home Dependent)
  \item Cost: \$599
 \end{itemize}
@@ -365,11 +382,12 @@ market stuff
  \item Release Date: July 2014
  \item Manufacturer: Oculus VR
  \item Cross Platfrom: Probably not (Occulus Home Dependent)
+ \item Unity Support: Yes
  \item Cost: \$350
 \end{itemize}
 \begin{figure}[H]
 	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{dk2.jpg}
-	\caption{Oculus Rift Consumer Version}
+	\caption{Oculus Rift Dev Kti 2}
 	%to ref fig number
 	%Figure \ref{fig:block1} shows our blockDiagram.
 	\label{fig:Riftdk2Img}
@@ -388,17 +406,18 @@ market stuff
  \item Release Date: August 2012 (Kickstarter)
  \item Manufacturer: Oculus VR
  \item Cross Platfrom: Probably not (Occulus Home Dependent)
+ \item Unity Support: Yes
  \item Cost: \$300
 \end{itemize}
 	\begin{figure}[H]
 	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{dk1.jpg}
-	\caption{Oculus Rift Consumer Version}
+	\caption{Oculus Rift Dev Kit 1}
 	%to ref fig number
 	%Figure \ref{fig:block1} shows our blockDiagram.
 	\label{fig:Riftdk1Img}
 	\end{figure}
 	\pagebreak
-\subsubsection{Gear VR}
+\subsubsection{Samsung Gear VR}
 	Supported Phones Include the Samsung Galaxy: Note5, S6, S6 edge, S7, S7 edge  
 	\begin{itemize}
 	  \item Resolution: 2560 X 1440 (Quad HD phone screen)
@@ -412,11 +431,12 @@ market stuff
 	  \item Release Date: November 2015
 	  \item Manufacturer: Samsung, With technology by Oculus VR
 	  \item Cross Platfrom: No
+	  \item Unity Support: Yes
 	  \item Cost: \$99
 	\end{itemize}
 	\begin{figure}[H]
 	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{gear.jpg}
-	\caption{Oculus Rift Consumer Version}
+	\caption{Samsung Gear VR}
 	%to ref fig number
 	%Figure \ref{fig:block1} shows our blockDiagram.
 	\label{fig:GearImg}
@@ -435,11 +455,12 @@ market stuff
 	  \item Release Date: Q1 2016 (Delayed)
 	  \item Manufacturer: HTC, With technology by Valve Corporation
 	  \item Cross Platfrom: Valve OpenGL Mesa support/ SteamVR support on Linux soon hopefully
+	  \item Unity Support: Yes
 	  \item Cost: \$799
 	\end{itemize}
 	\begin{figure}[H]
 	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{vive.jpg}
-	\caption{Oculus Rift Consumer Version}
+	\caption{HTC Vive Headset}
 	%to ref fig number
 	%Figure \ref{fig:block1} shows our blockDiagram.
 	\label{fig:ViveImg}
@@ -458,6 +479,8 @@ market stuff
   \item Release Date: Q1 2016 (Delayed)
   \item Manufacturer: Sony
   \item Cross Platfrom: No
+    \item Unity Support: Yes
+  \item Unity Support: Yes
   \item Cost: \$399
 \end{itemize}
 \begin{figure}[H]
@@ -479,7 +502,115 @@ precision, inputs, basic info
 	A cheap, 8\$ bluetooth controller, that pairs very well with the Gear VR on Android.
 \subsubsection{Gear VR Peripherials?}
 \pagebreak
+\subsection{Movement Tracking Cameras}
+\subsubsection{Microsoft Kinect 1}
+\begin{itemize}
+  \item Resolution: 640 X 480
+  \item Refresh Rate: 33 Hz (30 FPS)
+  \item Max Depth: 12 feet
+  \item Release Date: August 2010 
+  \item Manufacturer: Microsoft
+  \item Cross Platfrom: Yes
+  \item Unity Support: Yes
+  \item Skeleton Joints:: 26
+  \item Horizontal FOV: 57 Degrees
+  \item Vertical FOV: 43 Degrees
+  \item Pixels Per Degree: 5 X 5
+  \item Technique: Structured Light Patterns
+  \item Cost: Acquired, Not widely available, ~\$40
+\end{itemize}
+\begin{figure}[H]
+	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{kinect1.jpg}
+	\caption{Kincet 1 Camera}
+	%to ref fig number
+	%Figure \ref{fig:block1} shows our blockDiagram.
+	\label{fig:k1Cam}
+	\end{figure}
+	\pagebreak
+	\subsubsection{Microsoft Kinect 2}
+\begin{itemize}
+  \item Resolution: 1920 X 1080
+  \item Refresh Rate: 33 Hz (30 FPS)
+  \item Max Depth: 12 feet
+  \item Release Date: August 2010 
+  \item Manufacturer: Microsoft
+  \item Cross Platfrom: Yes
+  \item Skeleton Joints: 26
+  \item Horizontal FOV: 70 Degrees
+  \item Vertical FOV: 60 Degrees
+  \item Pixels Per Degree: 7 X 7
+  \item Technique: Time of Flight
+  \item Cost: \$99
+\end{itemize}
+\begin{figure}[H]
+	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{kinect2.jpg}
+	\caption{Kincet 2 Camera}
+	%to ref fig number
+	%Figure \ref{fig:block1} shows our blockDiagram.
+	\label{fig:k2Cam}
+	\end{figure}
+	\pagebreak
+	
+\subsubsection{Comparison of Kinect Systems}
+\textbf{(Figure \ref{fig:kimg})} shows the increased fidelity and quality of the captured image on the kinect 2.
+\begin{figure}[H]
+	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{kinectImg.jpg}
+	\caption{Kincet 2 Camera}
+	%to ref fig number
+	%Figure \ref{fig:block1} shows our blockDiagram.
+	\label{fig:kimg}
+	\end{figure}
+	\pagebreak	
+	
+\subsubsection{Oculus Rift DK2+ Camera}
+\begin{itemize}
+  \item Resolution: 752×480
+  \item Refresh Rate: 16 Hz (60 FPS)
+  \item Max Depth: ?
+  \item Release Date: July 2014
+  \item Manufacturer: Oculus Rift
+  \item Cross Platfrom: No
+  \item Skeleton Joints: Heaset Position
+  \item Horizontal FOV: ?
+  \item Vertical FOV: ?
+  \item Pixels Per Degree: ?
+  \item Technique: IR LED Pattern Recognition
+  \item Cost: Included With Headset
+\end{itemize}
+ \begin{figure}[H]
+	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{riftIR.jpg}
+	\caption{Kincet 2 Camera}
+	%to ref fig number
+	%Figure \ref{fig:block1} shows our blockDiagram.
+	\label{fig:riftCam}
+	\end{figure}
+	\pagebreak
+	\subsubsection{HTC Vive Lighth House Sensors}
+\begin{itemize}
+  \item Resolution: 752×480
+  \item Refresh Rate: 16 Hz (60 FPS)
+  \item Max Depth: ?
+  \item Release Date: July 2014
+  \item Manufacturer: Oculus Rift
+  \item Cross Platfrom: No
+  \item Skeleton Joints: Heaset Position
+  \item Horizontal FOV: NA
+  \item Vertical FOV: NA
+  \item Pixels Per Degree: ?
+  \item Technique: 360 Laser / LED full room scanning 
+  \item Cost: Included With Headset
+\end{itemize}
+ \begin{figure}[H]
+	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{viveLight.jpg}
+	\caption{Kincet 2 Camera}
+	%to ref fig number
+	%Figure \ref{fig:block1} shows our blockDiagram.
+	\label{fig:viveCam}
+	\end{figure}
+	\pagebreak
+
 \subsection{Compnay Histories}
+%rift startup, other infos here...
 \subsection {Psychology research}
 This Section will discuss various psychological areas of our project including warnings, limitations, trends, other successful tests, and specifics about different phobias or disorders 
 that we are researching. 
@@ -533,14 +664,41 @@ Agoraphobia Without History of Panic Disorder. \cite{dsmPhobia}
 \subsubsection{Examples of Success}
 For example, 12 studies tested the effects of virtual reality on stroke recovery. 5 of these studies showed patients who played virtual reality games were about 4.9 times more likely to improve their upper body strength than those who received the standard therapy, while the other 7  studies showed a 14.7 percent improvement, on average, in patients' grip strength and a 20 percent improvement in patient's ability to perform standard tasks.\cite{stroke1}
 \pagebreak
-\subsubsection{Module 1 Fear of Heights}
+\subsection{Module 1 Fear of Heights}
 research here
 \pagebreak
-\subsubsection{Module 2 Speech Anxiety Simulator}
+\subsection{Module 2 Speech Anxiety Simulator}
 research for this
 \pagebreak
-\subsubsection{Module 3 Calm Environment}
+\subsection{Module 3 Calm Environment}
 info about proteus like thing here 
+%OpenCL!!!!
+% https://scrawkblog.com/category/directcompute/
+% http://answers.unity3d.com/questions/162096/gpu-programming-with-unity.html
+
+\subsubsection{General-purpose computing on graphics processing units (GPGPU)}~\\
+GPGPU programming is a growing option for parallel processing applications that work over large data sets. Some common uses include image or media processing and 
+performing mathematical computations over linear systems or large sets. Many modern GPUs offer many benefits in processing with the high number of cores that can operate on data 
+in Single Instruction Multiple Data (SIMD) and Multiple Instruction Multiple Data (MIMD) fashions. For example, one group of data can be processed with the same instruction in parallel 
+and the GPU can have multiple groups scheduled at the same time. 
+
+\subsubsection{Explanation of GPGPU Processing Models}~\\
+The most basic unit of Processing on a GPU is work item (AMD) or thread (NVIDIA) this represents a single piece of data that is processed in parallel. Most GPUs organize these processors in groups called 
+compute units which are controlled by a scheduler to process data in blocks on each compute unit. For an example such as modifying the pixel values of an image, each compute unit takes a part of the image 
+and process it until the entire image is finished. The dimensions of the entire workload are set as a parameter to the GPU giving it the total number of elements to process as an N-Dimensional range (right 
+now most GPUs go up to 3 Dimensions). This global size is then divided up by a work group size, and the work groups are then processed by the compute units \textbf{ (see figure \ref{fig:gpu})}. The dimensions of these work groups 
+can be modified to optimize for different algorithms depending on how they access data. 
+	\begin{figure}[H]
+	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{gpgpu.jpg}
+	\caption{GPGPU Diagram}
+	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
+	\label{fig:gpu}
+	\end{figure}
+\pagebreak
+\subsubsection{Unity Support for Asynchronous Compute Shaders and Kenrels}
+
+
+
 \pagebreak
 %E. Explicit Design Summary with diagrams
 %F. Build, prototype, test, and evaluation plan
@@ -559,7 +717,7 @@ info about proteus like thing here
 	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{SoftwareConfig.png}
 	\caption{Software Block Diagram}
 	%to ref fig number
-	%Figure \ref{fig:block1} shows our blockDiagram.
+	%Figure \ref{fig:block2} shows our blockDiagram.
 	\label{fig:sblock}
 	\end{figure}
 	This diagram represents the software design of our project and the various functional modules that should exist in order to fulfill the user interaction requirements. 

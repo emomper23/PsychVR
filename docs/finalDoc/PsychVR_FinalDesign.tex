@@ -16,6 +16,7 @@
 \usepackage[utf8x]{inputenc} 
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{listings}
 \usepackage{geometry}
 	\geometry{
 	letterpaper,
@@ -115,7 +116,18 @@
 
 %2. Executive summary: An administrative and technical abstract, which includes a brief description of the project, the project objectives, and the technical approach. This is really an overview of 3A, 3B, 3C, and 3D. This is page number 1.
 \section{Executive Summary}
-
+ The relationship between psychology, therapy, and virtual reality is no new concept. Benefits which can be derived through the use of virtual reality as a treatment option are vast 
+ and already well researched with many successful studies and experiments supporting this type of therapy. A caveat to this success is that most of the treatment is carried out as research, 
+ at limited locations, or on a very exclusive basis.
+~\\ ~\\
+ This is due to a number of factors including the available openings for research, cost of the hardware and software involved, and locations
+ of the few companies which professionally offer virtual reality therapy. Psychological and social factors also play a role in the underwhelming prevalence of virtual reality for psychology for 
+ reasons PsychVR aims to remedy this problem by offering a suite of treatment environments targeted at some of the most prominent psychological issues which respond well to virtual reality therapy.
+ ~\\ ~\\
+ The first three environments to be developed will target fear of heights, speech anxiety, and stress relief. Our platform will feature customization of these environments and expandability for more.
+ To tackle the issue of hardware cost to the average user it will be available for a variety of virtual reality headsets and controls, most notably including Samsung Gear VR. It is projected that the 
+ Gear VR will soon be the most widely available virtual reality headset at a cost of 100\$ along with a compatible Samsung smartphone. By developing the suite in Unity for the Oculus Rift, the end result
+ will be compatible with the Gear VR which uses the same framework as the Rift.
 \pagebreak
 %3. Technical content (This is NOT an outline, just a list of what needs to be included)
 %A. Identification of the project and its significance, motivation, etc. (mostly text). Please include personal motivation statements for each project member here. Also you MUST include a separately labeled section or subsection with the title “Broader Impacts” that describes in a minimum of 1 paragraph, the broader implications or impact of your project on society both local and global. How might your project impact underrepresented groups (within science and technology (STEM) or society as a whole), the disabled, non-profit organizations, the environment, diversity, increased participation in STEM fields or the workforce, public engagement in STEM areas, improved national security, enhanced infrastructure, or improved education are all examples.
@@ -348,7 +360,7 @@ market stuff
 \subsubsection{Oculus Rift Consumer Version}
 \begin{itemize}
  \item Resolution: 2160 x 1200
- \item Refresh Rate: 90 Hz
+ \item Refresh Rate: 90 Hz (11 ms !!)
  \item Latency: 20ms
  \item Recommended CPU: Intel i5-4590 or equivalent
  \item Recommended GPU: NVIDIA GTX 970 / AMD 290 
@@ -372,7 +384,7 @@ market stuff
 \subsubsection{Oculus Rift Dev Kti 2}
 \begin{itemize}
  \item Resolution: 1920 x 1080
- \item Refresh Rate: 75 Hz
+ \item Refresh Rate: 75 Hz (13 ms)
  \item Latency: 20-40ms
  \item Recommended CPU: Intel i5-4590 or equivalent
  \item Recommended GPU: NVIDIA GTX 970 / AMD 290 
@@ -396,7 +408,7 @@ market stuff
 \subsubsection{Oculus Rift Dev Kit 1}
 \begin{itemize}
  \item Resolution: 1200 x 800
- \item Refresh Rate: 60 Hz
+ \item Refresh Rate: 60 Hz (16 ms)
  \item Latency: 50-60ms
  \item Recommended CPU: Lower Spec (Early Prototype)
  \item Recommended GPU: Lower Spec (EarlyPrototype)
@@ -421,7 +433,7 @@ market stuff
 	Supported Phones Include the Samsung Galaxy: Note5, S6, S6 edge, S7, S7 edge  
 	\begin{itemize}
 	  \item Resolution: 2560 X 1440 (Quad HD phone screen)
-	  \item Refresh Rate: 60 Hz
+	  \item Refresh Rate: 60 Hz (16 ms)
 	  \item Latency: 50-60ms
 	  \item Recommended CPU: Phone Dependent
 	  \item Recommended GPU: Phone Dependent
@@ -445,7 +457,7 @@ market stuff
 \subsubsection{HTC Vive}
 	\begin{itemize}
 	  \item Resolution: 2160 x 1200
-	  \item Refresh Rate: 90 Hz
+	  \item Refresh Rate: 90 Hz (11 ms!!!)
 	  \item Latency: 22ms
 	  \item Recommended CPU: Intel i5-4590 or equivalent
 	  \item Recommended GPU: NVIDIA GTX 970 / AMD 280 
@@ -468,8 +480,8 @@ market stuff
 	\pagebreak
 \subsubsection{PS4 Morpheus}
 \begin{itemize}
-  \item Resolution: 3840 x 1080
-  \item Refresh Rate: 120 Hz
+  \item Resolution: 3840 x 1080 
+  \item Refresh Rate: 120 Hz (8 ms!!!)
   \item Latency: 18ms
   \item Recommended CPU: PS4
   \item Recommended GPU: PS4
@@ -670,9 +682,15 @@ research here
 \subsection{Module 2 Speech Anxiety Simulator}
 research for this
 \pagebreak
-\subsection{Module 3 Calm Environment}
-info about proteus like thing here 
-%OpenCL!!!!
+\subsection{Module 3 Calm Environment} % SO HYPED!!!
+This Module will feature a calming environemnt that will help patients with stress or anxiety relax in a calming peaceful environemnt. This environemnt will have procedurally generated terrain which will have chunks 
+that are procedurally while the user moves throughout the scene. Some solutions include some premade plugins that generate some terrains, on the CPU with possibly some GPU acceleration, however we would like to try and generate our own
+terrain with Compute Shader provided in Unity. Some factors that may limit out ability to do this include access to some features related to Direct render buffers which may only come with the Professional Version, 
+along with the efficiency of our generation and mapping algorithms on the GPU which will already have the heavy load of meeting rendering demands of release level VR headsets which require a large frame buffer for 
+two screens which each require different OpenGL rendering passes, most of this will be handled by Unity for most scenes but if we want to do any mapping on the fly we will have to meet these rendering/ processing 
+time lines for our compute operations, and deal with the extra processing overhead for the GPU while making sure we can run the VR with decent settings and frame rates. Unity HLSL 
+    % CODE!!! \lstinputlisting [language =C] {test.hlsl} 
+
 % https://scrawkblog.com/category/directcompute/
 % http://answers.unity3d.com/questions/162096/gpu-programming-with-unity.html
 
@@ -696,8 +714,45 @@ can be modified to optimize for different algorithms depending on how they acces
 	\end{figure}
 \pagebreak
 \subsubsection{Unity Support for Asynchronous Compute Shaders and Kenrels}
+\paragraph{ Shading Languages used in Unity} ~\\
+In Unity, shader programs are written in a variant of HLSL language (also called Cg but for most practical uses the two are the same).
 
+Internally, different shader compilers are used for shader program compilation:
+\begin{itemize}
+  \item Windows and Microsoft platforms (DX9, DX11, DX12, XboxOne and Xbox 360 ) all use Microsoft's HLSL compiler.
+  \item OpenGL Core (GL3) and OpenGL ES 3 use Microsoft’s HLSL followed by bytecode translation into GLSL, using a modified version of hlslcc.
+  \item OpenGL Legacy (GL2), OpenGL ES 2.0 and Metal use source level translation via hlsl2glslfork and glsl optimizer. 
+  \item Other console platforms use their respective compilers (e.g. PSSL on PS4).
+  \item Surface Shaders use Cg 2.2 and MojoShader for code generation analysis step.
+\end{itemize} %unity ref http://docs.unity3d.com/Manual/SL-ShadingLanguage.html
+\pagebreak
+% try unity zip in google drive with atomic and local mem barriers
+Some advanced GPGPU related constructs useful for highly optimized compute processing, need to be checked if they are included in Unity's implementation of DirectCompute,which 
+is similar to the HLSL code snippets listed below.
+\subsubsection{Reduction Kernel}
+\begin{figure}[H]
+	\label{fig:reductionCode}
+\lstinputlisting [language =C] {shared_mem_reduction.hlsl}
+\caption{Reduction Code}
+\end{figure}
 
+This kernel is a computeShader that is run on the GPU and allows for synchronization of shared memory across multiple compute units, this technique is useful for parallel reduction algorithms which include
+calcualtions such as min, max, mean, sum etc... anything that can be reduced to simpler worksets are are not itterative in nature. \textbf{(see figure \ref{fig:reductionImg})}
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{reduction.jpg}
+	\caption{Reduction Diagram}
+	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
+	\label{fig:reductionImg}
+	\end{figure}
+\subsubsection{Atomic Kernel}
+\begin{figure}[H]
+\lstinputlisting [language =C] {atomic_inc.hlsl}
+This kernel is a computeShader that is run on the GPU and allows for synchronization adding or various operations that are done in an atomic fashion, avoiding, race conditions.
+\caption{Atomic Code}
+%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
+\label{fig:atomicCode}
+\end{figure}
 
 \pagebreak
 %E. Explicit Design Summary with diagrams

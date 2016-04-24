@@ -42,7 +42,7 @@
 	\pagebreak
 	
 	\section{Introduction}
-		Our Project is intended to be a psychological theraputic tool that helps patients through simulation in Virtual Reality.
+		Our Project is intended to be a psychological therapeutic tool that helps patients through simulation in Virtual Reality.
 	Many of the new up and coming Virtual Reality devices look very promising at providing better and more realistic immersion and simulation for users at a lower cost than ever before. We aim to bring psychological tools to the home of the average user. This will allow those seeking certain therapies or treatments to perform them more often since such services often require high diligence and repetition to produce results.
 	
 	\paragraph{A few of these devices include:}
@@ -62,7 +62,7 @@
 	
 	
 	\paragraph{Project Direction} ~\\ We are currently contacting faculty in the psychology department for collaboration or guidance on opportunities to use our project for helping their patients or for their research.
-	\paragraph{Integration} ~\\ Our project will be created in Unity, Unnreal Engine, or written with a C++ OpenGL/ DirectX SDK wrapper, depending on the direction of our design, and the VR device we have available. It will most likely be windows exclusive as many VR devices are dropping Linux and OSX support unless we can find some options that will provide cross platform systems, which is said to be available in the near future for some platforms but not currently finished.  
+	\paragraph{Integration} ~\\ Our project will be created in Unity, Unreal Engine, or written with a C++ OpenGL/DirectX SDK wrapper, depending on the direction of our design, and the VR device we have available. It will most likely be windows exclusive as many VR devices are dropping Linux and OSX support unless we can find some options that will provide cross platform systems, which is said to be available in the near future for some platforms but not currently finished.  
 	
 	\pagebreak
 	
@@ -76,7 +76,7 @@
 	
 	\subsection{Immersion Therapy}
 	This psychological treatment helps patients simulate past or hypothetical events so they can adapt to or reason through
-	various situations. Our paticular area of foucs is fear of heights (Acrophobia).
+	various situations. Our particular area of focus is fear of heights (Acrophobia).
 	\subsection{Pain Treatment}
 	Some examples of this are used with burn victims or people with acute pain, putting them in a calming or cold environment to distract them to relieve pain.
 	\subsection{Creating a Calming Environment}
@@ -87,10 +87,10 @@
 	\section{Team Member Motivations}
 	\subsection{Eric Momper}
 	My personal motivation for this project is that it is similar to some of the programming I do on my internship (OpenGL and OpenCL image GPGPU processing) or graphics.
-	I also have taken computer graphics with Professor Leinicker and I am currently taking robot vision with Doctor Lobo. This project will be very interesting to me as  
+	I also have taken computer graphics with Professor Leinecker and I am currently taking robot vision with Doctor Lobo. This project will be very interesting to me as  
 	I will be working with new technologies and programming on a new type of 3D graphics platform. I am also looking forward to studying the psychological benefits
 	of Virtual Reality on patients with various disorders. My focus in the project will be on the Qt configuration tool as I have experience with Qt and C++, I will 
-	also work on the cofigurable parts of the Unity scene and will assist with basic scene design, scripting. We may also use my computer or other parts of hardware for more powerful headset options, 
+	also work on the configurable parts of the Unity scene and will assist with basic scene design, scripting. We may also use my computer or other parts of hardware for more powerful headset options, 
 	as my GPU/CPU AMD R9 290 / I7 4790k/ 16GB DDR3 2133mhz can run most VR systems at a high resolution and framerate. 
 	
 	\subsection{John Barber}
@@ -155,7 +155,7 @@
 \section{Specifications and Requirements}
 	\subsection{Functional Requirements}
 	\begin{enumerate}
-		\item Interactive Environemnts
+		\item Interactive Environments
 		\begin{itemize}
 		 \item Description: The user should be presented with a realistic interactive 3D Environment. 
 		 \item Dependency: Assets should be high quality, and the Unity scenes should run well.
@@ -164,7 +164,7 @@
 		\item Psychological Treatment
 		\begin{itemize}
 		 \item Description: The scenes should be useful for some sort of psychological testing or treatment.
-		 \item Dependency:  Psychology professors or UCF staff should be consulted for approval or input.
+		 \item Dependency:  Psychology professors or UCF staff should be consulted for approval and input.
 		 \item Evaluation:  Approval from professors. 
 		\end{itemize}
 		\item Configurable Environments
@@ -175,7 +175,7 @@
 		\end{itemize}
 		\item Realistic User Interactions
 		\begin{itemize}
-		 \item Description: User controls shoud be simple and feel realistic. 
+		 \item Description: User controls should be simple and feel realistic. 
 		 \item Dependency:  Dealing with latency and processing of user input in Unity. 
 		 \item Evaluation:  Testing scenes with controls.
 		\end{itemize}
@@ -188,12 +188,12 @@
 		\item Qt Object Lists
 		\begin{itemize}
 		 \item Description: The Qt app should have a list of available objects to be placed or moved in the Scene, (this can be done by another configuration tool 
-		 (Creator module) or be a hardcoded list of assets linked with the scene), this will need to be stored in a different config file. 
+		 (Creator module) or be a hard coded list of assets linked with the scene), this will need to be stored in a different config file. 
 		 \item Dependency:  The environment map needs a list of Objects to configure. 
 		 \item Evaluation:  Try this feature with a list of objects.
 		\end{itemize}
 
-		\item Qt Usablilty
+		\item Qt Usability
 		\begin{itemize}
 		 \item Description: The Qt Desktop app should be usable at various resolutions with easy simple controls. 
 		 \item Dependency:  Making the tool usable.
@@ -209,22 +209,22 @@
 		\item Qt Portability (If Configuration is supported on Android)
 		\begin{itemize}
 		 \item Description: If we support configurable scenes on android, we need to build and android version of the Qt app, this may already be supported by Qt, as it is highly portable.
-		 \item Dependency:  Portablilty of the configuration tool.
+		 \item Dependency:  Portability of the configuration tool.
 		 \item Evaluation:  Build the Qt app to Android, or write another one. 
 		\end{itemize}
 		\textbf{ Now that these basic functional requirements have been defined, specific module requirements are as follows:}
 		
 		\item Scene 1 Fear of Heights Movement 
 		\begin{itemize}
-		 \item Description: The scene shall use some sort of movement tracking camera to create deeper immersion for the user, (ex xbox kinect or DK2+ IR camera).
-		 \item Dependency: Usablilty of the scene.
+		 \item Description: The scene shall use some sort of movement tracking camera to create deeper immersion for the user, (ex: Xbox Kinect or DK2+ IR camera).
+		 \item Dependency: Usability of the scene.
 		 \item Evaluation: Test the scene with subjects and show to Psychology department. 
 		\end{itemize}
 		
 		\item Scene 1 Fear of Heights Interaction 
 		\begin{itemize}
 		 \item Description: The user shall be put into some sort of simulated high up place with configurable scenery, they should be able to move around and interact with the scene.
-		 \item Dependency: Usablilty of the scene.
+		 \item Dependency: Usability of the scene.
 		 \item Evaluation: Test the scene with subjects and show to Psychology department. 
 		\end{itemize}
 		
@@ -239,7 +239,7 @@
 		\item Scene 2 Speech Anxiety Interaction
 		\begin{itemize}
 		 \item Description: The user shall be put into some sort of simulated high up place with configurable scenery, they should be able to move around and interact with the scene and people in it.
-		 \item Dependency: Usablilty of the scene.
+		 \item Dependency: Usability of the scene.
 		 \item Evaluation: Test the scene with subjects and show to Psychology department. 
 		\end{itemize}
 		\item Scene 1 Fear of Heights Objective 
@@ -253,7 +253,7 @@
 		\item Scene 3 Calming Environment Interactions
 		\begin{itemize}
 		 \item Description: The user shall be put into some sort of simulated high up place with configurable scenery, they should be able to move around and interact with the scene.
-		 \item Dependency: Usablilty of the scene.
+		 \item Dependency: Usability of the scene.
 		 \item Evaluation: Test the scene with subjects and show to Psychology department. 
 		\end{itemize}
 		
@@ -274,36 +274,57 @@
 	\end{enumerate}
 
 	\subsection{System Requirements}
-	\begin{enumerate}
-	 \item Hardware Minimum Spec for Running VR
-	 \begin{itemize}
-	  \item Description: Quality and frame rate can vary but should be good enough to be playable
-	  \item Dependency: Minimum supported GPU, CPU, RAM, OS Specs (See Specific Headset Research 9.x.x) 
-	  \item Evaluation Method: Test app on Real Hardware (VR Headset, with Controls)
-	 \end{itemize}
-	 \item Low Latency Controls
-	 \begin{itemize}
-	  \item Description: Minimum system requirements to Peripherial input processing
-	  \item Dependency: Minimum supported GPU, CPU, RAM, OS Specs (See Specific Peripherial Research 9.x.x) 
-	  \item Evaluation Method: Test app on Real Hardware (VR Headset, with Controls)
-	 \end{itemize}
-	\end{enumerate}
+	\subsubsection{PC}
+		\begin{enumerate}
+			\item Hardware Minimum Spec for Running VR
+			\begin{itemize}
+				\item Description: Quality and frame rate can vary but must be at least 30fps.
+				\item Dependency: Minimum supported GPU, CPU, RAM, OS Specs (See Specific Headset Research 9.x.x) 
+				\item Evaluation Method: Test app on Real Hardware (VR Headset, with Controls)
+			\end{itemize}
+			\item Low Latency Controls
+			\begin{itemize}
+				\item Description: Minimum system requirements to Peripherial input processing
+				\item Dependency: Minimum supported GPU, CPU, RAM, OS Specs (See Specific Peripherial Research 9.x.x) 
+				\item Evaluation Method: Test app on Real Hardware (VR Headset, with Controls)
+			\end{itemize}
+		\end{enumerate}
+	\subsubsection{Android}
+		\begin{enumerate}
+			\item Hardware Minimum Spec for Running Smooth VR
+			\begin{itemize}
+				\item Description: It should operate between 30 and 60fps depending on CPU load.
+				\item Dependency: Capped at 60fps due to hardware limitations (See Gear VR 8.2.4)
+				\item Evaluation Method: Test app on Real Hardware (Gear VR Headset, with Controls)
+			\end{itemize}
+			\item Low Latency Controls
+			\begin{itemize}
+				\item Description: Minimum system requirements to Peripheral input processing
+				\item Dependency: Minimum supported GPU, CPU, RAM, OS Specs (See Specific Peripheral Research 9.x.x) 
+				\item Evaluation Method: Test app on Real Hardware (VR Headset, with Controls)
+			\end{itemize}
+			\item Relevant Controls
+			\begin{itemize}
+				\item Description: Scenes should only require a controller when necessary.
+				\item Dependency: Level of user interaction with environment determines input style.
+				\item Evaluation Method: Appropriate controls will make the user more immersed in the experience.
+			\end{itemize}
+		\end{enumerate}
 	
 	\subsection{Resource Requirements}
 	\begin{enumerate}
 	 \item Software tools
 	 \begin{itemize}
-	 \item Description: tools shall be used for development of the Desktop and Android app, which include 
-	 the Unity Engine development platform, android phone or emulator for running/ testing the Unity App,
+	 \item Description: The tools that will be used for development of the Desktop and Android app  include the Unity Engine development platform, an Android phone (Samsung S6 Edge) and emulator for running/ testing the Unity App,
 	  along with the Qt Tool kit for the configuration tool.
-	 \item  Dependency: needed tools for development are free, and easy to use. 
+	 \item  Dependency: Necessary tools for development are free, and easy to use. 
 	 \item Evaluation Method: Make sure all team members are able to use and access development tools/
 	  \end{itemize}
 	 \item Media Assets
 	\begin{itemize}
 	  \item Description: Game Character models need to be designed or purchased. Autodesk Maya, Google Sketchup or blender should be used for designing additional models. 
 	  \item Dependency: Creating realistic visuals 
-	  \item Evaluation Method: Test app and make sure it looks good.
+	  \item Evaluation Method: Test app to ensure it performs well and represents a high quality environment.
 	 \end{itemize}
 	\end{enumerate}
 
@@ -319,7 +340,7 @@
 	 \item VR Sickness	 
 	 \item The models, textures, and graphics in the environment must be decent quality to help immerse the user.
 	 \end{enumerate}
-	\subsection{Documnetation Requirements}
+	\subsection{Documentation Requirements}
 	\begin{enumerate}
 	 \item Clear Simple User Guides
 	 \item Accessibility of Guides
@@ -335,10 +356,10 @@ Research for our project breaks up into a few main areas:
 \begin{itemize}
 \item Virtual Reality Device, Platform, and Market Research
 	\begin{itemize}
-	\item Growth,Costs, and projections of popular devices
+	\item Growth, Costs, and projections of popular devices
 	\item History of Companies
 	\item Technical Capabilities of Headsets
-	\item Peripherial Options
+	\item Peripheral Options
 	\end{itemize}
 \item Psychology Usage of VR
 \item Psychology research on specific conditions we want to treat
@@ -348,7 +369,7 @@ Research for our project breaks up into a few main areas:
 	\item Calm Environment
 	\end{itemize}
 \item Modular Templating of Unity Scenes
-\item Peripherial/ User Input/ Sensor Options
+\item Peripheral / User Input / Sensor Options
 \end{itemize}
 \pagebreak
 \subsection{VR Market Research}
@@ -683,8 +704,8 @@ research here
 research for this
 \pagebreak
 \subsection{Module 3 Calm Environment} % SO HYPED!!!
-This Module will feature a calming environemnt that will help patients with stress or anxiety relax in a calming peaceful environemnt. This environemnt will have procedurally generated terrain which will have chunks 
-that are procedurally while the user moves throughout the scene. Some solutions include some premade plugins that generate some terrains, on the CPU with possibly some GPU acceleration, however we would like to try and generate our own
+This Module will feature a calming environment that will help patients with stress or anxiety relax in a calming peaceful environment. This environment will have procedurally generated terrain which will have chunks 
+that are procedurally while the user moves throughout the scene. Some solutions include some premade plug-ins that generate some terrains, on the CPU with possibly some GPU acceleration, however we would like to try and generate our own
 terrain with Compute Shader provided in Unity. Some factors that may limit out ability to do this include access to some features related to Direct render buffers which may only come with the Professional Version, 
 along with the efficiency of our generation and mapping algorithms on the GPU which will already have the heavy load of meeting rendering demands of release level VR headsets which require a large frame buffer for 
 two screens which each require different OpenGL rendering passes, most of this will be handled by Unity for most scenes but if we want to do any mapping on the fly we will have to meet these rendering/ processing 
@@ -698,7 +719,7 @@ time lines for our compute operations, and deal with the extra processing overhe
 GPGPU programming is a growing option for parallel processing applications that work over large data sets. Some common uses include image or media processing and 
 performing mathematical computations over linear systems or large sets. Many modern GPUs offer many benefits in processing with the high number of cores that can operate on data 
 in Single Instruction Multiple Data (SIMD) and Multiple Instruction Multiple Data (MIMD) fashions. For example, one group of data can be processed with the same instruction in parallel 
-and the GPU can have multiple groups scheduled at the same time. The basic unit of execution on a GPU (the compute shader or kernel) is run in parallel and scheduled by the GPU exectution contex
+and the GPU can have multiple groups scheduled at the same time. The basic unit of execution on a GPU (the compute shader or kernel) is run in parallel and scheduled by the GPU execution context
 and the commands are setup and issued by the cpu application in a queue fashion, some execution can be synched to wait for other kernels to complete or can be dispatched and run in whatever order.
 
 

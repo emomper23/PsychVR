@@ -704,13 +704,25 @@ research here
 research for this
 \pagebreak
 \subsection{Module 3 Calm Environment} % SO HYPED!!!
-This Module will feature a calming environment that will help patients with stress or anxiety relax in a calming peaceful environment. This environment will have procedurally generated terrain which will have chunks 
-that are procedurally while the user moves throughout the scene. Some solutions include some premade plug-ins that generate some terrains, on the CPU with possibly some GPU acceleration, however we would like to try and generate our own
-terrain with Compute Shader provided in Unity. Some factors that may limit out ability to do this include access to some features related to Direct render buffers which may only come with the Professional Version, 
-along with the efficiency of our generation and mapping algorithms on the GPU which will already have the heavy load of meeting rendering demands of release level VR headsets which require a large frame buffer for 
-two screens which each require different OpenGL rendering passes, most of this will be handled by Unity for most scenes but if we want to do any mapping on the fly we will have to meet these rendering/ processing 
-time lines for our compute operations, and deal with the extra processing overhead for the GPU while making sure we can run the VR with decent settings and frame rates. Unity HLSL 
-    % CODE!!! \lstinputlisting [language =C] {test.hlsl} 
+This Module will feature a calming environment that will help patients with stress or anxiety relax in a calming peaceful environment. This environment will have random terrain which will have chunks 
+that are procedurally generated while the user moves throughout the scene.  Unity supports compute shaders which are written in Direct X HLSL, and allow the application to do computations on the GPU for these terrain calculations. These compute shaders allow the application to do most of the heavy computations on the GPU which provides massive speedups compared to the a CPU implementation. 
+
+This Section will discuss the following:
+\begin{itemize}
+\item list of explaining this...
+\end{itemize}
+
+\subsubsection{Design Concerns}
+Some solutions include some premade plug-ins that generate some terrains, on the CPU with possibly some GPU acceleration, however we would like to try and generate our own
+terrain with Compute Shader provided in Unity.
+
+Some factors that may limit our ability to do this include:
+\begin{itemize}
+\item Access to some features related to direct render buffers which only comes with the Professional Version.
+\item The efficiency of our generation and mapping algorithms on the GPU,
+\item The already heavy load of meeting rendering demands of release level VR headsets which require a large frame buffer for two screens which each require different OpenGL rendering passes
+\item Most of these issues will be handled by Unity for most scenes but if we want to do any mapping on the fly we will have to meet these rendering/ processing time lines for our compute operations, and deal with the extra processing overhead for the GPU while making sure we can run the VR with decent settings and frame rates. 
+\end{itemize}
 
 % https://scrawkblog.com/category/directcompute/
 % http://answers.unity3d.com/questions/162096/gpu-programming-with-unity.html
@@ -749,10 +761,66 @@ Internally, different shader compilers are used for shader program compilation:
   \item Other console platforms use their respective compilers (e.g. PSSL on PS4).
   \item Surface Shaders use Cg 2.2 and MojoShader for code generation analysis step.
 \end{itemize} %unity ref http://docs.unity3d.com/Manual/SL-ShadingLanguage.html
+\subsubsection{Unity Cross Platfrom Shader Support (Android)}
+In order to achieve shaders working on multiple different platforms one should consider these limitations:
+
+\begin{itemize}
+\item 
+D3D and OpenGL have different data layout rules. Automatically translated GLSL shaders use std430 layout on compute buffers. Therefore for example using float3 based structured buffers will cause compatibility issues as DX allows tight packing but OpenGL enforces padding to float4. Scalars, two-component and four-component vectors are safe to use as they are. Extra care should be taken when constructing structs.
+\item 
+OpenGL ES 3.1 guarantees support for only 4 simultaneous shader storage buffers. Actual implementations typically support a bit more but in general one should consider grouping related data in structs as opposed to having each data item in its own buffer.
+HLSL-only or GLSL-only compute shaders
+
+\end{itemize}
+
+Typically compute shader files are written in HLSL, and compiled or translated into all needed platforms automatically. However it is possible to either prevent translation to GLSL (i.e. only keep HLSL platforms), or to write GLSL compute code manually.
+\begin{itemize}
+\item Compute shader source surrounded by CGPROGRAM and ENDCG keywords will not be processed for OpenGL/GLSL platforms.
+\item Compute shader source surrounded by GLSLPROGRAM and ENDGLSL keywords will be treated as GLSL source, and emitted verbatim. This will only work when targetting OpenGL/GLSL platforms.
+\end{itemize}
 \pagebreak
+
+\subsubsection{Unity Support for Graphics Asset Related Operations}
+One of the common bottlenecks in GPGPU processing is buffer transfer to the GPU memory before processing, Unity allows asynchronous texture uploads to allow the application to time slice the GPU resources to upload textures or other assets to the device, this means that it will take longer overall time to do transfer assets but if scheduled properly the background expected algorithms that need specific buffers should not have to block on the buffer transfers.
+\begin{figure}[H]
+	\centerline{\includegraphics{asychTexture.png}}
+	\begin{itemize}
+\item Upload time: Amount of time (ms) spent on asynchronous uploads per frame.
+\item Upload Buffer: Size of texture upload buffer in MB unity usually adjusts this automatically but it can be set by the application.
+\end{itemize}
+	\caption{Unity Asynch Texture Options}
+	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
+	\label{fig:gpu}
+	\end{figure}
+
+\paragraph{Guarantees and Restrictions} ~\\
+For non-read/write enabled textures, the Texture Data is part of resS (Streaming Resource) and upload now happens on Render-Thread. Availability of Texture is guaranteed during call to AwakeFromLoad. (This only works for textures or buffers that are not used in any custom processing.)
+~\\~\\
+For other types of texture loading, such as read/write enabled textures, textures loaded directly with the LoadImage(byte[] data) function, or loading from the Resources folder, the Asynchronous buffer loading is not used - the older Synchronous method is used.
+These restrictions mean that we will have to schedule and synchronize the transfer of any custom textures or buffers to and from the GPU.
+In order to avoid all of the transfer penalties the frequency, size, and amount of transfers should be minimized, and all the major assets should be kept on the GPU.
+
+\pagebreak
+
+
+\subsubsection{Unity Camera Rendering Pipeline}
+\begin{figure}[H]
+	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{cameraRender.png}
+	\caption{Unity Command Buffer}
+	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
+	\label{fig:gpu}
+	\end{figure}
+
+\pagebreak
+
+
 % try unity zip in google drive with atomic and local mem barriers
 Some advanced GPGPU related constructs useful for highly optimized compute processing, need to be checked if they are included in Unity's implementation of DirectCompute,which 
 is similar to the HLSL code snippets listed below.
+
+
+
+
 \subsubsection{Reduction Kernel}
 \begin{figure}[H]
 	\label{fig:reductionCode}

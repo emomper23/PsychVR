@@ -591,7 +591,7 @@ precision, inputs, basic info
 \end{itemize}
  \begin{figure}[H]
 	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{riftIR.jpg}
-	\caption{Kincet 2 Camera}
+	\caption{Rift Sensor IR}
 	%to ref fig number
 	%Figure \ref{fig:block1} shows our blockDiagram.
 	\label{fig:riftCam}
@@ -614,7 +614,7 @@ precision, inputs, basic info
 \end{itemize}
  \begin{figure}[H]
 	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{viveLight.jpg}
-	\caption{Kincet 2 Camera}
+	\caption{HTC Lighthouse Sensor}
 	%to ref fig number
 	%Figure \ref{fig:block1} shows our blockDiagram.
 	\label{fig:viveCam}
@@ -693,12 +693,14 @@ time lines for our compute operations, and deal with the extra processing overhe
 
 % https://scrawkblog.com/category/directcompute/
 % http://answers.unity3d.com/questions/162096/gpu-programming-with-unity.html
-
+\pagebreak
 \subsubsection{General-purpose computing on graphics processing units (GPGPU)}~\\
 GPGPU programming is a growing option for parallel processing applications that work over large data sets. Some common uses include image or media processing and 
 performing mathematical computations over linear systems or large sets. Many modern GPUs offer many benefits in processing with the high number of cores that can operate on data 
 in Single Instruction Multiple Data (SIMD) and Multiple Instruction Multiple Data (MIMD) fashions. For example, one group of data can be processed with the same instruction in parallel 
-and the GPU can have multiple groups scheduled at the same time. 
+and the GPU can have multiple groups scheduled at the same time. The basic unit of execution on a GPU (the compute shader or kernel) is run in parallel and scheduled by the GPU exectution contex
+and the commands are setup and issued by the cpu application in a queue fashion, some execution can be synched to wait for other kernels to complete or can be dispatched and run in whatever order.
+
 
 \subsubsection{Explanation of GPGPU Processing Models}~\\
 The most basic unit of Processing on a GPU is work item (AMD) or thread (NVIDIA) this represents a single piece of data that is processed in parallel. Most GPUs organize these processors in groups called 
@@ -715,7 +717,8 @@ can be modified to optimize for different algorithms depending on how they acces
 \pagebreak
 \subsubsection{Unity Support for Asynchronous Compute Shaders and Kenrels}
 \paragraph{ Shading Languages used in Unity} ~\\
-In Unity, shader programs are written in a variant of HLSL language (also called Cg but for most practical uses the two are the same).
+In Unity, shader programs are written in a variant of HLSL language (also called Cg but for most practical uses the two are the same). Unity recommneds developers have a good understanding 
+of OpencL Or CUDA, OpenGL, and other Graphics/ GPGPU parallel compute languages.  
 
 Internally, different shader compilers are used for shader program compilation:
 \begin{itemize}

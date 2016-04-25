@@ -709,7 +709,21 @@ that are procedurally generated while the user moves throughout the scene.  Unit
 
 This Section will discuss the following:
 \begin{itemize}
-\item list of explaining this...
+	\item GPU Overview 
+	\begin{itemize}
+		\item Design Concerns
+		\item GPGPU Overview
+		\item GPGPU processing model
+		\item GPU Architecture
+	\end{itemize}
+	\item Unity Compute Shader/ GPU Processing Features
+	\begin{itemize}
+		\item Compute Shader Support
+		\item Cross Platform Support
+		\item Asynchronous Buffer Synchronization
+		\item Unity Rendering Pipeline Features
+		\item Advanced Compute Shader GPGPU Features
+	\end{itemize}
 \end{itemize}
 
 \subsubsection{Design Concerns}
@@ -719,8 +733,8 @@ terrain with Compute Shader provided in Unity.
 Some factors that may limit our ability to do this include:
 \begin{itemize}
 \item Access to some features related to direct render buffers which only comes with the Professional Version.
-\item The efficiency of our generation and mapping algorithms on the GPU,
-\item The already heavy load of meeting rendering demands of release level VR headsets which require a large frame buffer for two screens which each require different OpenGL rendering passes
+\item The efficiency of our generation and mapping algorithms on the GPU.
+\item The already heavy load of meeting rendering demands of release level VR headsets which require a large frame buffer for two screens which each require different OpenGL rendering passes.
 \item Most of these issues will be handled by Unity for most scenes but if we want to do any mapping on the fly we will have to meet these rendering/ processing time lines for our compute operations, and deal with the extra processing overhead for the GPU while making sure we can run the VR with decent settings and frame rates. 
 \end{itemize}
 
@@ -748,6 +762,33 @@ can be modified to optimize for different algorithms depending on how they acces
 	\label{fig:gpu}
 	\end{figure}
 \pagebreak
+
+\subsubsection{GPU Architecture Overview}
+\paragraph{Specific designs of compute units can vary between GPUs but common components include:}
+\begin{itemize}
+\item Large groups of SIMD processors with separate private memory (registers) 
+\item Local memory that is shared between the processors on a compute unit
+\item Specialized components for pixel/texture operations such as rasterization
+\item Global memory components such as a L1 cache (on the compute unit) and L2 cache that is accessible globally
+\item Figure \ref{fig:gpuArch} shows an example compute unit design and Figure \ref{fig:gpuMem} shows the general memory model pattern
+\end{itemize}
+	\begin{figure}[H]
+	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{gpuArch.jpg}
+	\caption{GPU Architecture Diagram}
+	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
+	\label{fig:gpuArch}
+	\end{figure}
+	
+	\begin{figure}[H]
+	\centerline{ \includegraphics[scale=0.5]{gpuMem.png}}
+	\caption{GPU Memory Diagram}
+	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
+	\label{fig:gpuMem}
+	\end{figure}
+\pagebreak
+
+
+
 \subsubsection{Unity Support for Asynchronous Compute Shaders and Kenrels}
 \paragraph{ Shading Languages used in Unity} ~\\
 In Unity, shader programs are written in a variant of HLSL language (also called Cg but for most practical uses the two are the same). Unity recommneds developers have a good understanding 
@@ -783,14 +824,14 @@ Typically compute shader files are written in HLSL, and compiled or translated i
 \subsubsection{Unity Support for Graphics Asset Related Operations}
 One of the common bottlenecks in GPGPU processing is buffer transfer to the GPU memory before processing, Unity allows asynchronous texture uploads to allow the application to time slice the GPU resources to upload textures or other assets to the device, this means that it will take longer overall time to do transfer assets but if scheduled properly the background expected algorithms that need specific buffers should not have to block on the buffer transfers.
 \begin{figure}[H]
-	\centerline{\includegraphics{asychTexture.png}}
+	\centerline{\includegraphics[scale= 0.75]{asychTexture.png}}
 	\begin{itemize}
 \item Upload time: Amount of time (ms) spent on asynchronous uploads per frame.
 \item Upload Buffer: Size of texture upload buffer in MB unity usually adjusts this automatically but it can be set by the application.
 \end{itemize}
 	\caption{Unity Asynch Texture Options}
 	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
-	\label{fig:gpu}
+	\label{fig:gpuTex}
 	\end{figure}
 
 \paragraph{Guarantees and Restrictions} ~\\
@@ -804,16 +845,18 @@ In order to avoid all of the transfer penalties the frequency, size, and amount 
 
 
 \subsubsection{Unity Camera Rendering Pipeline}
+Unity supports the exposes the command buffer which is similar to the main rendering pipeline in most graphics processing frameworks (OpenGL's paint or render loop, OpenCL's command queue etc.) This framework supports blitting, drawing meshes, drawing procedual geometry (compute shaders), and many other common graphics drawing features. \textbf{(See Figure \ref{fig:gpuPipe})}
+
 \begin{figure}[H]
 	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{cameraRender.png}
-	\caption{Unity Command Buffer}
+	\caption{Unity Command Buffer Camera Pipeline}
 	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
-	\label{fig:gpu}
+	\label{fig:gpuPipe}
 	\end{figure}
 
 \pagebreak
 
-
+\subsubsection{Supported GPGPU Advanced features}
 % try unity zip in google drive with atomic and local mem barriers
 Some advanced GPGPU related constructs useful for highly optimized compute processing, need to be checked if they are included in Unity's implementation of DirectCompute,which 
 is similar to the HLSL code snippets listed below.
@@ -821,7 +864,7 @@ is similar to the HLSL code snippets listed below.
 
 
 
-\subsubsection{Reduction Kernel}
+\paragraph{Shared Memory Reduction Kernel}
 \begin{figure}[H]
 	\label{fig:reductionCode}
 \lstinputlisting [language =C] {shared_mem_reduction.hlsl}
@@ -837,7 +880,7 @@ calcualtions such as min, max, mean, sum etc... anything that can be reduced to 
 	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
 	\label{fig:reductionImg}
 	\end{figure}
-\subsubsection{Atomic Kernel}
+\paragraph{Shader Processor Atomics}
 \begin{figure}[H]
 \lstinputlisting [language =C] {atomic_inc.hlsl}
 This kernel is a computeShader that is run on the GPU and allows for synchronization adding or various operations that are done in an atomic fashion, avoiding, race conditions.

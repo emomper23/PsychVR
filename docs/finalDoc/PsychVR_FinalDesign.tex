@@ -1065,7 +1065,7 @@ This kernel is a compute shader that is run on the GPU and allows for synchroniz
 	\subsection{Qt Design Plan}
 		\subsubsection{High Level Diagram}
 		\begin{figure}[H]
-					\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{qtConfig.png}
+					\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{qtConfigDiag.png}
 					\caption{Qt Design Diagram}
 					%to ref fig number
 					%Figure \ref{fig:block2} shows our blockDiagram.
@@ -1074,7 +1074,7 @@ This kernel is a compute shader that is run on the GPU and allows for synchroniz
 This figure shows the general design for the Qt Configuration Tool/ Launcher. This launcher will be the main editing/ configuration option for the app, It will also be responsible for launching scenes, scene settings and configuration, and graphing user stress data.
 
 		\pagebreak
-	The basic functionality of the tool is as follows \textbf{(see examples in figure \ref{fig:QtTemplate})}
+	The basic functionality of the tool is as follows \textbf{(see examples in figure \ref{fig:qtMockup})}
 \begin{itemize}
 \item Configuration
 \begin{itemize}
@@ -1093,7 +1093,13 @@ This figure shows the general design for the Qt Configuration Tool/ Launcher. Th
 \item User stress data from Samsung stress app on (acquired from android phone or another input device will be parsed and graphed in the OpenGL Graph widget.
 \item Any other analysis will be shown as dialog boxes or additional readouts next to the graph.
 \end{itemize}
-
+\begin{figure}[H]
+					\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{qtConfig.png}
+					\caption{Qt Design Mockup}
+					%to ref fig number
+					%Figure \ref{fig:block2} shows our blockDiagram.
+					\label{fig:qtMockup}
+				\end{figure}
 \end{itemize}
 		\subsubsection{Activity Diagram}
 				\begin{figure}[H]

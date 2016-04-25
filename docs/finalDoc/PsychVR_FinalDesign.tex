@@ -19,12 +19,12 @@
 \usepackage{listings}
 \usepackage{geometry}
 	\geometry{
-	letterpaper,
-	total={8.5in,11in},
-	left=1.5in,
-	top=1in,
-	right=1in,
-	bottom=1in
+	%letterpaper,
+	%total={8.5in,11in},
+	%left=1.5in,
+	%top=1in,
+	%right=1in,
+	%bottom=1in
 }
 
 %opening
@@ -119,11 +119,11 @@
  The relationship between psychology, therapy, and virtual reality is no new concept. Benefits which can be derived through the use of virtual reality as a treatment option are vast 
  and already well researched with many successful studies and experiments supporting this type of therapy. A caveat to this success is that most of the treatment is carried out as research, 
  at limited locations, or on a very exclusive basis.
-~\\ ~\\
+\par~\\ 
  This is due to a number of factors including the available openings for research, cost of the hardware and software involved, and locations
  of the few companies which professionally offer virtual reality therapy. Psychological and social factors also play a role in the underwhelming prevalence of virtual reality for psychology for 
  reasons PsychVR aims to remedy this problem by offering a suite of treatment environments targeted at some of the most prominent psychological issues which respond well to virtual reality therapy.
- ~\\ ~\\
+ \par ~\\
  The first three environments to be developed will target fear of heights, speech anxiety, and stress relief. Our platform will feature customization of these environments and expandability for more.
  To tackle the issue of hardware cost to the average user it will be available for a variety of virtual reality headsets and controls, most notably including Samsung Gear VR. It is projected that the 
  Gear VR will soon be the most widely available virtual reality headset at a cost of 100\$ along with a compatible Samsung smartphone. By developing the suite in Unity for the Oculus Rift, the end result
@@ -798,7 +798,9 @@ Internally, different shader compilers are used for shader program compilation:
 \begin{itemize}
   \item Windows and Microsoft platforms (DX9, DX11, DX12, XboxOne and Xbox 360 ) all use Microsoft's HLSL compiler.
   \item OpenGL Core (GL3) and OpenGL ES 3 use Microsoft’s HLSL followed by bytecode translation into GLSL, using a modified version of hlslcc.
-  \item OpenGL Legacy (GL2), OpenGL ES 2.0 and Metal use source level translation via hlsl2glslfork and glsl optimizer. 
+  \item OpenGL Legacy (GL2), OpenGL ES 2.0 and Metal use source level 
+  translation via
+  hlsl- 2glslfork and glsl optimizer. 
   \item Other console platforms use their respective compilers (e.g. PSSL on PS4).
   \item Surface Shaders use Cg 2.2 and MojoShader for code generation analysis step.
 \end{itemize} %unity ref http://docs.unity3d.com/Manual/SL-ShadingLanguage.html
@@ -834,9 +836,9 @@ One of the common bottlenecks in GPGPU processing is buffer transfer to the GPU 
 	\label{fig:gpuTex}
 	\end{figure}
 
-\paragraph{Guarantees and Restrictions} ~\\
+\paragraph{Guarantees and Restrictions} 
 For non-read/write enabled textures, the Texture Data is part of resS (Streaming Resource) and upload now happens on Render-Thread. Availability of Texture is guaranteed during call to AwakeFromLoad. (This only works for textures or buffers that are not used in any custom processing.)
-~\\~\\
+~\\
 For other types of texture loading, such as read/write enabled textures, textures loaded directly with the LoadImage(byte[] data) function, or loading from the Resources folder, the Asynchronous buffer loading is not used - the older Synchronous method is used.
 These restrictions mean that we will have to schedule and synchronize the transfer of any custom textures or buffers to and from the GPU.
 In order to avoid all of the transfer penalties the frequency, size, and amount of transfers should be minimized, and all the major assets should be kept on the GPU.
@@ -861,9 +863,6 @@ Unity supports the exposes the command buffer which is similar to the main rende
 Some advanced GPGPU related constructs useful for highly optimized compute processing, need to be checked if they are included in Unity's implementation of DirectCompute,which 
 is similar to the HLSL code snippets listed below.
 
-
-
-
 \paragraph{Shared Memory Reduction Kernel}
 \begin{figure}[H]
 	\label{fig:reductionCode}
@@ -880,10 +879,11 @@ calcualtions such as min, max, mean, sum etc... anything that can be reduced to 
 	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
 	\label{fig:reductionImg}
 	\end{figure}
-\paragraph{Shader Processor Atomics}
+\paragraph{Shader Processor Atomics} 
+This is another powerful feature that is supported in Unity Compute shaders, it creates atomic accesses for compute units and shader processors which allow the kernels to avoid race conditions. 
 \begin{figure}[H]
 \lstinputlisting [language =C] {atomic_inc.hlsl}
-This kernel is a computeShader that is run on the GPU and allows for synchronization adding or various operations that are done in an atomic fashion, avoiding, race conditions.
+This kernel is a compute shader that is run on the GPU and allows for synchronization adding or various operations that are done in an atomic fashion, avoiding, race conditions.
 \caption{Atomic Code}
 %Figure \ref{fig:gpgpuImg} shows our blockDiagram.
 \label{fig:atomicCode}
@@ -923,6 +923,7 @@ This kernel is a computeShader that is run on the GPU and allows for synchroniza
 	\pagebreak
 	\subsection{Qt Design Plan}
 		\subsubsection{High Level Diagram}
+		\pagebreak
 		\subsubsection{Activity Diagram}
 				\begin{figure}[H]
 					\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{qtActivityDiag.png}
@@ -934,6 +935,7 @@ This kernel is a computeShader that is run on the GPU and allows for synchroniza
 				\pagebreak
 	\subsection{Unity Hierarchy}
 		\subsubsection{High Level Design}
+		\pagebreak
 		\subsubsection{Activity Diagram}
 				\begin{figure}[H]
 					\centerline{\includegraphics[]{unityActivityDiag.png}}
@@ -1000,10 +1002,13 @@ This kernel is a computeShader that is run on the GPU and allows for synchroniza
 			\item Combining all aspects of project into cohesive whole
 			\item Finalize and begin testing of project
 		\end{itemize}
-	\subsection{Overall Milestones}
-		\begin{itemize}
-			\item 
-		\end{itemize}
+	
+	%\subsection{Overall Milestones}
+	%	\begin{itemize}
+	%		\item get a decent amount of sleep,
+	%               \item not procrastinate this hard on a paper again
+	%		\item try not to cry
+	%	\end{itemize}
 
 \pagebreak
 %5. Project Summary and conclusions.

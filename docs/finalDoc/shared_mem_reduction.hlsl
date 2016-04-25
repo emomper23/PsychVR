@@ -5,7 +5,8 @@ RWStructuredBuffer<float> g_data;
 groupshared float sharedData[GROUP_DIM_X];
 
 [numthreads( GROUP_DIM_X, 1, 1)]
-void main( uint3 threadIdx : SV_GroupThreadID, uint3 groupIdx : SV_GroupID)
+void main( uint3 threadIdx : SV_GroupThreadID, 
+	   uint3 groupIdx : SV_GroupID)
 { 
    // each thread loads one element from global to shared mem
    unsigned int tid = threadIdx.x;

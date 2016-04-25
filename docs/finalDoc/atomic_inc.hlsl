@@ -9,7 +9,8 @@ PS_OUTPUT main( PS_INPUT input )
 	app.Append(1);
 	cons.Consume();
 	
-	outPix.Colour0 = float4(0.001 * counterI, 0.001 * counterD, 1, 1);
+	outPix.Colour0 = float4(0.001 * counterI, 
+	0.001 * counterD, 1, 1);
 	
 	return outPix;
 }

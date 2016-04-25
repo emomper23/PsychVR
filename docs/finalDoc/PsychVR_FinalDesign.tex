@@ -1064,7 +1064,37 @@ This kernel is a compute shader that is run on the GPU and allows for synchroniz
 	\pagebreak
 	\subsection{Qt Design Plan}
 		\subsubsection{High Level Diagram}
+		\begin{figure}[H]
+					\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{qtConfig.png}
+					\caption{Qt Design Diagram}
+					%to ref fig number
+					%Figure \ref{fig:block2} shows our blockDiagram.
+					\label{fig:qtHighLevel}
+				\end{figure}
+This figure shows the general design for the Qt Configuration Tool/ Launcher. This launcher will be the main editing/ configuration option for the app, It will also be responsible for launching scenes, scene settings and configuration, and graphing user stress data.
+
 		\pagebreak
+	The basic functionality of the tool is as follows \textbf{(see examples in figure \ref{fig:QtTemplate})}
+\begin{itemize}
+\item Configuration
+\begin{itemize}
+\item Users can Select the scene to edit the configurations, with the set scene options we have added, new scenes could be added to the dropdown if new scenes were created.
+\item Configurations will be saved to a specific .ini or settings file that will be parsed by the unity scene on load.
+\item Basic settings such as resolution, quality options, and other static options will be in dialog boxes.
+\item The scene maps will be encoded with some options including size, the list of available models with names(ex desks, trees, etc.), and other available settings for scenes, this file will be read in by Qt and setup the configuration options for the user.
+\item The Graphics view (Map Viewer)will allow the user to drag and drop models UnityObjects(CUnityObject) from the list on the scene and move them around.
+\item Any previously saved configurations be loaded and UnityObjects will be shown in the Map Viewer.
+
+\item The configuration can be saved and will be used to launch the app.
+
+\end{itemize}
+\item Stress Data Analysis
+\begin{itemize}
+\item User stress data from Samsung stress app on (acquired from android phone or another input device will be parsed and graphed in the OpenGL Graph widget.
+\item Any other analysis will be shown as dialog boxes or additional readouts next to the graph.
+\end{itemize}
+
+\end{itemize}
 		\subsubsection{Activity Diagram}
 				\begin{figure}[H]
 					\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{qtActivityDiag.png}
@@ -1074,7 +1104,7 @@ This kernel is a compute shader that is run on the GPU and allows for synchroniz
 					\label{fig:qtactivity}
 				\end{figure}
 				\pagebreak
-	\subsection{Unity Hierarchy}
+	\subsection{Unity Design Plan}
 		\subsubsection{High Level Design}
 		\pagebreak
 		\subsubsection{Activity Diagram}

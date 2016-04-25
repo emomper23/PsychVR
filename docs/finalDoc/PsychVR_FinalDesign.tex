@@ -818,10 +818,18 @@ Agoraphobia Without History of Panic Disorder. \cite{dsmPhobia}
 For example, 12 studies tested the effects of virtual reality on stroke recovery. 5 of these studies showed patients who played virtual reality games were about 4.9 times more likely to improve their upper body strength than those who received the standard therapy, while the other 7  studies showed a 14.7 percent improvement, on average, in patients' grip strength and a 20 percent improvement in patient's ability to perform standard tasks.\cite{stroke1}
 \pagebreak
 \subsection{Module 1 Fear of Heights}
-The fear of heights module will be built around the success of past and present research. Fear of heights, referred to as acrophobia, is a popular target for studying the impact of virtual reality on treatment. For this scene the user will be at the ground floor of a 50 story building and may ride a glass elevator up to any desired floor. Past experiments and studies on using virtual reality for acrophobia treatment have lacked high quality graphical experiences which can detract from the immersionn. Our background will feature a detailed cityscape to increase the realism the user experiences and likely increase the effectiveness of treatment.
+The fear of heights module will be built around the success of past and present research. Fear of heights, referred to as acrophobia, is a popular target for studying the impact of virtual reality on treatment. For this scene the user will be at the ground floor of a 50 story building and may ride a glass elevator up to any desired floor. Past experiments and studies on using virtual reality for acrophobia treatment have lacked high quality graphical experiences which can detract from the immersion. Our background will feature a detailed cityscape to increase the realism the user experiences and likely increase the effectiveness of treatment.
+\subsubsection{Past Success}
+\subsubsection{User Progress Feedback}
+Avoidance behavior
 \pagebreak
 \subsection{Module 2 Speech Anxiety Simulator}
 Speech Anxiety is the next issue we wish to treat with virtual reality therapy. As another popular target of VR therapy research, speech anxiety has several successful examples. In our implementation the user will be able to configure the environment in which they practice public speaking to better suit their needs and deliver a more personal experience. We will begin with a classroom environment with chair spots which the user can place different students into and configure their actions such as sleeping, focused, or texting. As a stretch goal for this module we will implement more varying environments like a conference room and a stage.
+\subsubsection{Past Success}
+\subsubsection{Configuration}
+Setting, people in chairs
+\subsubsection{User Progress Feedback}
+Track where user looks, track posture, kinect?
 \pagebreak
 \subsection{Module 3 Calm Environment} % SO HYPED!!!
 This module will feature a calming environment that will help patients with stress or anxiety relax in a calming peaceful environment. This environment will have random terrain which will have chunks 
@@ -834,7 +842,7 @@ Some configuration options for this scene include different biomes or selecting 
 	\caption{Proteus Picture}
 	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
 	\label{fig:proteus}
-	\end{figure}
+\end{figure}
 \subsubsection{Design Concerns}
 Some solutions include some premade plug-ins that generate some terrains, on the CPU with possibly some GPU acceleration, however we would like to try and generate our own
 terrain with Compute Shader provided in Unity.
@@ -879,7 +887,7 @@ GPGPU programming is a growing option for parallel processing applications that 
 performing mathematical computations over linear systems or large sets. Many modern GPUs offer many benefits in processing with the high number of cores that can operate on data 
 in Single Instruction Multiple Data (SIMD) and Multiple Instruction Multiple Data (MIMD) fashions. For example, one group of data can be processed with the same instruction in parallel 
 and the GPU can have multiple groups scheduled at the same time. The basic unit of execution on a GPU (the compute shader or kernel) is run in parallel and scheduled by the GPU execution context
-and the commands are setup and issued by the cpu application in a queue fashion, some execution can be synched to wait for other kernels to complete or can be dispatched and run in whatever order.
+and the commands are setup and issued by the cpu application in a queue fashion, some execution can be synced to wait for other kernels to complete or can be dispatched and run in whatever order.
 
 
 \subsubsection{Explanation of GPGPU Processing Models}
@@ -923,7 +931,7 @@ can be modified to optimize for different algorithms depending on how they acces
 
 
 \subsubsection{Unity Support for Asynchronous Compute Shaders and Kenrels}
-\paragraph{ Shading Languages used in Unity} ~\\
+\paragraph{Shading Languages used in Unity} ~\\
 In Unity, shader programs are written in a variant of HLSL language (also called Cg but for most practical uses the two are the same). Unity recommneds developers have a good understanding 
 of OpencL Or CUDA, OpenGL, and other Graphics/ GPGPU parallel compute languages.  
 
@@ -937,7 +945,7 @@ Internally, different shader compilers are used for shader program compilation:
   \item Other console platforms use their respective compilers (e.g. PSSL on PS4).
   \item Surface Shaders use Cg 2.2 and MojoShader for code generation analysis step.
 \end{itemize} %unity ref http://docs.unity3d.com/Manual/SL-ShadingLanguage.html
-\subsubsection{Unity Cross Platfrom Shader Support (Android)}
+\subsubsection{Unity Cross Platform Shader Support (Android)}
 In order to achieve shaders working on multiple different platforms one should consider these limitations:
 
 \begin{itemize}
@@ -1004,7 +1012,7 @@ is similar to the HLSL code snippets listed below.
 \end{figure}
 
 This kernel is a computeShader that is run on the GPU and allows for synchronization of shared memory across multiple compute units, this technique is useful for parallel reduction algorithms which include
-calcualtions such as min, max, mean, sum etc... anything that can be reduced to simpler worksets are are not itterative in nature. \textbf{(see figure \ref{fig:reductionImg})}
+calculations such as min, max, mean, sum etc... anything that can be reduced to simpler worksets are are not iterative in nature. \textbf{(see figure \ref{fig:reductionImg})}
 
 \begin{figure}[H]
 	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{reduction.jpg}

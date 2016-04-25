@@ -18,6 +18,8 @@
 \usepackage{float}
 \usepackage{listings}
 \usepackage{geometry}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
 	\geometry{
 	%letterpaper,
 	%total={8.5in,11in},
@@ -279,13 +281,13 @@ will be compatible with the Gear VR which uses the same framework as the Rift.
 			\item Hardware Minimum Spec for Running VR
 			\begin{itemize}
 				\item Description: Quality and frame rate can vary but must be at least 30fps.
-				\item Dependency: Minimum supported GPU, CPU, RAM, OS Specs (See Specific Headset Research 9.x.x) 
+				\item Dependency: Minimum supported GPU, CPU, RAM, OS Specs \textbf{(See section \ref{section:headset})}
 				\item Evaluation Method: Test app on Real Hardware (VR Headset, with Controls)
 			\end{itemize}
 			\item Low Latency Controls
 			\begin{itemize}
 				\item Description: Minimum system requirements to Peripherial input processing
-				\item Dependency: Minimum supported GPU, CPU, RAM, OS Specs (See Specific Peripherial Research 9.x.x) 
+				\item Dependency: Minimum supported GPU, CPU, RAM, OS Specs \textbf{(See section \ref{section:peripheral})}
 				\item Evaluation Method: Test app on Real Hardware (VR Headset, with Controls)
 			\end{itemize}
 		\end{enumerate}
@@ -294,13 +296,13 @@ will be compatible with the Gear VR which uses the same framework as the Rift.
 			\item Hardware Minimum Spec for Running Smooth VR
 			\begin{itemize}
 				\item Description: It should operate between 30 and 60fps depending on CPU load.
-				\item Dependency: Capped at 60fps due to hardware limitations (See Gear VR 8.2.4)
+				\item Dependency: Capped at 60fps due to hardware limitations \textbf{(See section \ref{section:gearVR})}
 				\item Evaluation Method: Test app on Real Hardware (Gear VR Headset, with Controls)
 			\end{itemize}
 			\item Low Latency Controls
 			\begin{itemize}
 				\item Description: Minimum system requirements to Peripheral input processing
-				\item Dependency: Minimum supported GPU, CPU, RAM, OS Specs (See Specific Peripheral Research 9.x.x) 
+				\item Dependency: Minimum supported GPU, CPU, RAM, OS Specs \textbf{(See section \ref{section:peripheral})}
 				\item Evaluation Method: Test app on Real Hardware (VR Headset, with Controls)
 			\end{itemize}
 			\item Relevant Controls
@@ -483,11 +485,12 @@ Current predictions for the VR market are overall positive.  The next couple of 
 	\caption{Prediction of the paying virtual reality users through 2018.  Obtained through Statistia.  Source: KZero survey}
 	%to ref fig number
 	%Figure \ref{fig:block1} shows our blockDiagram.
-	\label{fig:moneyStats}
+	\label{fig:moneyStats2}
 \end{figure}
 \subsubsection{Conclusion}
 \pagebreak
 \subsection{VR Headset Options and Technical Capabilities}
+\label{section:headset}
 \subsubsection{Oculus Rift Consumer Version}
 \begin{itemize}
 	\item Resolution: 2160 x 1200
@@ -561,6 +564,7 @@ Current predictions for the VR market are overall positive.  The next couple of 
 	\end{figure}
 	\pagebreak
 \subsubsection{Samsung Gear VR}
+\label{section:gearVR}
 	Supported Phones Include the Samsung Galaxy: Note5, S6, S6 edge, S7, S7 edge  
 	\begin{itemize}
 	  \item Resolution: 2560 X 1440 (Quad HD phone screen)
@@ -637,7 +641,7 @@ Current predictions for the VR market are overall positive.  The next couple of 
 	
 \pagebreak
 \subsection{VR Peripheral Options}
-precision, inputs, basic info
+\label{section:peripheral}
 \subsubsection{Leap Motion}
 \begin{itemize}
 	\item Using Leap Motion on a PC is viable in Unity and very well supported, however using Leap Motion and the Gear VR simultaneously on Android is not feasible, this is due to the high level of processing required to
@@ -890,7 +894,7 @@ and the GPU can have multiple groups scheduled at the same time. The basic unit 
 and the commands are setup and issued by the cpu application in a queue fashion, some execution can be synced to wait for other kernels to complete or can be dispatched and run in whatever order.
 
 
-\subsubsection{Explanation of GPGPU Processing Models}
+\paragraph{Explanation of GPGPU Processing Models}
 The most basic unit of Processing on a GPU is work item (AMD) or thread (NVIDIA) this represents a single piece of data that is processed in parallel. Most GPUs organize these processors in groups called 
 compute units which are controlled by a scheduler to process data in blocks on each compute unit. For an example such as modifying the pixel values of an image, each compute unit takes a part of the image 
 and process it until the entire image is finished. The dimensions of the entire workload are set as a parameter to the GPU giving it the total number of elements to process as an N-Dimensional range (right 
@@ -999,11 +1003,12 @@ Unity supports the exposes the command buffer which is similar to the main rende
 
 \pagebreak
 
-\subsubsection{Supported GPGPU Advanced features}
+\subsubsection{Advanced GPGPU features}
 % try unity zip in google drive with atomic and local mem barriers
-Some advanced GPGPU related constructs useful for highly optimized compute processing, need to be checked if they are included in Unity's implementation of DirectCompute,which 
+Some advanced GPGPU related constructs useful for highly optimized compute 
+processing, need to be checked if they are included in Unity's implementation of Direct Compute,which 
 is similar to the HLSL code snippets listed below.
-
+%//From http://www.nvidia.com/content/GTC-2010/pdfs/2260_GTC2010.pdf
 \paragraph{Shared Memory Reduction Kernel}
 \begin{figure}[H]
 	\label{fig:reductionCode}
@@ -1053,7 +1058,7 @@ This kernel is a compute shader that is run on the GPU and allows for synchroniz
 	\end{figure}
 	This diagram represents the software design of our project and the various functional modules that should exist in order to fulfill the user interaction requirements. 
 	The application will have two main modes of operation, edit mode and view mode. 
-	\subsection{High Level Design}
+	\subsection{Overall High Level Design}
 		\begin{figure}[H]
 			\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{highUseCase.png}
 			\caption{High Level Use Case Diagram}
@@ -1063,7 +1068,7 @@ This kernel is a compute shader that is run on the GPU and allows for synchroniz
 		\end{figure}
 	\pagebreak
 	\subsection{Qt Design Plan}
-		\subsubsection{High Level Diagram}
+		\subsubsection{Qt High Level Diagram}
 		\begin{figure}[H]
 					\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{qtConfigDiag.png}
 					\caption{Qt Design Diagram}
@@ -1074,6 +1079,7 @@ This kernel is a compute shader that is run on the GPU and allows for synchroniz
 This figure shows the general design for the Qt Configuration Tool/ Launcher. This launcher will be the main editing/ configuration option for the app, It will also be responsible for launching scenes, scene settings and configuration, and graphing user stress data.
 
 		\pagebreak
+    \subsubsection{Qt Design Details}
 	The basic functionality of the tool is as follows \textbf{(see examples in figure \ref{fig:qtMockup})}
 \begin{itemize}
 \item Configuration
@@ -1101,19 +1107,20 @@ This figure shows the general design for the Qt Configuration Tool/ Launcher. Th
 					\label{fig:qtMockup}
 				\end{figure}
 \end{itemize}
-		\subsubsection{Activity Diagram}
+		\subsubsection{Qt Activity Diagram}
 				\begin{figure}[H]
 					\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{qtActivityDiag.png}
-					\caption{Qt Activity Diagram}
+					\caption{Qt Activity Diagram} 
+					
 					%to ref fig number
 					%Figure \ref{fig:block2} shows our blockDiagram.
 					\label{fig:qtactivity}
 				\end{figure}
 				\pagebreak
 	\subsection{Unity Design Plan}
-		\subsubsection{High Level Design}
+		\subsubsection{Unity High Level Design}
 		\pagebreak
-		\subsubsection{Activity Diagram}
+		\subsubsection{Unity Activity Diagram}
 				\begin{figure}[H]
 					\centerline{\includegraphics[]{unityActivityDiag.png}}
 					\caption{Unity Activity Diagram}
@@ -1122,6 +1129,8 @@ This figure shows the general design for the Qt Configuration Tool/ Launcher. Th
 					\label{fig:unityactivity}
 				\end{figure}
 				\pagebreak
+		\subsubsection{Unity Design Details}		
+		\pagebreak
 		\subsubsection{Scene Shared Assets}
 	\subsection{Test Plan}
 
@@ -1179,13 +1188,6 @@ This figure shows the general design for the Qt Configuration Tool/ Launcher. Th
 			\item Combining all aspects of project into cohesive whole
 			\item Finalize and begin testing of project
 		\end{itemize}
-	
-	%\subsection{Overall Milestones}
-	%	\begin{itemize}
-	%		\item get a decent amount of sleep,
-	%               \item not procrastinate this hard on a paper again
-	%		\item try not to cry
-	%	\end{itemize}
 
 \pagebreak
 %5. Project Summary and conclusions.

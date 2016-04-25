@@ -12,7 +12,7 @@
 
 % citation formatting: When citing the references in the text use a non-breakable space (e.g. Ctrl-shift-space in Word, \&; in HTML) before the citation and then square brackets and the number: Some researchers say that the occupancy of the node controller is the parameter most critical to the performance of the overall machine [2]. If you want to cite multiple references at once just separate them by commas like so [1,3,7].
 
-\documentclass[a4paper,10pt,twoside]{article}
+\documentclass[a4paper,10pt]{article}
 \usepackage[utf8x]{inputenc} 
 \usepackage{graphicx}
 \usepackage{float}
@@ -449,12 +449,45 @@ Sony would also make an announcment, unveiling the long rumored Project Morpheus
 	\label{fig:samsungGalaxy}
 \end{figure}
 
-\subsection{Market Predictions}
+\subsection{Market Future}
+\subsubsection{Statistics}
 
-\subsection{Major Company Prediction/References}
+Current predictions for the VR market are overall positive.  The next couple of pages [Fig 6-8] are a number of statistics and surveys showing predictions for the growth of the VR field over the next 4-5 years.  Each contains a description and source.  Following this section will be a conclusion, wrapping up both the research on recent VR companies and these statistics.
 
-\subsection{VR Headset Options and Technical Capabilities}
+\begin{figure}[H]
+	\centerline{\includegraphics[scale = 0.3]{statMon2.png}}
+	\caption{Prediction of the virutal reality revenue through 2020.  Obtained through Statistia.  Source: Superdata Research}
+	%to ref fig number
+	%Figure \ref{fig:block1} shows our blockDiagram.
+	\label{fig:virRevenue}
+\end{figure}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[scale = 0.3]{statMon.png}}
+	\caption{Prediction of the Head Mounted Display Revenue through 2018.  Obtained through Statistia.  Source: KZero survey}
+	%to ref fig number
+	%Figure \ref{fig:block1} shows our blockDiagram.
+	\label{fig:moneyStats}
+\end{figure}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[scale = 0.25]{statsUsers.png}}
+	\caption{Prediction of the virutal reality user acceptance through 2018.  Obtained through Statistia.  Source: KZero survey}
+	%to ref fig number
+	%Figure \ref{fig:block1} shows our blockDiagram.
+	\label{fig:userStats}
+\end{figure}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[scale = 0.25]{statPay.png}}
+	\caption{Prediction of the paying virtual reality users through 2018.  Obtained through Statistia.  Source: KZero survey}
+	%to ref fig number
+	%Figure \ref{fig:block1} shows our blockDiagram.
+	\label{fig:moneyStats}
+\end{figure}
+\subsubsection{Conclusion}
 \pagebreak
+\subsection{VR Headset Options and Technical Capabilities}
 \subsubsection{Oculus Rift Consumer Version}
 \begin{itemize}
 	\item Resolution: 2160 x 1200
@@ -785,10 +818,18 @@ Agoraphobia Without History of Panic Disorder. \cite{dsmPhobia}
 For example, 12 studies tested the effects of virtual reality on stroke recovery. 5 of these studies showed patients who played virtual reality games were about 4.9 times more likely to improve their upper body strength than those who received the standard therapy, while the other 7  studies showed a 14.7 percent improvement, on average, in patients' grip strength and a 20 percent improvement in patient's ability to perform standard tasks.\cite{stroke1}
 \pagebreak
 \subsection{Module 1 Fear of Heights}
-The fear of heights module will be built around the success of past and present research. Fear of heights, referred to as acrophobia, is a popular target for studying the impact of virtual reality on treatment. For this scene the user will be at the ground floor of a 50 story building and may ride a glass elevator up to any desired floor. Past experiments and studies on using virtual reality for acrophobia treatment have lacked high quality graphical experiences which can detract from the immersionn. Our background will feature a detailed cityscape to increase the realism the user experiences and likely increase the effectiveness of treatment.
+The fear of heights module will be built around the success of past and present research. Fear of heights, referred to as acrophobia, is a popular target for studying the impact of virtual reality on treatment. For this scene the user will be at the ground floor of a 50 story building and may ride a glass elevator up to any desired floor. Past experiments and studies on using virtual reality for acrophobia treatment have lacked high quality graphical experiences which can detract from the immersion. Our background will feature a detailed cityscape to increase the realism the user experiences and likely increase the effectiveness of treatment.
+\subsubsection{Past Success}
+\subsubsection{User Progress Feedback}
+Avoidance behavior
 \pagebreak
 \subsection{Module 2 Speech Anxiety Simulator}
 Speech Anxiety is the next issue we wish to treat with virtual reality therapy. As another popular target of VR therapy research, speech anxiety has several successful examples. In our implementation the user will be able to configure the environment in which they practice public speaking to better suit their needs and deliver a more personal experience. We will begin with a classroom environment with chair spots which the user can place different students into and configure their actions such as sleeping, focused, or texting. As a stretch goal for this module we will implement more varying environments like a conference room and a stage.
+\subsubsection{Past Success}
+\subsubsection{Configuration}
+Setting, people in chairs
+\subsubsection{User Progress Feedback}
+Track where user looks, track posture, kinect?
 \pagebreak
 \subsection{Module 3 Calm Environment} % SO HYPED!!!
 This module will feature a calming environment that will help patients with stress or anxiety relax in a calming peaceful environment. This environment will have random terrain which will have chunks 
@@ -801,7 +842,7 @@ Some configuration options for this scene include different biomes or selecting 
 	\caption{Proteus Picture}
 	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
 	\label{fig:proteus}
-	\end{figure}
+\end{figure}
 \subsubsection{Design Concerns}
 Some solutions include some premade plug-ins that generate some terrains, on the CPU with possibly some GPU acceleration, however we would like to try and generate our own
 terrain with Compute Shader provided in Unity.
@@ -846,7 +887,7 @@ GPGPU programming is a growing option for parallel processing applications that 
 performing mathematical computations over linear systems or large sets. Many modern GPUs offer many benefits in processing with the high number of cores that can operate on data 
 in Single Instruction Multiple Data (SIMD) and Multiple Instruction Multiple Data (MIMD) fashions. For example, one group of data can be processed with the same instruction in parallel 
 and the GPU can have multiple groups scheduled at the same time. The basic unit of execution on a GPU (the compute shader or kernel) is run in parallel and scheduled by the GPU execution context
-and the commands are setup and issued by the cpu application in a queue fashion, some execution can be synched to wait for other kernels to complete or can be dispatched and run in whatever order.
+and the commands are setup and issued by the cpu application in a queue fashion, some execution can be synced to wait for other kernels to complete or can be dispatched and run in whatever order.
 
 
 \subsubsection{Explanation of GPGPU Processing Models}
@@ -890,7 +931,7 @@ can be modified to optimize for different algorithms depending on how they acces
 
 
 \subsubsection{Unity Support for Asynchronous Compute Shaders and Kenrels}
-\paragraph{ Shading Languages used in Unity} ~\\
+\paragraph{Shading Languages used in Unity} ~\\
 In Unity, shader programs are written in a variant of HLSL language (also called Cg but for most practical uses the two are the same). Unity recommneds developers have a good understanding 
 of OpencL Or CUDA, OpenGL, and other Graphics/ GPGPU parallel compute languages.  
 
@@ -904,7 +945,7 @@ Internally, different shader compilers are used for shader program compilation:
   \item Other console platforms use their respective compilers (e.g. PSSL on PS4).
   \item Surface Shaders use Cg 2.2 and MojoShader for code generation analysis step.
 \end{itemize} %unity ref http://docs.unity3d.com/Manual/SL-ShadingLanguage.html
-\subsubsection{Unity Cross Platfrom Shader Support (Android)}
+\subsubsection{Unity Cross Platform Shader Support (Android)}
 In order to achieve shaders working on multiple different platforms one should consider these limitations:
 
 \begin{itemize}
@@ -971,7 +1012,7 @@ is similar to the HLSL code snippets listed below.
 \end{figure}
 
 This kernel is a computeShader that is run on the GPU and allows for synchronization of shared memory across multiple compute units, this technique is useful for parallel reduction algorithms which include
-calcualtions such as min, max, mean, sum etc... anything that can be reduced to simpler worksets are are not itterative in nature. \textbf{(see figure \ref{fig:reductionImg})}
+calculations such as min, max, mean, sum etc... anything that can be reduced to simpler worksets are are not iterative in nature. \textbf{(see figure \ref{fig:reductionImg})}
 
 \begin{figure}[H]
 	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{reduction.jpg}
@@ -1023,7 +1064,37 @@ This kernel is a compute shader that is run on the GPU and allows for synchroniz
 	\pagebreak
 	\subsection{Qt Design Plan}
 		\subsubsection{High Level Diagram}
+		\begin{figure}[H]
+					\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{qtConfig.png}
+					\caption{Qt Design Diagram}
+					%to ref fig number
+					%Figure \ref{fig:block2} shows our blockDiagram.
+					\label{fig:qtHighLevel}
+				\end{figure}
+This figure shows the general design for the Qt Configuration Tool/ Launcher. This launcher will be the main editing/ configuration option for the app, It will also be responsible for launching scenes, scene settings and configuration, and graphing user stress data.
+
 		\pagebreak
+	The basic functionality of the tool is as follows \textbf{(see examples in figure \ref{fig:QtTemplate})}
+\begin{itemize}
+\item Configuration
+\begin{itemize}
+\item Users can Select the scene to edit the configurations, with the set scene options we have added, new scenes could be added to the dropdown if new scenes were created.
+\item Configurations will be saved to a specific .ini or settings file that will be parsed by the unity scene on load.
+\item Basic settings such as resolution, quality options, and other static options will be in dialog boxes.
+\item The scene maps will be encoded with some options including size, the list of available models with names(ex desks, trees, etc.), and other available settings for scenes, this file will be read in by Qt and setup the configuration options for the user.
+\item The Graphics view (Map Viewer)will allow the user to drag and drop models UnityObjects(CUnityObject) from the list on the scene and move them around.
+\item Any previously saved configurations be loaded and UnityObjects will be shown in the Map Viewer.
+
+\item The configuration can be saved and will be used to launch the app.
+
+\end{itemize}
+\item Stress Data Analysis
+\begin{itemize}
+\item User stress data from Samsung stress app on (acquired from android phone or another input device will be parsed and graphed in the OpenGL Graph widget.
+\item Any other analysis will be shown as dialog boxes or additional readouts next to the graph.
+\end{itemize}
+
+\end{itemize}
 		\subsubsection{Activity Diagram}
 				\begin{figure}[H]
 					\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{qtActivityDiag.png}
@@ -1033,7 +1104,7 @@ This kernel is a compute shader that is run on the GPU and allows for synchroniz
 					\label{fig:qtactivity}
 				\end{figure}
 				\pagebreak
-	\subsection{Unity Hierarchy}
+	\subsection{Unity Design Plan}
 		\subsubsection{High Level Design}
 		\pagebreak
 		\subsubsection{Activity Diagram}

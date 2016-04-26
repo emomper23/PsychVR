@@ -122,14 +122,14 @@ The relationship between psychology, therapy, and virtual reality is no new conc
 and already well researched with many successful studies and experiments supporting this type of therapy. A caveat to this success is that most of the treatment is carried out as research, 
 at limited locations, or on a very exclusive basis.
 \par~\\ 
-This is due to a number of factors including the available openings for research, cost of the hardware and software involved, and locations
-of the few companies which professionally offer virtual reality therapy. Psychological and social factors also play a role in the underwhelming prevalence of virtual reality for psychology for 
-reasons PsychVR aims to remedy this problem by offering a suite of treatment environments targeted at some of the most prominent psychological issues which respond well to virtual reality therapy.
+This is due to a number of factors including the available openings for research, cost of the hardware and software involved, and locations of the few companies which professionally offer virtual reality therapy. Psychological and social factors also play a role in the underwhelming prevalence of virtual reality for psychology. For these reasons PsychVR aims to remedy this problem by offering a suite of treatment environments targeted at some of the most prominent psychological issues which respond well to virtual reality therapy.
 \par ~\\
 The first three environments to be developed will target fear of heights, speech anxiety, and stress relief. Our platform will feature customization of these environments and expandability for more.
 To tackle the issue of hardware cost to the average user it will be available for a variety of virtual reality headsets and controls, most notably including Samsung Gear VR. It is projected that the 
-Gear VR will soon be the most widely available virtual reality headset at a cost of 100\$ along with a compatible Samsung smartphone. By developing the suite in Unity for the Oculus Rift, the end result
+Gear VR will soon be the most widely available virtual reality headset at a cost of \$100 along with a compatible Samsung smartphone. By developing the suite in Unity for the Oculus Rift, the end result
 will be compatible with the Gear VR which uses the same framework as the Rift.
+\par ~\\
+Another focus of our project with virtual reality will be to give the user the most immersive, believable experience possible. We plan to use a few different systems to provide detailed modeling and tracking. We will use the Kinect for motion and skeleton tracking to allow the user to move around, the Gear VR for detailed hand and arm tracking, and the VR headset (Oculus or other VR headsets for rotation and head tracking). 
 \pagebreak
 %3. Technical content (This is NOT an outline, just a list of what needs to be included)
 %A. Identification of the project and its significance, motivation, etc. (mostly text). Please include personal motivation statements for each project member here. Also you MUST include a separately labeled section or subsection with the title “Broader Impacts” that describes in a minimum of 1 paragraph, the broader implications or impact of your project on society both local and global. How might your project impact underrepresented groups (within science and technology (STEM) or society as a whole), the disabled, non-profit organizations, the environment, diversity, increased participation in STEM fields or the workforce, public engagement in STEM areas, improved national security, enhanced infrastructure, or improved education are all examples.
@@ -1184,7 +1184,24 @@ configuration option for the app, It will also be responsible for launching scen
 					\label{fig:unityactivity}
 				\end{figure}
 				\pagebreak
-		\subsubsection{Unity Design Details}		
+		\subsubsection{Unity Design Details}	
+\begin{itemize}
+	\item Configurable scenes are going to initially read an expected Qt configuration file that 
+	will contain scene specific settings and include any additional models added to the scene mapped 
+	by the mapping tool. 
+	\item The Kinect camera, Oculus Rift, and Leap motion will be added as input controls mapped to a first person avatar that has is own models and textures for hands, legs, arms and body. 
+	\item The scene models will have interactive scripts that will interact with the user such as doors, or other objects they can move or pick up. 
+	\item Models and scene assets that can be configured will be written to a QtConfigFormatFile which will be parsed by Qt to get icons, sizes, and names of the CUnityObject class models that can be configured. 
+	\item The settings will be stored as QSettings objects from Qt which will store them as a .ini file which is supported by unity and will allow the two applications to synchronize options by parsing the .ini files on load. 
+	\item Unity unity assets will be purchased in the asset store or designed in google sketch up or blender. 
+	
+	\paragraph{Shared Memory Reduction Kernel}
+\begin{figure}[H]
+	\label{fig:sceneTemplate}
+\lstinputlisting {test.ini}
+\caption{Example scene template file}
+\end{figure}
+\end{itemize}	
 		\pagebreak
 		%\subsubsection{Scene Shared Assets}
 \subsection{Test Plan}

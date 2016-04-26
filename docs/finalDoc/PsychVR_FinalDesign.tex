@@ -820,18 +820,45 @@ Agoraphobia Without History of Panic Disorder. \cite{dsmPhobia}
 \pagebreak
 \subsubsection{Examples of Success}
 For example, 12 studies tested the effects of virtual reality on stroke recovery. 5 of these studies showed patients who played virtual reality games were about 4.9 times more likely to improve their upper body strength than those who received the standard therapy, while the other 7  studies showed a 14.7 percent improvement, on average, in patients' grip strength and a 20 percent improvement in patient's ability to perform standard tasks.\cite{stroke1}
+
 \pagebreak
 \subsection{Module 1 Fear of Heights}
-The fear of heights module will be built around the success of past and present research. Fear of heights, referred to as acrophobia, is a popular target for studying the impact of virtual reality on treatment. For this scene the user will be at the ground floor of a 50 story building and may ride a glass elevator up to any desired floor. Past experiments and studies on using virtual reality for acrophobia treatment have lacked high quality graphical experiences which can detract from the immersion. Our background will feature a detailed cityscape to increase the realism the user experiences and likely increase the effectiveness of treatment.
+The fear of heights module will be built around the success of past and present research. Fear of heights, referred to as acrophobia, is a popular target for studying the impact of virtual reality on treatment. Past experiments and studies on using virtual reality for acrophobia treatment have lacked high quality graphical experiences which can detract from the immersion. Our background will feature a detailed cityscape to increase the realism which the user experiences and likely increase the effectiveness of treatment.
+
 \subsubsection{Past Success}
+
+
+\subsubsection{Our Implementation}
+For this scene the user will start at the base of a tall building. The user be able to enter a glass elevator and select their desired floor. Once they have reached the floor they will be able to walk out onto a balcony and view the surrounding landscape. At all times there will be an option to end the simulation if the user becomes too frightened.
+
+\subsubsection{Models and Resources}
+We will need a landscape, tower, and window cleaning platform model. The Unity Asset store has several options for cityscapes and tall buildings as well as a perfectly suited window cleaning platform.
+
+\subsubsection{Interaction and User Inputs}
+Interaction with this scene will be use simple look and click mechanics. Looking will be controlled by head tracking on the Oculus Rift and clicking will be controlled with leap motion. While on the elevator platform the user will have access to a control panel to set the height of the platform between ground floor and the top of the building. The user will also be able to abort the scene at any time should they become too frightened. 
+
 \subsubsection{User Progress Feedback}
-Avoidance behavior
+Users may optionally use our S Health sensor interpreter to measure stress before, during, and after the scene. In addition to this the scene will track how high up the user went and how much time was spent at each level.
+
 \pagebreak
 \subsection{Module 2 Speech Anxiety Simulator}
-Speech Anxiety is the next issue we wish to treat with virtual reality therapy. As another popular target of VR therapy research, speech anxiety has several successful examples. In our implementation the user will be able to configure the environment in which they practice public speaking to better suit their needs and deliver a more personal experience. We will begin with a classroom environment with chair spots which the user can place different students into and configure their actions such as sleeping, focused, or texting. As a stretch goal for this module we will implement more varying environments like a conference room and a stage.
+Speech Anxiety is the next issue we wish to treat with virtual reality therapy. As another popular target of VR therapy research, speech anxiety has several successful examples.
+
 \subsubsection{Past Success}
-\subsubsection{Configuration}
-Setting, people in chairs
+
+\subsubsection{Our Implementation}
+In our implementation the user will be able to configure the environment in which they practice public speaking to better suit their needs and deliver a more personal experience. We will begin with a classroom environment with chair spots which the user can place different students into and configure their actions such as sleeping, focused, or texting. As a stretch goal for this module we will implement more varying environments like a conference room and a stage.
+
+Presentation will begin with the user sitting down. Momentarily they will be called upon to present and must stand and walk to the front of the room. If they have a power point preloaded through Qt they will walk to the front desk and plug it into the equipment which will display it onto the screen behind them as in an actual classroom. Following this the user will deliver their speech to the configured audience. Once finished, the user will sit back in their seat and the scene will end.
+
+\subsubsection{Models and Resources}
+For the speech anxiety module we need a room for the user to practice public speaking in and objects to go in it. We will create a model of UCF's Harrison Engineering Corp. building room 108 for our first configurable room and if there is enough time we will design more options for the setting such as a lecture hall or conference room. Our classroom model will include the presentation equipment (projector, drop down screen, etc.) so that the user may practice the speech as close as possible to how it would actually be delivered. For the audience, human models from the Unity Asset store will be used for members and will have various animations that can be set according to how the user has configured the environment in Qt.
+
+\subsubsection{Interaction and User Inputs}
+The users posture, head, and 
+
+\subsubsection{Configuration from Qt Launcher}
+
 \subsubsection{User Progress Feedback}
 Track where user looks, track posture, kinect?
 \pagebreak

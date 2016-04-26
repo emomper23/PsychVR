@@ -42,7 +42,24 @@
 	\pagebreak
 	\tableofcontents
 	\pagebreak
-	
+\pagenumbering{arabic}	
+\section{Executive Summary}
+The relationship between psychology, therapy, and virtual reality is no new concept. Benefits which can be derived through the use of virtual reality as a treatment option are vast 
+and already well researched with many successful studies and experiments supporting this type of therapy. A caveat to this success is that most of the treatment is carried out as research, 
+at limited locations, or on a very exclusive basis.
+\par~\\ 
+This is due to a number of factors including the available openings for research, cost of the hardware and software involved, and locations of the few companies which professionally offer virtual reality therapy. Psychological and social factors also play a role in the underwhelming prevalence of virtual reality for psychology. For these reasons PsychVR aims to remedy this problem by offering a suite of treatment environments targeted at some of the most prominent psychological issues which respond well to virtual reality therapy.
+\par ~\\
+The first three environments to be developed will target fear of heights, speech anxiety, and stress relief. Our platform will feature customization of these environments and expandability for more.
+To tackle the issue of hardware cost to the average user it will be available for a variety of virtual reality headsets and controls, most notably including Samsung Gear VR. It is projected that the 
+Gear VR will soon be the most widely available virtual reality headset at a cost of \$100 along with a compatible Samsung smartphone. By developing the suite in Unity for the Oculus Rift, the end result
+will be compatible with the Gear VR which uses the same framework as the Rift.
+\par ~\\
+Another focus of our project with virtual reality will be to give the user the most immersive, believable experience possible. We plan to use a few different systems to provide detailed modeling and tracking. We will use the Kinect for motion and skeleton tracking to allow the user to move around, the Gear VR for detailed hand and arm tracking, and the VR headset (Oculus or other VR headsets for rotation and head tracking). 
+\pagebreak
+%3. Technical content (This is NOT an outline, just a list of what needs to be included)
+%A. Identification of the project and its significance, motivation, etc. (mostly text). Please include personal motivation statements for each project member here. Also you MUST include a separately labeled section or subsection with the title “Broader Impacts” that describes in a minimum of 1 paragraph, the broader implications or impact of your project on society both local and global. How might your project impact underrepresented groups (within science and technology (STEM) or society as a whole), the disabled, non-profit organizations, the environment, diversity, increased participation in STEM fields or the workforce, public engagement in STEM areas, improved national security, enhanced infrastructure, or improved education are all examples.
+%B. Technical objectives, goals, specifications, and requirements (mostly text and numbers) FIRST PAPER HERE EZPZ
 	\section{Introduction}
 		Our Project is intended to be a psychological therapeutic tool that helps patients through simulation in Virtual Reality.
 	Many of the new up and coming Virtual Reality devices look very promising at providing better and more realistic immersion and simulation for users at a lower cost than ever before. We aim to bring psychological tools to the home of the average user. This will allow those seeking certain therapies or treatments to perform them more often since such services often require high diligence and repetition to produce results.
@@ -111,29 +128,13 @@
 
 
 
-\pagenumbering{arabic}
+
 
 %Project Documentation Guidelines
 %additions / deletions where appropriate
 
 %2. Executive summary: An administrative and technical abstract, which includes a brief description of the project, the project objectives, and the technical approach. This is really an overview of 3A, 3B, 3C, and 3D. This is page number 1.
-\section{Executive Summary}
-The relationship between psychology, therapy, and virtual reality is no new concept. Benefits which can be derived through the use of virtual reality as a treatment option are vast 
-and already well researched with many successful studies and experiments supporting this type of therapy. A caveat to this success is that most of the treatment is carried out as research, 
-at limited locations, or on a very exclusive basis.
-\par~\\ 
-This is due to a number of factors including the available openings for research, cost of the hardware and software involved, and locations of the few companies which professionally offer virtual reality therapy. Psychological and social factors also play a role in the underwhelming prevalence of virtual reality for psychology. For these reasons PsychVR aims to remedy this problem by offering a suite of treatment environments targeted at some of the most prominent psychological issues which respond well to virtual reality therapy.
-\par ~\\
-The first three environments to be developed will target fear of heights, speech anxiety, and stress relief. Our platform will feature customization of these environments and expandability for more.
-To tackle the issue of hardware cost to the average user it will be available for a variety of virtual reality headsets and controls, most notably including Samsung Gear VR. It is projected that the 
-Gear VR will soon be the most widely available virtual reality headset at a cost of \$100 along with a compatible Samsung smartphone. By developing the suite in Unity for the Oculus Rift, the end result
-will be compatible with the Gear VR which uses the same framework as the Rift.
-\par ~\\
-Another focus of our project with virtual reality will be to give the user the most immersive, believable experience possible. We plan to use a few different systems to provide detailed modeling and tracking. We will use the Kinect for motion and skeleton tracking to allow the user to move around, the Gear VR for detailed hand and arm tracking, and the VR headset (Oculus or other VR headsets for rotation and head tracking). 
-\pagebreak
-%3. Technical content (This is NOT an outline, just a list of what needs to be included)
-%A. Identification of the project and its significance, motivation, etc. (mostly text). Please include personal motivation statements for each project member here. Also you MUST include a separately labeled section or subsection with the title “Broader Impacts” that describes in a minimum of 1 paragraph, the broader implications or impact of your project on society both local and global. How might your project impact underrepresented groups (within science and technology (STEM) or society as a whole), the disabled, non-profit organizations, the environment, diversity, increased participation in STEM fields or the workforce, public engagement in STEM areas, improved national security, enhanced infrastructure, or improved education are all examples.
-%B. Technical objectives, goals, specifications, and requirements (mostly text and numbers) FIRST PAPER HERE EZPZ
+
 \section{Project Goals and Objectives}
 	Design an environment in Virtual Reality that can be customized and used to help a variety of psychological conditions, and further psychology research, that is accessible to the typical user so they may conduct their own treatment on their own time.
 	\begin{itemize}
@@ -718,13 +719,16 @@ Following is our research on the different possible VR devices and peripherals, 
 \subsubsection{Comparison of Kinect Systems}
 \textbf{(Figure \ref{fig:kimg})} shows the increased fidelity and quality of the captured image on the kinect 2.
 \begin{figure}[H]
-	\centerline{\includegraphics[scale=0.5]{kinectImg.jpg}}
+	\centerline{\includegraphics[scale=0.4]{kinectImg.jpg}}
 	\caption{Kincet 2 Camera}
 	%to ref fig number
 	%Figure \ref{fig:block1} shows our blockDiagram.
 	\label{fig:kimg}
 	\end{figure}
+	For our project we will use the Kincet for user body and movement tracking. The kinect version 1 and 2 (for the Xbox 360/ Xbox one) are both powerful devices that have many 
+	advanced Capabilities (see the beginnig of this subsection for more specific details). Both devices work with unity
 	\pagebreak	
+
 	
 \subsubsection{Oculus Rift DK2+ Camera}
 \begin{itemize}

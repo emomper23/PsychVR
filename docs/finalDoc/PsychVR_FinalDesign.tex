@@ -1093,6 +1093,9 @@ This kernel is a compute shader that is run on the GPU and allows for synchroniz
 			%Figure \ref{fig:block2} shows our blockDiagram.
 			\label{fig:highlevelusecase}
 		\end{figure}
+		THis Figure represents the gerenral use case and standard user interactions. It also includes some optional parts that are related to the therapy and treatment which 
+		may or may not involve a psychologist. Users at home will have the ability to run configure scenes, and review stress and other analysis data, Psychologists can also use
+		the tool as a therapy option and can use the stress and analysis as feedback.
 	\pagebreak
 	\subsection{Qt Design Plan}
 		\subsubsection{Qt High Level Diagram}
@@ -1103,13 +1106,23 @@ This kernel is a compute shader that is run on the GPU and allows for synchroniz
 					%Figure \ref{fig:block2} shows our blockDiagram.
 					\label{fig:qtHighLevel}
 				\end{figure}
-This figure shows the general design for the Qt Configuration Tool/ Launcher. This launcher will be the main editing/ configuration option for the app, It will also be responsible for launching scenes, scene settings and configuration, and graphing user stress data.
+This figure shows the general design for the Qt Configuration Tool/ Launcher. This launcher will be the main editing/ 
+configuration option for the app, It will also be responsible for launching scenes, scene settings and configuration, and graphing user stress data.
 
 		\pagebreak
-    \subsubsection{Qt Design Details}
-	The basic functionality of the tool is as follows \textbf{(see examples in figure \ref{fig:qtMockup})}
-\begin{itemize}
-\item Configuration
+\subsubsection{Qt Activity Diagram}
+		\begin{figure}[H]
+			\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{qtActivityDiag.png}
+			\caption{Qt Activity Diagram} 
+			
+			%to ref fig number
+			%Figure \ref{fig:block2} shows our blockDiagram.
+			\label{fig:qtactivity}
+		\end{figure}
+		\pagebreak
+
+\subsubsection {Configuration Design Details}
+(See figure \ref{fig:qtMockupMap})
 \begin{itemize}
 \item Users can Select the scene to edit the configurations, with the set scene options we have added, new scenes could be added to the dropdown if new scenes were created.
 \item Configurations will be saved to a specific .ini or settings file that will be parsed by the unity scene on load.
@@ -1117,33 +1130,42 @@ This figure shows the general design for the Qt Configuration Tool/ Launcher. Th
 \item The scene maps will be encoded with some options including size, the list of available models with names(ex desks, trees, etc.), and other available settings for scenes, this file will be read in by Qt and setup the configuration options for the user.
 \item The Graphics view (Map Viewer)will allow the user to drag and drop models UnityObjects(CUnityObject) from the list on the scene and move them around.
 \item Any previously saved configurations be loaded and UnityObjects will be shown in the Map Viewer.
-
 \item The configuration can be saved and will be used to launch the app.
 
 \end{itemize}
-\item Stress Data Analysis
-\begin{itemize}
-\item User stress data from Samsung stress app on (acquired from android phone or another input device will be parsed and graphed in the OpenGL Graph widget.
-\item Any other analysis will be shown as dialog boxes or additional readouts next to the graph.
-\end{itemize}
 \begin{figure}[H]
-					\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{qtConfig.png}
+				      \centerline{\includegraphics[scale = 0.35]{qtConfigMap.png}}
 					\caption{Qt Design Mockup}
 					%to ref fig number
 					%Figure \ref{fig:block2} shows our blockDiagram.
-					\label{fig:qtMockup}
+					\label{fig:qtMockupMap}
 				\end{figure}
-\end{itemize}
-		\subsubsection{Qt Activity Diagram}
-				\begin{figure}[H]
-					\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{qtActivityDiag.png}
-					\caption{Qt Activity Diagram} 
-					
+\pagebreak
+\subsubsection{Data Analysis Design}
+(See figure \ref{fig:qtMockupData})
+  \begin{itemize}
+  \item User stress data from Samsung stress app on (acquired from android phone or another input device will be parsed and graphed in the OpenGL Graph widget.
+  \item Any other analysis will be shown as dialog boxes or additional readouts next to the graph.
+  \item Input Options include reading from the android sensor DataManager app which allows users to export their stress data to a csv, or the user can input their stress readings
+  from the Samsung Health app manually which ever requires the least installation, setup, or amount of work each time for the user which we will see which option is easier from a human 
+  factors standpoint.
+  \item Other Scene specific data could also be recorded and graphed to provide additional feedback some examples for the specific modules include:
+	\begin{itemize}
+	\item Distance moved or time spent in fear of heights session.
+	\item Speech Gestures, rate or word recognition with speech anxiety session.
+	\item Distance covered or movement data from stress relief sessions.
+	\end{itemize}
+\item All of these graph options could be selectable as options for each scene graph widget and would be subclassed accordingly.
+  \end{itemize}
+\begin{figure}[H]
+				      \centerline{\includegraphics[scale = 0.35]{qtConfigData.png}}
+					\caption{Qt Design Mockup}
 					%to ref fig number
 					%Figure \ref{fig:block2} shows our blockDiagram.
-					\label{fig:qtactivity}
+					\label{fig:qtMockupData}
 				\end{figure}
-				\pagebreak
+
+\pagebreak
 	\subsection{Unity Design Plan}
 		\subsubsection{Unity High Level Design}
 		\pagebreak
@@ -1158,9 +1180,81 @@ This figure shows the general design for the Qt Configuration Tool/ Launcher. Th
 				\pagebreak
 		\subsubsection{Unity Design Details}		
 		\pagebreak
-		\subsubsection{Scene Shared Assets}
-	\subsection{Test Plan}
+		%\subsubsection{Scene Shared Assets}
+\subsection{Test Plan}
+\subsubsection{Functional Tests}
+\begin{enumerate}
+    \item  Qt Launcher Functionality
+    \begin{itemize}
+	\item Test Objective: Check that Unity Scenes can bel launched by the Qt App.
+	\item Test Description: Make sure scene is loaded and correct scene is launched.
+	\item Test Conditions: The user selects a scene and presses the launch button
+	\item Expected Results: The user should be able to launch the scene they select.
+    \end{itemize}
+     \item  Qt Save/Load Configuration File
+    \begin{itemize}
+	\item Test Objective: Check that Unity Scenes configurations can be loaded by the Qt app.
+	\item Test Description: Check that the configuration options can be saved and loaded
+	\item Test Conditions: The user loads or saves a file. 
+	\item Expected Results: The configuration options should be persistent.
+    \end{itemize}
+     \item  Qt Data Measurement
+     \begin{itemize}
+	\item Test Objective: Check Qt records or reads some acquired stress or scene related data.
+	\item Test Description: Check that this data is recorded.
+	\item Test Conditions: Use a scene, record data.
+	\item Expected Results: The data should  be recorded.
+    \end{itemize}
+    \item  Unity Data Measurement
+     \begin{itemize}
+	\item Test Objective: Check Unity records or reads some acquired stress or scene related data.
+	\item Test Description: Check that this data is recorded.
+	\item Test Conditions: Use a scene, record data.
+	\item Expected Results: The data should  be recorded.
+    \end{itemize}
+    \item  Qt Data Analysis
+     \begin{itemize}
+	\item Test Objective: Check Qt analyzes or graphs some acquired stress or scene related data.
+	\item Test Description: Check that this data is analyzed or graphed.
+	\item Test Conditions: Use a scene, record data, check graph or analysis.
+	\item Expected Results: The data should  be analyzed or graphed.
+    \end{itemize}
+     \item User Movement Tracking
+     \begin{itemize}
+	\item Test Objective: Check that user movement tracking works
+	\item Test Description: Kinect, leap motion, and Occulus rift should enable the user to move around the scene and have rotation and be able to interact with their hands.
+	the scene and should experience some believable stress or immersion in the scene.
+	\item Test Conditions: Use a scene, verify that the user can move.
+	\item Expected Results: The scene movements should be fluid and accurate.
+    \end{itemize}
+\end{enumerate}
 
+\subsubsection{Module Specific tests}
+\begin{enumerate}
+    \item  Fear of Heights Usability
+     \begin{itemize}
+	\item Test Objective: Check The fear of heights scene is usable.
+	\item Test Description: The scene should be realistic, interactive, and run well, the user should be immersed in 
+	the scene and should experience some believable stress or immersion in the scene.
+	\item Test Conditions: Use this scene, verify that it is usable.
+	\item Expected Results: The scene should meet these standards.
+    \end{itemize}
+    \item  Speech Anxiety Usability
+     \begin{itemize}
+	\item Test Objective: Check The speech anxiety  scene is usable.
+	\item Test Description: The user should be put in a presentation or interaction where they feel some immersion to speaking infront of an audience.
+	\item Test Conditions: Use this scene, verify that it is usable.
+	\item Expected Results: The scene should meet these standards.
+    \end{itemize}
+    \item  Stress Relief Usability
+     \begin{itemize}
+	\item Test Objective: Check The stess relief scene is usable.
+	\item Test Description: The user should be put in a calming peaceful environment that they can interact with.
+	\item Test Conditions: Use this scene, verify that it is usable.
+	\item Expected Results: The scene should meet these standards.
+    \end{itemize}
+
+\end{enumerate}
 \pagebreak
 
 %4. Administrative content
@@ -1194,6 +1288,7 @@ This figure shows the general design for the Qt Configuration Tool/ Launcher. Th
 	%Figure \ref{fig:block1} shows our blockDiagram.
 	\label{fig:pchart}
 	\end{figure}
+	\pagebreak
 	\section{Milestones}
 	\subsection{Tech Milestones}
 		\begin{itemize}

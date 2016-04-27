@@ -1342,6 +1342,14 @@ configuration option for the app, It will also be responsible for launching scen
 \pagebreak
 	\subsection{Unity Design Plan}
 		\subsubsection{Unity High Level Design}
+		\begin{figure}[H]
+					\centerline{\includegraphics[]{UnityHighlevel.png}}
+					\caption{Unity High Level Design Diagram}
+					%to ref fig number
+					%Figure \ref{fig:block2} shows our blockDiagram.
+					\label{fig:unitydesign}
+				\end{figure}
+				
 		\pagebreak
 		\subsubsection{Unity Activity Diagram}
 				\begin{figure}[H]
@@ -1362,8 +1370,6 @@ configuration option for the app, It will also be responsible for launching scen
 	\item Models and scene assets that can be configured will be written to a QtConfigFormatFile which will be parsed by Qt to get icons, sizes, and names of the CUnityObject class models that can be configured. 
 	\item The settings will be stored as QSettings objects from Qt which will store them as a .ini file which is supported by unity and will allow the two applications to synchronize options by parsing the .ini files on load. 
 	\item Unity unity assets will be purchased in the asset store or designed in google sketch up or blender. 
-	
-	\paragraph{Shared Memory Reduction Kernel}
 \begin{figure}[H]
 	\label{fig:sceneTemplate}
 \lstinputlisting {test.ini}
@@ -1382,6 +1388,32 @@ configuration option for the app, It will also be responsible for launching scen
 				\end{figure}
 				This diagram represents an option for our survey design for gathering user stress feedback. It will ask the user a set series of questions to determine their stress level.
 \pagebreak
+
+\subsubsection{Fear of Heights Activity Diagram}
+\begin{figure}[H]
+					\centerline{\includegraphics[scale = 0.6]{fohActivityDiag.png}}
+					\caption{Fear of Heights Activity Diagram}
+					%to ref fig number
+					%Figure \ref{fig:block2} shows our blockDiagram.
+					\label{fig:fohAct}
+				\end{figure}
+\subsubsection{Speech Anxiety Activity Diagram}
+\begin{figure}[H]
+					\centerline{\includegraphics[scale = 0.6]{spcActivityDiag.png}}
+					\caption{Speech Anxiety  Activity Diagram}
+					%to ref fig number
+					%Figure \ref{fig:block2} shows our blockDiagram.
+					\label{fig:spcAct}
+				\end{figure}
+\subsubsection{Stress Relief Activity Diagram}
+\begin{figure}[H]
+					\centerline{\includegraphics[scale = 0.8]{stressActivityDiag.png}}
+					\caption{Stress Relief Activity Diagram}
+					%to ref fig number
+					%Figure \ref{fig:block2} shows our blockDiagram.
+					\label{fig:stressAct}
+				\end{figure}
+				\pagebreak
 \subsection{Integration Setup}
 
 These are the hardware/ development enviroment setup instructions. 

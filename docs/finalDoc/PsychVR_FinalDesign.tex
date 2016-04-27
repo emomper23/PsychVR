@@ -20,6 +20,7 @@
 \usepackage{geometry}
 \usepackage{helvet}
 \usepackage{soul}
+\usepackage{url}
 \renewcommand{\familydefault}{\sfdefault}
 	\geometry{
 	%letterpaper,
@@ -1351,7 +1352,60 @@ configuration option for the app, It will also be responsible for launching scen
 				\end{figure}
 				This diagram represents an option for our survey design for gathering user stress feedback. It will ask the user a set series of questions to determine their stress level.
 \pagebreak
-		
+\subsection{Integration Setup}
+
+These are the hardware/ development enviroment setup instructions. 
+\begin{itemize}
+ \item Install Instructions:
+ \begin{itemize}
+ \item  Getting Binaries: Download from github
+  \item Install the Oculus Rift Home Drivers: Download the drivers from~\\ \url{https://www.oculus.com/en-us/setup/}
+  \item Install the Leap Motion Drivers: https://developer.leapmotion.com/get-started
+  \item Install the Kinect For Windows Drivers: ~\\\url{https://www.microsoft.com/en-us/download/details.aspx?id=44559}
+ \end{itemize}
+ \item Development Instructions:
+  \begin{itemize}
+   \item Getting our software: These instructions assume you have already installed the hardware system device drivers 
+listed in the Install section.
+\item Install Qt:
+Our Project uses Qt Creator 3.6.1 Based on Qt 5.6.0. Community (Opensource Version) 
+it can be installed from ~\\\url{https://www.qt.io/download-open-source/}
+For help with installation or more detailed instructions see
+http://doc.qt.io/qt-5/gettingstarted.html 
+\item Install Unity:
+Our Project uses Unity 5.3.4 
+it can be installed from 
+~\\\url{https://unity3d.com/unity/whats-new/unity-5.3.4}
+For help with installation or more detailed instructions see
+~\\\url{http://docs.unity3d.com/Manual/InstallingUnity.html}
+\item Oculus Rift SDK:
+https://developer.oculus.com/downloads/
+This download page includes many examples and tutorials
+\item Leap Motion SDK:
+https://developer.leapmotion.com/get-started
+For more details on Using Leap with Unity ~\\\url{https://developer.leapmotion.com/unity} 
+\item Kinect SDK:
+~\\\url{https://www.microsoft.com/en-us/download/details.aspx?id=44561}
+For more information on setup and developemnt  ~\\\url{https://developer.microsoft.com/en-us/windows/kinect}
+Cross Platform Support:
+
+  \end{itemize}
+  \item Cross Platform Development
+  As much as we would like to have full cross platform support for this app, As of right now 
+  Oculus Home is only supported on Windows if other OS support 
+  is added or anothe VR device is used development for building to other operating systems or
+  implementing other headsets should be simple.
+  \begin{itemize}
+  \item Qt is designed to be cross platfrom. 
+  \item Leap Motion is already cross platform unless the orion driver is needed
+  ~\\\url{https://developer.leapmotion.com/get-started}
+    \item OpenKinect is an Opensource project that supports C\#.
+  \url{https://openkinect.org/wiki/CSharp_Wrapper}
+  \item Unity Scenes Build cross platform, just download Binaries.\
+  \item Also Unity is cross platform as an experimental version.
+  \end{itemize}
+\end{itemize}
+\pagebreak
 \subsection{Test Plan}
 \subsubsection{Functional Tests}
 \begin{enumerate}

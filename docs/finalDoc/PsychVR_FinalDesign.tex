@@ -72,7 +72,7 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 		\item Microsoft Kinect
 	\end{itemize}
 	
-	\paragraph{ Specific areas of therapy we will be targeting:}
+	\paragraph{Specific areas of therapy we will be targeting:}
 	\begin{itemize}
 		\item Immersion Therapy for Fear of Heights
 		\item Immersion and Experience therapy for Social Anxiety and Fear of Public Speaking
@@ -942,14 +942,25 @@ For example, 12 studies tested the effects of virtual reality on stroke recovery
 
 \pagebreak
 \subsection{Options for Psychological Monitoring and Feedback Channels}
-This is perhaps the most difficult part of the project, providing a metric for each scene to convey psychological progress. Whether it is conquering a phobia or reducing anxiety and stress levels, this topic on its own constitutes an entire project. We have looked into various methods of measuring the success of each of our scenes and have run into difficulties with each method discussed so far.
+This is perhaps the most difficult part of the project, providing a metric for each scene to convey psychological progress. Whether it is conquering a phobia or reducing anxiety and stress levels, this topic on its own constitutes an entire project. We have looked into various methods of measuring the success of each of our scenes in order to provide users with useful feedback.
+
+\par~\\ 
+Our research has led us to multiple parameters which we can use to assess progress, most of which will be specific to a particular scene. Before we discuss those metrics, let's first take a look at how other studies have reached this goal.
+
+
 \subsubsection{How have other studies provided treatment feedback?}
-The majority of professional virtual reality treatment is conducted in the presence of a licensed psychologist who is able to assess the participant on the spot. In addition to this monitoring the participant is often given a questionnaire to fill out before and after treatment. Virtual Reality Medical Center (VRMC) uses this type of assessment to acquire treatment data and provide feedback to their patients. 
+The majority of professional virtual reality treatment is conducted in the presence of a licensed psychologist who is able to assess the participant on the spot. In addition to this monitoring the participant is often given a questionnaire to fill out before and after treatment. Virtual Reality Medical Center (VRMC) uses this type of assessment to acquire treatment data and provide feedback to their patients. %REF http://www.vrphobia.com/
+
 \subsubsection{Stress Analysis}
 Measuring stress is a difficult task. The most promising and simple way for a user at home to do this, we concluded, was the S Health service on Samsung smartphones. Samsung's S Health sensors can combine readings from multiple biological factors (heart rate, oxygen levels, and heartbeat consistency) to estimate a stress level. Furthermore, there is a public API available to obtain data from these sensors. This API includes an android application file that can extract recorded data from the S Health application and provides code examples for how to accomplish this. The caveat to this is Samsung has not made public their method of determining stress data nor can recorded stress values be accessed by the API. Currently, using S Health as a way to measure stress is not feasible as we would have to design stress detection from the ground up.
-\subsubsection{Scene Progress}
-\subsubsection{Time Spent in Stressful Simulation}
 \subsubsection{Stress Questionnaire}
+As a stand-in for a psychologist we will be issuing a stress questionnaire. Before the user launches any scene they will be given the option of responding to questions with the goal of assessing their current level of stress. Once a scene is completed they will again be presented with this questionnaire. The before and after data will be analyzed alongside other metrics for the specific scene. Over multiple sessions this data should provide insight to whether or not the treatment is providing any benefit.
+\subsubsection{Scene Progress}
+Another metric we devised to provide users feedback is scene progress. This is mostly specific to our fear of heights scene. Each time the user runs the simulation the height they have reached will be recorded. Progress would be determined if the user shows reduced stress in the questionnaire along with the same or greater height.
+\subsubsection{Time Spent in Stressful Simulation}
+Time spent in the scene will give insight to how uncomfortable the user is. This metric can be applied to both our fear of heights scene and speech anxiety scene. If a user spends more time at a high altitude than before with relatively similar questionnaire results then it is reasonable to say the user is becoming more comfortable with their stressful situation. As for the speech anxiety scene, the user would provide an amount of time they wish to present for and over multiple sessions work to increase that time.
+
+
 
 \pagebreak
 \subsection{Module 1 Fear of Heights}

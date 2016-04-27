@@ -138,21 +138,30 @@ Another focus of our project with virtual reality will be to give the user the m
 \section{Project Goals and Objectives}
 	Design an environment in Virtual Reality that can be customized and used to help a variety of psychological conditions, and further psychology research, that is accessible to the typical user so they may conduct their own treatment on their own time.
 	\begin{itemize}
-		\item Increase our understanding of psychology principals \& problems and how virtual reality can help certain conditions.
+		\item Increase our understanding of psychology principles \& problems and how virtual reality can help certain conditions.
 		\item Find a platform that we can develop on, that creates a high quality virtual reality experience, and is reasonably up to date with modern graphics. Currently our best candidate is the Unity Engine.
 		\item Integrate some level of user intractability in the created virtual environments. 
-		\item Procedural generation of environments with parameters that can be customized by the user. 
+		\item Procedural generation of environments with parameters that can be customized by the user.
 		\item Include pre-constructed environments similar to current treatment strategies in the VR Psychology industry.
+		\item Provide some sort of user stress analysis or user progress of treatment to the user, with analysis and resluts desplayed in the Qt app.
+		\item Integrate advanced user movement tracking using Leap Motion and Microsoft Kinect.
+		\item Look into finding some sort or peripherals that will provide similar functionality on Gear VR (Android) as this would expand our user base
+		\item Implement Module 1 Fear of Heights which will simulate being walking aroud looking off of tall buildings.
+		\item Implement Module 2 Speech Therapy which will simulate public speeking or various verbal social situations. 
+		\item Implement Module 3 Stress relief which will allow the user to explore a calm peaceful environment.
+		\item Test scenes with some users or Psychology patients.
+		
 	\end{itemize}
+	\pagebreak
 	\section{Broader Impacts}
 	%Broad implications and impact on society (impact on underrepresented? within STEM and or society as a whole? disabled? non-profit orgs? environment? diversity? increased participation in STEM or workforce? public engagement in STEM? improve national security? enhanced infrastructure? improved education?)
 	
 	%qualitative, avoid numbers, conceptual discussion specific to project. example descriptions "“lightweight, portable, programmable, low cost, flexible, high resolution, scalable, low power, accurate, mobile, peer-to-peer, autonomic”
 	
-	Our project would have an impact on the field of psychology as it relates to certain emotional disorders or struggles and the deployment of self-administered therapy for those disorders. It would not only be relevant to people diagnosed with a psychological condition, but also those seeking stress relief or a unique environment to immerse themselves in. By bringing treatment therapies to the end user in their own home and allowing them to perform therapy at their leisure we will have an impact on many people seeking these services who may not have the time to schedule appointments or those who simply won't try due to the stigma surrounding therapy.
-	
-	
-	
+	Our project would have an impact on the field of psychology as it relates to certain emotional disorders or struggles and the deployment of self-administered 
+	therapy for those disorders. It would not only be relevant to people diagnosed with a psychological condition, but also those seeking stress relief or a unique 
+	environment to immerse themselves in. By bringing treatment therapies to the end user in their own home and allowing them to perform therapy at their leisure we will 
+	have an impact on many people seeking these services who may not have the time to schedule appointments or those who simply won't try due to the stigma surrounding therapy.
 	\pagebreak
 %D. Detailed design reqs add more here...
 \section{Specifications and Requirements}
@@ -334,21 +343,51 @@ Another focus of our project with virtual reality will be to give the user the m
 	\subsection{Data Requirements}
 	\begin{enumerate}
 	\item Saving Scene configurations
-	\item Placing configured scenes With accurate locations
+	\begin{itemize}
+	  \item Description: Game Character models need to be designed or purchased. Autodesk Maya, Google Sketchup or blender should be used for designing additional models. 
+	  \item Dependency: Creating realistic visuals 
+	  \item Evaluation Method: Test app to ensure it performs well and represents a high quality environment.
+	\end{itemize}
 	\end{enumerate}
 
 	\subsection{Human Factors Requirements}
 	\begin{enumerate}
 	\item UI Simplicity
+	    \begin{itemize}
+	      \item Description: Qt tool and Unity scenes should have clean usable UI and scale correctly on many desktops.
+	      \item Dependency:  Application having good UI.
+	      \item Evaluation Method: Ensure application UI is usable and scales well.
+	    \end{itemize}
 	\item VR Sickness	 
+	    \begin{itemize}
+	      \item Description: Take Measures to minimize or prevent VR sickness, (high frame rate, low latency controls, time limits for sessions)
+	      \item Dependency: user health, well being.
+	      \item Evaluation Method: Test app on users get feedback.
+	    \end{itemize}
 	\item The models, textures, and graphics in the environment must be decent quality to help immerse the user.
+	    \begin{itemize}
+	      \item Description: Game Character models need to be designed or purchased. Autodesk Maya, Google Sketchup or blender should be used for designing additional models. 
+	      \item Dependency: Creating realistic visuals 
+	      \item Evaluation Method: Test app to ensure it performs well and represents a high quality environment.
+	    \end{itemize}
 	\end{enumerate}
 	\subsection{Documentation Requirements}
+
+
 	\begin{enumerate}
-	\item Clear Simple User Guides
-	\item Accessibility of Guides
+	  \item Clear Simple User Guides
+	  \begin{itemize}
+	    \item Description:Make sure the guides are easy to read.
+	    \item  Dependency:Guide Quality and font size/ paper format.
+	    \item Evaluation Method: Check user guides are readable.
+	   \end{itemize}
+	 \item Accessibility of Guides
+	  \begin{itemize}
+	    \item Description:Make sure the guides are included.
+	    \item  Dependency:Guide Quality and accessiblity.  
+	    \item Evaluation Method: Check user guides are accessible and to users (included with software).
+	   \end{itemize}
 	\end{enumerate}
-	\subsection{Quality Assurance Requirements}
 
 	
 	
@@ -662,7 +701,7 @@ Following is our research on the different possible VR devices and peripherals, 
 	%Figure \ref{fig:block1} shows our blockDiagram.
 	\label{fig:leapImg}
 \end{figure}
-	
+	%leap motion research
 	
 \subsubsection{Red Samurai Bluetooth Controller}
 	A cheap, \$8 bluetooth controller, that pairs very well with the Gear VR on Android, this would be allow the user to move around the scene as we would be unable to get the other Peripherals to work with the phone.
@@ -726,8 +765,52 @@ Following is our research on the different possible VR devices and peripherals, 
 	\label{fig:kimg}
 	\end{figure}
 	For our project we will use the Kincet for user body and movement tracking. The kinect version 1 and 2 (for the Xbox 360/ Xbox one) are both powerful devices that have many 
-	advanced Capabilities (see the beginnig of this subsection for more specific details). Both devices work with unity
+	advanced Capabilities (see the beginnig of this subsection for more specific details). Both devices work with Unity and the SDK and Documentation show many uses including gesture 
+	recognition, body tracking, head scanning, and user modeling.
 	\pagebreak	
+\subsubsection{Kinect Coordiante Mapping System}
+
+A Kinect streams out color, depth, and skeleton data one frame at a time. 
+\begin{figure}[H]
+	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{kinectCoord.png}
+	\caption{GPU Architecture Diagram}
+	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
+	\label{fig:kinectCoord}
+	\end{figure}
+\begin{itemize}
+\item Each frame, the color sensor captures an image of everything it sees. The number of pixels depends on the device.E ach pixel contains the rgb value of a paticular location.
+
+\item Each frame, the depth sensor captures a grayscale image of everything it sees. Each pixel contains the Cartesian distance, in millimeters, from the camera plane to the nearest 
+object at that particular (x, y) coordinate.
+
+\item The depth sensor has two depth ranges: the default range and the near range The default range is available in both the Kinect 1 and 2 the near range is available only in the Kinect 2.
+\begin{figure}[H] %https://msdn.microsoft.com/en-us/library/hh973078.aspx#Depth_Ranges
+	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{kinectRange.png}
+	\caption{GPU Architecture Diagram}
+	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
+	\label{fig:kinectRange}
+	\end{figure}
+\item Each frame, the depth image captured is processed by the Kinect runtime into skeleton data. Skeleton data contains 3D position data for human skeletons for up to two people who
+are visible in the depth sensor. The position of a skeleton and each of the skeleton joints (if active tracking is enabled) are stored as (x, y, z) coordinates.
+
+	%http://files.channel9.msdn.com/wlwimages/f1dda9cc6de74512b7c19f0101402403/image%5B11%5D-43.png
+	
+\item Floor Determination
+
+Each skeleton frame also contains a floor-clipping-plane vector, which contains the coefficients of an estimated floor-plane equation. It is used as a clipping plane for
+removing the background and segmenting players.
+The general plane equation is:
+\begin{equation}
+  Ax + By + Cz + D = 0 
+\end{equation}
+\centerline{ Where A,B,C,D are the coordiantes on the floor clip points.}
+
+The equation is normalized so that the physical interpretation of D is the height of the camera from the floor, if the floor is not detectable 
+the plane is the zero vector.
+
+\end{itemize}
+\pagebreak
+
 
 	
 \subsubsection{Oculus Rift DK2+ Camera}

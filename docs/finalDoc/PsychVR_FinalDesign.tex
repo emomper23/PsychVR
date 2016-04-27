@@ -145,7 +145,7 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 		\item Integrate advanced user movement tracking using Leap Motion and Microsoft Kinect.
 		\item Look into finding some sort or peripherals that will provide similar functionality on Gear VR (Android) as this would expand our user base
 		\item Implement Module 1 Fear of Heights which will simulate being walking aroud looking off of tall buildings.
-		\item Implement Module 2 Speech Therapy which will simulate public speeking or various verbal social situations. 
+		\item Implement Module 2 Speech Therapy which will simulate public speaking or various verbal social situations. 
 		\item Implement Module 3 Stress relief which will allow the user to explore a calm peaceful environment.
 		\item Test scenes with some users or Psychology patients.
 		
@@ -158,8 +158,7 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 	
 	Our project would have an impact on the field of psychology as it relates to certain emotional disorders or struggles and the deployment of self-administered 
 	therapy for those disorders. It would not only be relevant to people diagnosed with a psychological condition, but also those seeking stress relief or a unique 
-	environment to immerse themselves in. By bringing treatment therapies to the end user in their own home and allowing them to perform therapy at their leisure we will 
-	have an impact on many people seeking these services who may not have the time to schedule appointments or those who simply won't try due to the stigma surrounding therapy.
+	environment to immerse themselves in. By bringing treatment therapies to the end user in their own home and allowing them to perform therapy at their leisure we will have an impact on many people seeking these services. Many of these people may not have the time to schedule appointments, money to afford the treatment, or simply won't try due to the stigma surrounding therapy.
 	\pagebreak
 %D. Detailed design reqs add more here...
 \section{Specifications and Requirements}
@@ -174,8 +173,8 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 		\item Psychological Treatment
 		\begin{itemize}
 		\item Description: The scenes should be useful for some sort of psychological testing or treatment.
-		\item Dependency:  Psychology professors or UCF staff should be consulted for approval and input.
-		\item Evaluation:  Approval from professors. 
+		\item Dependency:  Psychology professors, UCF staff, and licensed psychologists should be consulted for approval and input.
+		\item Evaluation:  Approval from professors and licensed psychologists. 
 		\end{itemize}
 		\item Configurable Environments
 		\begin{itemize} 
@@ -290,11 +289,11 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 			\begin{itemize}
 				\item Description: Quality and frame rate can vary but must be at least 30fps.
 				\item Dependency: Minimum supported GPU, CPU, RAM, OS Specs \textbf{(See section \ref{section:headset})}
-				\item Evaluation Method: Test app on Real Hardware (VR Headset, with Controls)
+				\item Evaluation Method: Test app on real hardware (VR Headset, with Controls)
 			\end{itemize}
 			\item Low Latency Controls
 			\begin{itemize}
-				\item Description: Minimum system requirements to Peripherial input processing
+				\item Description: Minimum system requirements for peripheral controls and input processing.
 				\item Dependency: Minimum supported GPU, CPU, RAM, OS Specs \textbf{(See section \ref{section:peripheral})}
 				\item Evaluation Method: Test app on Real Hardware (VR Headset, with Controls)
 			\end{itemize}
@@ -325,28 +324,41 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 	\begin{enumerate}
 	\item Software tools
 	\begin{itemize}
-	\item Description: The tools that will be used for development of the Desktop and Android app  include the Unity Engine development platform, an Android phone (Samsung S6 Edge) and emulator for running/ testing the Unity App,
+	\item Description: The tools that will be used for development of the Desktop and Android app  include the Unity Engine development platform, an Android phone (Samsung S6 Edge) and emulator for running/ testing the Unity app,
 	  along with the Qt Tool kit for the configuration tool.
 	\item  Dependency: Necessary tools for development are free, and easy to use. 
 	\item Evaluation Method: Make sure all team members are able to use and access development tools/
 	  \end{itemize}
 	\item Media Assets
 	\begin{itemize}
-	  \item Description: Game Character models need to be designed or purchased. Autodesk Maya, Google Sketchup or blender should be used for designing additional models. 
+	  \item Description: Game Character models need to be designed or purchased. Autodesk Maya, Google Sketchup, and blender will be used for designing additional models. 
 	  \item Dependency: Creating realistic visuals 
-	  \item Evaluation Method: Test app to ensure it performs well and represents a high quality environment.
+	  \item Evaluation Method: Test app to ensure it performs well and represents a high quality, immersive, environment.
 	\end{itemize}
 	\end{enumerate}
 
 	\subsection{Data Requirements}
 	\begin{enumerate}
-	\item Saving Scene configurations
+	\item Providing User Progress Feedback for Fear of Heights Scene
 	\begin{itemize}
-	  \item Description: Game Character models need to be designed or purchased. Autodesk Maya, Google Sketchup or blender should be used for designing additional models. 
-	  \item Dependency: Creating realistic visuals 
-	  \item Evaluation Method: Test app to ensure it performs well and represents a high quality environment.
+	  \item Description: There needs to be a metric by which users can measure psychological progress.
+	  \item Dependency: Optional stress sensors and time spent at certain heights.
+	  \item Evaluation Method: Compare before and after stress levels and compare times across sessions of treatment.
 	\end{itemize}
+	\item Providing User Progress Feedback for Speech Anxiety Scene
+	\begin{itemize}
+		\item Description: There needs to be a metric by which users can measure psychological progress.
+		\item Dependency: Optional stress sensors and head tracking data.
+		\item Evaluation Method: Compare before and after stress levels and analyze where the user spent their time looking while delivering their speech.
+	\end{itemize}
+	\item Providing User Progress Feedback for Calming Environment Scene
+	\begin{itemize}
+		\item Description: There needs to be a metric by which users can measure psychological progress.
+		\item Dependency: Optional stress sensors and %NEEDS WORK
+		\item Evaluation Method: Compare before and after stress levels and 
+	\end{itemize}	
 	\end{enumerate}
+	
 
 	\subsection{Human Factors Requirements}
 	\begin{enumerate}
@@ -382,7 +394,7 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 	 \item Accessibility of Guides
 	  \begin{itemize}
 	    \item Description:Make sure the guides are included.
-	    \item  Dependency:Guide Quality and accessiblity.  
+	    \item  Dependency:Guide Quality and accessibility.  
 	    \item Evaluation Method: Check user guides are accessible and to users (included with software).
 	   \end{itemize}
 	\end{enumerate}

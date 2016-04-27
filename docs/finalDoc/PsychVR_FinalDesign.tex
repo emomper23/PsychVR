@@ -158,7 +158,7 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 	It will also have an obvious impact on people seeking a way to deal with the psychological issues we focus on.  People who struggle with anxiety issues, fear of heights, or public speaking issues will be able to simply benefit from use of our platform.  This will include not just the normal people who would benefit from such a treatment, but also people who may not have the time to schedule appointments, money to afford the treatment, or simply wouldn't due to the stigma surrounding therapy.  However, beyond this it will have an impact on anyone else interested in the field of VR for psych help
 	\par ~\\
 	Our project is not just a few expiriments in the realm of VR therapy, it is also a platform for users to create new therapy environments.  This means that anyone interested in our field can use our platform as a stepping stone into the field of VR Therapy.  Hopefully, we will be able to inspire new research and new projects along the lines of our own by making it open ended.
-	\par ~\\ 
+	\par 
 	
 	Other potential impacts of our project include:
 	\begin{itemize}
@@ -350,7 +350,7 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 	\begin{itemize}
 	  \item Description: There needs to be a metric by which users can measure psychological progress.
 	  \item Dependency: Optional stress sensors and time spent at certain heights.
-	  \item Evaluation Method: Compare before and after stress levels and compare times across sessions of treatment.
+	  \item Evaluation Method: Compare before and after stress and compare times across sessions of treatment.
 	\end{itemize}
 	\item Providing User Progress Feedback for Speech Anxiety Scene
 	\begin{itemize}
@@ -741,7 +741,7 @@ Following is our research on the different possible VR devices and peripherals, 
 \end{itemize}
 \begin{figure}[H]
 	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{kinect1.jpg}
-	\caption{Kincet 1 Camera}
+	\caption{Kinect 1 Camera}
 	%to ref fig number
 	%Figure \ref{fig:block1} shows our blockDiagram.
 	\label{fig:k1Cam}
@@ -764,7 +764,7 @@ Following is our research on the different possible VR devices and peripherals, 
 \end{itemize}
 \begin{figure}[H]
 	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{kinect2.jpg}
-	\caption{Kincet 2 Camera}
+	\caption{Kinect 2 Camera}
 	%to ref fig number
 	%Figure \ref{fig:block1} shows our blockDiagram.
 	\label{fig:k2Cam}
@@ -775,31 +775,33 @@ Following is our research on the different possible VR devices and peripherals, 
 \textbf{(Figure \ref{fig:kimg})} shows the increased fidelity and quality of the captured image on the kinect 2.
 \begin{figure}[H]
 	\centerline{\includegraphics[scale=0.4]{kinectImg.jpg}}
-	\caption{Kincet 2 Camera}
+	\caption{Kinect 2 Camera}
 	%to ref fig number
 	%Figure \ref{fig:block1} shows our blockDiagram.
 	\label{fig:kimg}
 	\end{figure}
-	For our project we will use the Kincet for user body and movement tracking. The kinect version 1 and 2 (for the Xbox 360/ Xbox one) are both powerful devices that have many 
+	For our project we will use the Kinect for user body and movement tracking. The kinect version 1 and 2 (for the Xbox 360/ Xbox one) are both powerful devices that have many 
 	advanced Capabilities (see the beginnig of this subsection for more specific details). Both devices work with Unity and the SDK and Documentation show many uses including gesture 
 	recognition, body tracking, head scanning, and user modeling.
 	\pagebreak	
 \subsubsection{Kinect Coordiante Mapping System}
-
-A Kinect streams out color, depth, and skeleton data one frame at a time. 
+The follow information and figures are from the Microsoft Kinect SDK Documentation \cite{msdnKinect}
+\paragraph{Data Capture}
+\begin{itemize}
+\item A Kinect streams out color, depth, and skeleton data one frame at a time. 
 \begin{figure}[H]
 	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{kinectCoord.png}
 	\caption{GPU Architecture Diagram}
 	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
 	\label{fig:kinectCoord}
 	\end{figure}
-\begin{itemize}
+
 \item Each frame, the color sensor captures an image of everything it sees. The number of pixels depends on the device.E ach pixel contains the rgb value of a paticular location.
 
 \item Each frame, the depth sensor captures a grayscale image of everything it sees. Each pixel contains the Cartesian distance, in millimeters, from the camera plane to the nearest 
 object at that particular (x, y) coordinate.
 
-\item The depth sensor has two depth ranges: the default range and the near range The default range is available in both the Kinect 1 and 2 the near range is available only in the Kinect 2.
+\item The depth sensor has two depth ranges: the default range and the near range The default range is available in the Kinect 1 and 2 the near range is available only in the Kinect 2.
 \begin{figure}[H] %https://msdn.microsoft.com/en-us/library/hh973078.aspx#Depth_Ranges
 	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{kinectRange.png}
 	\caption{GPU Architecture Diagram}
@@ -810,22 +812,33 @@ object at that particular (x, y) coordinate.
 are visible in the depth sensor. The position of a skeleton and each of the skeleton joints (if active tracking is enabled) are stored as (x, y, z) coordinates.
 
 	%http://files.channel9.msdn.com/wlwimages/f1dda9cc6de74512b7c19f0101402403/image%5B11%5D-43.png
+\end{itemize}
 	
-\item Floor Determination
-
-Each skeleton frame also contains a floor-clipping-plane vector, which contains the coefficients of an estimated floor-plane equation. It is used as a clipping plane for
+\paragraph{Floor Determination}
+\begin{itemize}
+ 
+\item Each skeleton frame also contains a floor-clipping-plane vector, which contains the coefficients of an estimated floor-plane equation. It is used as a clipping plane for
 removing the background and segmenting players.
-The general plane equation is:
+\item \textbf{The general plane equation is:}
 \begin{equation}
   Ax + By + Cz + D = 0 
 \end{equation}
-\centerline{ Where A,B,C,D are the coordiantes on the floor clip points.}
-
-The equation is normalized so that the physical interpretation of D is the height of the camera from the floor, if the floor is not detectable 
+ \textit{Where A,B,C,D are the coordiantes of the floor clip points.}~\\
+The plane equation is normalized so that the physical interpretation of D is the height of the camera from the floor, if the floor is not detectable 
 the plane is the zero vector.
 
 \end{itemize}
+\paragraph{User Interaction Area} 
+The interaction space is the area in front of the infrared and color sensors. The Kinect is often placed at the level of a user's head.
+To increase the possible interaction space, the Kinect can tilt +27 and -27 degrees, which greatly increases the size of the interaction area. \textbf{(see figure \ref{fig:kinectFov})}
+\begin{figure}[H] %https://msdn.microsoft.com/en-us/library/hh973078.aspx#Depth_Ranges
+	\centerline {\includegraphics[scale = 0.75]{kinectFov.png}}
+	\caption{Kinect FOV Digram}
+	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
+	\label{fig:kinectFov}
+	\end{figure}
 \pagebreak
+
 
 
 	
@@ -891,7 +904,7 @@ Any cited DSM excepts following include this statement as a disclaimer. \cite{ds
 \end{itemize}
 \par~\\
 To summarize, while the DSM is important and helpful, it is by no means complete.  We will be using it to get a better basic understanding but it is not perfect.  Our platform will contain a similar disclaimer.
-\par~\\
+\par
 \subsubsection{DSM Criteria for Specific Phobias}
 \paragraph{DSM IV}~\\
 (cautionary statement) 
@@ -919,7 +932,7 @@ Agoraphobia Without History of Panic Disorder. \cite{dsmPhobia}
 \item Situational Type (e.g., airplanes, elevators, enclosed places) 
 \item Other Type (e.g., phobic avoidance of situations that may lead to choking, vomiting, or contracting an illness; in children, avoidance of loud sounds or costumed characters)
 \end{itemize}
-\par~\\
+\par
 
 Conclusion:
 
@@ -1484,6 +1497,8 @@ Rettner, Rachael. "Stroke Therapy Gets Boost from Virtual Reality." LiveScience.
 "Cautionary Statement for DSM IV - TR." Cautionary Statement for DSM IV. N.p., n.d. Web. 10 Apr. 2016.
 \bibitem {dsmPhobia}
 "Diagnostic Criteria for 300.29 Specific Phobia." Diagnostic Criteria for 300.29 Specific Phobia. N.p., n.d. Web. 10 Apr. 2016.
+\bibitem{msdnKinect}
+MSDN. "Coordinate Spaces." Coordinate Spaces. Microsoft, n.d. Web. 27 Apr. 2016.
 \end{thebibliography}
 
 %7. Appendices

@@ -58,5 +58,9 @@ Usage Instructions:
 
     Unity Scene Usage:
 
-Development builing tips:
-To build the Qt project Open Qt creator and find the .pro file
+Cross Platform Support:
+
+    As much as we would like to have full cross platform support for this app, As of right now Oculus Home is only supported on Windows. To build to other devices 
+    to build the Qt project Open Qt creator and find the .pro file (this app should be fully cross platform incase the VR headset and being used is supported on other Operating systems.
+
+    Unity scenes can also be built for 

@@ -157,7 +157,7 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 	\par ~\\
 	It will also have an obvious impact on people seeking a way to deal with the psychological issues we focus on.  People who struggle with anxiety issues, fear of heights, or public speaking issues will be able to simply benefit from use of our platform.  This will include not just the normal people who would benefit from such a treatment, but also people who may not have the time to schedule appointments, money to afford the treatment, or simply wouldn't due to the stigma surrounding therapy.  However, beyond this it will have an impact on anyone else interested in the field of VR for psych help
 	\par ~\\
-	Our project is not just a few expiriments in the realm of VR therapy, it is also a platform for users to create new therapy environments.  This means that anyone interested in our field can use our platform as a stepping stone into the field of VR Therapy.  Hopefully, we will be able to inspire new research and new projects along the lines of our own by making it open ended.
+	Our project is not just a few experiments in the realm of VR therapy, it is also a platform for users to create new therapy environments.  This means that anyone interested in our field can use our platform as a stepping stone into the field of VR Therapy.  Hopefully, we will be able to inspire new research and new projects along the lines of our own by making it open ended.
 	\par 
 	
 	Other potential impacts of our project include:
@@ -823,7 +823,7 @@ removing the background and segmenting players.
 \begin{equation}
   Ax + By + Cz + D = 0 
 \end{equation}
- \textit{Where A,B,C,D are the coordiantes of the floor clip points.}~\\
+ \textit{Where A,B,C,D are the coordinates of the floor clip points.}~\\
 The plane equation is normalized so that the physical interpretation of D is the height of the camera from the floor, if the floor is not detectable 
 the plane is the zero vector.
 
@@ -1081,11 +1081,11 @@ can be modified to optimize for different algorithms depending on how they acces
 
 
 \subsubsection{Unity Support for Asynchronous Compute Shaders and Kenrels}
-\paragraph{Shading Languages used in Unity} ~\\
+\paragraph{Shading Languages used in Unity} 
 In Unity, shader programs are written in a variant of HLSL language (also called Cg but for most practical uses the two are the same). Unity recommneds developers have a good understanding 
 of OpencL Or CUDA, OpenGL, and other Graphics/ GPGPU parallel compute languages.  
 
-Internally, different shader compilers are used for shader program compilation:
+Internally, different shader compilers are used for shader program compilation:\cite{unityShaders}
 \begin{itemize}
   \item Windows and Microsoft platforms (DX9, DX11, DX12, XboxOne and Xbox 360 ) all use Microsoft's HLSL compiler.
   \item OpenGL Core (GL3) and OpenGL ES 3 use Microsoft’s HLSL followed by bytecode translation into GLSL, using a modified version of hlslcc.
@@ -1096,7 +1096,7 @@ Internally, different shader compilers are used for shader program compilation:
   \item Surface Shaders use Cg 2.2 and MojoShader for code generation analysis step.
 \end{itemize} %unity ref http://docs.unity3d.com/Manual/SL-ShadingLanguage.html
 \subsubsection{Unity Cross Platform Shader Support (Android)}
-In order to achieve shaders working on multiple different platforms one should consider these limitations:
+In order to achieve shaders working on multiple different platforms one should consider these limitations:\cite{unityXP}
 
 \begin{itemize}
 \item 
@@ -1128,7 +1128,7 @@ One of the common bottlenecks in GPGPU processing is buffer transfer to the GPU 
 	\end{figure}
 
 \paragraph{Guarantees and Restrictions} 
-For non-read/write enabled textures, the Texture Data is part of resS (Streaming Resource) and upload now happens on Render-Thread. Availability of Texture is guaranteed during call to AwakeFromLoad. (This only works for textures or buffers that are not used in any custom processing.)
+For non-read/write enabled textures, the Texture Data is part of resS (Streaming Resource) and upload now happens on Render-Thread. Availability of Texture is guaranteed during call to AwakeFromLoad. (This only works for textures or buffers that are not used in any custom processing.)\cite{unityAsynch}
 ~\\
 For other types of texture loading, such as read/write enabled textures, textures loaded directly with the LoadImage(byte[] data) function, or loading from the Resources folder, the Asynchronous buffer loading is not used - the older Synchronous method is used.
 These restrictions mean that we will have to schedule and synchronize the transfer of any custom textures or buffers to and from the GPU.
@@ -1154,7 +1154,6 @@ Unity supports the exposes the command buffer which is similar to the main rende
 Some advanced GPGPU related constructs useful for highly optimized compute 
 processing, need to be checked if they are included in Unity's implementation of Direct Compute,which 
 is similar to the HLSL code snippets listed below.
-%//From http://www.nvidia.com/content/GTC-2010/pdfs/2260_GTC2010.pdf
 \paragraph{Shared Memory Reduction Kernel}
 \begin{figure}[H]
 	\label{fig:reductionCode}
@@ -1162,7 +1161,7 @@ is similar to the HLSL code snippets listed below.
 \caption{Reduction Code}
 \end{figure}
 
-This kernel is a computeShader that is run on the GPU and allows for synchronization of shared memory across multiple compute units, this technique is useful for parallel reduction algorithms which include
+This kernel is a Compute Shader that is run on the GPU and allows for synchronization of shared memory across multiple compute units, this technique is useful for parallel reduction algorithms which include
 calculations such as min, max, mean, sum etc... anything that can be reduced to simpler worksets are are not iterative in nature. \textbf{(see figure \ref{fig:reductionImg})}
 
 \begin{figure}[H]
@@ -1454,8 +1453,8 @@ configuration option for the app, It will also be responsible for launching scen
 	\label{fig:pchart}
 	\end{figure}
 	Our schedule allow us to have some time over the summer to work on implementation of the project and further design of the scenes. The main architecture of our project is
-	prototying for the different modules and testing different VR platforms, sensors, and controls as we can acquire them. Some basic builing of modules and design has been done
-	this semester, but no prototypes developed so far have encompassed multiple requirements, they just acted as a proof of concept for the differnt technologies or ideas.
+	prototying for the different modules and testing different VR platforms, sensors, and controls as we can acquire them. Some basic building of modules and design has been done
+	this semester, but no prototypes developed so far have encompassed multiple requirements, they just acted as a proof of concept for the different technologies or ideas.
 	\pagebreak
 	\section{Milestones}
 	\subsection{Tech Milestones}
@@ -1499,7 +1498,14 @@ Rettner, Rachael. "Stroke Therapy Gets Boost from Virtual Reality." LiveScience.
 "Diagnostic Criteria for 300.29 Specific Phobia." Diagnostic Criteria for 300.29 Specific Phobia. N.p., n.d. Web. 10 Apr. 2016.
 \bibitem{msdnKinect}
 MSDN. "Coordinate Spaces." Coordinate Spaces. Microsoft, n.d. Web. 27 Apr. 2016.
+\bibitem{unityShaders}
+Unity. "Shading Language Used in Unity." Unity Documentation. N.p., n.d. Web. 27 Apr. 2016.
+\bibitem{unityXP}
+"Compute Shaders." Unity. N.p., n.d. Web. 27 Apr. 2016.
+\bibitem{unityAsynch}
+"Asynchronous Texture Upload." Unity. N.p., n.d. Web. 27 Apr. 2016.
 \end{thebibliography}
+
 
 %7. Appendices
 \section{Appendices}

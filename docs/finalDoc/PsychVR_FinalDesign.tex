@@ -977,7 +977,37 @@ For this scene the user will start at the base of a tall building. The user be a
 
 \subsubsection{Models and Resources}
 We will need a landscape, tower, and window cleaning platform model. The Unity Asset store has several options for cityscapes and tall buildings as well as a perfectly suited window cleaning platform.
-
+\par~\\ 
+As far as cityscapes go we are considering four options:
+\begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/38412
+	\centerline {\includegraphics[scale = 0.50]{cityAndTerracePack.png}}
+	\caption{City and Terrace Pack Unity Asset Store Entry}
+	\label{fig:cityAndTerracePack}
+\end{figure}
+\begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/36182
+	\centerline {\includegraphics[scale = 0.50]{modernCityPack.png}}
+	\caption{Modern City Pack Unity Asset Store Entry}
+	\label{fig:modernCityPack}
+\end{figure}
+\begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/57733
+	\centerline {\includegraphics[scale = 0.50]{modernCity.png}}
+	\caption{Modern City Unity Asset Store Entry}
+	\label{fig:modernCity}
+\end{figure}
+\begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/60832
+	\centerline {\includegraphics[scale = 0.50]{urbanCity.png}}
+	\caption{Urban City Unity Asset Store Entry}
+	\label{fig:urbanCity}
+\end{figure}
+Currently we plan on implementing the Urban City pack as our environment due to it's high quality and tall structures. As a stretch goal we may implement the ability for the user to switch between some of these landscapes to provide more variety to the environment.
+\par~\\
+For our elevator we will be using a window cleaning platform:
+\begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/59736
+	\centerline {\includegraphics[scale = 0.50]{elevator.png}}
+	\caption{Window Cleaning Machine Unity Asset Store Entry}
+	\label{fig:elevator}
+\end{figure}
+The user will be able to interact with controls on the platform via Leap Motion to scale the building up and down.
 \subsubsection{Interaction and User Inputs}
 Interaction with this scene will be use simple look and click mechanics. Looking will be controlled by head tracking on the Oculus Rift and clicking will be controlled with leap motion. While on the elevator platform the user will have access to a control panel to set the height of the platform between ground floor and the top of the building. The user will also be able to abort the scene at any time should they become too frightened. 
 
@@ -1523,7 +1553,7 @@ Current Budget: Approx. \$1000.
 	\item \$400-600 for Oculus DK2, we have acquired a DK1 from the psychology department but would like to use a device with a higher framerate, resolution, and other features to make the tests more immersive (See Section \ref{section:headset} for more details)
 	\item  \st{\$600 for development Engine, (Unity Professional) we would only need this if we go with custom compute shaders and find that we need to optimize or work directly with the Unity rendering pipleine.}
 	\item	\$400 for Unity Asset store models, environments, and animations.
-	\item  \$60 for a LeapMotion controller
+	\item  \$60 for a Leap Motion controller
 	\item  \$120 for a Kinect V2 sensor. 
 \end{itemize}
 
@@ -1552,7 +1582,7 @@ This is entirely self funded at the moment.  All of us have well-paying jobs in 
 			\item Finding funding or available UCF facilities
 			\item Obtaining Oculus Rift
 			\item Obtaining Gear VR
-			\item Obtaining LeapMotion
+			\item Obtaining Leap Motion
 			\item Getting virtual reality hardware to display world
 			\item Connecting user input to world
 		\end{itemize}

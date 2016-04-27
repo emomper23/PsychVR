@@ -20,9 +20,10 @@ Install Instructions:
 Development Instructions:
 
     Install Qt:
-    Our Project uses Qt Creator 3.6.1 Based on Qt 5.6.0. Community (Opensource Version) it can be installed from   https://www.qt.io/download-open-source/
+        Our Project uses Qt Creator 3.6.1 Based on Qt 5.6.0. Community (Opensource Version) 
+        it can be installed from   https://www.qt.io/download-open-source/
     
-    See http://doc.qt.io/qt-5/gettingstarted.html for help with installation or more detailed instructions. 
+        For help with installation or more detailed instructions see http://doc.qt.io/qt-5/gettingstarted.html 
 
     Install Unity:
 

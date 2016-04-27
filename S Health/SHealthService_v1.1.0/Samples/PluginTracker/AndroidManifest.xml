@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.samsung.android.app.plugintracker"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="21" />
+
+    <application
+        android:name="com.samsung.android.app.plugintracker.PluginTrackerProvider"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.samsung.android.app.plugintracker.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <!-- Registration Service to handle intent from SHealth by click action -->
+        <service
+            android:name="com.samsung.android.app.plugintracker.service.MyTrackerService"
+            android:exported="true" />
+        <!-- Registration PluginService with Tracker Information -->
+        <service
+            android:name="com.samsung.android.sdk.shealth.PluginService"
+            android:exported="true" >
+            <meta-data
+                android:name="tracker.test" android:value="@string/testtracker_manifest"/>
+        </service>
+    </application>
+</manifest>

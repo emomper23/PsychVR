@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PluginTracker</string>
+    <string name="tracker_test_display_name">Sample</string>
+    <string name="remove">REMOVE</string>
+</resources>

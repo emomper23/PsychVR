@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="testtracker_manifest">
+{
+    \"tracker\" : {
+        \"id\" : \"tracker.test\",
+        \"display-name\" : \"tracker_test_display_name\",
+        \"icon\" : \"tracker_test_icon_big\",
+        \"controller\" : \"com.samsung.android.app.plugintracker.MyTracker\"
+    }
+}        
+    </string>
+</resources>

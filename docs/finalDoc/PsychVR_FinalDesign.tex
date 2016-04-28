@@ -520,7 +520,7 @@ Sony would also make an announcment, unveiling the long rumored Project Morpheus
 \subsection{Market Future}
 \subsubsection{Statistics}
 
-Current predictions for the VR market are overall positive.  The next couple of pages [Fig 6-8] are a number of statistics and surveys showing predictions for the growth of the VR field over the next 4-5 years.  Each contains a description and source.  Following this section will be a conclusion, wrapping up both the research on recent VR companies and these statistics.
+Current predictions for the VR market are overall positive.  The next couple of pages [Fig 6-9] are a number of statistics and surveys showing predictions for the growth of the VR field over the next 4-5 years.  Each contains a description and source.  Following this section will be a conclusion, wrapping up both the research on recent VR companies and these statistics.
 
 \begin{figure}[H]
 	\centerline{\includegraphics[scale = 0.3]{statMon2.png}}
@@ -539,7 +539,7 @@ Current predictions for the VR market are overall positive.  The next couple of 
 \end{figure}
 
 \begin{figure}[H]
-	\centerline{\includegraphics[scale = 0.23]{statsUsers.png}}
+	\centerline{\includegraphics[scale = 0.3]{statsUsers.png}}
 	\caption{Prediction of the virtual reality user acceptance through 2018.  Obtained through Statistia.  Source: KZero survey \cite{vrUser}}
 	%to ref fig number
 	%Figure \ref{fig:block1} shows our blockDiagram.
@@ -547,21 +547,22 @@ Current predictions for the VR market are overall positive.  The next couple of 
 \end{figure}
 
 \begin{figure}[H]
-	\centerline{\includegraphics[scale = 0.23]{statPay.png}}
+	\centerline{\includegraphics[scale = 0.3]{statPay.png}}
 	\caption{Prediction of the paying virtual reality users through 2018.  Obtained through Statistia.  Source: KZero survey \cite{payUser}}
 	%to ref fig number
 	%Figure \ref{fig:block1} shows our blockDiagram.
 	\label{fig:moneyStats2}
 \end{figure}
-\subsubsection{Conclusion}
+\subsubsection{Market Conclusions}
 
 There are two main conclusions that we can come to from this data, and the first one is cautionary.  When we look at the different VR platforms, one common theme stands out, and that is they are generally marketed as video game peripherals.  Out of the 5 devices, three of them are focused on selling video games.  Because our project shares little market space with the video game market, we may have difficulties on those platforms.  This is one reason our project will be using the Samsung Gear VR, as it is the first mass market VR headset that isn't primarily marketed as a game platform.  However, our second conclusion is more optimistic: from the statistics we found, Virtual Reality isn't predicted to slow down any time soon.  This is great news for our project as we will be entering a rapidly growing and expanding market.
 
-\pagebreak
+
 \subsection{VR Headset Options and Technical Capabilities}
 \label{section:headset}
 
-Following is our research on the different possible VR devices and peripherals, with information on each one.   
+Following is our research on the various virtual reality devices and peripherals. Included are specifications, pricing, and availability information for each. We needed to understand the available hardware, ease to develop for, and accessibility before making a decision. The right headset would be on the lower end of the cost spectrum but still provide adequate immersion to the user. This is so our software can reach a wider audience and function as an effective therapeutic tool.
+\pagebreak   
 \subsubsection{Oculus Rift Consumer Version}
 \begin{itemize}
 	\item Resolution: 2160 x 1200
@@ -869,11 +870,12 @@ The follow information and figures are from the Microsoft Kinect SDK Documentati
 \paragraph{Data Capture}
 \begin{itemize}
 \item A Kinect streams out color, depth, and skeleton data one frame at a time. 
-\begin{figure}[H]
-	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{kinectCoord.png}
-	\caption{GPU Architecture Diagram}
-	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
-	\label{fig:kinectCoord}
+	
+	\begin{figure}[H]
+		\centerline{\includegraphics[scale=0.6]{kinectCoord.png}}
+		\caption{Kinect Coordinate and Depth Sensor Diagram}
+		%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
+		\label{fig:kinectCoord}
 	\end{figure}
 
 \item Each frame, the color sensor captures an image of everything it sees. The number of pixels depends on the device. Each pixel contains the RGB value of a particular location.
@@ -1096,7 +1098,7 @@ The majority of professional virtual reality treatment is conducted in the prese
 \subsubsection{Stress Analysis}
 After our status presentation it came to our attention we had no plan for providing users feedback of their progress so we began research on this topic. It turns out, measuring stress is a difficult task. 
 \par~\\
-The most promising and simple way for a user at home to do this, we concluded, was the S Health service on Samsung smartphones. Samsung's S Health sensors can combine readings from multiple biological factors (heart rate, oxygen levels, and heartbeat consistency) to estimate a stress level. Furthermore, there is a public API available to obtain data from these sensors. This API includes an android application file that can extract recorded data from the S Health application and provides code examples for how to accomplish this. 
+The most promising and simple way for a user at home to do this, we concluded, was the S Health [Fig 28] service on Samsung smartphones. Samsung's S Health sensors can combine readings from multiple biological factors (heart rate, oxygen levels, and heartbeat consistency) to estimate a stress level. Furthermore, there is a public API available to obtain data from these sensors. This API includes an android application [Fig 29] that can extract recorded data from the S Health application and provides code examples for how to accomplish this. 
 
 \begin{figure}[H]
 	\centering
@@ -1118,7 +1120,7 @@ The caveat to this is Samsung has not made public their method of determining st
 
 \par~\\
 \textbf{Update:}
-We were accepted by Samsung as an S Health Partner on Thursday, Apr 28, 2016 at 12:20 AM. We will be receiving a more functional version of their S Health SDK with Partner exclusive features. We need to review the newly provided documentation in order to determine if we want to further integrate S Health data into our scene analysis and metrics.
+We were accepted by Samsung as an S Health Partner [Fig 30] on Thursday, Apr 28, 2016 at 12:20 AM. We will be receiving a more functional version of their S Health SDK with Partner exclusive features. We need to review the newly provided documentation in order to determine if we want to further integrate S Health data into our scene analysis and metrics.
 \begin{figure}[H] %image from gmail
 	\centerline {\includegraphics[scale = 0.65]{sHealthPartner.png}}
 	\caption{S Health Partner Acceptance Email}
@@ -1165,7 +1167,7 @@ For this scene the user will start at the base of a tall building. The user be a
 \subsubsection{Models and Resources}
 We will need a landscape, tower, and window cleaning platform model. The Unity Asset store has several options for cityscapes and tall buildings as well as a perfectly suited window cleaning platform.
 \par~\\ 
-As far as cityscapes go we are considering four options:
+As far as cityscapes go we are considering four options [Fig 31-34]:
 \begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/38412
 	\centerline {\includegraphics[scale = 0.50]{cityAndTerracePack.png}}
 	\caption{City and Terrace Pack Unity Asset Store Entry}
@@ -1186,9 +1188,9 @@ As far as cityscapes go we are considering four options:
 	\caption{Urban City Unity Asset Store Entry}
 	\label{fig:urbanCity}
 \end{figure}
-Currently we plan on implementing the Urban City pack as our environment due to it's high quality and tall structures. As a stretch goal we may implement the ability for the user to switch between some of these landscapes to provide more variety to the environment.
+Currently we plan on implementing the Urban City pack [Fig 34] as our environment due to it's high quality and tall structures. As a stretch goal we may implement the ability for the user to switch between some of these landscapes to provide more variety to the environment.
 \par~\\
-For our elevator we will be using a window cleaning platform:
+For our elevator we will be using a window cleaning platform [Fig 35].
 \begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/59736
 	\centerline {\includegraphics[scale = 0.50]{elevator.png}}
 	\caption{Window Cleaning Machine Unity Asset Store Entry}
@@ -1922,7 +1924,7 @@ This is entirely self funded at the moment.  All of us have well-paying jobs in 
 \pagebreak
 %5. Project Summary and conclusions.
 \section{Project Summary and Conclusions}
-In conclusion, we hope that you understand the not just what our project is, but the goal behind it.  PsychVR's goal isn't to create something entirely new, but rather to bring something that already exists into the hands of everyone who can afford Virtual Reality technology.  Virtual Reality therapy is a well explored, well established field, but consumer level virtual reality hardware is not.  We hope to combine an established psychological practice with a new, exciting hardware and software market to create a project that can truly help people. 
+In conclusion, we hope that you understand the not just what our project is, but the goal behind it.  PsychVR's goal isn't to create something entirely new, but rather to bring something that already exists into the hands of everyone who can't afford professionally conducted virtul reality therapy.  Virtual reality therapy is a well explored, well established field, but consumer level virtual reality hardware is not.  We hope to combine an established psychological practice with a new, exciting hardware and software market to create a project that can truly help people. 
 \par ~\\
 We've done a large amount of research on both sides of our project, Virtual Reality and psychology, and how they intersect.  The history of commercial vr, while interesting, mainly points out to us how new the market truly is, as nothing like it existed until the Oculus.  However, the more recent history of VR has a large number of competing headsets and peripherals.  Based on our research and resources, we choose the Oculus Rift.  Additionally, we chose to work in unity as the Oculus is designed to be compatible with unity.  
 \par ~\\
@@ -1939,7 +1941,7 @@ Thank you for reading.
 \bibliographystyle{mla}
 \begin{thebibliography}{28}
 \bibitem{swordDam}
-Sutherland, Ivan E. "A Head-mounted Three Dimensional Display." Proceedings of the December 9-11, 1968, Fall Joint Computer Conference, Part I on - AFIPS '68 (Fall, Part I) (1968): n. pag. Web.
+Sutherland, Ivan E. "A Head-mounted Three Dimensional Display." Proceedings of the December 9-11, 1968, Fall Joint Computer Conference, Part I on - AFIPS '68 (Fall, Part I) (1968): n. page. Web.
 
 \bibitem{vergeVr}
 Robertson, Adi, and Michael Zelenko. "The Rise and Fall and Rise of Virtual Reality." The Verge. N.p., n.d. Web. 28 Apr. 2016.
@@ -2030,16 +2032,16 @@ Unity. "Shading Language Used in Unity." Unity Documentation. N.p., n.d. Web. 27
 %7. Appendices
 \section{Appendices}
 
-\section{Appendix A: Content Permissions}
+\subsubsection{Content Permissions}
 Most of the images are either public domain or Creative Commons license, but all all copyrighted material is used under terms of fair use.  Our project is not a commercial project and will not be sold, so we are claiming it under Section 107 of the United States Copyright Act:
 \begin{quotation}
 	``the fair use of a copyrighted work, including such use by reproduction in copies or phonorecords or by any other means specified by that section, for purposes such as criticism, comment, news reporting, teaching (including multiple copies for classroom use), scholarship, or research, is not an infringement of copyright.''
 \end{quotation}
 
-Ours will be used for scholarship or research.
+Ours will be used for scholarship and research.
 %B. Data-sheets (if necessary)
 %C. Software (if necessary)
 %D. Other
-\subsection{Extras}
+%\subsection{Extras}
 
 \end{document}

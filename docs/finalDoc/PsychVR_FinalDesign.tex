@@ -1205,6 +1205,23 @@ Configurations in module 1 are mostly a stretch goal if we have time after compl
 Users may optionally respond to a questionnaire before and after the scene. The use of the Samsung S Health app will be suggested but is also optional. For this the user would run the app on their smartphone and fill in our software with the feedback given to them from the S Health stress sensor. In addition to this the scene will track how high up the user went and how much time was spent at each level. All of these metrics will be combined and analyzed over multiple sessions to provide the user feedback on their efforts.%NEEDS WORK
 
 \pagebreak
+\begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/59736
+	\centerline {\includegraphics[scale = 0.13, angle = 180]{sbHeight.jpg}}
+	\caption{Storyboard for Acrophobia Module}
+	\label{fig:elevator}
+\end{figure}
+\begin{enumerate}
+	\item The user turns on the vr, and starts the acrophobia module
+	\item The user will be placed near a platform at the bottom of a very tall building
+	\item The platform can move up and down on the building
+	\item The user controls how the platform moves up and down with their controller
+	\item If the user in anyway becomes panicked, they can hit a panic button
+	\item This will remove them from the experience entirely, no questions asked.
+	\item When the user either decides they are finished, or reaches the top
+	\item They are asked to fill out a stress and emotion questionnaire
+	\item They are then shown a results screen, that is based on data acquired from sensors, from how high they went/time it took, and their questionnaires.
+\end{enumerate}
+\pagebreak
 \subsection{Module 2 Speech Anxiety Simulator}
 Speech Anxiety is the next issue we wish to treat with virtual reality therapy. As another popular target of VR therapy research, speech anxiety has several successful examples.
 
@@ -1256,6 +1273,22 @@ This scene will be our most configurable. Qt will allow the user to specify whic
 \subsubsection{User Progress Feedback}
 Users may optionally respond to a questionnaire before and after the scene. The use of the Samsung S Health app will be suggested but is also optional. For this the user would run the app on their smartphone and fill in our software with the feedback given to them from the S Health stress sensor. In addition to these optional metrics, throughout the scene the users posture, head, and where they are looking (ex: eye contact) will be tracked in order to provide feedback about their performance during the scene. All of these metrics will be combined and analyzed over multiple sessions to provide the user feedback on their efforts.
 
+\begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/59736
+	\centerline {\includegraphics[scale = 0.13, angle = 180]{sbPresent.jpg}}
+	\caption{Storyboard for Social Anxiety Module}
+	\label{fig:elevator}
+\end{figure}
+\begin{enumerate}
+	\item The user turns on the vr, and starts the acrophobia module
+	\item The user will be in a classroom, and be asked to give a presentation.
+	\item The user will use the control to move to the front of the class
+	\item The number of people, attitudes, and size of the classroom will be customizable through the QT app
+	\item Through measurements like the Samsung sensor, Kinect, and leap motion the user's actions while presenting will be measuring
+	\item The user will do their presentation in the virtual space
+	\item If the user in anyway becomes panicked, they can hit a panic button, and remove them from the experience
+	\item They are asked to fill out a stress and emotion questionnaire
+	\item They are then shown a results screen, that is based on data acquired from sensors and their questionnaires.
+\end{enumerate}
 \pagebreak
 \subsection{Module 3 Calm Environment} % SO HYPED!!!
 This module will feature a calming environment that will help patients with stress or anxiety relax in a calming peaceful environment. This environment will have random terrain which will have chunks that are procedurally generated while the user moves throughout the scene.  The art style/ graphic design for this project is inspired by indie games like Minecraft, Myst, or Proteus \textbf{(See Figure \ref{fig:proteus})}, except without puzzles or enemies. It will feature simple generated terrains that form a  peaceful landscape which the user can move throughout with various plants or natural features that decorate the scene.  Some configuration options for this scene include different color patterns or selecting what models are loaded or how the scene looks in general. 
@@ -1266,8 +1299,6 @@ This module will feature a calming environment that will help patients with stre
 	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
 	\label{fig:proteus}
 \end{figure}
-\subsubsection{Design Concerns}
-Our current plans are to include some premade plug-ins that generate terrains on the CPU with possibly some GPU acceleration, however we would like to try and generate our own terrain with Compute Shader provided in Unity.  Because the environment is abstract, it shouldn't require buying assets and should be easier to design.
 
 \subsubsection{Past Research}
 As before, here is some past research into the field of anxiety and VR.
@@ -1277,6 +1308,29 @@ As before, here is some past research into the field of anxiety and VR.
 	\item Another expiriment tried to teach cancer patients both relaxation and Tai Chi methods to see if these things were easier to do through VR, and what effects the VR would have on them.  It found that giving the user an area that they were in charge of could possibly help people who felt like they had no control over their lives. This is a positive thing we will try to recreate with our project.
 	%https://www.researchgate.net/profile/David_Becker10/publication/2659560_Using_A_Virtual_Environment_to_Teach_Cancer_Patients_T'ai_Chi_Relaxation_and_Self-Imagery/links/53ce75e80cf279d93530ac34.pdf
 \end{itemize}
+\pagebreak
+
+\begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/59736
+	\centerline {\includegraphics[scale = 0.13, angle = 180]{sbCalm.jpg}}
+	\caption{Storyboard for Calming Module}
+	\label{fig:elevator}
+\end{figure}
+\begin{enumerate}
+	\item The program generates a procedurally generated enviroment
+	\item The user can explore this enviroment, with quiet sounds and music sometimes being played.
+	\item The program will check the user's stress level, and use this to check if the user is calm
+	\item If the user is calm, the program will change the environment in small, subtle ways to reflect this, with a notification.
+\end{enumerate}
+\begin{enumerate}
+	\item If the user enters the secondary mode, it will provide an obvious notification of if the user is calm
+	\item If they are not calm, it will show them with the same obvious notification
+	\item The user's relaxation level will be checked by the same sensors as indicated above
+	\item A results page will be shown at the end with how well the user was able to remain calm.  This secondary mode is intended to help users learn to remain calm, not attempt to calm themselves down.
+\end{enumerate}
+
+
+\subsubsection{Design Concerns}
+Our current plans are to include some premade plug-ins that generate terrains on the CPU with possibly some GPU acceleration, however we would like to try and generate our own terrain with Compute Shader provided in Unity.  Because the environment is abstract, it shouldn't require buying assets and should be easier to design.
 
 \paragraph{Some factors that may limit our ability to do this include:}
 \begin{itemize}

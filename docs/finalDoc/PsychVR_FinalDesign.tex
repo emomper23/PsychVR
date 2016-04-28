@@ -1115,7 +1115,27 @@ In our implementation the user will be able to configure the environment in whic
 Presentation will begin with the user sitting down. Momentarily they will be called upon to present and must stand and walk to the front of the room. If they have a power point preloaded through Qt they will walk to the front desk and plug it into the equipment which will display it onto the screen behind them as in an actual classroom. Following this the user will deliver their speech to the configured audience. Once finished, the user will sit back in their seat and the scene will end.
 
 \subsubsection{Models and Resources}
-For the speech anxiety module we need a room for the user to practice public speaking in and objects to go in it. We will create a model of UCF's Harrison Engineering Corp. building room 108 for our first configurable room and if there is enough time we will design more options for the setting such as a lecture hall or conference room. Our classroom model will include the presentation equipment (projector, drop down screen, etc.) so that the user may practice the speech as close as possible to how it would actually be delivered. For the audience, human models from the Unity Asset store will be used for members and will have various animations that can be set according to how the user has configured the environment in Qt.
+For the speech anxiety module we need a room for the user to practice public speaking in, relevant objects to go in it, and human models to listen to the speaker. The majority of models used for this scene will be designed in Google SketchUp while the human models will be created in MakeHuman. 
+
+\par~\\
+We will create a model of UCF's Harrison Engineering Corp. building room 108 for our first configurable room and if there is enough time we will design more options for the practice environment such as a lecture hall or conference room. Our classroom model will include the presentation equipment (projector, drop down screen, etc.) so that the user may practice the speech as close as possible to how it would actually be delivered. The room will be designed in Google SketchUp and objects such as chairs and presentation equipment will be sourced from the Google SketchUp 3D Warehouse.
+
+\par~\\
+For audience members we originally planned to use human models from the Unity Asset store but there were few models that fit our purpose and most were very expensive relative to how we will be using them. Instead of sourcing our human models from the asset store we will be designing them with a free tool called MakeHuman. 
+\begin{figure}[H] %screenshot taken by Peter Lomason
+	\centerline {\includegraphics[scale = 0.50]{makeHuman.png}}
+	\caption{MakeHuman Model Editor}
+	\label{fig:makeHuman}
+\end{figure}
+\par~\\
+This tool allows us to design a human model to our liking with free features, clothes, and more found on the community website: http://www.makehumancommunity.org/.
+\par~\\
+\begin{figure}[H] %screenshot taken by Peter Lomason
+	\centerline {\includegraphics[scale = 0.50]{unityMecanim.png}}
+	\caption{Bone Model in Unity Mecanim}
+	\label{fig:unityMecanim}
+\end{figure}
+Models created in MakeHuman are fully rigged and can be exported as fbx files. This format is compatible with Unity's Mecanim which will be used to animate our models so they can perform various actions. These actions can be set according to how the user has configured the environment in our Qt launcher.
 
 \subsubsection{Interaction and User Inputs}
 The users posture, head, and 
@@ -1124,6 +1144,7 @@ The users posture, head, and
 
 \subsubsection{User Progress Feedback}
 Track where user looks, track posture, kinect?
+
 \pagebreak
 \subsection{Module 3 Calm Environment} % SO HYPED!!!
 This module will feature a calming environment that will help patients with stress or anxiety relax in a calming peaceful environment. This environment will have random terrain which will have chunks 

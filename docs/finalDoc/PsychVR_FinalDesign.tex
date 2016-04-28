@@ -724,6 +724,73 @@ Following is our research on the different possible VR devices and peripherals, 
 \subsubsection{Red Samurai Bluetooth Controller}
 	A cheap, \$8 bluetooth controller, that pairs very well with the Gear VR on Android, this would be allow the user to move around the scene as we would be unable to get the other Peripherals to work with the phone.
 \pagebreak
+\subsubsection{Oculus Head Tracking Research}
+All sensing is performed by a single circuit board (figure \ref{fig:magnetsHowDoTheyWork}) 
+\begin{itemize}
+\item The main components are:
+\begin{itemize}
+ \item STMicroelectronics 32F103C8 ARM Cortex-M3 microcontroller
+ \item Invensense MPU-6000 (gyroscope + accelerometer)
+ \item Honeywell HMC5983 magnetometer.
+\end{itemize}
+\begin{figure}[H]
+	\centerline{\includegraphics[]{riftMagnets.png}}
+	\caption{Rift Head tracking sensor}
+	%to ref fig number
+	%Figure \ref{fig:block1} shows our blockDiagram.
+	\label{fig:magnetsHowDoTheyWork}
+	\end{figure}
+	
+
+\item The microcontroller interfaces between the sensor chips
+and the PC over USB. The gyroscope, accelerometer, and magnetometer provide three-axis measurements.
+
+\item Sensor observations are reported at a rate of 1000Hz.
+\item The following measurements are calculated from these sensors.
+  \begin{enumerate}
+  \item Angular velocity (rad/sec)
+  \item Linear acceleration (m/s2)
+  \item Magnetic field strength (B Gauss)
+  \end{enumerate}
+\end{itemize}
+% http://msl.cs.uiuc.edu/~lavalle/papers/LavYerKatAnt14.pdf
+These measurements are used to calcaulate the following:
+By Euler’s Rotation Theorem, any 3D orientation can
+be produced by a single rotation about one particular axis
+through the origin. This representation maps to the following Coordiante system:
+ \begin{figure}[H]
+	\centerline{\includegraphics[scale=0.7]{riftHead.png}}
+	\caption{Rift Head Coordinate System}
+	%to ref fig number
+	%Figure \ref{fig:block1} shows our blockDiagram.
+	\label{fig:magnets2}
+	\end{figure}
+ \pagebreak
+\subsubsection{LeapMotion Hand Tracking}
+\begin{itemize}
+ \item The wide angle lenses, give the Leap a maximum detection area of eight cubic feet, the intersection of the binocular cameras’ fields of view. 
+ \item The software recognized viewing range is 2 ft (60 cm) for the standard drivers and 2.6 feet (80 cm) with the Orion Beta Driver. 
+ \item The LED light that is used in detection is the limiting factor as the brightness intensity is limited by the amount of power delivered to the unit
+ over USB.
+ \item The 3 USB lights emit at a wavelength of 850 nanometers, outside the visible light spectrum.
+\end{itemize}
+
+The LeapMotion SDK offers the folling heuristics a for assisting with the tracking problem.
+\begin{itemize}
+ \item Tracking consistency:  The API offers a diagnostic visualizer, and a tracking confidence level.
+ \item Ease of detection: This is related to how well defined certain motions are. 
+ \item Occlusion: Accounting for blockage of the tracked hand by other objects, the Orion beta driver has made some improvements with this issue.
+ \item All of these features show the advanced design of the sensor, and many of the innovations LeapMotion has brought to the field of virtual reality. 
+\end{itemize}
+
+This graph shows the advanced tracking capabilites of the system as a possible state transition of user movement inputs.
+ \begin{figure}[H]
+\centerline{\includegraphics[scale=0.4]{leapGraph.png}}
+	\caption{LeapMotion gesture graph}
+	%to ref fig number
+	%Figure \ref{fig:block1} shows our blockDiagram.
+	\label{fig:handGraph}
+	\end{figure}
 \subsection{Movement Tracking Cameras}
 \subsubsection{Microsoft Kinect 1}
 \begin{itemize}

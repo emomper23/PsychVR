@@ -1205,13 +1205,13 @@ Interaction with this scene will be use simple look and click mechanics. Looking
 Configurations in module 1 are mostly a stretch goal if we have time after completing our other scenes. Since our configuration here would be additional environments and buildings, the assets for this can become expensive quickly.
 
 \subsubsection{User Progress Feedback}
-Users may optionally respond to a questionnaire before and after the scene. The use of the Samsung S Health app will be suggested but is also optional. For this the user would run the app on their smartphone and fill in our software with the feedback given to them from the S Health stress sensor. In addition to this the scene will track how high up the user went and how much time was spent at each level. All of these metrics will be combined and analyzed over multiple sessions to provide the user feedback on their efforts.%NEEDS WORK
+Users may optionally respond to a questionnaire before and after the scene. The use of the Samsung S Health app will be suggested but is also optional. For this the user would run the app on their smartphone and fill in our software with the feedback given to them from the S Health stress sensor. In addition to this the scene will track how high up the user went and how much time was spent at each level. All of these metrics will be combined and analyzed over multiple sessions to provide the user feedback on their efforts.%NEEDS WORK spreadsheet?
 
 \pagebreak
 \begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/59736
 	\centerline {\includegraphics[scale = 0.13, angle = 180]{sbHeight.jpg}}
 	\caption{Storyboard for Acrophobia Module}
-	\label{fig:elevator}
+	\label{fig:sbHeight}
 \end{figure}
 \begin{enumerate}
 	\item The user turns on the vr, and starts the acrophobia module
@@ -1254,7 +1254,7 @@ We will create a model of UCF's Harrison Engineering Corp. building room 108 for
 For audience members we originally planned to use human models from the Unity Asset store but there were few models that fit our purpose and most were very expensive relative to how we will be using them. Instead of sourcing our human models from the asset store we will be designing them with a free tool called MakeHuman. 
 \begin{figure}[H] %screenshot taken by Peter Lomason
 	\centerline {\includegraphics[scale = 0.28]{makeHuman.png}}
-	\caption{MakeHuman Model Editor}
+	\caption{MakeHuman Model Editor, screenshot taken by Peter Lomason}
 	\label{fig:makeHuman}
 \end{figure}
 \par~\\
@@ -1262,7 +1262,7 @@ This tool allows us to design a human model to our liking with free features, cl
 \par~\\
 \begin{figure}[H] %screenshot taken by Peter Lomason
 	\centerline {\includegraphics[scale = 0.28]{unityMecanim.png}}
-	\caption{Bone Model in Unity Mecanim}
+	\caption{Bone Model in Unity Mecanim, screenshot taken by Peter Lomason}
 	\label{fig:unityMecanim}
 \end{figure}
 Models created in MakeHuman are fully rigged and can be exported as fbx files. This format is compatible with Unity's Mecanim which will be used to animate our models so they can perform various actions. These actions can be set according to how the user has configured the environment in our Qt launcher.
@@ -1274,12 +1274,12 @@ The user begins the scene by moving from their desk to the front of the room. Fr
 This scene will be our most configurable. Qt will allow the user to specify which chairs have a model in them and what behavior that model will perform. A user will also be able to include a Powerpoint during configuration so they may have a presentation aid during their practice. As a stretch goal we hope to include more than just a classroom setting and allow users to pick from a few environments.
 
 \subsubsection{User Progress Feedback}
-Users may optionally respond to a questionnaire before and after the scene. The use of the Samsung S Health app will be suggested but is also optional. For this the user would run the app on their smartphone and fill in our software with the feedback given to them from the S Health stress sensor. In addition to these optional metrics, throughout the scene the users posture, head, and where they are looking (ex: eye contact) will be tracked in order to provide feedback about their performance during the scene. All of these metrics will be combined and analyzed over multiple sessions to provide the user feedback on their efforts.
+Users may optionally respond to a questionnaire before and after the scene. The use of the Samsung S Health app will be suggested but is also optional. For this the user would run the app on their smartphone and fill in our software with the feedback given to them from the S Health stress sensor. In addition to these optional metrics, throughout the scene the users posture, head, and where they are looking (ex: eye contact) will be tracked in order to provide feedback about their performance during the scene. All of these metrics will be combined and analyzed over multiple sessions to provide the user feedback on their efforts. %NEEDS WORK spreadsheet?
 
 \begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/59736
 	\centerline {\includegraphics[scale = 0.12, angle = 180]{sbPresent.jpg}}
 	\caption{Storyboard for Social Anxiety Module}
-	\label{fig:elevator}
+	\label{fig:sbPresent}
 \end{figure}
 \begin{enumerate}
 	\item The user turns on the vr, and starts the acrophobia module
@@ -1306,9 +1306,9 @@ This module will feature a calming environment that will help patients with stre
 \subsubsection{Past Research}
 As before, here is some past research into the field of anxiety and VR.
 \begin{itemize}
-	\item A study done in 2010 concluded that creating an enviroment to help subjects with GAD (Generalized Anxiety Disorder) was helpful in dealing with their GAD.  However, it also discovered that the project could be made even more effective if biofeedback from the user is incorporated into the enviroment.  This is something we will have to consider, although it may be too complex and too resource heavy for our project. \cite{calmOne}
+	\item A study done in 2010 concluded that creating an environment to help subjects with GAD (Generalized Anxiety Disorder) was helpful in dealing with their GAD.  However, it also discovered that the project could be made even more effective if biofeedback from the user is incorporated into the environment.  This is something we will have to consider, although it may be too complex and too resource heavy for our project. \cite{calmOne}
 	%https://www.researchgate.net/profile/Claudia_Repetto2/publication/44668615_Virtual_reality_in_the_treatment_of_generalized_anxiety_disorders/links/0922b4f8e9de327968000000.pdf
-	\item Another expiriment tried to teach cancer patients both relaxation and Tai Chi methods to see if these things were easier to do through VR, and what effects the VR would have on them.  It found that giving the user an area that they were in charge of could possibly help people who felt like they had no control over their lives. This is a positive thing we will try to recreate with our project.
+	\item Another experiment tried to teach cancer patients both relaxation and Tai Chi methods to see if these things were easier to do through VR, and what effects the VR would have on them.  It found that giving the user an area that they were in charge of could possibly help people who felt like they had no control over their lives. This is a positive thing we will try to recreate with our project.
 	%https://www.researchgate.net/profile/David_Becker10/publication/2659560_Using_A_Virtual_Environment_to_Teach_Cancer_Patients_T'ai_Chi_Relaxation_and_Self-Imagery/links/53ce75e80cf279d93530ac34.pdf
 \end{itemize}
 \pagebreak
@@ -1316,11 +1316,11 @@ As before, here is some past research into the field of anxiety and VR.
 \begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/59736
 	\centerline {\includegraphics[scale = 0.13, angle = 180]{sbCalm.jpg}}
 	\caption{Storyboard for Calming Module}
-	\label{fig:elevator}
+	\label{fig:sbCalm}
 \end{figure}
 \begin{enumerate}
-	\item The program generates a procedurally generated enviroment
-	\item The user can explore this enviroment, with quiet sounds and music sometimes being played.
+	\item The program generates a procedurally generated environment.
+	\item The user can explore this environment, with quiet sounds and music sometimes being played.
 	\item The program will check the user's stress level, and use this to check if the user is calm
 	\item If the user is calm, the program will change the environment in small, subtle ways to reflect this, with a notification.
 \end{enumerate}
@@ -1580,7 +1580,7 @@ configuration option for the app, It will also be responsible for launching scen
 \subsubsection {Configuration Design Details}
 (See figure \ref{fig:qtMockupMap})
 \begin{itemize}
-\item Users can Select the scene to edit the configurations, with the set scene options we have added, new scenes could be added to the dropdown if new scenes were created.
+\item Users can Select the scene to edit the configurations, with the set scene options we have added, new scenes could be added to the drop-down if new scenes were created.
 \item Configurations will be saved to a specific .ini or settings file that will be parsed by the unity scene on load.
 \item Basic settings such as resolution, quality options, and other static options will be in dialog boxes.
 \item The scene maps will be encoded with some options including size, the list of available models with names(ex desks, trees, etc.), and other available settings for scenes, this file will be read in by Qt and setup the configuration options for the user.

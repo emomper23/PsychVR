@@ -1024,20 +1024,56 @@ This is perhaps the most difficult part of the project, providing a metric for e
 \par~\\ 
 Our research has led us to multiple parameters which we can use to assess progress, most of which will be specific to a particular scene. Before we discuss those metrics, let's first take a look at how other studies have reached this goal.
 
-
 \subsubsection{How have other studies provided treatment feedback?}
 The majority of professional virtual reality treatment is conducted in the presence of a licensed psychologist who is able to assess the participant on the spot. In addition to this monitoring the participant is often given a questionnaire to fill out before and after treatment. Virtual Reality Medical Center (VRMC) uses this type of assessment to acquire treatment data and provide feedback to their patients. %REF http://www.vrphobia.com/
 
 \subsubsection{Stress Analysis}
-Measuring stress is a difficult task. The most promising and simple way for a user at home to do this, we concluded, was the S Health service on Samsung smartphones. Samsung's S Health sensors can combine readings from multiple biological factors (heart rate, oxygen levels, and heartbeat consistency) to estimate a stress level. Furthermore, there is a public API available to obtain data from these sensors. This API includes an android application file that can extract recorded data from the S Health application and provides code examples for how to accomplish this. The caveat to this is Samsung has not made public their method of determining stress data nor can recorded stress values be accessed by the API. Currently, using S Health as a way to measure stress is not feasible as we would have to design stress detection from the ground up. In order for us to implement this as a metric users would need access to an eligible Samsung device, measure their stress level, and record it in our software.
+After our status presentation it came to our attention we had no plan for providing users feedback of their progress so we began research on this topic. It turns out, measuring stress is a difficult task. 
+\par~\\
+The most promising and simple way for a user at home to do this, we concluded, was the S Health service on Samsung smartphones. Samsung's S Health sensors can combine readings from multiple biological factors (heart rate, oxygen levels, and heartbeat consistency) to estimate a stress level. Furthermore, there is a public API available to obtain data from these sensors. This API includes an android application file that can extract recorded data from the S Health application and provides code examples for how to accomplish this. 
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[scale = 0.07]{sHealthHome.png}
+		\label{sHealthHome}
+		\caption{S Health Home}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[scale = 0.07]{dataViewerAPK.png}
+		\label{dataViewerAPK}
+		\caption{S Health Data Viewer}
+	\end{minipage}
+\end{figure}
+	
+The caveat to this is Samsung has not made public their method of determining stress data nor can recorded stress values be accessed by the API. Currently, using S Health as a way to measure stress is not feasible as we would have to design stress detection from the ground up. In order for us to implement this as a metric users would need access to an eligible Samsung device, measure their stress level, and record it in our software.
+
+\par~\\
+\textbf{Update:}
+We were accepted by Samsung as an S Health Partner on Thursday, Apr 28, 2016 at 12:20 AM. We will be receiving a more functional version of their S Health SDK with Partner exclusive features. We need to review the newly provided documentation in order to determine if we want to further integrate S Health data into our scene analysis and metrics.
+\begin{figure}[H] %image from gmail
+	\centerline {\includegraphics[scale = 0.65]{sHealthPartner.png}}
+	\caption{S Health Partner Acceptance Email}
+	\label{fig:sHealthPartner}
+\end{figure}
+
+
 \subsubsection{Stress Questionnaire}
 As a stand-in for a psychologist we will be issuing a stress questionnaire. Before the user launches any scene they will be given the option of responding to questions with the goal of assessing their current level of stress. Once a scene is completed they will again be presented with this questionnaire. The before and after data will be analyzed alongside other metrics for the specific scene. Over multiple sessions this data should provide insight to whether or not the treatment is providing any benefit.
+
 \subsubsection{Scene Progress}
 Another metric we devised to provide users feedback is scene progress. This is mostly specific to our fear of heights scene. Each time the user runs the simulation the height they have reached will be recorded. Progress would be determined if the user shows reduced stress in the questionnaire along with the same or greater height.
+
 \subsubsection{Time Spent in Stressful Simulation}
 Time spent in the scene will give insight to how uncomfortable the user is. This metric can be applied to both our fear of heights scene and speech anxiety scene. If a user spends more time at a high altitude than before with relatively similar questionnaire results then it is reasonable to say the user is becoming more comfortable with their stressful situation. As for the speech anxiety scene, the user would provide an amount of time they wish to present for and over multiple sessions work to increase that time.
+
 \subsubsection{Head Tracking}
 Head tracking data from within our speech anxiety scene will function as another way to measure improvement. Time spent making eye contact with audience members compared with time spent looking elsewhere, such as the board or downward, should improve as a user becomes more comfortable with public speaking.
+
+\subsubsection{Posture Tracking} %NEEDS WORK
+Posture is a good measure of confidence. We will monitor the users posture within our speech anxiety scene to approximate their level of confidence while delivering their speech. To accomplish this we will use the Kinect sensor to follow body movement and track changes in their shoulder height throughout their presentation.
 
 
 \pagebreak
@@ -1763,8 +1799,7 @@ The Psych VR team believes that we have done the necessary research, planning, p
 \par ~\\
 Thank you for reading.
 \pagebreak
-\pagenumbering{Alph}
-\setcounter{page}{1}
+
 %6. References
 \section{References}
 
@@ -1788,6 +1823,10 @@ Unity. "Shading Language Used in Unity." Unity Documentation. N.p., n.d. Web. 27
 \bibitem{riftPaper}"The Graphic: Oculus Rift." Engineering \& Technology 9.2 (2014): 24. Web
 \bibitem{leapProc}"How Does the Leap Motion Controller Work?" Leap Motion Blog. N.p., 09 Aug. 2014. Web. 27 Apr. 2016.
 \end{thebibliography}
+
+\pagenumbering{Alph}
+\setcounter{page}{1}
+\pagebreak
 
 
 %7. Appendices

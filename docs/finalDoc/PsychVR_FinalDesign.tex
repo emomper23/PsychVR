@@ -725,6 +725,7 @@ Following is our research on the different possible VR devices and peripherals, 
 	A cheap, \$8 bluetooth controller, that pairs very well with the Gear VR on Android, this would be allow the user to move around the scene as we would be unable to get the other Peripherals to work with the phone.
 \pagebreak
 \subsubsection{Oculus Head Tracking Research}
+The following information is from the Oculus Rift prototype research paper see the it for more details on the math behind their calculations \cite{riftPaper}~\\
 All sensing is performed by a single circuit board (figure \ref{fig:magnetsHowDoTheyWork}) 
 \begin{itemize}
 \item The main components are:
@@ -767,6 +768,7 @@ through the origin. This representation maps to the following Coordiante system:
 	\end{figure}
  \pagebreak
 \subsubsection{LeapMotion Hand Tracking}
+The Leap Motion works using the following sensors and lights \cite{leapProc}
 \begin{itemize}
  \item The wide angle lenses, give the Leap a maximum detection area of eight cubic feet, the intersection of the binocular cameras’ fields of view. 
  \item The software recognized viewing range is 2 ft (60 cm) for the standard drivers and 2.6 feet (80 cm) with the Orion Beta Driver. 
@@ -775,7 +777,7 @@ through the origin. This representation maps to the following Coordiante system:
  \item The 3 USB lights emit at a wavelength of 850 nanometers, outside the visible light spectrum.
 \end{itemize}
 
-The LeapMotion SDK offers the folling heuristics a for assisting with the tracking problem.
+The LeapMotion SDK offers the folling heuristics a for assisting with the tracking problem.\cite{leapHeuristics}
 \begin{itemize}
  \item Tracking consistency:  The API offers a diagnostic visualizer, and a tracking confidence level.
  \item Ease of detection: This is related to how well defined certain motions are. 
@@ -1743,6 +1745,9 @@ Unity. "Shading Language Used in Unity." Unity Documentation. N.p., n.d. Web. 27
 "Compute Shaders." Unity. N.p., n.d. Web. 27 Apr. 2016.
 \bibitem{unityAsynch}
 "Asynchronous Texture Upload." Unity. N.p., n.d. Web. 27 Apr. 2016.
+\bibitem{leapHeuristics}"Introduction to Motion Control." Leap Motion Developers. N.p., n.d. Web. 27 Apr. 2016. 
+\bibitem{riftPaper}"The Graphic: Oculus Rift." Engineering \& Technology 9.2 (2014): 24. Web
+\bibitem{leapProc}"How Does the Leap Motion Controller Work?" Leap Motion Blog. N.p., 09 Aug. 2014. Web. 27 Apr. 2016.
 \end{thebibliography}
 
 

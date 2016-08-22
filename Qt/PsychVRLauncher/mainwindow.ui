@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>841</width>
+    <width>943</width>
     <height>643</height>
    </rect>
   </property>
@@ -19,67 +19,75 @@
      <rect>
       <x>20</x>
       <y>30</y>
-      <width>801</width>
+      <width>931</width>
       <height>511</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>Configuration</string>
      </attribute>
-     <widget class="QGraphicsView" name="graphicsView">
+     <widget class="QWidget" name="gridLayoutWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>10</y>
-        <width>781</width>
-        <height>431</height>
+        <y>0</y>
+        <width>901</width>
+        <height>471</height>
        </rect>
       </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_3">
-      <property name="geometry">
-       <rect>
-        <x>690</x>
-        <y>450</y>
-        <width>80</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Save</string>
-      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="1" column="1">
+        <widget class="QGraphicsView" name="graphicsView"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QListWidget" name="listWidget">
+         <property name="maximumSize">
+          <size>
+           <width>344</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Model List</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Map</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
       <string>Analysis</string>
      </attribute>
-     <widget class="QGLGraphWidget" name="openGLWidget">
+     <widget class="QWidget" name="gridLayoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>771</width>
-        <height>431</height>
+        <x>0</x>
+        <y>0</y>
+        <width>901</width>
+        <height>451</height>
        </rect>
       </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="geometry">
-       <rect>
-        <x>690</x>
-        <y>450</y>
-        <width>80</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Load Data...</string>
-      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <widget class="QGLGraphWidget" name="openGLWidget"/>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>
@@ -127,16 +135,37 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>841</width>
-     <height>21</height>
+     <width>943</width>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuPsychVR_Launcher_and_Configturation_Tool">
     <property name="title">
-     <string>PsychVR Launcher and Configturation Tool</string>
+     <string>PsychVR &amp;Launcher and Configturation Tool</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionSave"/>
+    <addaction name="actionLoad"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionChange_Object"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>&amp;View</string>
     </property>
    </widget>
    <addaction name="menuPsychVR_Launcher_and_Configturation_Tool"/>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuView"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -147,6 +176,21 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionSave">
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+  </action>
+  <action name="actionLoad">
+   <property name="text">
+    <string>&amp;Load</string>
+   </property>
+  </action>
+  <action name="actionChange_Object">
+   <property name="text">
+    <string>Change Object</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>

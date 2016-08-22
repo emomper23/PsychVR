@@ -14,9 +14,16 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    qglgraphwidget.cpp
+    qglgraphwidget.cpp \
+    cunitymap.cpp \
+    cunityobject.cpp \
+    editdialog.cpp
 
 HEADERS  += mainwindow.h \
-    qglgraphwidget.h
+    qglgraphwidget.h \
+    cunitymap.h \
+    cunityobject.h \
+    editdialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    editdialog.ui

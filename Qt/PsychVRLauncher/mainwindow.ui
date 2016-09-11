@@ -136,7 +136,7 @@
      <x>0</x>
      <y>0</y>
      <width>943</width>
-     <height>30</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuPsychVR_Launcher_and_Configturation_Tool">
@@ -150,6 +150,7 @@
     </property>
     <addaction name="actionSave"/>
     <addaction name="actionLoad"/>
+    <addaction name="actionNew_Object"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
@@ -189,6 +190,11 @@
   <action name="actionChange_Object">
    <property name="text">
     <string>Change Object</string>
+   </property>
+  </action>
+  <action name="actionNew_Object">
+   <property name="text">
+    <string>New Object</string>
    </property>
   </action>
  </widget>

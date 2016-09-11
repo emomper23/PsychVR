@@ -20,6 +20,8 @@ public slots:
     void saveFiles();
     void loadFiles();
     void editModel();
+    void saveModel();
+    void newModel();
 
 private:
     Ui::MainWindow *ui;

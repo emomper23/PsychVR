@@ -10,6 +10,7 @@ public:
     explicit CUnityMap(QObject *parent = 0);
      std::vector<CUnityObject*> m_objects;
     ~CUnityMap(){}
+     void addObject(CUnityObject * obj);
 public slots:
     void loadSettings();
     void saveSettings();

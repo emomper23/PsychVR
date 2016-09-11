@@ -9,12 +9,17 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     m_map = new CUnityMap();
+    m_obj_settings = new EditDialog();
+    m_obj_settings->setVisible(false);
+    ui->listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+
     connect(ui->actionSave,SIGNAL(triggered(bool)),this,SLOT(saveFiles()));
     connect(ui->actionLoad,SIGNAL(triggered(bool)),this,SLOT(loadFiles()));
     connect(ui->actionChange_Object,SIGNAL(triggered(bool)),this,SLOT(editModel()));
-    ui->listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
-    m_obj_settings = new EditDialog();
-    m_obj_settings->setVisible(false);
+    connect(m_obj_settings,SIGNAL(accepted()),this,SLOT(saveModel()));
+    connect(ui->actionNew_Object,SIGNAL(triggered(bool)),this,SLOT(newModel()));
+    connect(this->m_obj_settings, SIGNAL(accepted()),this,SLOT(saveModel()));
+    loadFiles();
 }
 MainWindow::~MainWindow()
 {
@@ -56,3 +61,14 @@ void MainWindow::editModel()
 
 }
 
+void MainWindow::saveModel()
+{
+    m_obj_settings->saveObject();
+    saveFiles();
+}
+void MainWindow::newModel()
+{
+    CUnityObject * obj = new CUnityObject(m_map->m_objects.size());
+    m_map->addObject(obj);
+
+}

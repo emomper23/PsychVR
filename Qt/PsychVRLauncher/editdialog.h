@@ -14,13 +14,16 @@ class EditDialog : public QDialog
 
 public:
     explicit EditDialog(QWidget *parent = 0);
+    QColor getColor();
     ~EditDialog();
      void setObject(CUnityObject *obj);
-//public slots:
 
+public slots:
+ void saveObject();
 
 private:
     Ui::EditDialog *ui;
+    CUnityObject * m_object;
 };
 
 #endif // EDITDIALOG_H

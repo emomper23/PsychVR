@@ -96,6 +96,7 @@
     <Compile Include="Assets\OVR\Scripts\Util\OVRSceneSampleController.cs" />
     <Compile Include="Assets\OVR\Scripts\Util\OVRScreenFade.cs" />
     <Compile Include="Assets\OVR\Scripts\Util\OVRTrackerBounds.cs" />
+    <Compile Include="Assets\heights\City\Map\CameraRotate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\OVR\Moonlight\Resources\Unlit Transparent Color.shader" />

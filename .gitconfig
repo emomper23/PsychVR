@@ -1,0 +1,6 @@
+[merge]
+    tool = meld 
+[mergetool "meld"]
+    path = C:\\Program Files (x86)\\Meld\\meld\\meld.exe
+    keepBackup = false
+    trustExitCode = false

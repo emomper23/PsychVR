@@ -102,6 +102,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Delicode NI mate\Editor\NI_mate_UI.cs" />
+    <Compile Include="Assets\Delicode NI mate\Editor\NI_mate_feed_UI.cs" />
     <Compile Include="Assets\LeapMotion\Editor\CustomEditorBase.cs" />
     <Compile Include="Assets\LeapMotion\Editor\LeapHandControllerEditor.cs" />
     <Compile Include="Assets\LeapMotion\Editor\LeapImageRetrieverEditor.cs" />
@@ -132,6 +134,8 @@
     <Compile Include="Assets\OVR\Moonlight\Editor\OVRMoonlightLoader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Bunny Example Scene\Licence.txt" />
+    <None Include="Assets\Delicode NI mate\Instructions.txt" />
     <None Include="Assets\LeapMotion\Dependencies.txt" />
     <None Include="Assets\LeapMotion\README_BEFORE_UPDATING.txt" />
     <None Include="Assets\LeapMotion\Resources\LeapCG.cginc" />
@@ -145,7 +149,11 @@
     <None Include="Assets\OVR\Moonlight\Resources\Unlit Transparent Color.shader" />
     <None Include="Assets\OVR\Moonlight\Shaders\OVRColorRampAlpha.shader" />
     <None Include="Assets\OVR\Moonlight\Shaders\Unlit Crosshair.shader" />
+    <None Include="Assets\Plugins\NiTE.ini.txt" />
+    <None Include="Assets\Plugins\OpenNI.ini.txt" />
     <None Include="Assets\Plugins\donotdelete.txt" />
+    <None Include="Assets\Resources\NiTE.ini.txt" />
+    <None Include="Assets\Resources\OpenNI.ini.txt" />
     <None Include="Assets\SimpleSky\ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

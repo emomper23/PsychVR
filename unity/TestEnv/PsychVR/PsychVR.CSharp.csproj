@@ -237,6 +237,7 @@
     <Compile Include="Assets\OVR\Scripts\Util\OVRTrackerBounds.cs" />
     <Compile Include="Assets\QtSceneLoad.cs" />
     <Compile Include="Assets\heights\City\Map\CameraRotate.cs" />
+    <Compile Include="Assets\universalPrefabs\recenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Bunny Example Scene\Licence.txt" />

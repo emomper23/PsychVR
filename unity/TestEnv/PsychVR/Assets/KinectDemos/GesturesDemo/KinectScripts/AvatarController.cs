@@ -247,9 +247,8 @@ public class AvatarController : MonoBehaviour
 			// Grab our new rotation.
 			newRotation = Quaternion.Euler(totalRotation);
 		}
-		
-		// Smoothly transition to our new rotation.
-        boneTransform.rotation = Quaternion.Slerp(boneTransform.rotation, newRotation, Time.deltaTime * SmoothFactor);
+        if (boneTransform.name != "joint_Head") 
+            boneTransform.rotation = Quaternion.Slerp(boneTransform.rotation, newRotation, Time.deltaTime * SmoothFactor);
 	}
 	
 	// Moves the avatar in 3D space - pulls the tracked position of the spine and applies it to root.

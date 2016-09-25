@@ -6,6 +6,7 @@
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions>
 #include <QPainter>
+#include <QPainterPath>
 class QGLGraphWidget: public QOpenGLWidget , public QOpenGLFunctions
 {
 public:

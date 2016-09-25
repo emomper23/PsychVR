@@ -4,15 +4,20 @@
 #include <QDebug>
 #include<QVector3D>
 //TODO NULL CHECK for no selection, stop double loads, add more settings
-CUnityMap::CUnityMap(QObject *parent): QObject(parent)
+CUnityMap::CUnityMap(QString name, QObject *parent): QObject(parent),m_map_config_id(0), m_map_day_flag(0)
 {
-    m_map_file = QApplication::applicationDirPath()+"/settings.ini";
+    m_map_name = name;
+    m_map_file =QApplication::applicationDirPath() + "/"+m_map_name+"settings.ini";
     //loadSettings();
 }
 void CUnityMap::loadSettings()
 {
-    qDebug("Loading settings");
-    QSettings settings(m_map_file,QSettings::NativeFormat);
+    qDebug()<< "Loading settings from"<<m_map_file ;
+    QSettings settings(m_map_file,QSettings::IniFormat);
+    settings.beginGroup("General");
+        m_map_day_flag = settings.value("day").toBool();
+        m_map_config_id = settings.value("config_id").toInt();
+    settings.endGroup();
     int size = settings.beginReadArray("obj");
     for(int i = 0; i < size; i++)
     {
@@ -21,7 +26,7 @@ void CUnityMap::loadSettings()
         QString name = settings.value("name").toString();
         int id = settings.value("id").toInt();
         QColor color = QColor(settings.value("color").toString());
-        QImage img = QImage(settings.value("image").toString());
+        QString img = settings.value("image").toString();
             settings.beginGroup("scale");
             float xs = settings.value("xs").toFloat();
             float ys = settings.value("ys").toFloat();
@@ -33,7 +38,7 @@ void CUnityMap::loadSettings()
             float zp = settings.value("zp").toInt();
             settings.endGroup();
         settings.endGroup();
-        m_objects.push_back(new CUnityObject(name,QVector3D(xp,yp,zp),QVector3D(xs,ys,zs),id,QString("test"),color));
+        m_objects.push_back(new CUnityObject(name,QVector3D(xp,yp,zp),QVector3D(xs,ys,zs),id,img,color));
     }
 }
 
@@ -44,9 +49,14 @@ void CUnityMap::addObject(CUnityObject * obj)
 
 void CUnityMap::saveSettings()
 {
-    QSettings settings(m_map_file,QSettings::NativeFormat);
+    QSettings settings(m_map_file,QSettings::IniFormat);
     settings.clear();
     qDebug("Saving settings to %s", settings.fileName().toStdString().c_str());
+    settings.beginGroup("General");
+        settings.setValue("day",m_map_day_flag);
+        settings.setValue("config_id",m_map_config_id);
+    settings.endGroup();
+
     settings.beginWriteArray("obj");
     if(m_objects.size() == 0)
     {

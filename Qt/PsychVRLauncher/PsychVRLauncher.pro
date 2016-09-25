@@ -17,13 +17,15 @@ SOURCES += main.cpp\
     qglgraphwidget.cpp \
     cunitymap.cpp \
     cunityobject.cpp \
-    editdialog.cpp
+    editdialog.cpp \
+    cuserstat.cpp
 
 HEADERS  += mainwindow.h \
     qglgraphwidget.h \
     cunitymap.h \
     cunityobject.h \
-    editdialog.h
+    editdialog.h \
+    cuserstat.h
 
 FORMS    += mainwindow.ui \
     editdialog.ui

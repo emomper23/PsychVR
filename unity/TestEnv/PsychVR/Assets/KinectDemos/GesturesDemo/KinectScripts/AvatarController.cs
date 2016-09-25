@@ -242,8 +242,8 @@ public class AvatarController : MonoBehaviour
 		//orientation to essentially make the skeleton relative to the node
 		if (offsetNode != null)
 		{
-			// Grab the total rotation by adding the Euler and offset's Euler.
-			Vector3 totalRotation = newRotation.eulerAngles + offsetNode.transform.rotation.eulerAngles;
+            // Grab the total rotation by adding the Euler and offset's Euler.
+            Vector3 totalRotation = newRotation.eulerAngles + offsetNode.transform.rotation.eulerAngles;
 			// Grab our new rotation.
 			newRotation = Quaternion.Euler(totalRotation);
 		}
@@ -286,10 +286,11 @@ public class AvatarController : MonoBehaviour
 		
 		yPos = trans.y * MoveRate - YOffset;
 		zPos = -trans.z * MoveRate - ZOffset;
-		
-		// If we are tracking vertical movement, update the y. Otherwise leave it alone.
+
+        // If we are tracking vertical movement, update the y. Otherwise leave it alone.
+ 
 		Vector3 targetPos = new Vector3(xPos, VerticalMovement ? yPos : 0f, zPos);
-		Root.localPosition = Vector3.Lerp(Root.localPosition, targetPos, 3 * Time.deltaTime);
+		Root.localPosition = Vector3.Lerp(Root.localPosition, targetPos  , 3 * Time.deltaTime);
 	}
 	
 	// If the bones to be mapped have been declared, map that bone to the model.

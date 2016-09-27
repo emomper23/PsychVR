@@ -19,7 +19,7 @@ public class ElevatorScript : MonoBehaviour {
 	int direction = 0;
 
 	// units per second
-	int speed = 3;
+	int speed = 1;
  
     void Update(){
         // remember, 10 - 5 is 5, so target - position is always your direction.
@@ -29,7 +29,7 @@ public class ElevatorScript : MonoBehaviour {
 		else if (direction == -1)
 			dir = bottom.position - gondola.position;
 		else
-			dir = gondola.position;
+			dir = new Vector3( 0, 0, 0);
 
        
         // magnitude is the total length of a vector.
@@ -47,6 +47,8 @@ public class ElevatorScript : MonoBehaviour {
        
         // apply the movement to the object.
         gondola.Translate( dir * move);
+
+        //this.direction = 0;
 	}
 
 	public void UpPressed()

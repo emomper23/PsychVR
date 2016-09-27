@@ -23,7 +23,14 @@ public class ElevatorScript : MonoBehaviour {
  
     void Update(){
         // remember, 10 - 5 is 5, so target - position is always your direction.
-        Vector3 dir = top.position - gondola.position;
+		Vector3 dir = gondola.position;
+		if (direction == 1)
+			dir = top.position - gondola.position;
+		else if (direction == -1)
+			dir = bottom.position - gondola.position;
+		else
+			dir = gondola.position;
+
        
         // magnitude is the total length of a vector.
         // getting the magnitude of the direction gives us the amount left to move
@@ -33,7 +40,7 @@ public class ElevatorScript : MonoBehaviour {
         dir = dir.normalized;
        
         // the amount we can move this frame
-        float move = speed * Time.deltaTime * direction;
+        float move = speed * Time.deltaTime;
        
         // limit our move to what we can travel.
         if(move > dist) move = dist;

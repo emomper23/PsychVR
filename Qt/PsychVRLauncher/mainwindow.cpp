@@ -3,6 +3,7 @@
 #include "cunityobject.h"
 #include<QDebug>
 #include<QProcess>
+#include<poppler-qt5.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = PsychVRLauncher
 TEMPLATE = app
 
-
+LIBS += -L"C:/Users/EricM/Desktop/poppler-0.39.0-win32/lib" -libpoppler-qt5.dll.a
 SOURCES += main.cpp\
         mainwindow.cpp \
     qglgraphwidget.cpp \

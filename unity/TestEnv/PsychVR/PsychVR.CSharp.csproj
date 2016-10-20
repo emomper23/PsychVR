@@ -236,6 +236,7 @@
     <Compile Include="Assets\OVR\Scripts\Util\OVRSceneSampleController.cs" />
     <Compile Include="Assets\OVR\Scripts\Util\OVRScreenFade.cs" />
     <Compile Include="Assets\OVR\Scripts\Util\OVRTrackerBounds.cs" />
+    <Compile Include="Assets\PlaneRepeat.cs" />
     <Compile Include="Assets\QtSceneLoad.cs" />
     <Compile Include="Assets\anxiety\Assets\Scripts\ComputeShader\ComputeShaderOutput.cs" />
     <Compile Include="Assets\anxiety\Assets\Scripts\ComputeShader\VoxelComputeShaderOutput.cs" />
@@ -244,6 +245,7 @@
     <Compile Include="Assets\anxiety\Assets\Scripts\Generic\TranslateRotateControler.cs" />
     <Compile Include="Assets\anxiety\Assets\Scripts\GeomShader\BillboardGeomScript.cs" />
     <Compile Include="Assets\anxiety\Assets\Scripts\GeomShader\VoxelGeomScript.cs" />
+    <Compile Include="Assets\anxiety\Object2Terrain.cs" />
     <Compile Include="Assets\heights\City\Map\CameraRotate.cs" />
     <Compile Include="Assets\heights\Scripts\ElevatorScript.cs" />
     <Compile Include="Assets\universalPrefabs\ReCenter.cs" />

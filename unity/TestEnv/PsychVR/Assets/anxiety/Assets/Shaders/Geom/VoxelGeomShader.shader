@@ -137,7 +137,6 @@
 							pIn.pos = mul(UNITY_MATRIX_VP, mul(world, v[vidx]));
 							pIn.uv = uvs[fv];
 							pIn.normal = normals[f];
-							UNITY_TRANSFER_FOG(pIn, pIn.pos);
 							triStream.Append(pIn);
 							
 
@@ -155,9 +154,6 @@
 			float4 frag(input i) : COLOR
 			{
 				fixed4 col = tex2D(_Sprite, i.uv) * _Color;
-
-				UNITY_APPLY_FOG(i.fogCoord, col); // apply fog
-
 				return col;
 			}
 

@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Advanced INI Parser\INIParser.cs" />
+    <Compile Include="Assets\ChunkCollider.cs" />
     <Compile Include="Assets\Delicode NI mate\NImateFeed.cs" />
     <Compile Include="Assets\Delicode NI mate\NImateReceiver.cs" />
     <Compile Include="Assets\ImageLoader.cs" />

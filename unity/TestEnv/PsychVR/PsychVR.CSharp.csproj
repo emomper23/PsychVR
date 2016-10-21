@@ -277,7 +277,6 @@
     <None Include="Assets\anxiety\Assets\Shaders\Geom\BillboardGeomShader.shader" />
     <None Include="Assets\anxiety\Assets\Shaders\Geom\VoxelGeomShader.shader" />
     <None Include="Assets\anxiety\Assets\Shaders\PointShader.shader" />
-    <None Include="Assets\speech\humans\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

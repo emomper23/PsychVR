@@ -11,39 +11,61 @@ public class PlaneRepeat : MonoBehaviour {
     public float scale = 100;
     public float GRID_X = 3;
     public float GRID_Z = 3;
-
+    private string old_name;
+ 
 	void Start ()
     {
+        makePlanes();
+
+    }
+    void makePlanes()
+    {
+
+      //  Debug.Log("making planes for " + plane);   
         float size_x = plane.GetComponent<Renderer>().bounds.size.x;
         float size_z = plane.GetComponent<Renderer>().bounds.size.z;
         float pos_x = plane.transform.position.x;
         float pos_z = plane.transform.position.z;
-
+        
         float gx = -1;
         float gz = -1;
-        foreach(GameObject p in plane_list)
-        {
-            GameObject.Destroy(p);
-        }
         Quaternion rot = plane.transform.rotation;
-        for(int i = 0; i < GRID_X; i++)
+        
+
+        for (int i = 0; i < GRID_X; i++)
         {
             gz = -1;
             for (int j = 0; j < GRID_Z; j++)
-            {
-                plane.transform.name = "plane";
+            {                   
                 plane_list[i * 3 + j] = (GameObject)GameObject.Instantiate(plane, new Vector3(pos_x + size_x * gx, 0, pos_z + size_z * gz), rot);
-                
+                ((GameObject)plane_list[i * 3 + j]).transform.name = "plane"+(i*3+j);
+
                 gz++;
             }
             gx++;
+            old_name = plane.transform.name;
         }
         
-	}
+        
+    }
     public void setPlane(GameObject obj)
     {
         plane = obj;
-        Start();
+        //Debug.Log(obj+ "  " + old_name + " from" + obj+ " " + plane);
+        if (obj.transform.name != old_name) //|| obj.transform.position.z != plane.transform.position.z)
+        {
+          //  Debug.Log("load");
+            
+            foreach (GameObject p in plane_list)
+            {
+                if (p && (p.transform.name != obj.transform.name))
+                {
+                    GameObject.Destroy(p);
+                }
+            }
+            makePlanes();
+           
+        }      
     }
 	// Update is called once per frame
 	void Update ()

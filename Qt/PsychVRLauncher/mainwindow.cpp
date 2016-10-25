@@ -3,7 +3,7 @@
 #include "cunityobject.h"
 #include<QDebug>
 #include<QProcess>
-#include<poppler-qt5.h>
+#include<poppler/qt5/poppler-qt5.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -26,6 +26,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this->m_obj_settings, SIGNAL(accepted()),this,SLOT(saveModel()));
     connect(ui->launchButton, SIGNAL(pressed()),this,SLOT(launchScene()));
     loadFiles();
+
+    Poppler::Document * doc = Poppler::Document::load("/home/emomper/Documents/exam.pdf");
+    QImage img = doc->page(0)->renderToImage();
+    //ui->openGLWidget->setImage
 }
 MainWindow::~MainWindow()
 {

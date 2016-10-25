@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>947</width>
-    <height>691</height>
+    <width>1172</width>
+    <height>707</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,8 +25,8 @@
      <rect>
       <x>9</x>
       <y>0</y>
-      <width>931</width>
-      <height>621</height>
+      <width>1061</width>
+      <height>631</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -145,6 +145,27 @@
          </property>
         </widget>
        </widget>
+       <widget class="QWidget" name="tab_2">
+        <attribute name="title">
+         <string>Analysis</string>
+        </attribute>
+        <widget class="QGLGraphWidget" name="openGLWidget">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>10</y>
+           <width>1051</width>
+           <height>541</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </widget>
        <widget class="QWidget" name="tab_3">
         <attribute name="title">
          <string>Survey</string>
@@ -153,13 +174,565 @@
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>0</y>
-           <width>921</width>
-           <height>561</height>
+           <y>50</y>
+           <width>1040</width>
+           <height>501</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
-          <item row="1" column="1" colspan="2">
+          <item row="11" column="2">
+           <widget class="QPushButton" name="submit_button">
+            <property name="text">
+             <string>Submit</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1" colspan="3">
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <item>
+             <widget class="QRadioButton" name="radioButton_22">
+              <property name="text">
+               <string>Entirely Disagree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_3</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_23">
+              <property name="text">
+               <string>&amp;Mostly Disagree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_3</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_24">
+              <property name="text">
+               <string>Somewhat Disagree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_3</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_25">
+              <property name="text">
+               <string>&amp;Neither Way</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_3</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_26">
+              <property name="text">
+               <string>Somewhat Agree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_3</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_27">
+              <property name="text">
+               <string>Mostly Agree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_3</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_28">
+              <property name="text">
+               <string>Entirely Agree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_3</string>
+              </attribute>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="5" column="1" colspan="3">
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QRadioButton" name="radioButton_15">
+              <property name="text">
+               <string>Entirely Disagree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_2</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_16">
+              <property name="text">
+               <string>Mostly Disagree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_2</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_17">
+              <property name="text">
+               <string>Somewhat Disagree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_2</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_18">
+              <property name="text">
+               <string>Neither Way</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_2</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_19">
+              <property name="text">
+               <string>Somewhat Agree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_2</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_20">
+              <property name="text">
+               <string>Mostly Agree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_2</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_21">
+              <property name="text">
+               <string>Entirely Agree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_2</string>
+              </attribute>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="7" column="1" colspan="3">
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <item>
+             <widget class="QRadioButton" name="radioButton_29">
+              <property name="text">
+               <string>Entirely Disagree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_4</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_30">
+              <property name="text">
+               <string>Mostly Disagree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_4</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_31">
+              <property name="text">
+               <string>Somewhat Disagree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_4</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_32">
+              <property name="text">
+               <string>Neither Way</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_4</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_33">
+              <property name="text">
+               <string>Somewhat Agree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_4</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_34">
+              <property name="text">
+               <string>Mostly Agree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_4</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_35">
+              <property name="text">
+               <string>Entirely Agree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_4</string>
+              </attribute>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="8" column="0">
+           <widget class="QLabel" name="label_11">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;I feel good about my performance&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="2">
+           <widget class="QTextEdit" name="textEdit">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>125</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1" colspan="3">
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <item>
+             <widget class="QRadioButton" name="radioButton_43">
+              <property name="text">
+               <string>Entirely Disagree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_5</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_44">
+              <property name="text">
+               <string>Mostly Disagree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_5</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_45">
+              <property name="text">
+               <string>Somewhat Disagree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_5</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_46">
+              <property name="text">
+               <string>Neither Way</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_5</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_47">
+              <property name="text">
+               <string>Somewhat Agree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_5</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_48">
+              <property name="text">
+               <string>Mostly Agree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_5</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_49">
+              <property name="text">
+               <string>Entirely Agree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_5</string>
+              </attribute>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;I remained calm as I went up&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <widget class="QLabel" name="label_9">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;I feel proud of the height I reached&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1" colspan="3">
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <item>
+             <widget class="QRadioButton" name="radioButton_50">
+              <property name="text">
+               <string>Entirely Disagree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_6</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_51">
+              <property name="text">
+               <string>Mostly Disagree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_6</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_52">
+              <property name="text">
+               <string>Somewhat Disagree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_6</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_53">
+              <property name="text">
+               <string>Neither Way</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_6</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_54">
+              <property name="text">
+               <string>Somewhat Agree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_6</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_55">
+              <property name="text">
+               <string>Mostly Agree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_6</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_56">
+              <property name="text">
+               <string>Entirely Agree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup_6</string>
+              </attribute>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;My fear of heights affects my day to day life&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;I remained calm as I went down&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" rowspan="2" colspan="4">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Please rate how much you agree with the following statements, from strongly disagree to strongly agree.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0">
+           <widget class="QLabel" name="label_12">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;I am better able to cope with my fear than before&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1" colspan="3">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QRadioButton" name="radioButton_6">
+              <property name="text">
+               <string>Entirely Disagree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_7">
+              <property name="text">
+               <string>Mostly Disagree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_5">
+              <property name="text">
+               <string>Somewhat Disagree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_4">
+              <property name="text">
+               <string>Neither Way</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_3">
+              <property name="text">
+               <string>Somewhat Agree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton">
+              <property name="text">
+               <string>Mostly Agree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_2">
+              <property name="text">
+               <string>Entirely Agree</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup</string>
+              </attribute>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="10" column="0">
+           <widget class="QLabel" name="label_10">
+            <property name="text">
+             <string>Notes: </string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Stress Rating Before</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_19">
+            <property name="text">
+             <string>Stress Rating After</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="3">
            <widget class="QSlider" name="anxiety_slider">
             <property name="maximum">
              <number>10</number>
@@ -181,17 +754,13 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_19">
-            <property name="text">
-             <string>Stress Rating After</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1" colspan="2">
+          <item row="0" column="1" colspan="3">
            <widget class="QSlider" name="stres_slider">
             <property name="maximum">
              <number>10</number>
+            </property>
+            <property name="tracking">
+             <bool>false</bool>
             </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -210,81 +779,23 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>Stress Rating Before</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_5">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_20">
-            <property name="text">
-             <string>Question 1: How would you overall describe your experience with the scene</string>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_10">
-            <property name="text">
-             <string>Note any improvements or feelings that you had during the treatmen</string>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1" colspan="2">
-           <widget class="QTextEdit" name="textEdit"/>
-          </item>
-          <item row="5" column="1" colspan="2">
-           <widget class="QPushButton" name="submit_button">
-            <property name="text">
-             <string>Submit</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1" colspan="2">
-           <widget class="QTextEdit" name="textEdit_2"/>
-          </item>
          </layout>
         </widget>
-       </widget>
-       <widget class="QWidget" name="tab_2">
-        <attribute name="title">
-         <string>Analysis</string>
-        </attribute>
-        <widget class="QWidget" name="gridLayoutWidget_2">
+        <widget class="QLabel" name="label_4">
          <property name="geometry">
           <rect>
-           <x>0</x>
+           <x>60</x>
            <y>0</y>
-           <width>901</width>
-           <height>451</height>
+           <width>741</width>
+           <height>51</height>
           </rect>
          </property>
-         <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="0">
-           <widget class="QGLGraphWidget" name="openGLWidget">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-style:italic;&quot;&gt;To help track your progress, please answer the following questions.  If you wish to record any thoughts for later, use the Notes section below.	&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
         </widget>
        </widget>
       </widget>
@@ -297,8 +808,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>947</width>
-     <height>21</height>
+     <width>1172</width>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuPsychVR_Launcher_and_Configturation_Tool">
@@ -351,12 +862,12 @@
   </action>
   <action name="actionChange_Object">
    <property name="text">
-    <string>Change Object</string>
+    <string>&amp;Change Object</string>
    </property>
   </action>
   <action name="actionNew_Object">
    <property name="text">
-    <string>New Object</string>
+    <string>&amp;New Object</string>
    </property>
   </action>
  </widget>
@@ -370,4 +881,12 @@
  </customwidgets>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup_3"/>
+  <buttongroup name="buttonGroup_4"/>
+  <buttongroup name="buttonGroup_5"/>
+  <buttongroup name="buttonGroup_6"/>
+ </buttongroups>
 </ui>

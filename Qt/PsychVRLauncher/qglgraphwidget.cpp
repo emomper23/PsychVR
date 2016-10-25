@@ -7,8 +7,8 @@ void QGLGraphWidget::paintGL()
     QPainter painter(this);
     painter.setBrush(QBrush(QColor(255,0,0)));
     painter.setRenderHint(QPainter::Antialiasing,true);
-
-    painter.beginNativePainting();
+    painter.fillRect(10,10,100,100,QBrush(QColor(255,0,0)));
+    /*painter.beginNativePainting();
     struct point {
       GLfloat x;
       GLfloat y;
@@ -17,9 +17,9 @@ void QGLGraphWidget::paintGL()
 
     for(int i = 0; i < 2000; i++)
     {
-      float x = (i - 1000.0) / 100.0;
-      graph[i].x = x ;
-      graph[i].y = x ;
+      //float x = o
+      graph[i].x = i*1.0;
+      graph[i].y = 10.0 ;
     }
       GLuint vbo;
 
@@ -41,8 +41,6 @@ void QGLGraphWidget::paintGL()
 
       glDisableVertexAttribArray(0);
       glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-
-
     painter.endNativePainting();
+    */
 }

@@ -28,14 +28,16 @@ SOURCES += main.cpp\
     cunitymap.cpp \
     cunityobject.cpp \
     editdialog.cpp \
-    cuserstat.cpp
+    cuserstat.cpp \
+    surveydata.cpp
 
 HEADERS  += mainwindow.h \
     qglgraphwidget.h \
     cunitymap.h \
     cunityobject.h \
     editdialog.h \
-    cuserstat.h
+    cuserstat.h \
+    surveydata.h
 
 FORMS    += mainwindow.ui \
     editdialog.ui

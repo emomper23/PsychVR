@@ -7,8 +7,8 @@ void QGLGraphWidget::paintGL()
     QPainter painter(this);
     painter.setBrush(QBrush(QColor(255,0,0)));
     painter.setRenderHint(QPainter::Antialiasing,true);
-    painter.fillRect(10,10,100,100,QBrush(QColor(255,0,0)));
-    /*painter.beginNativePainting();
+   // painter.fillRect(10,10,100,100,QBrush(QColor(255,0,0)));
+    painter.beginNativePainting();
     struct point {
       GLfloat x;
       GLfloat y;
@@ -37,10 +37,10 @@ void QGLGraphWidget::paintGL()
         0                    // use the vertex buffer object
       );
 
-      glDrawArrays(GL_LINE_STRIP, 0, 2000);
+      glDrawArrays(GL_POINTS, 0, 2000);
 
       glDisableVertexAttribArray(0);
       glBindBuffer(GL_ARRAY_BUFFER, 0);
     painter.endNativePainting();
-    */
+
 }

@@ -4,6 +4,8 @@
 #include<QDebug>
 #include<QProcess>
 #include<poppler/qt5/poppler-qt5.h>
+#include<QAbstractButton>
+#include <QButtonGroup>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -18,6 +20,8 @@ MainWindow::MainWindow(QWidget *parent) :
     m_obj_settings->setVisible(false);
     ui->listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 
+    ui->tab_3->setEnabled(false);
+
     connect(ui->actionSave,SIGNAL(triggered(bool)),this,SLOT(saveFiles()));
     connect(ui->actionLoad,SIGNAL(triggered(bool)),this,SLOT(loadFiles()));
     connect(ui->actionChange_Object,SIGNAL(triggered(bool)),this,SLOT(editModel()));
@@ -25,6 +29,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionNew_Object,SIGNAL(triggered(bool)),this,SLOT(newModel()));
     connect(this->m_obj_settings, SIGNAL(accepted()),this,SLOT(saveModel()));
     connect(ui->launchButton, SIGNAL(pressed()),this,SLOT(launchScene()));
+    connect(ui->submit_button, SIGNAL(clicked(bool)),this,SLOT(SaveData()));
+    initButtons();
     loadFiles();
 
     Poppler::Document * doc = Poppler::Document::load("/home/emomper/Documents/exam.pdf");
@@ -116,5 +122,35 @@ void MainWindow::launchScene()
       command = "start C:/Users/EricM/Desktop/test.exe";
     }
 
+    ui->tab_3->setEnabled(true);
+
    system(command.toStdString().c_str());
+}
+
+void MainWindow::initButtons()
+{
+
+    radioQs.push_back(ui->buttonGroup);
+    radioQs.push_back(ui->buttonGroup_2);
+    radioQs.push_back(ui->buttonGroup_3);
+    radioQs.push_back(ui->buttonGroup_4);
+    radioQs.push_back(ui->buttonGroup_5);
+    radioQs.push_back(ui->buttonGroup_6);
+    for(int x = 0; x < radioQs.size();x++)
+    {
+        for(int i = 0; i < radioQs[x]->buttons().count();i++)
+        {
+            radioQs[x]->setId(radioQs[x]->buttons()[i],i);
+        }
+    }
+}
+
+void MainWindow::SaveData()
+{
+    for(int x = 0; x < radioQs.size();x++)
+    {
+         qDebug() << radioQs[x]->checkedId();
+
+    }
+
 }

@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include <cunitymap.h>
 #include <cunityobject.h>
+#include <QButtonGroup>
 #include "editdialog.h"
 namespace Ui {
 class MainWindow;
@@ -24,13 +25,15 @@ public slots:
     void saveModel();
     void newModel();
     void launchScene();
+    void SaveData();
+    void initButtons();
 
 private:
     Ui::MainWindow *ui;
     CUnityMap ** m_map_list;
     EditDialog * m_obj_settings;
     CUnityMap * getMap();
-
+    std::vector <QButtonGroup*> radioQs;
 
 };
 

@@ -131,6 +131,8 @@
     <Compile Include="Assets\OSP\Editor\OSPReflectionZoneEditor.cs" />
     <Compile Include="Assets\OVR\Editor\OVRBuild.cs" />
     <Compile Include="Assets\OVR\Moonlight\Editor\OVRMoonlightLoader.cs" />
+    <Compile Include="Assets\OculusPlatform\Editor\GUIHelper.cs" />
+    <Compile Include="Assets\OculusPlatform\Editor\OculusPlatformSettingsEditor.cs" />
     <Compile Include="Assets\ProceduralToolkit\Editor\MeshFilterExtension.cs" />
     <Compile Include="Assets\ProceduralToolkit\Editor\ProceduralToolkitMenu.cs" />
     <Compile Include="Assets\ProceduralToolkit\Examples\BuildingGenerator\Editor\BuildingGeneratorUIEditor.cs" />

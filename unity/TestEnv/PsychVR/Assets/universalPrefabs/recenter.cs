@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ReCenter : MonoBehaviour
+public class recenter : MonoBehaviour
 {
 
     // Use this for initialization

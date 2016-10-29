@@ -6,6 +6,7 @@ namespace ProceduralToolkit.Examples.UI
     public class LowPolyTerrainGeneratorUI : UIBase
     {
         public MeshFilter meshFilter;
+        public MeshCollider meshCollider;
         public RectTransform leftPanel;
 
         [Space]
@@ -95,8 +96,11 @@ namespace ProceduralToolkit.Examples.UI
                 to: targetPalette[3].WithSV(0.8f, 0.8f));
 
             var draft = LowPolyTerrainGenerator.TerrainDraft(terrainSize, cellSize, noiseScale, gradient);
+            var draftC = LowPolyTerrainGenerator.TerrainDraft(terrainSize, cellSize, noiseScale, gradient);
             draft.Move(Vector3.left*terrainSizeX/2 + Vector3.back*terrainSizeZ/2);
             meshFilter.mesh = draft.ToMesh();
+            meshCollider.sharedMesh = draft.ToMesh();
+
         }
     }
 }

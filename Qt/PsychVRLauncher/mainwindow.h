@@ -5,8 +5,17 @@
 #include <QMainWindow>
 #include <cunitymap.h>
 #include <cunityobject.h>
-#include <QButtonGroup>
 #include "editdialog.h"
+
+#include <QSlider>
+#include <QButtonGroup>
+#include <QFile>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonValue>
+#include <QByteArray>
+#include <QJsonArray>
+
 namespace Ui {
 class MainWindow;
 }

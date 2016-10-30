@@ -3,9 +3,17 @@
 #include "cunityobject.h"
 #include<QDebug>
 #include<QProcess>
-#include<poppler/qt5/poppler-qt5.h>
+//#include<poppler/qt5/poppler-qt5.h>
 #include<QAbstractButton>
+
+#include <QSlider>
 #include <QButtonGroup>
+#include <QFile>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonValue>
+#include <QByteArray>
+#include <QJsonArray>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -143,14 +151,63 @@ void MainWindow::initButtons()
             radioQs[x]->setId(radioQs[x]->buttons()[i],i);
         }
     }
+    SaveData();
 }
 
 void MainWindow::SaveData()
 {
+
+
+
+
     for(int x = 0; x < radioQs.size();x++)
     {
-         qDebug() << radioQs[x]->checkedId();
-
+        if (radioQs[x]->checkedId() == -1) {
+            //ERROR HERE
+        }
     }
+
+    QString filename = "pathhere/save.json";
+    QFile saveFile(filename);
+    if (!saveFile.open(QIODevice::ReadOnly)) {
+           qWarning("Failed to save data.");
+           //return false;
+       }
+
+    QByteArray saveData = saveFile.readAll();
+    QJsonDocument loadDoc(QJsonDocument::fromJson(saveData));
+    QJsonArray tester(loadDoc.array());
+
+    saveFile.close();
+
+    QJsonObject answers
+    {
+        {"1",radioQs[0]->checkedId()},
+        {"2",radioQs[1]->checkedId()},
+        {"3",radioQs[2]->checkedId()},
+        {"4",radioQs[3]->checkedId()},
+        {"5",radioQs[4]->checkedId()},
+        {"6",radioQs[5]->checkedId()}
+    };
+
+    QJsonObject newRun
+    {
+        {"run", tester.last().toObject()["run"].toInt() + 1},
+        {"prestress", ui->stress_slider->sliderPosition()},
+        {"poststress", ui->anxiety_slider->sliderPosition()},
+        {"answers", answers},
+        {"notes", ui->textEdit->toPlainText()}
+    };
+
+    tester.append(QJsonValue(newRun));
+
+    qDebug() << filename;
+    if (!saveFile.open(QIODevice::WriteOnly)) {
+           qWarning("Failed to save data.");
+           //return false;
+       }
+    QJsonDocument saveDoc(tester);
+
+    saveFile.write(saveDoc.toJson());
 
 }

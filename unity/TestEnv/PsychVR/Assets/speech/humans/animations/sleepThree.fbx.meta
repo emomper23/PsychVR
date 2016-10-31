@@ -148,7 +148,7 @@ ModelImporter:
     4300004: high-polyMesh
     4300006: male_elegantsuit01Mesh
     4300008: shoes03Mesh
-    7400000: iPi Default Take
+    7400000: sleepThree
     9500000: //RootNode
     13700000: high-polyMesh
     13700002: human_02Mesh
@@ -166,7 +166,10 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'iPi Default Take' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'chest1' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 3
@@ -175,7 +178,173 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: sleepThree
+      takeName: iPi Default Take
+      firstFrame: 0
+      lastFrame: 174
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: high-polyMesh
+        weight: 0
+      - path: human_02Mesh
+        weight: 0
+      - path: male_elegantsuit01Mesh
+        weight: 0
+      - path: shoes03Mesh
+        weight: 0
+      - path: short01Mesh
+        weight: 0
+      - path: Unity compliant skeleton
+        weight: 1
+      - path: Unity compliant skeleton/hips
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/neck
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/neck/head
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/neck/head/eye.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/neck/head/eye.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/neck/head/jaw
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/neck/head/jaw/tongue_base
+        weight: 0
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/neck/head/jaw/tongue_base/tongue_mod
+        weight: 0
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/neck/head/jaw/tongue_base/tongue_mod/tongue_tip
+        weight: 0
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/neck/head/lolid.L
+        weight: 0
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/neck/head/lolid.R
+        weight: 0
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/neck/head/uplid.L
+        weight: 0
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/neck/head/uplid.R
+        weight: 0
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L/upper_arm.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L/upper_arm.L/forearm.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L/upper_arm.L/forearm.L/hand.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L/upper_arm.L/forearm.L/hand.L/f_index.01.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L/upper_arm.L/forearm.L/hand.L/f_index.01.L/f_index.02.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L/upper_arm.L/forearm.L/hand.L/f_index.01.L/f_index.02.L/f_index.03.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L/upper_arm.L/forearm.L/hand.L/f_middle.01.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L/upper_arm.L/forearm.L/hand.L/f_middle.01.L/f_middle.02.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L/upper_arm.L/forearm.L/hand.L/f_middle.01.L/f_middle.02.L/f_middle.03.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L/upper_arm.L/forearm.L/hand.L/f_pinky.01.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L/upper_arm.L/forearm.L/hand.L/f_pinky.01.L/f_pinky.02.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L/upper_arm.L/forearm.L/hand.L/f_pinky.01.L/f_pinky.02.L/f_pinky.03.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L/upper_arm.L/forearm.L/hand.L/f_ring.01.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L/upper_arm.L/forearm.L/hand.L/f_ring.01.L/f_ring.02.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L/upper_arm.L/forearm.L/hand.L/f_ring.01.L/f_ring.02.L/f_ring.03.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L/upper_arm.L/forearm.L/hand.L/thumb.01.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L/upper_arm.L/forearm.L/hand.L/thumb.01.L/thumb.02.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.L/upper_arm.L/forearm.L/hand.L/thumb.01.L/thumb.02.L/thumb.03.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R/upper_arm.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R/upper_arm.R/forearm.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R/upper_arm.R/forearm.R/hand.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R/upper_arm.R/forearm.R/hand.R/f_index.01.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R/upper_arm.R/forearm.R/hand.R/f_index.01.R/f_index.02.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R/upper_arm.R/forearm.R/hand.R/f_index.01.R/f_index.02.R/f_index.03.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R/upper_arm.R/forearm.R/hand.R/f_middle.01.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R/upper_arm.R/forearm.R/hand.R/f_middle.01.R/f_middle.02.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R/upper_arm.R/forearm.R/hand.R/f_middle.01.R/f_middle.02.R/f_middle.03.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R/upper_arm.R/forearm.R/hand.R/f_pinky.01.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R/upper_arm.R/forearm.R/hand.R/f_pinky.01.R/f_pinky.02.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R/upper_arm.R/forearm.R/hand.R/f_pinky.01.R/f_pinky.02.R/f_pinky.03.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R/upper_arm.R/forearm.R/hand.R/f_ring.01.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R/upper_arm.R/forearm.R/hand.R/f_ring.01.R/f_ring.02.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R/upper_arm.R/forearm.R/hand.R/f_ring.01.R/f_ring.02.R/f_ring.03.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R/upper_arm.R/forearm.R/hand.R/thumb.01.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R/upper_arm.R/forearm.R/hand.R/thumb.01.R/thumb.02.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/spine/chest/chest1/shoulder.R/upper_arm.R/forearm.R/hand.R/thumb.01.R/thumb.02.R/thumb.03.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/thigh.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/thigh.L/shin.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/thigh.L/shin.L/foot.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/thigh.L/shin.L/foot.L/toe.L
+        weight: 1
+      - path: Unity compliant skeleton/hips/thigh.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/thigh.R/shin.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/thigh.R/shin.R/foot.R
+        weight: 1
+      - path: Unity compliant skeleton/hips/thigh.R/shin.R/foot.R/toe.R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

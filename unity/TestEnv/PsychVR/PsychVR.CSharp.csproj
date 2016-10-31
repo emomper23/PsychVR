@@ -157,6 +157,14 @@
     <Compile Include="Assets\LeapMotionModules\DetectionExamples\Scripts\MengerSponge.cs" />
     <Compile Include="Assets\LeapMotionModules\DetectionExamples\Scripts\PinchDraw.cs" />
     <Compile Include="Assets\LeapMotionModules\DetectionExamples\Scripts\SpawnBalls.cs" />
+    <Compile Include="Assets\LeapMotionModules\Hands\Examples\Scripts\CenterTransformOnCam.cs" />
+    <Compile Include="Assets\LeapMotionModules\Hands\Examples\Scripts\CycleHandPairs.cs" />
+    <Compile Include="Assets\LeapMotionModules\Hands\Scripts\LeapHandsAutoRig.cs" />
+    <Compile Include="Assets\LeapMotionModules\Hands\Scripts\MinimalHand.cs" />
+    <Compile Include="Assets\LeapMotionModules\Hands\Scripts\PolyFinger.cs" />
+    <Compile Include="Assets\LeapMotionModules\Hands\Scripts\PolyHand.cs" />
+    <Compile Include="Assets\LeapMotionModules\Hands\Scripts\RiggedFinger.cs" />
+    <Compile Include="Assets\LeapMotionModules\Hands\Scripts\RiggedHand.cs" />
     <Compile Include="Assets\LeapMotionModules\InteractionEngine\Scripts\ControllerImplementations\HoldingPoseControllerKabsch.cs" />
     <Compile Include="Assets\LeapMotionModules\InteractionEngine\Scripts\ControllerImplementations\LayerControllerCustom.cs" />
     <Compile Include="Assets\LeapMotionModules\InteractionEngine\Scripts\ControllerImplementations\MoveToControllerKinematic.cs" />

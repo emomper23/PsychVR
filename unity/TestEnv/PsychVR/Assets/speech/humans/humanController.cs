@@ -28,8 +28,8 @@ public class HumanController : MonoBehaviour {
 			GameObject human = (GameObject)Instantiate(human01Prefab, zeroVector, zeroQuaternion);
 			human.transform.parent = seat.transform;
 			human.transform.localScale = oneVector;
-			human.transform.position = seat.transform.position + animTransforms[animInt-1];
-			human.transform.localEulerAngles  = animRotations[animInt-1]; 
+			human.transform.localEulerAngles = animRotations[animInt - 1]; 
+			human.transform.localPosition = animTransforms[animInt-1];
 			human.GetComponent<Animator>().SetInteger("position", animInt);
 			
 		}
@@ -37,6 +37,6 @@ public class HumanController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
 	}
 }

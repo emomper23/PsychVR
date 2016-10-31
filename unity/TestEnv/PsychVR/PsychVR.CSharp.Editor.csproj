@@ -139,6 +139,7 @@
     <Compile Include="Assets\LeapMotion\Scripts\DataStructures\Editor\Tests\RingBufferTest.cs" />
     <Compile Include="Assets\LeapMotion\Scripts\VR\Editor\EyeTypeEditor.cs" />
     <Compile Include="Assets\LeapMotion\Scripts\VR\Editor\LeapTemporalWarpingEditor.cs" />
+    <Compile Include="Assets\LeapMotionModules\Hands\Scripts\Editor\LeapHandsAutoRigEditor.cs" />
     <Compile Include="Assets\LeapMotionModules\InteractionEngine\Scripts\Editor\InteractionBehaviourBaseEditor.cs" />
     <Compile Include="Assets\LeapMotionModules\InteractionEngine\Scripts\Editor\InteractionManagerEditor.cs" />
     <Compile Include="Assets\LeapMotionModules\InteractionEngine\Scripts\Editor\InteractionMaterialEditor.cs" />

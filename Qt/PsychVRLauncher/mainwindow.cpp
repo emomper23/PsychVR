@@ -41,8 +41,8 @@ MainWindow::MainWindow(QWidget *parent) :
     initButtons();
     loadFiles();
 
-    Poppler::Document * doc = Poppler::Document::load("/home/emomper/Documents/exam.pdf");
-    QImage img = doc->page(0)->renderToImage();
+    //Poppler::Document * doc = Poppler::Document::load("/home/emomper/Documents/exam.pdf");
+    //QImage img = doc->page(0)->renderToImage();
     //ui->openGLWidget->setImage
 }
 MainWindow::~MainWindow()
@@ -167,7 +167,7 @@ void MainWindow::SaveData()
         }
     }
 
-    QString filename = "pathhere/save.json";
+    QString filename = QApplication::applicationDirPath() + "/save.json";
     QFile saveFile(filename);
     if (!saveFile.open(QIODevice::ReadOnly)) {
            qWarning("Failed to save data.");

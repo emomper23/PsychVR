@@ -14,11 +14,13 @@
 #include <QJsonValue>
 #include <QByteArray>
 #include <QJsonArray>
+#include <QSignalMapper>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    QSignalMapper* signalMapper = new QSignalMapper (this) ;
     ui->setupUi(this);
     m_map_list = (CUnityMap**) malloc(sizeof(CUnityMap * )*NUM_MAPS);
     m_map_list[0]= new CUnityMap("FearOfHeights");
@@ -28,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_obj_settings->setVisible(false);
     ui->listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 
-    ui->tab_3->setEnabled(false);
+    //ui->tab_3->setEnabled(false);
 
     connect(ui->actionSave,SIGNAL(triggered(bool)),this,SLOT(saveFiles()));
     connect(ui->actionLoad,SIGNAL(triggered(bool)),this,SLOT(loadFiles()));
@@ -38,6 +40,23 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this->m_obj_settings, SIGNAL(accepted()),this,SLOT(saveModel()));
     connect(ui->launchButton, SIGNAL(pressed()),this,SLOT(launchScene()));
     connect(ui->submit_button, SIGNAL(clicked(bool)),this,SLOT(SaveData()));
+
+    connect(ui->actionUser_1, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));
+    connect(ui->actionUser_2, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));
+    connect(ui->actionUser_3, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));
+    connect(ui->actionUser_4, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));
+    connect(ui->actionUser_5, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));
+    connect(ui->actionGuest_1, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));
+
+    signalMapper -> setMapping (ui->actionUser_1, 1) ;
+    signalMapper -> setMapping (ui->actionUser_2, 2)  ;
+    signalMapper -> setMapping (ui->actionUser_3, 3)  ;
+    signalMapper -> setMapping (ui->actionUser_4, 4)  ;
+    signalMapper -> setMapping (ui->actionUser_5, 5)  ;
+    signalMapper -> setMapping (ui->actionGuest_1, 6)  ;
+    connect (signalMapper, SIGNAL(mapped(int)), this, SLOT(changeUser(int))) ;
+
+
     initButtons();
     loadFiles();
 
@@ -157,7 +176,8 @@ void MainWindow::initButtons()
 void MainWindow::SaveData()
 {
 
-
+    int usernum = 0;
+    int scenenum = 0;
 
 
     for(int x = 0; x < radioQs.size();x++)
@@ -180,6 +200,28 @@ void MainWindow::SaveData()
 
     saveFile.close();
 
+    int usern = ui->userLabel->text().right(1).toInt();
+
+    QJsonObject heightScene = tester.at(usern).toObject()["heights"].toObject();
+    QJsonObject calmScene = tester.at(0).toObject()["calm"].toObject();
+    QJsonObject socialScene = tester.at(0).toObject()["social"].toObject();
+    QJsonObject user = tester.at(usern).toObject();
+
+    QJsonArray newruns;
+
+    if(ui->scene_selection->currentIndex() == 0)
+    {
+        newruns = heightScene["runs"].toArray();
+    }
+    else if(ui->scene_selection->currentIndex() == 1)
+    {
+        newruns = socialScene["runs"].toArray();
+    }
+    else
+    {
+        newruns = calmScene["runs"].toArray();
+    }
+
     QJsonObject answers
     {
         {"1",radioQs[0]->checkedId()},
@@ -192,22 +234,58 @@ void MainWindow::SaveData()
 
     QJsonObject newRun
     {
-        {"run", tester.last().toObject()["run"].toInt() + 1},
+        {"run", newruns.size() + 1},
         {"prestress", ui->stress_slider->sliderPosition()},
         {"poststress", ui->anxiety_slider->sliderPosition()},
         {"answers", answers},
         {"notes", ui->textEdit->toPlainText()}
     };
 
-    tester.append(QJsonValue(newRun));
+    newruns.append(newRun);
+
+    if(ui->scene_selection->currentIndex() == 0)
+    {
+        heightScene["runs"] = newruns;
+    }
+    else if(ui->scene_selection->currentIndex() == 1)
+    {
+        socialScene["runs"] = newruns;
+    }
+    else
+    {
+        calmScene["runs"] = newruns;
+    }
+
+    user["heights"] = heightScene;
+    user["calm"] = calmScene;
+    user["social"] = socialScene;
+
+    QJsonArray users{user};
+
+    //users.at(0).toObject()["Calm"].toObject()["runs"].toArray().isEmpty()
+    //users.at(0).toObject()["Calm"].toObject()["runs"].toArray().append(QJsonValue(newRun));
+    //users.at(0).toObject()["Calm"].toObject()["runs"].toArray().append(QJsonValue(newRun));
 
     qDebug() << filename;
+
     if (!saveFile.open(QIODevice::WriteOnly)) {
            qWarning("Failed to save data.");
            //return false;
        }
-    QJsonDocument saveDoc(tester);
+    QJsonDocument saveDoc(users);
 
     saveFile.write(saveDoc.toJson());
 
+}
+
+void MainWindow::changeUser(int userNum)
+{
+    QString name =  "User";
+    name.append(QString::number(userNum));
+    qDebug() << name.end();
+    ui->userLabel->setText(name);
+    if(userNum == 6)
+    {
+        ui->userLabel->setText(" Guest ");
+    }
 }

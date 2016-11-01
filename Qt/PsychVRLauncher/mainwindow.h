@@ -12,6 +12,7 @@
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QSignalMapper>
 #include <QJsonValue>
 #include <QByteArray>
 #include <QJsonArray>
@@ -35,6 +36,7 @@ public slots:
     void newModel();
     void launchScene();
     void SaveData();
+    void changeUser(int userName);
     void initButtons();
 
 private:

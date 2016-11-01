@@ -34,29 +34,40 @@
       <number>0</number>
      </property>
      <item>
-      <widget class="QComboBox" name="scene_selection">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <property name="text">
-         <string>Fear of Heights</string>
-        </property>
+        <widget class="QLabel" name="userLabel">
+         <property name="text">
+          <string>User 1</string>
+         </property>
+        </widget>
        </item>
        <item>
-        <property name="text">
-         <string>Speech Anxiety</string>
-        </property>
+        <widget class="QComboBox" name="scene_selection">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <item>
+          <property name="text">
+           <string>Fear of Heights</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Speech Anxiety</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Stress Relief</string>
+          </property>
+         </item>
+        </widget>
        </item>
-       <item>
-        <property name="text">
-         <string>Stress Relief</string>
-        </property>
-       </item>
-      </widget>
+      </layout>
      </item>
      <item>
       <widget class="QTabWidget" name="tabWidget">
@@ -755,7 +766,7 @@
            </widget>
           </item>
           <item row="0" column="1" colspan="3">
-           <widget class="QSlider" name="stres_slider">
+           <widget class="QSlider" name="stress_slider">
             <property name="maximum">
              <number>10</number>
             </property>
@@ -809,7 +820,7 @@
      <x>0</x>
      <y>0</y>
      <width>1172</width>
-     <height>30</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuPsychVR_Launcher_and_Configturation_Tool">
@@ -836,10 +847,22 @@
      <string>&amp;View</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuUsers">
+    <property name="title">
+     <string>Users</string>
+    </property>
+    <addaction name="actionUser_1"/>
+    <addaction name="actionUser_2"/>
+    <addaction name="actionUser_3"/>
+    <addaction name="actionUser_4"/>
+    <addaction name="actionUser_5"/>
+    <addaction name="actionGuest_1"/>
+   </widget>
    <addaction name="menuPsychVR_Launcher_and_Configturation_Tool"/>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuView"/>
+   <addaction name="menuUsers"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -870,6 +893,81 @@
     <string>&amp;New Object</string>
    </property>
   </action>
+  <action name="actionUser1">
+   <property name="text">
+    <string>Switch User</string>
+   </property>
+  </action>
+  <action name="actionUser2">
+   <property name="text">
+    <string>User2</string>
+   </property>
+  </action>
+  <action name="actionUser3">
+   <property name="text">
+    <string>User3</string>
+   </property>
+  </action>
+  <action name="actionUser4">
+   <property name="text">
+    <string>User4</string>
+   </property>
+  </action>
+  <action name="actionUser5">
+   <property name="text">
+    <string>User5</string>
+   </property>
+  </action>
+  <action name="actionGuest">
+   <property name="text">
+    <string>Guest</string>
+   </property>
+  </action>
+  <action name="actionChange_Username">
+   <property name="text">
+    <string>Change Username</string>
+   </property>
+  </action>
+  <action name="actionUser1_2">
+   <property name="text">
+    <string>User1</string>
+   </property>
+  </action>
+  <action name="actionUser_1">
+   <property name="text">
+    <string>User1</string>
+   </property>
+  </action>
+  <action name="actionUser_2">
+   <property name="text">
+    <string>User2</string>
+   </property>
+  </action>
+  <action name="actionUser_3">
+   <property name="text">
+    <string>User3</string>
+   </property>
+  </action>
+  <action name="actionUser_4">
+   <property name="text">
+    <string>User4</string>
+   </property>
+  </action>
+  <action name="actionUser_5">
+   <property name="text">
+    <string>User5</string>
+   </property>
+  </action>
+  <action name="actionGuest_1">
+   <property name="text">
+    <string>Guest</string>
+   </property>
+  </action>
+  <action name="actionChangeUsername">
+   <property name="text">
+    <string>Change Username</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -882,11 +980,11 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_3"/>
-  <buttongroup name="buttonGroup"/>
-  <buttongroup name="buttonGroup_4"/>
-  <buttongroup name="buttonGroup_5"/>
   <buttongroup name="buttonGroup_6"/>
+  <buttongroup name="buttonGroup_5"/>
+  <buttongroup name="buttonGroup_3"/>
+  <buttongroup name="buttonGroup_4"/>
+  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>

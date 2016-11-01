@@ -9,10 +9,11 @@ public class QtSceneLoad : MonoBehaviour {
     public string m_path;
     public int m_day_flag;
     public int m_config_id;
+    public string skin_color;
 	// Use this for initialization
 	void Start ()
     {
-        
+        /*
         string args = System.Environment.CommandLine;
         INIParser parser = new INIParser();
         parser.Open(m_path);
@@ -30,12 +31,16 @@ public class QtSceneLoad : MonoBehaviour {
         {
             //config 1 positions
 
-        }
+        }*/
         
 	}
-	
+    public string getSkinColor()
+    {
+        return skin_color;
+    }
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 	
 	}
 }

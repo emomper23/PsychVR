@@ -6,8 +6,10 @@ namespace ProceduralToolkit.Examples.UI
     public class LowPolyTerrainGeneratorUI : UIBase
     {
         public MeshFilter meshFilter;
-        public MeshCollider meshCollider;
+        public GameObject terrain;
         public RectTransform leftPanel;
+        private MeshCollider meshCollider;
+        private MeshCollider meshCollider2;
 
         [Space]
         [Range(minXSize, maxXSize)]
@@ -22,11 +24,11 @@ namespace ProceduralToolkit.Examples.UI
         public int noiseScale = 5;
 
         private const int minXSize = 10;
-        private const int maxXSize = 30;
+        private const int maxXSize = 100;
         private const int minYSize = 1;
         private const int maxYSize = 5;
         private const int minZSize = 10;
-        private const int maxZSize = 30;
+        private const int maxZSize = 100;
         private const float minCellSize = 0.3f;
         private const float maxCellSize = 2;
         private const int minNoiseScale = 1;
@@ -37,47 +39,14 @@ namespace ProceduralToolkit.Examples.UI
 
         private void Awake()
         {
+
             RenderSettings.skybox = new Material(RenderSettings.skybox);
+            meshCollider = terrain.GetComponents<MeshCollider>()[0];
+            meshCollider2 = terrain.GetComponents<MeshCollider>()[1];
+
 
             Generate();
             currentPalette.AddRange(targetPalette);
-
-            InstantiateControl<SliderControl>(leftPanel)
-                .Initialize("Terrain size X", minXSize, maxXSize, terrainSizeX, value =>
-                {
-                    terrainSizeX = value;
-                    Generate();
-                });
-
-            InstantiateControl<SliderControl>(leftPanel)
-                .Initialize("Terrain size Y", minYSize, maxYSize, terrainSizeY, value =>
-                {
-                    terrainSizeY = value;
-                    Generate();
-                });
-
-            InstantiateControl<SliderControl>(leftPanel)
-                .Initialize("Terrain size Z", minZSize, maxZSize, terrainSizeZ, value =>
-                {
-                    terrainSizeZ = value;
-                    Generate();
-                });
-
-            InstantiateControl<SliderControl>(leftPanel)
-                .Initialize("Cell size", minCellSize, maxCellSize, cellSize, value =>
-                {
-                    cellSize = value;
-                    Generate();
-                });
-
-            InstantiateControl<SliderControl>(leftPanel)
-                .Initialize("Noise scale", minNoiseScale, maxNoiseScale, noiseScale, value =>
-                {
-                    noiseScale = value;
-                    Generate();
-                });
-
-            InstantiateControl<ButtonControl>(leftPanel).Initialize("Generate", Generate);
         }
 
         private void Update()
@@ -100,6 +69,7 @@ namespace ProceduralToolkit.Examples.UI
             draft.Move(Vector3.left*terrainSizeX/2 + Vector3.back*terrainSizeZ/2);
             meshFilter.mesh = draft.ToMesh();
             meshCollider.sharedMesh = draft.ToMesh();
+            meshCollider2.sharedMesh = draft.ToMesh();
 
         }
     }

@@ -38,34 +38,33 @@ public class PlaneRepeat : MonoBehaviour {
             for (int j = 0; j < GRID_Z; j++)
             {                   
                 plane_list[i * 3 + j] = (GameObject)GameObject.Instantiate(plane, new Vector3(pos_x + size_x * gx, 0, pos_z + size_z * gz), rot);
-                ((GameObject)plane_list[i * 3 + j]).transform.name = "plane"+(i*3+j);
+                ((GameObject)plane_list[i * 3 + j]).transform.name = "TerrainRenderer"+(i*3+j);
 
                 gz++;
             }
             gx++;
-            old_name = plane.transform.name;
+            
+
         }
-        
-        
+        GameObject.Destroy(plane);
     }
     public void setPlane(GameObject obj)
     {
-        plane = obj;
-        //Debug.Log(obj+ "  " + old_name + " from" + obj+ " " + plane);
-        if (obj.transform.name != old_name) //|| obj.transform.position.z != plane.transform.position.z)
+        if (obj.transform.name == "First Person Controller")
         {
-          //  Debug.Log("load");
-            
-            foreach (GameObject p in plane_list)
+            return;
+        }
+       foreach (GameObject p in plane_list)
+        {
+            if (p && (p.transform.name != obj.transform.name))
             {
-                if (p && (p.transform.name != obj.transform.name))
-                {
-                    GameObject.Destroy(p);
-                }
+                GameObject.Destroy(p);
             }
-            makePlanes();
-           
-        }      
+        }
+        plane = obj;
+        makePlanes();
+          
+       
     }
 	// Update is called once per frame
 	void Update ()

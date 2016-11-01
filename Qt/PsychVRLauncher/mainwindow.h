@@ -38,6 +38,7 @@ public slots:
     void SaveData();
     void changeUser(int userName);
     void initButtons();
+    void readIn();
 
 private:
     Ui::MainWindow *ui;

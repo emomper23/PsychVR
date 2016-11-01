@@ -170,7 +170,6 @@ void MainWindow::initButtons()
             radioQs[x]->setId(radioQs[x]->buttons()[i],i);
         }
     }
-    SaveData();
 }
 
 void MainWindow::SaveData()
@@ -202,10 +201,14 @@ void MainWindow::SaveData()
 
     int usern = ui->userLabel->text().right(1).toInt();
 
+
     QJsonObject heightScene = tester.at(usern).toObject()["heights"].toObject();
-    QJsonObject calmScene = tester.at(0).toObject()["calm"].toObject();
-    QJsonObject socialScene = tester.at(0).toObject()["social"].toObject();
+    QJsonObject calmScene = tester.at(usern).toObject()["calm"].toObject();
+    QJsonObject socialScene = tester.at(usern).toObject()["social"].toObject();
     QJsonObject user = tester.at(usern).toObject();
+
+    qDebug() << "check2";
+    qDebug() << heightScene.isEmpty();
 
     QJsonArray newruns;
 
@@ -260,11 +263,7 @@ void MainWindow::SaveData()
     user["calm"] = calmScene;
     user["social"] = socialScene;
 
-    QJsonArray users{user};
-
-    //users.at(0).toObject()["Calm"].toObject()["runs"].toArray().isEmpty()
-    //users.at(0).toObject()["Calm"].toObject()["runs"].toArray().append(QJsonValue(newRun));
-    //users.at(0).toObject()["Calm"].toObject()["runs"].toArray().append(QJsonValue(newRun));
+    tester[usern] = user;
 
     qDebug() << filename;
 
@@ -272,9 +271,58 @@ void MainWindow::SaveData()
            qWarning("Failed to save data.");
            //return false;
        }
-    QJsonDocument saveDoc(users);
+    QJsonDocument saveDoc(tester);
 
     saveFile.write(saveDoc.toJson());
+
+    saveFile.close();
+
+    readIn();
+
+}
+
+void MainWindow::readIn()
+{
+
+    int usernum = 0;
+    int scenenum = 0;
+
+    QString filename = QApplication::applicationDirPath() + "/save.json";
+    QFile saveFile(filename);
+    if (!saveFile.open(QIODevice::ReadOnly)) {
+           qWarning("Failed to save data.");
+           //return false;
+       }
+
+    QByteArray saveData = saveFile.readAll();
+    QJsonDocument loadDoc(QJsonDocument::fromJson(saveData));
+    QJsonArray tester(loadDoc.array());
+    saveFile.close();
+
+    int usern = ui->userLabel->text().right(1).toInt();
+
+
+    QJsonObject heightScene = tester.at(usern).toObject()["heights"].toObject();
+    QJsonObject calmScene = tester.at(usern).toObject()["calm"].toObject();
+    QJsonObject socialScene = tester.at(usern).toObject()["social"].toObject();
+    QJsonObject user = tester.at(usern).toObject();
+
+    QJsonObject settings;
+
+    if(ui->scene_selection->currentIndex() == 0)
+    {
+        qDebug() << heightScene.value("Settings").toObject().value("Lift_Pos").toInt();
+        qDebug() << heightScene.value("Settings").toObject().value("Day").toInt();
+    }
+    else if(ui->scene_selection->currentIndex() == 1)
+    {
+        qDebug() << socialScene.value("Settings").toObject().value("PPT").toString();
+        qDebug() << socialScene.value("Settings").toObject().value("Position").toInt();
+    }
+    else
+    {
+        qDebug() << calmScene["Settings"].toObject();
+    }
 
 }
 

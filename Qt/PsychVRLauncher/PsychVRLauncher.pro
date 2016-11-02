@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     cunityobject.cpp \
     editdialog.cpp \
     cuserstat.cpp \
-    surveydata.cpp
+    surveydata.cpp \
+    settings.cpp
 
 HEADERS  += mainwindow.h \
     qglgraphwidget.h \
@@ -37,7 +38,9 @@ HEADERS  += mainwindow.h \
     cunityobject.h \
     editdialog.h \
     cuserstat.h \
-    surveydata.h
+    surveydata.h \
+    settings.h
 
 FORMS    += mainwindow.ui \
-    editdialog.ui
+    editdialog.ui \
+    settings.ui

@@ -27,9 +27,10 @@ MainWindow::MainWindow(QWidget *parent) :
     m_map_list[1]= new CUnityMap("SpeechAnxiety");
     m_map_list[2]= new CUnityMap("CalmingEnvironment");
     m_obj_settings = new EditDialog();
+    m_settings = new settings();
     m_obj_settings->setVisible(false);
     ui->listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
-
+    m_settings->show();
     //ui->tab_3->setEnabled(false);
 
     connect(ui->actionSave,SIGNAL(triggered(bool)),this,SLOT(saveFiles()));

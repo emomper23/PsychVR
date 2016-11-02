@@ -6,6 +6,7 @@
 #include <cunitymap.h>
 #include <cunityobject.h>
 #include "editdialog.h"
+#include "settings.h"
 
 #include <QSlider>
 #include <QButtonGroup>
@@ -46,7 +47,7 @@ private:
     EditDialog * m_obj_settings;
     CUnityMap * getMap();
     std::vector <QButtonGroup*> radioQs;
-
+    settings * m_settings;
 };
 
 #endif // MAINWINDOW_H

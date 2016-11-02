@@ -23,8 +23,8 @@ public class PlaneRepeat : MonoBehaviour {
     {
 
       //  Debug.Log("making planes for " + plane);   
-        float size_x = plane.GetComponent<Renderer>().bounds.size.x - 2;
-        float size_z = plane.GetComponent<Renderer>().bounds.size.z - 2;
+        float size_x = plane.GetComponent<Renderer>().bounds.size.x -1 ;
+        float size_z = plane.GetComponent<Renderer>().bounds.size.z -1 ;
         float pos_x = plane.transform.position.x;
         float pos_z = plane.transform.position.z;
         

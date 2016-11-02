@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 using System.IO;
-
+using SimpleJSON;
 
 public class QtSceneLoad : MonoBehaviour {
 
@@ -13,27 +13,14 @@ public class QtSceneLoad : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        /*
-        string args = System.Environment.CommandLine;
-        INIParser parser = new INIParser();
-        parser.Open(m_path);
-        m_day_flag = parser.ReadValue("%General", "day", 0);
-        m_config_id = parser.ReadValue("%General", "config_id", 0);
-        if (m_day_flag == 1)
-        {
-            //TODO Day night rotation here, I can't find it.
-        }
-        if (m_config_id == 0)
-        {
-            //config 0 positions
-        }
-        else if (m_config_id == 1)
-        {
-            //config 1 positions
+        string text = System.IO.File.ReadAllText(m_path);
+        var data = JSON.Parse(text);
+        Debug.Log(data[0]["Calm"]);
+        Debug.Log(data[0]["Heights"]);
+        Debug.Log(data[0]["Social"]);
 
-        }*/
-        
-	}
+
+    }
     public string getSkinColor()
     {
         return skin_color;

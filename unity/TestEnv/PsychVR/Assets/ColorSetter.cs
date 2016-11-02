@@ -9,7 +9,7 @@ public class ColorSetter : MonoBehaviour {
 
 	void Start ()
     {
-        string hex_val = settings.GetComponent<QtSceneLoad>().getSkinColor();
+        string hex_val = PlayerPrefs.GetString("SkinColor");
         //Debug.Log(hex_val);
         Color color = hex_str_to_RGB(hex_val);
         skin = this.gameObject.GetComponent<Renderer>();

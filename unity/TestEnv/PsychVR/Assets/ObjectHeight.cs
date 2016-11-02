@@ -6,10 +6,18 @@ public class ObjectHeight : MonoBehaviour {
 	// Use this for initialization
 	void Awake ()
     {
+      
         Vector3 tree_pos = this.transform.position;
         Ray check = new Ray(tree_pos, Vector3.down);
         RaycastHit test;
         Physics.Raycast(check, out test,100.0f);
+        if (test.collider == null)
+        {
+            Debug.Log("No collider"+ this.gameObject.transform.position);
+            //GameObject.Destroy(this.gameObject);
+            return;
+        }
+            
         Debug.Log(test.collider.gameObject.transform.name);
 
         this.transform.position = tree_pos - new Vector3(0, test.distance, 0);

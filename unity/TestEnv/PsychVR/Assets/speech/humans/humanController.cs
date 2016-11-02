@@ -24,7 +24,7 @@ public class HumanController : MonoBehaviour {
 		foreach (GameObject seat in seats)
 		{
 			int animInt = Random.Range(1, 9);
-			Debug.Log(animRotations[animInt-1] + " " + animInt + " " + seat.transform.rotation);
+			//Debug.Log(animRotations[animInt-1] + " " + animInt + " " + seat.transform.rotation);
 			GameObject human = (GameObject)Instantiate(human01Prefab, zeroVector, zeroQuaternion);
 			human.transform.parent = seat.transform;
 			human.transform.localScale = oneVector;

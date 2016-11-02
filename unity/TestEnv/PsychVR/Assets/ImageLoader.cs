@@ -11,7 +11,21 @@ public class ImageLoader : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         list = Resources.LoadAll("Textures");
+        Object[] temp = new Object[list.Length];
+        for (int i = 0; i < list.Length; i++)
+        {
+            foreach (Object o in list)
+            {
+                if (o.name == ("img-" + i))
+                {
+                    temp[i] = o;
+                }
+            }
+        }
+
+        list = temp;
 		screen.GetComponent<Renderer>().material.mainTexture = (Texture2D)list[number % list.Length];
+        Debug.Log(list[number % list.Length].name);
     }
 	
 	// Update is called once per frame
@@ -38,8 +52,9 @@ public class ImageLoader : MonoBehaviour {
 			number = 0;
 		}
 		screen.GetComponent<Renderer>().material.mainTexture = (Texture2D)list[number % list.Length];
+        Debug.Log(list[number % list.Length].name);
 
-	}
+    }
 
 	public void Previous()
 	{

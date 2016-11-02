@@ -18,6 +18,8 @@ public class QtSceneLoad : MonoBehaviour {
         Debug.Log(data[0]["Calm"]);
         Debug.Log(data[0]["Heights"]);
         Debug.Log(data[0]["Social"]);
+        PlayerPrefs.SetString("SkinColor", "FFDABE");
+
 
 
     }

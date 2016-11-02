@@ -186,17 +186,21 @@ void MainWindow::SaveData()
         }
     }
 
+    QJsonArray tester;
+
     QString filename = QApplication::applicationDirPath() + "/save.json";
     QFile saveFile(filename);
-    if (!saveFile.open(QIODevice::ReadOnly))
-    {
+    if (!saveFile.open(QIODevice::ReadOnly)) {
            qWarning("Failed to save data.");
-           //return false;
+           //return false; c
+            tester = makeJson();
     }
-
-    QByteArray saveData = saveFile.readAll();
-    QJsonDocument loadDoc(QJsonDocument::fromJson(saveData));
-    QJsonArray tester(loadDoc.array());
+    else
+    {
+        QByteArray saveData = saveFile.readAll();
+        QJsonDocument loadDoc(QJsonDocument::fromJson(saveData));
+        tester = loadDoc.array();
+    }
 
     saveFile.close();
 

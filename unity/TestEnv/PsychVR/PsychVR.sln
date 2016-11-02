@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychVR.CSharp.Plugins", "PsychVR.CSharp.Plugins.csproj", "{BC2D997F-6E22-89F0-AF5F-2B94757B8931}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychVR.CSharp", "PsychVR.CSharp.csproj", "{E0BE11D4-3830-B03F-C420-0CC189E191A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychVR.CSharp.Editor.Plugins", "PsychVR.CSharp.Editor.Plugins.csproj", "{FCEDFC72-A744-83A2-F99C-92630A9A2AA1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychVR.CSharp.Editor", "PsychVR.CSharp.Editor.csproj", "{FADB9270-F662-AB81-03A6-C235582EE315}"
 EndProject
@@ -11,10 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC2D997F-6E22-89F0-AF5F-2B94757B8931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC2D997F-6E22-89F0-AF5F-2B94757B8931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC2D997F-6E22-89F0-AF5F-2B94757B8931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC2D997F-6E22-89F0-AF5F-2B94757B8931}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E0BE11D4-3830-B03F-C420-0CC189E191A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E0BE11D4-3830-B03F-C420-0CC189E191A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0BE11D4-3830-B03F-C420-0CC189E191A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0BE11D4-3830-B03F-C420-0CC189E191A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCEDFC72-A744-83A2-F99C-92630A9A2AA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCEDFC72-A744-83A2-F99C-92630A9A2AA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCEDFC72-A744-83A2-F99C-92630A9A2AA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCEDFC72-A744-83A2-F99C-92630A9A2AA1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FADB9270-F662-AB81-03A6-C235582EE315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FADB9270-F662-AB81-03A6-C235582EE315}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FADB9270-F662-AB81-03A6-C235582EE315}.Release|Any CPU.ActiveCfg = Release|Any CPU

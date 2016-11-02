@@ -95,9 +95,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="PsychVR.CSharp.Plugins.csproj">
+      <Project>{BC2D997F-6E22-89F0-AF5F-2B94757B8931}</Project>
+      <Name>PsychVR.CSharp.Plugins</Name>
+    </ProjectReference>
     <ProjectReference Include="PsychVR.CSharp.csproj">
       <Project>{E0BE11D4-3830-B03F-C420-0CC189E191A2}</Project>
       <Name>PsychVR.CSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="PsychVR.CSharp.Editor.Plugins.csproj">
+      <Project>{FCEDFC72-A744-83A2-F99C-92630A9A2AA1}</Project>
+      <Name>PsychVR.CSharp.Editor.Plugins</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

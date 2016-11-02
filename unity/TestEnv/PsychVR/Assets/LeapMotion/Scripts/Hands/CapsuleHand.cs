@@ -221,8 +221,7 @@ namespace Leap.Unity {
 
     //Geometry creation methods
 
-    private void createSpheres()
-    {
+    private void createSpheres() {
       //Create spheres for finger joints
       List<Finger> fingers = hand_.Fingers;
       for (int i = 0; i < fingers.Count; i++) {

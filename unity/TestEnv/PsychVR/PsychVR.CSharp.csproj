@@ -65,7 +65,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="PsychVR.CSharp.Plugins.csproj">
+      <Project>{BC2D997F-6E22-89F0-AF5F-2B94757B8931}</Project>
+      <Name>PsychVR.CSharp.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\Advanced INI Parser\INIParser.cs" />
+    <Compile Include="Assets\BallToMovement.cs" />
     <Compile Include="Assets\ChunkCollider.cs" />
     <Compile Include="Assets\ColorSetter.cs" />
     <Compile Include="Assets\Delicode NI mate\NImateFeed.cs" />
@@ -399,7 +406,6 @@
     <Compile Include="Assets\anxiety\Assets\Scripts\GeomShader\BillboardGeomScript.cs" />
     <Compile Include="Assets\anxiety\Assets\Scripts\GeomShader\VoxelGeomScript.cs" />
     <Compile Include="Assets\anxiety\Object2Terrain.cs" />
-    <Compile Include="Assets\ballToMovement.cs" />
     <Compile Include="Assets\copyPosition.cs" />
     <Compile Include="Assets\copyRotation.cs" />
     <Compile Include="Assets\heights\City\Map\CameraRotate.cs" />

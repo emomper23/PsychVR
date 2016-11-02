@@ -161,7 +161,7 @@ namespace Leap.Unity.InputModule {
         LeapDataProvider = FindObjectOfType<LeapProvider>();
         if (LeapDataProvider == null || !LeapDataProvider.isActiveAndEnabled) {
           Debug.LogError("Cannot use LeapImageRetriever if there is no LeapProvider!");
-          enabled = false;
+          //enabled = false;
           return;
         }
       }

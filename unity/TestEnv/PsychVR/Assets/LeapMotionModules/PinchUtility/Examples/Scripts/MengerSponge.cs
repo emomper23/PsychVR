@@ -66,7 +66,8 @@ namespace Leap.Unity.PinchUtility.Examples {
       Mesh mesh = new Mesh();
       mesh.name = "MengerMesh";
 
-      int size = Mathf.RoundToInt(Mathf.Pow(3, _subMeshLod));
+      int size = Mathf.RoundToInt(Mathf.Pow(3, 1));
+            Debug.Log(size);
 
       bool[,,] _isFilled = new bool[size, size, size];
       for (int x = 0; x < size; x++) {

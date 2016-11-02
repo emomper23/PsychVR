@@ -6,6 +6,7 @@
 #include <cunitymap.h>
 #include <cunityobject.h>
 #include "editdialog.h"
+#include "settings.h"
 
 #include <QSlider>
 #include <QButtonGroup>
@@ -39,14 +40,14 @@ public slots:
     void changeUser(int userName);
     void initButtons();
     void readIn();
-
+    QJsonArray makeJson();
 private:
     Ui::MainWindow *ui;
     CUnityMap ** m_map_list;
     EditDialog * m_obj_settings;
     CUnityMap * getMap();
     std::vector <QButtonGroup*> radioQs;
-
+    settings * m_settings;
 };
 
 #endif // MAINWINDOW_H

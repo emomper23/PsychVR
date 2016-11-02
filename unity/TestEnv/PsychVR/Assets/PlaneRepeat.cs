@@ -65,6 +65,7 @@ public class PlaneRepeat : MonoBehaviour {
             for (int i = 0; i < 9; i++)
             {
                 ((GameObject)plane_list[i]).GetComponent<ChunkCollider>().Load();
+                ((GameObject)plane_list[i]).GetComponent<ObjectSpawner>().Load();
             }
 
                 firstTime = false;
@@ -77,14 +78,22 @@ public class PlaneRepeat : MonoBehaviour {
             {
                 if (chunk.list[i] == null)
                 {
-                    Vector3 dist = new Vector3(100, 0, 100);
+                    Vector3 dist = new Vector3(size_x, 0, size_z);
                     dist.Scale(chunk.dir_list[i]);
                     temp_list[i] = (GameObject)Instantiate(orig_plane, plane.transform.position + dist ,plane.transform.rotation);
                     chunk.list[i] = temp_list[i];
+                    temp_list[i].transform.name = "TerrainRenderer" + count;
                     count++;
                 }         
              }
-            
+            for (int i = 0; i < 8; i++)
+            {
+                if (temp_list[i] != null)
+                {
+                    temp_list[i].GetComponent<ChunkCollider>().Load();
+                    temp_list[i].GetComponent<ObjectSpawner>().Load();
+                }
+            }
             //Debug.Log("new plane"+ plane.transform.name);   
         }
        

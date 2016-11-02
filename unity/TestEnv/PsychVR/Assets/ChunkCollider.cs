@@ -25,19 +25,19 @@ public class ChunkCollider : MonoBehaviour {
 
     private GameObject FindTerrain(Vector3 pos, Vector3 dir)
     {
-        Debug.Log("count");
+        //Debug.Log("count");
         Ray check = new Ray(pos, dir);
         RaycastHit test;
         float mag = Mathf.Sqrt(100.0f * 100.0f + 100.0f * 100.0f);
         Physics.Raycast(check, out test, mag);
         if (test.collider == null)
         {
-            Debug.Log("nada " + this.transform.name + " " + dir+" "+pos + " "+dir*mag);
+            //Debug.Log("nada " + this.transform.name + " " + dir+" "+pos + " "+dir*mag);
 
         }
         else
         {
-            Debug.Log(this.transform.name + " " + test.collider.transform.name + " " + dir);
+            //Debug.Log(this.transform.name + " " + test.collider.transform.name + " " + dir);
             return test.collider.gameObject;
         }
         

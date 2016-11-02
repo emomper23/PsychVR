@@ -6,7 +6,7 @@ public class ObjectSpawner : MonoBehaviour {
     public GameObject tree;
     public GameObject rock;
 	// Use this for initialization
-	void Awake ()
+	public void Load ()
     {
         float diff_x = Random.Range(-50, 50);
         float diff_z = Random.Range(-50, 50);

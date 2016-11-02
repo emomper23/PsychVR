@@ -39,7 +39,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionNew_Object,SIGNAL(triggered(bool)),this,SLOT(newModel()));
     connect(this->m_obj_settings, SIGNAL(accepted()),this,SLOT(saveModel()));
     connect(ui->launchButton, SIGNAL(pressed()),this,SLOT(launchScene()));
-    connect(ui->submit_button, SIGNAL(clicked(bool)),this,SLOT(SaveData()));
+    connect(ui->submit_button, SIGNAL(clicked(bool)),this,SLOT(saveData()));
 
     connect(ui->actionUser_1, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));
     connect(ui->actionUser_2, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));
@@ -299,6 +299,11 @@ void MainWindow::readIn()
     QJsonArray tester(loadDoc.array());
     saveFile.close();
 
+    if (tester.isEmpty())
+    {
+        tester = makeJson();
+    }
+
     int usern = ui->userLabel->text().right(1).toInt();
 
 
@@ -336,4 +341,26 @@ void MainWindow::changeUser(int userNum)
     {
         ui->userLabel->setText(" Guest ");
     }
+}
+
+QJsonArray MainWindow::makeJson()
+{
+    QJsonObject fakesettings;
+    QJsonArray fakeruns;
+
+    QJsonObject scene{
+        {"Settings", fakesettings},
+        {"runs", fakeruns}
+    };
+
+    QJsonObject run{
+        {"Heights", scene},
+        {"Social", scene},
+        {"Calm", scene}
+    };
+
+    QJsonArray runs{run,run,run,run,run,run};
+
+    return runs;
+
 }

@@ -39,7 +39,7 @@ public slots:
     void changeUser(int userName);
     void initButtons();
     void readIn();
-
+    QJsonArray makeJson();
 private:
     Ui::MainWindow *ui;
     CUnityMap ** m_map_list;

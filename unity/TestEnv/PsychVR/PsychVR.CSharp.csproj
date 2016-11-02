@@ -409,7 +409,6 @@
     <Compile Include="Assets\anxiety\Assets\Scripts\Generic\TranslateRotateControler.cs" />
     <Compile Include="Assets\anxiety\Assets\Scripts\GeomShader\BillboardGeomScript.cs" />
     <Compile Include="Assets\anxiety\Assets\Scripts\GeomShader\VoxelGeomScript.cs" />
-    <Compile Include="Assets\anxiety\Object2Terrain.cs" />
     <Compile Include="Assets\copyPosition.cs" />
     <Compile Include="Assets\copyRotation.cs" />
     <Compile Include="Assets\heights\City\Map\CameraRotate.cs" />

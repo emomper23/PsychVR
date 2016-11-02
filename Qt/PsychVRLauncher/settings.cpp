@@ -20,6 +20,10 @@ settings::settings(QWidget *parent) :
     ui(new Ui::settings)
 {
     ui->setupUi(this);
+
+    connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT(changeSettings()));
+    connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT());
+
 }
 
 settings::~settings()
@@ -100,6 +104,8 @@ void settings::changeSettings()
     saveFile.write(saveDoc.toJson());
 
     saveFile.close();
+
+    delete ui;
 
 }
 

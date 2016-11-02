@@ -313,9 +313,9 @@ void MainWindow::readIn()
     int usern = ui->userLabel->text().right(1).toInt();
 
 
-    QJsonObject heightScene = tester.at(usern).toObject()["heights"].toObject();
-    QJsonObject calmScene = tester.at(usern).toObject()["calm"].toObject();
-    QJsonObject socialScene = tester.at(usern).toObject()["social"].toObject();
+    QJsonObject heightScene = tester.at(usern).toObject()["Heights"].toObject();
+    QJsonObject calmScene = tester.at(usern).toObject()["Calm"].toObject();
+    QJsonObject socialScene = tester.at(usern).toObject()["Social"].toObject();
     QJsonObject user = tester.at(usern).toObject();
 
     QJsonObject settings;

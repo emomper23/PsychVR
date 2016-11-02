@@ -39,7 +39,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionNew_Object,SIGNAL(triggered(bool)),this,SLOT(newModel()));
     connect(this->m_obj_settings, SIGNAL(accepted()),this,SLOT(saveModel()));
     connect(ui->launchButton, SIGNAL(pressed()),this,SLOT(launchScene()));
-    connect(ui->submit_button, SIGNAL(clicked(bool)),this,SLOT(saveData()));
+    connect(ui->submit_button, SIGNAL(clicked(bool)),this,SLOT(SaveData()));
 
     connect(ui->actionUser_1, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));
     connect(ui->actionUser_2, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));
@@ -188,10 +188,11 @@ void MainWindow::SaveData()
 
     QString filename = QApplication::applicationDirPath() + "/save.json";
     QFile saveFile(filename);
-    if (!saveFile.open(QIODevice::ReadOnly)) {
+    if (!saveFile.open(QIODevice::ReadOnly))
+    {
            qWarning("Failed to save data.");
            //return false;
-       }
+    }
 
     QByteArray saveData = saveFile.readAll();
     QJsonDocument loadDoc(QJsonDocument::fromJson(saveData));

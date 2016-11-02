@@ -22,7 +22,7 @@ namespace ProceduralToolkit.Examples.UI
         public float cellSize = 1;
         [Range(minNoiseScale, maxNoiseScale)]
         public int noiseScale = 5;
-
+        public List<Mesh> meshes;
         private const int minXSize = 10;
         private const int maxXSize = 100;
         private const int minYSize = 1;
@@ -65,12 +65,25 @@ namespace ProceduralToolkit.Examples.UI
                 to: targetPalette[3].WithSV(0.8f, 0.8f));
 
             var draft = LowPolyTerrainGenerator.TerrainDraft(terrainSize, cellSize, noiseScale, gradient);
-            var draftC = LowPolyTerrainGenerator.TerrainDraft(terrainSize, cellSize, noiseScale, gradient);
+            for (int i = 0; i < 9; i++)
+            {
+               var temp = LowPolyTerrainGenerator.TerrainDraft(terrainSize, cellSize, noiseScale, gradient);
+                temp.Move(Vector3.left * terrainSizeX / 2 + Vector3.back * terrainSizeZ / 2);
+                meshes.Add(temp.ToMesh());
+            }
             draft.Move(Vector3.left*terrainSizeX/2 + Vector3.back*terrainSizeZ/2);
             meshFilter.mesh = draft.ToMesh();
             meshCollider.sharedMesh = draft.ToMesh();
             meshCollider2.sharedMesh = draft.ToMesh();
 
         }
+        public void UpdateVerticies(GameObject terrain, int idx)
+        {
+            terrain.GetComponent<MeshFilter>().mesh = meshes[idx];
+            terrain.GetComponents<MeshCollider>()[0].sharedMesh = meshes[idx];
+            terrain.GetComponents<MeshCollider>()[1].sharedMesh = meshes[idx];
+            //Debug.Log("update" + idx);
+        }
     }
+    
 }

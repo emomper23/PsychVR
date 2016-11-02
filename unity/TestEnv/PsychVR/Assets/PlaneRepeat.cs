@@ -8,6 +8,7 @@ public class PlaneRepeat : MonoBehaviour {
     public GameObject plane;
     private GameObject[] plane_list = new GameObject[9];
     public GameObject player;
+    public GameObject terrainGen;
     public float scale = 100;
     public float GRID_X = 3;
     public float GRID_Z = 3;
@@ -22,8 +23,8 @@ public class PlaneRepeat : MonoBehaviour {
     {
 
       //  Debug.Log("making planes for " + plane);   
-        float size_x = plane.GetComponent<Renderer>().bounds.size.x;
-        float size_z = plane.GetComponent<Renderer>().bounds.size.z;
+        float size_x = plane.GetComponent<Renderer>().bounds.size.x - 2;
+        float size_z = plane.GetComponent<Renderer>().bounds.size.z - 2;
         float pos_x = plane.transform.position.x;
         float pos_z = plane.transform.position.z;
         
@@ -39,6 +40,7 @@ public class PlaneRepeat : MonoBehaviour {
             {                   
                 plane_list[i * 3 + j] = (GameObject)GameObject.Instantiate(plane, new Vector3(pos_x + size_x * gx, 0, pos_z + size_z * gz), rot);
                 ((GameObject)plane_list[i * 3 + j]).transform.name = "TerrainRenderer"+(i*3+j);
+                terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateVerticies((GameObject)plane_list[i * 3 + j], i*3+j);
 
                 gz++;
             }
@@ -47,13 +49,12 @@ public class PlaneRepeat : MonoBehaviour {
 
         }
         GameObject.Destroy(plane);
+        plane = plane_list[4];
     }
     public void setPlane(GameObject obj)
     {
-        if (obj.transform.name == "First Person Controller")
-        {
+        if (obj.name == plane.name)
             return;
-        }
        foreach (GameObject p in plane_list)
         {
             if (p && (p.transform.name != obj.transform.name))

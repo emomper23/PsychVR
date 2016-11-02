@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this->m_obj_settings, SIGNAL(accepted()),this,SLOT(saveModel()));
     connect(ui->launchButton, SIGNAL(pressed()),this,SLOT(launchScene()));
     connect(ui->submit_button, SIGNAL(clicked(bool)),this,SLOT(SaveData()));
-
+    connect(ui->pushButton, SIGNAL(clicked(bool)),this,SLOT(openWindow()));
     connect(ui->actionUser_1, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));
     connect(ui->actionUser_2, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));
     connect(ui->actionUser_3, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));

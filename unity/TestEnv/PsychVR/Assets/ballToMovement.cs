@@ -7,7 +7,8 @@ using CnControls;
 public class BallToMovement : MonoBehaviour
 {
 	public Rigidbody thisRb;
-	public GameObject camera;
+    public GameObject camera;
+    public float speed;
 
 	// Use this for initialization
 	void Start()
@@ -27,7 +28,7 @@ public class BallToMovement : MonoBehaviour
 
 		//Debug.Log(CnInputManager.GetAxis("Horizontal"));
 
-		Quaternion.LookRotation(camera.transform.eulerAngles, Vector3.up);
+		//Quaternion.LookRotation(camera.transform.eulerAngles, Vector3.up);
 		//camera.transform.
 		//Debug.Log(test);
 		
@@ -39,7 +40,8 @@ public class BallToMovement : MonoBehaviour
 		if (CnInputManager.GetAxis("Horizontal") != 0 || CnInputManager.GetAxis("Vertical") != 0)
 		{
 			Vector3 test = Camera.main.worldToCameraMatrix * new Vector3(CnInputManager.GetAxis("Horizontal"), 0, -CnInputManager.GetAxis("Vertical"));
-			thisRb.AddForce(test);
+            test.Scale(new Vector3(speed, speed, speed));
+            thisRb.AddForce(test);
 		}
 	}
 

@@ -10,6 +10,7 @@ public class QtSceneLoad : MonoBehaviour {
     public int m_day_flag;
     public int m_config_id;
     public string skin_color;
+	public Boolean day;
 	// Use this for initialization
 	void Start ()
     {
@@ -20,8 +21,7 @@ public class QtSceneLoad : MonoBehaviour {
         Debug.Log(data[1]["Social"]);
         Debug.Log(data[1]["Heights"]["Color"]);
         PlayerPrefs.SetString("SkinColor", data[1]["Heights"]["Settings"]["Color"]);
-
-
+		PlayerPrefs.SetInt("Day", Int16.Parse(data[1]["Heights"]["Settings"]["Day"]));
 
     }
     public string getSkinColor()

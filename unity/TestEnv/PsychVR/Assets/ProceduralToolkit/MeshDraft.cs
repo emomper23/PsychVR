@@ -136,7 +136,6 @@ namespace ProceduralToolkit
                 normals[i] = -normals[i];
             }
         }
-
         /// <summary>
         /// Creates new mesh from information in draft
         /// </summary>

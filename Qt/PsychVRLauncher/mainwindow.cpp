@@ -139,7 +139,7 @@ void MainWindow::launchScene()
     QString command = "";
     if(ui->scene_selection->currentIndex()  == MainWindow::scene_idx_t::FEAR_OF_HEIGHTS)
     {
-      command = "start ../heights.exe test_args";
+      command = "start ../heights.exe ";//+ settings.ui ;
     }
     else if(ui->scene_selection->currentIndex()  ==  MainWindow::scene_idx_t::SPEECH_ANXIETY)
     {

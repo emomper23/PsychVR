@@ -33,6 +33,9 @@ namespace ProceduralToolkit.Examples.UI
         private const float maxCellSize = 2;
         private const int minNoiseScale = 1;
         private const int maxNoiseScale = 20;
+        private int vert_x;
+        private int vert_z;
+
 
         private List<ColorHSV> targetPalette = new List<ColorHSV>();
         private List<ColorHSV> currentPalette = new List<ColorHSV>();
@@ -65,17 +68,36 @@ namespace ProceduralToolkit.Examples.UI
                 to: targetPalette[3].WithSV(0.8f, 0.8f));
 
             var draft = LowPolyTerrainGenerator.TerrainDraft(terrainSize, cellSize, noiseScale, gradient);
+            vert_x = (int)(terrainSizeX/cellSize);
+            vert_z = (int)(terrainSizeZ / cellSize);
             for (int i = 0; i < 9; i++)
             {
-               var temp = LowPolyTerrainGenerator.TerrainDraft(terrainSize, cellSize, noiseScale, gradient);
+                var temp = LowPolyTerrainGenerator.TerrainDraft(terrainSize, cellSize, noiseScale, gradient);
                 temp.Move(Vector3.left * terrainSizeX / 2 + Vector3.back * terrainSizeZ / 2);
                 meshes.Add(temp.ToMesh());
             }
             draft.Move(Vector3.left*terrainSizeX/2 + Vector3.back*terrainSizeZ/2);
+           
             meshFilter.mesh = draft.ToMesh();
             meshCollider.sharedMesh = draft.ToMesh();
             meshCollider2.sharedMesh = draft.ToMesh();
 
+        }
+
+        public void ConnectMesh(MeshDraft draft, MeshDraft center)
+        {
+            Debug.Log("connecting");
+            for (int i = 0; i < vert_x * 6; i++)
+            {
+                center.triangles.Add(draft.triangles[i]);
+                center.vertices.Add(draft.vertices[i]);
+                center.normals.Add(draft.normals[i]);
+                center.uv.Add(draft.uv[i]);
+                center.colors.Add(draft.colors[i]);
+            } 
+                
+           
+            
         }
         public void UpdateVerticies(GameObject terrain, int idx)
         {

@@ -15,10 +15,11 @@ public class QtSceneLoad : MonoBehaviour {
     {
         string text = System.IO.File.ReadAllText(m_path);
         var data = JSON.Parse(text);
-        Debug.Log(data[0]["Calm"]);
-        Debug.Log(data[0]["Heights"]);
-        Debug.Log(data[0]["Social"]);
-        PlayerPrefs.SetString("SkinColor", "FFDABE");
+        Debug.Log(data[1]["Calm"]);
+        Debug.Log(data[1]["Heights"]);
+        Debug.Log(data[1]["Social"]);
+        Debug.Log(data[1]["Heights"]["Color"]);
+        PlayerPrefs.SetString("SkinColor", data[1]["Heights"]["Settings"]["Color"]);
 
 
 

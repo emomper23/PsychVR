@@ -10,6 +10,7 @@ public class QtSceneLoad : MonoBehaviour {
     public int m_day_flag;
     public int m_config_id;
     public string skin_color;
+    private string json_text;
 	// Use this for initialization
 	void Start ()
     {
@@ -23,6 +24,11 @@ public class QtSceneLoad : MonoBehaviour {
 
 
 
+    }
+    public string getJSON
+        ()
+    {
+        return json_text;
     }
     public string getSkinColor()
     {

@@ -404,6 +404,7 @@
     <Compile Include="Assets\ProceduralToolkit\TextureE.cs" />
     <Compile Include="Assets\ProceduralToolkit\Vector2Int.cs" />
     <Compile Include="Assets\QtSceneLoad.cs" />
+    <Compile Include="Assets\QtSceneSave.cs" />
     <Compile Include="Assets\SimpleJSON.cs" />
     <Compile Include="Assets\anxiety\Assets\Scripts\ComputeShader\ComputeShaderOutput.cs" />
     <Compile Include="Assets\anxiety\Assets\Scripts\ComputeShader\VoxelComputeShaderOutput.cs" />

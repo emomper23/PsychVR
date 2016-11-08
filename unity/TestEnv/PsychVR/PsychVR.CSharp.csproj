@@ -418,7 +418,7 @@
     <Compile Include="Assets\heights\City\Map\CameraRotate.cs" />
     <Compile Include="Assets\heights\Scripts\ElevatorScript.cs" />
     <Compile Include="Assets\speech\humans\HumanController.cs" />
-    <Compile Include="Assets\universalPrefabs\recenter.cs" />
+    <Compile Include="Assets\universalPrefabs\ReCenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Bunny Example Scene\Licence.txt" />

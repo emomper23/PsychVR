@@ -11,6 +11,7 @@ public class QtSceneLoad : MonoBehaviour {
     public int m_config_id;
     public string skin_color;
 	public Boolean day;
+    private string json_text;
 	// Use this for initialization
 	void Start ()
     {

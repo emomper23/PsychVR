@@ -23,6 +23,13 @@ settings::settings(QWidget *parent) :
 
     connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT(changeSettings()));
     connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT());
+    QPalette pal = ui->widget->palette();
+    pal.setColor(QPalette::Window,QColor("#FF0000"));
+    ui->widget->setPalette( pal);
+    ui->widget->setAutoFillBackground(true);
+    ui->widget->update();
+   // ui->pushButton->repaint();
+
 
 }
 
@@ -36,7 +43,6 @@ void settings::changeSettings()
 {
 
     QString stringlist[] = {"2D221E","3C2E28","4B3932","5A453C","695046","785C50","87675A","967264","A57E6E","B48A78","C39582","D2A18C","E1AC96","F0B8A0","FFC3AA","FFCEB4","FFDABE","FFE5C8"};
-
 
     QJsonArray tester;
 

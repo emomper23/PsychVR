@@ -16,6 +16,7 @@ public:
     ~settings();
 public slots:
     void changeSettings();
+    void setupSettings(int userNum);
 
 private:
     Ui::settings *ui;

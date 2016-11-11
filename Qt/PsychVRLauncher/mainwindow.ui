@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1172</width>
+    <width>1092</width>
     <height>707</height>
    </rect>
   </property>
@@ -832,7 +832,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1172</width>
+     <width>1092</width>
      <height>21</height>
     </rect>
    </property>
@@ -993,11 +993,11 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_5"/>
   <buttongroup name="buttonGroup_4"/>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_6"/>
-  <buttongroup name="buttonGroup_3"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup_5"/>
+  <buttongroup name="buttonGroup_3"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>

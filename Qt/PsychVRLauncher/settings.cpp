@@ -44,6 +44,7 @@ void settings::changeSettings()
 
     QString stringlist[] = {"2D221E","3C2E28","4B3932","5A453C","695046","785C50","87675A","967264","A57E6E","B48A78","C39582","D2A18C","E1AC96","F0B8A0","FFC3AA","FFCEB4","FFDABE","FFE5C8"};
 
+
     QJsonArray tester;
 
     QString filename = QApplication::applicationDirPath() + "/save.json";
@@ -72,7 +73,7 @@ void settings::changeSettings()
 
     QJsonObject settings
     {
-        {"Color", stringlist[ui->comboBox->currentIndex()]},
+        //{"Color", stringlist[ui->comboBox->currentIndex()]},
         {"Day", 1}
     };
 

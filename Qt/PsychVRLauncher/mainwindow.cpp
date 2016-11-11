@@ -15,6 +15,8 @@
 #include <QByteArray>
 #include <QJsonArray>
 #include <QSignalMapper>
+#include <QColor>
+#include <QColorDialog>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -28,9 +30,10 @@ MainWindow::MainWindow(QWidget *parent) :
     m_map_list[2]= new CUnityMap("CalmingEnvironment");
     m_obj_settings = new EditDialog();
     m_settings = new settings();
+    m_settings->setVisible(false);
     m_obj_settings->setVisible(false);
     ui->listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
-    m_settings->show();
+    //m_settings->show();
     //ui->tab_3->setEnabled(false);
 
     connect(ui->actionSave,SIGNAL(triggered(bool)),this,SLOT(saveFiles()));
@@ -39,6 +42,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(m_obj_settings,SIGNAL(accepted()),this,SLOT(saveModel()));
     connect(ui->actionNew_Object,SIGNAL(triggered(bool)),this,SLOT(newModel()));
     connect(this->m_obj_settings, SIGNAL(accepted()),this,SLOT(saveModel()));
+    connect(ui->pushButton, SIGNAL(clicked(bool)),this,SLOT(showSettings()));
     connect(ui->launchButton, SIGNAL(pressed()),this,SLOT(launchScene()));
     connect(ui->submit_button, SIGNAL(clicked(bool)),this,SLOT(SaveData()));
     connect(ui->pushButton, SIGNAL(clicked(bool)),this,SLOT(openWindow()));
@@ -153,6 +157,15 @@ void MainWindow::launchScene()
     ui->tab_3->setEnabled(true);
 
    system(command.toStdString().c_str());
+}
+
+void MainWindow::showSettings()
+{
+    m_settings->setVisible(true);
+    m_settings->show();
+    m_settings->setupSettings(ui->userLabel->text().right(1).toInt());
+
+
 }
 
 void MainWindow::initButtons()

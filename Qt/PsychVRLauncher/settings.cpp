@@ -23,6 +23,13 @@ settings::settings(QWidget *parent) :
 
     connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT(changeSettings()));
     connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT());
+    QPalette pal = ui->widget->palette();
+    pal.setColor(QPalette::Window,QColor("#FF0000"));
+    ui->widget->setPalette( pal);
+    ui->widget->setAutoFillBackground(true);
+    ui->widget->update();
+   // ui->pushButton->repaint();
+
 
 }
 
@@ -66,7 +73,7 @@ void settings::changeSettings()
 
     QJsonObject settings
     {
-        {"Color", stringlist[ui->comboBox->currentIndex()]},
+        //{"Color", stringlist[ui->comboBox->currentIndex()]},
         {"Day", 1}
     };
 

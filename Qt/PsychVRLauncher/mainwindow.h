@@ -18,6 +18,9 @@
 #include <QByteArray>
 #include <QJsonArray>
 
+#include <QColor>
+#include <QColorDialog>
+
 namespace Ui {
 class MainWindow;
 }
@@ -40,7 +43,9 @@ public slots:
     void changeUser(int userName);
     void initButtons();
     void readIn();
+    void showSettings();
     QJsonArray makeJson();
+
 private:
     Ui::MainWindow *ui;
     CUnityMap ** m_map_list;

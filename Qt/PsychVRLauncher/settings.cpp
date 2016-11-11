@@ -23,6 +23,7 @@ settings::settings(QWidget *parent) :
 
     connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT(changeSettings()));
     connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT());
+    ui->widget->setStyleSheet("backgroundcolor:black;");
 
 }
 
@@ -31,6 +32,10 @@ settings::~settings()
     delete ui;
 }
 
+void settings::setupSettings(int userNum)
+{
+    ui->widget->setStyleSheet("backgroundcolor:black;");
+}
 
 void settings::changeSettings()
 {
@@ -66,7 +71,7 @@ void settings::changeSettings()
 
     QJsonObject settings
     {
-        {"Color", stringlist[ui->comboBox->currentIndex()]},
+        //{"Color", stringlist[ui->comboBox->currentIndex()]},
         {"Day", 1}
     };
 

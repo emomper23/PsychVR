@@ -1,0 +1,45 @@
+﻿using UnityEngine;
+using System.Collections;
+using System;
+using System.IO;
+using SimpleJSON;
+
+public class QtSceneLoad : MonoBehaviour {
+
+    public string m_path;
+    public int m_day_flag;
+    public int m_config_id;
+    public string skin_color;
+<<<<<<< HEAD
+    private string json_text;
+=======
+	public Boolean day;
+>>>>>>> 9f816bd0c29d6580527b31297de1c93bc7f50d51
+	// Use this for initialization
+	void Start ()
+    {
+        string text = System.IO.File.ReadAllText(m_path);
+        var data = JSON.Parse(text);
+        Debug.Log(data[1]["Calm"]);
+        Debug.Log(data[1]["Heights"]);
+        Debug.Log(data[1]["Social"]);
+        Debug.Log(data[1]["Heights"]["Color"]);
+        PlayerPrefs.SetString("SkinColor", data[1]["Heights"]["Settings"]["Color"]);
+		PlayerPrefs.SetInt("Day", Int16.Parse(data[1]["Heights"]["Settings"]["Day"]));
+
+    }
+    public string getJSON
+        ()
+    {
+        return json_text;
+    }
+    public string getSkinColor()
+    {
+        return skin_color;
+    }
+	// Update is called once per frame
+	void Update ()
+    {
+	
+	}
+}

@@ -44,6 +44,7 @@ public slots:
     void initButtons();
     void readIn();
     void showSettings();
+    QString createRun();
     QJsonArray makeJson();
 
 private:

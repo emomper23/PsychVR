@@ -10,6 +10,9 @@ namespace ProceduralToolkit.Examples.UI
         public RectTransform leftPanel;
         private MeshCollider meshCollider;
         private MeshCollider meshCollider2;
+        public List<Mesh> meshes = new List<Mesh>();
+        public List<MeshDraft> drafts = new List<MeshDraft>();
+
 
         [Space]
         [Range(minXSize, maxXSize)]
@@ -22,7 +25,6 @@ namespace ProceduralToolkit.Examples.UI
         public float cellSize = 1;
         [Range(minNoiseScale, maxNoiseScale)]
         public int noiseScale = 5;
-        public List<Mesh> meshes;
         private const int minXSize = 10;
         private const int maxXSize = 100;
         private const int minYSize = 1;
@@ -70,34 +72,70 @@ namespace ProceduralToolkit.Examples.UI
             var draft = LowPolyTerrainGenerator.TerrainDraft(terrainSize, cellSize, noiseScale, gradient);
             vert_x = (int)(terrainSizeX/cellSize);
             vert_z = (int)(terrainSizeZ / cellSize);
+            Debug.Log(vert_x + " " + vert_z);
             for (int i = 0; i < 9; i++)
             {
-                var temp = LowPolyTerrainGenerator.TerrainDraft(terrainSize, cellSize, noiseScale, gradient);
+                MeshDraft temp = LowPolyTerrainGenerator.TerrainDraft(terrainSize, cellSize, noiseScale, gradient);
                 temp.Move(Vector3.left * terrainSizeX / 2 + Vector3.back * terrainSizeZ / 2);
-                meshes.Add(temp.ToMesh());
+                drafts.Add(temp);
+                
             }
             draft.Move(Vector3.left*terrainSizeX/2 + Vector3.back*terrainSizeZ/2);
            
             meshFilter.mesh = draft.ToMesh();
             meshCollider.sharedMesh = draft.ToMesh();
             meshCollider2.sharedMesh = draft.ToMesh();
+            ConnectMesh( drafts[4],drafts[5]);
+
+            for (int i = 0; i < 9; i++)
+            {
+                meshes.Add(drafts[i].ToMesh());
+            }
+
 
         }
 
-        public void ConnectMesh(MeshDraft draft, MeshDraft center)
+        public void ConnectMesh(MeshDraft center, MeshDraft draft)
         {
-            Debug.Log("connecting");
-            for (int i = 0; i < vert_x * 6; i++)
-            {
-                center.triangles.Add(draft.triangles[i]);
-                center.vertices.Add(draft.vertices[i]);
-                center.normals.Add(draft.normals[i]);
-                center.uv.Add(draft.uv[i]);
-                center.colors.Add(draft.colors[i]);
-            } 
-                
-           
+
+            Debug.Log(draft.triangles.ToArray().Length);
+            Debug.Log(draft.vertices.ToArray().Length);
+            Debug.Log(draft.normals.ToArray().Length);
+            int length = draft.normals.ToArray().Length;
+            Vector3[] vert = center.vertices.ToArray();
+            Vector3[] norm = center.normals.ToArray();
+            int[] tri = center.triangles.ToArray();
+            center.colors.RemoveRange(0, length);
+            center.vertices.RemoveRange(0, length);
+            center.normals.RemoveRange(0, length);
+            center.triangles.RemoveRange(0, length);
             
+            for (int i = 0; i < length ; i++)
+              {
+                if (i > vert_x * 6)
+                {
+                    center.colors.Add(new Color(0, 255, 0));
+                    center.vertices.Add(vert[i]);
+                    center.triangles.Add(tri[i]);
+                    center.normals.Add(norm[i]);
+                }
+                else
+                {
+                  
+                    center.colors.Add(new Color(255, 0, 0));
+                    center.vertices.Add(draft.vertices[i]);
+                    center.triangles.Add(draft.triangles[i]);
+                    center.normals.Add(draft.normals[i ]);   
+                    //center.vertices.Add(vert[i]);
+                    //center.triangles.Add(tri[i]);
+                    //center.normals.Add(norm[i]);
+                }
+              }
+            //center.length.
+              Debug.Log("connected");
+             
+     
+
         }
         public void UpdateVerticies(GameObject terrain, int idx)
         {

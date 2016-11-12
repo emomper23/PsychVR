@@ -6,6 +6,7 @@ public class ChunkCollider : MonoBehaviour {
 
     public GameObject terrain_manager;
     public GameObject[] list = new GameObject[9];
+    public ProceduralToolkit.MeshDraft terrain_draft;
     public Vector3[] dir_list = { Vector3.right, -Vector3.right,Vector3.forward, -Vector3.forward,
         Vector3.right + Vector3.forward, Vector3.right - Vector3.forward, -Vector3.right + Vector3.forward , -Vector3.right - Vector3.forward };
     
@@ -38,7 +39,7 @@ public class ChunkCollider : MonoBehaviour {
         else
         {
             //Debug.Log(this.transform.name + " " + test.collider.transform.name + " " + dir);
-            return test.collider.gameObject;
+            return test.collider.transform.parent.gameObject;
         }
         
         return null;

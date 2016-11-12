@@ -39,7 +39,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -110,7 +110,7 @@
       <string>Elevator Height</string>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBox_2">
+    <widget class="QComboBox" name="heightBox">
      <property name="geometry">
       <rect>
        <x>130</x>
@@ -119,6 +119,26 @@
        <height>22</height>
       </rect>
      </property>
+     <item>
+      <property name="text">
+       <string>Short</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Medium</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Tall</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Tallest</string>
+      </property>
+     </item>
     </widget>
     <widget class="QPushButton" name="colorBut1">
      <property name="geometry">
@@ -203,7 +223,7 @@
       <string>Seats Filled</string>
      </property>
     </widget>
-    <widget class="QSpinBox" name="spinBox">
+    <widget class="QSpinBox" name="seatsBox">
      <property name="geometry">
       <rect>
        <x>180</x>
@@ -217,6 +237,9 @@
      </property>
      <property name="maximum">
       <number>23</number>
+     </property>
+     <property name="value">
+      <number>20</number>
      </property>
     </widget>
     <widget class="QLabel" name="label_7">
@@ -272,6 +295,9 @@
       <property name="text">
        <string>Sitting</string>
       </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_2">
       <property name="geometry">
@@ -284,6 +310,9 @@
       </property>
       <property name="text">
        <string>Hand on Head</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_3">
@@ -298,6 +327,9 @@
       <property name="text">
        <string>Hand Down</string>
       </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_4">
       <property name="geometry">
@@ -311,6 +343,9 @@
       <property name="text">
        <string>Leaning</string>
       </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_5">
       <property name="geometry">
@@ -323,6 +358,9 @@
       </property>
       <property name="text">
        <string>Sleeping</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -339,7 +377,7 @@
       <string>Power Point:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_10">
+    <widget class="QLabel" name="fileLabel">
      <property name="geometry">
       <rect>
        <x>100</x>
@@ -352,7 +390,7 @@
       <string>Loljk</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="fileButton">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -436,6 +474,9 @@
       <property name="text">
        <string>Rock</string>
       </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QLabel" name="label_11">
       <property name="geometry">
@@ -461,6 +502,9 @@
       </property>
       <property name="text">
        <string>Tree</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>

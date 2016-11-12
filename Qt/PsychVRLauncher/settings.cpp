@@ -16,6 +16,7 @@
 #include <QSignalMapper>
 #include <QColor>
 #include <QColorDialog>
+#include <QFileDialog>
 
 settings::settings(QWidget *parent) :
     QDialog(parent),
@@ -25,7 +26,10 @@ settings::settings(QWidget *parent) :
 
     connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT(changeSettings()));
     connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT());
-    connect(ui->pushButton, SIGNAL(clicked(bool)), this, SLOT(changeColor()));
+    connect(ui->colorBut1, SIGNAL(clicked(bool)), this, SLOT(changeColor()));
+    connect(ui->colorBut2, SIGNAL(clicked(bool)), this, SLOT(changeColor()));
+    connect(ui->colorBut3, SIGNAL(clicked(bool)), this, SLOT(changeColor()));
+    connect(ui->fileButton, SIGNAL(clicked(bool)),this,SLOT(changeFile()));
 
 
     QColorDialog setSkin;
@@ -36,15 +40,25 @@ settings::settings(QWidget *parent) :
     {
         setSkin.setCustomColor(arraySpot,QColor(colorList[arraySpot]));
     }
+    usernum = 0;
 
     QPalette pal = ui->widget->palette();
     QColor curCol = QColor("#D2A18C");
     pal.setColor(QPalette::Window,curCol);
 
-    ui->widget->setPalette( pal);
+    ui->color1->setAutoFillBackground(true);
+    ui->color2->setAutoFillBackground(true);
+    ui->color3->setAutoFillBackground(true);
 
-    ui->widget->setAutoFillBackground(true);
-    ui->widget->update();
+    ui->color1->setPalette( pal);
+    ui->color1->update();
+    ui->color2->setPalette( pal);
+    ui->color2->update();
+    ui->color3->setPalette( pal);
+    ui->color3->update();
+
+    QString powerpoint = "test.ppt";
+    ui->fileLabel->setText(powerpoint);
 
     // ui->pushButton->repaint();
 
@@ -78,47 +92,58 @@ void settings::changeSettings()
     saveFile.close();
 
    // int usern = ui->userLabel->text().right(1).toInt();
-    int usern = 1;
 
-    QJsonObject heightScene = tester.at(usern).toObject()["heights"].toObject();
-    QJsonObject calmScene = tester.at(usern).toObject()["calm"].toObject();
-    QJsonObject socialScene = tester.at(usern).toObject()["social"].toObject();
-    QJsonObject user = tester.at(usern).toObject();
+    QJsonObject heightScene = tester.at(usernum).toObject()["Heights"].toObject();
+    QJsonObject calmScene = tester.at(usernum).toObject()["Calm"].toObject();
+    QJsonObject socialScene = tester.at(usernum).toObject()["Social"].toObject();
+    QJsonObject user = tester.at(usernum).toObject();
 
 
-    QJsonObject settings
+    QJsonObject heightSettings
     {
         {"Color",curCol.name()},
-        {"Day", 1}
+        {"Day", 1},
+        {"Building", ui->heightBox->currentText()}
     };
 
     if(ui->radioButton_2->isChecked())
     {
-        settings["Day"] = 0;
+        heightSettings["Day"] = 0;
     }
 
+    QJsonObject animations
+    {
+        {"Sitting", ui->checkBox->isChecked()},
+        {"Hand On Head", ui->checkBox_2->isChecked()},
+        {"Hand in Lap", ui->checkBox_3->isChecked()},
+        {"Leaning", ui->checkBox_4->isChecked()},
+        {"Sleeping", ui->checkBox_5->isChecked()}
+    };
 
-       /*
-    if(ui->scene_selection->currentIndex() == 0)
+    QJsonObject socialSettings
     {
-        heightScene["Settings"] = settings;
-    }
-    else if(ui->scene_selection->currentIndex() == 1)
+        {"Color",curCol.name()},
+        {"Animations", animations},
+        {"Number Students", ui->seatsBox->value()},
+        {"Powerpoint", powerpoint}
+    };
+
+    QJsonObject calmSettings
     {
-        calmScene["Settings"] = settings;
-    }
-    else
-    {
-        socialScene["Settings"] = settings;
-    }
-    */
-    heightScene["Settings"] = settings;
+        {"Color",curCol.name()},
+        {"Rock", ui->checkBox_6->isChecked()},
+        {"Tree", ui->checkBox_7->isChecked()}
+    };
+
+    heightScene["Settings"] = heightSettings;
+    socialScene["Settings"] = socialSettings;
+    calmScene["Settings"] = calmSettings;
 
     user["Heights"] = heightScene;
     user["Calm"] = calmScene;
     user["Social"] = socialScene;
 
-    tester[usern] = user;
+    tester[usernum] = user;
 
     if (!saveFile.open(QIODevice::WriteOnly)) {
            qWarning("Failed to save data.");
@@ -138,16 +163,28 @@ void settings::changeColor()
 {
     curCol = setSkin.getColor();
 
-    QPalette pal = ui->widget->palette();
+    QPalette pal = ui->color1->palette();
     pal.setColor(QPalette::Window,curCol);
 
-    ui->widget->setPalette( pal);
-    ui->widget->update();
+
+    ui->color1->setPalette( pal);
+    ui->color1->update();
+    ui->color2->setPalette( pal);
+    ui->color2->update();
+    ui->color3->setPalette( pal);
+    ui->color3->update();
+
+}
+
+void settings::changeFile()
+{
+    powerpoint =  QFileDialog::getOpenFileName(this,tr("Choose Powerpoint"), "", tr("Image Files (*.png *.jpg *.bmp)"));
+    ui->fileLabel->setText(powerpoint);
 
 }
 
 void settings::setupSettings(int  uid)
 {
-
+    usernum = uid;
 
 }

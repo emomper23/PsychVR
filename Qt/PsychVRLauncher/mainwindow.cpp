@@ -164,11 +164,9 @@ void MainWindow::launchScene()
 
 void MainWindow::showSettings()
 {
+    m_settings->setupSettings(ui->userLabel->text().right(1).toInt());
     m_settings->setVisible(true);
     m_settings->show();
-    //m_settings->setupSettings(ui->userLabel->text().right(1).toInt());
-
-
 }
 
 void MainWindow::initButtons()

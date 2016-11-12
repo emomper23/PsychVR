@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ElevatorScript : MonoBehaviour {
 
@@ -15,7 +16,7 @@ public class ElevatorScript : MonoBehaviour {
 	public Transform bottom;
 	public Transform top;
 	public Transform gondola;
-	public GUIText height;
+	public Text height;
 	public float highestPoint = 0f;
 
 	int direction = 0;
@@ -52,7 +53,7 @@ public class ElevatorScript : MonoBehaviour {
 
         //this.direction = 0;
 
-		height.text = gondola.transform.position.y + " Meters"; 
+		height.text = gondola.transform.position.y.ToString("F2") + " Meters"; 
 	}
 
 	public void UpPressed()

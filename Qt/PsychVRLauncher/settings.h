@@ -2,6 +2,8 @@
 #define SETTINGS_H
 
 #include <QDialog>
+#include <QColor>
+#include <QColorDialog>
 
 namespace Ui {
 class settings;
@@ -17,9 +19,12 @@ public:
 public slots:
     void changeSettings();
     void setupSettings(int userNum);
+    void changeColor();
 
 private:
     Ui::settings *ui;
+    QColorDialog setSkin;
+    QColor curCol;
 };
 
 #endif // SETTINGS_H

@@ -141,6 +141,9 @@ void MainWindow::launchScene()
 {
     QProcess proc;
     QString command = "";
+
+    QString giveStuff = createRun();
+
     if(ui->scene_selection->currentIndex()  == MainWindow::scene_idx_t::FEAR_OF_HEIGHTS)
     {
       command = "start ../heights.exe ";//+ settings.ui ;
@@ -163,7 +166,7 @@ void MainWindow::showSettings()
 {
     m_settings->setVisible(true);
     m_settings->show();
-    m_settings->setupSettings(ui->userLabel->text().right(1).toInt());
+    //m_settings->setupSettings(ui->userLabel->text().right(1).toInt());
 
 
 }
@@ -186,19 +189,107 @@ void MainWindow::initButtons()
     }
 }
 
+QString MainWindow::createRun()
+{
+
+    QJsonArray tester;
+    QString filename = QApplication::applicationDirPath() + "/save.json";
+    QFile saveFile(filename);
+    if (!saveFile.open(QIODevice::ReadOnly)) {
+           qWarning("Failed to save data.");
+           //return false; c
+            tester = makeJson();
+    }
+    else
+    {
+        QByteArray saveData = saveFile.readAll();
+        QJsonDocument loadDoc(QJsonDocument::fromJson(saveData));
+        tester = loadDoc.array();
+    }
+
+    saveFile.close();
+
+    int usern = ui->userLabel->text().right(1).toInt();
+
+    QJsonObject heightScene = tester.at(usern).toObject()["Heights"].toObject();
+    QJsonObject calmScene = tester.at(usern).toObject()["Calm"].toObject();
+    QJsonObject socialScene = tester.at(usern).toObject()["Social"].toObject();
+    QJsonObject user = tester.at(usern).toObject();
+
+    QJsonArray newruns;
+
+    int runId = newruns.size() + 1;
+
+    QJsonObject newRun
+    {
+        {"run", runId}
+    };
+
+    if(ui->scene_selection->currentIndex() == MainWindow::scene_idx_t::FEAR_OF_HEIGHTS)
+    {
+        newruns = heightScene["runs"].toArray();
+        int runId = newruns.size() + 1;
+        QJsonObject newRun
+        {
+            {"run", runId}
+        };
+        newruns.append(newRun);
+        heightScene["runs"] = newruns;
+    }
+    else if(ui->scene_selection->currentIndex() == MainWindow::scene_idx_t::SPEECH_ANXIETY)
+    {
+        newruns = socialScene["runs"].toArray();
+        int runId = newruns.size() + 1;
+        QJsonObject newRun
+        {
+            {"run", runId}
+        };
+        newruns.append(newRun);
+        socialScene["runs"] = newruns;
+    }
+    else if(ui->scene_selection->currentIndex()  == MainWindow::scene_idx_t::TERRAIN_GENERATION)
+    {
+        newruns = calmScene["runs"].toArray();
+        int runId = newruns.size() + 1;
+        QJsonObject newRun
+        {
+            {"run", runId}
+        };
+        newruns.append(newRun);
+        calmScene["runs"] = newruns;
+    }
+
+    user["Heights"] = heightScene;
+    user["Calm"] = calmScene;
+    user["Social"] = socialScene;
+    tester[usern] = user;
+
+    if (!saveFile.open(QIODevice::WriteOnly)) {
+           qWarning("Failed to save data.");
+           //return false;
+       }
+    QJsonDocument saveDoc(tester);
+
+    saveFile.write(saveDoc.toJson());
+    saveFile.close();
+
+
+}
+
 void MainWindow::SaveData()
 {
 
     int usernum = 0;
     int scenenum = 0;
 
-
     for(int x = 0; x < radioQs.size();x++)
     {
         if (radioQs[x]->checkedId() == -1) {
-            //ERROR HERE
+            ui->errorLabel->setText("Please Answer All Questions");
+            return;
         }
     }
+    ui->errorLabel->setText("");
 
     QJsonArray tester;
 
@@ -226,9 +317,6 @@ void MainWindow::SaveData()
     QJsonObject socialScene = tester.at(usern).toObject()["Social"].toObject();
     QJsonObject user = tester.at(usern).toObject();
 
-    qDebug() << "check2";
-    qDebug() << heightScene.isEmpty();
-
     QJsonArray newruns;
 
     if(ui->scene_selection->currentIndex() == 0)
@@ -244,6 +332,8 @@ void MainWindow::SaveData()
         newruns = calmScene["runs"].toArray();
     }
 
+    QJsonObject curRun = newruns.last().toObject();
+
     QJsonObject answers
     {
         {"1",radioQs[0]->checkedId()},
@@ -254,16 +344,14 @@ void MainWindow::SaveData()
         {"6",radioQs[5]->checkedId()}
     };
 
-    QJsonObject newRun
-    {
-        {"run", newruns.size() + 1},
-        {"prestress", ui->stress_slider->sliderPosition()},
-        {"poststress", ui->anxiety_slider->sliderPosition()},
-        {"answers", answers},
-        {"notes", ui->textEdit->toPlainText()}
-    };
+    curRun.insert("answers",answers);
+    curRun.insert("prestress", ui->stress_slider->sliderPosition());
+    curRun.insert("poststress", ui->anxiety_slider->sliderPosition());
+    curRun.insert("notes", ui->textEdit->toPlainText());
 
-    newruns.append(newRun);
+    newruns.removeLast();
+
+    newruns.append(curRun);
 
     if(ui->scene_selection->currentIndex() == 0)
     {

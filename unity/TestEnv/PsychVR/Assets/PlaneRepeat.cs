@@ -123,7 +123,7 @@ public class PlaneRepeat : MonoBehaviour {
                     if (temp_list[i] != null)
                     {
                         ChunkCollider temp_obj = temp_list[i].GetComponent<ChunkCollider>();
-                        Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
+                     //   Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
                         
 
                             terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitDown(temp_obj.terrain_draft,
@@ -138,7 +138,7 @@ public class PlaneRepeat : MonoBehaviour {
                     if (temp_list[i] != null)
                     {
                         ChunkCollider temp_obj = temp_list[i].GetComponent<ChunkCollider>();
-                        Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
+                      //  Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
                         if (i != 5 )
                         {
                             terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitRight(temp_obj.terrain_draft,
@@ -150,7 +150,7 @@ public class PlaneRepeat : MonoBehaviour {
                     //Debug.Log("new plane"+ plane.transform.name);   
                 }
             }
-            //SOUTH CASE TODO
+            //SOUTH CASE DONE
             if (temp_list[(int)directions.SOUTH] != null && temp_list[(int)directions.SE] != null && temp_list[(int)directions.SW] != null)
             {
                 for (int i = 0; i < 8; i++)
@@ -158,12 +158,10 @@ public class PlaneRepeat : MonoBehaviour {
                     if (temp_list[i] != null)
                     {
                         ChunkCollider temp_obj = temp_list[i].GetComponent<ChunkCollider>();
-                        Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
-
-
-                        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitDown(temp_obj.terrain_draft,
-                                                                                                                         temp_obj.list[(int)directions.SOUTH].GetComponent<ChunkCollider>().terrain_draft);
-                        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(temp_list[i], temp_obj.terrain_draft);
+                        //Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
+                       
+                        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitDown(temp_obj.list[(int)directions.NORTH].GetComponent<ChunkCollider>().terrain_draft, temp_obj.terrain_draft);
+                        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(temp_obj.list[(int)directions.NORTH], temp_obj.list[(int)directions.NORTH].GetComponent<ChunkCollider>().terrain_draft);
 
                     }
                     //Debug.Log("new plane"+ plane.transform.name);   
@@ -173,12 +171,12 @@ public class PlaneRepeat : MonoBehaviour {
                     if (temp_list[i] != null)
                     {
                         ChunkCollider temp_obj = temp_list[i].GetComponent<ChunkCollider>();
-                        Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
-                        if (i != 5)
+                       // Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
+                        if (i != 6)
                         {
-                            terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitRight(temp_obj.terrain_draft,
-                                                                                                                             temp_obj.list[(int)directions.WEST].GetComponent<ChunkCollider>().terrain_draft);
-                            terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(temp_list[i], temp_obj.terrain_draft);
+                            terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitRight(temp_obj.list[(int)directions.EAST].GetComponent<ChunkCollider>().terrain_draft,temp_obj.terrain_draft
+                                                                                                                             );
+                            terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(temp_obj.list[(int)directions.EAST], temp_obj.list[(int)directions.EAST].GetComponent<ChunkCollider>().terrain_draft);
                         }
 
                     }
@@ -186,15 +184,15 @@ public class PlaneRepeat : MonoBehaviour {
                 }
             }
             //East Case DONE
-            else if (temp_list[(int)directions.EAST] != null && temp_list[(int)directions.NE] != null && temp_list[(int)directions.SE] != null)
+            if (temp_list[(int)directions.EAST] != null && temp_list[(int)directions.NE] != null && temp_list[(int)directions.SE] != null)
             {
                 for (int i = 0; i < 8; i++)
                 {
                     if (temp_list[i] != null)
                     {
                         ChunkCollider temp_obj = temp_list[i].GetComponent<ChunkCollider>();
-                        Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
-                        if (i != 7)
+                      //  Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
+                        if (i != (int)directions.SE)
                         {
 
                             terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitDown(temp_obj.terrain_draft,
@@ -210,12 +208,11 @@ public class PlaneRepeat : MonoBehaviour {
                     if (temp_list[i] != null)
                     {
                         ChunkCollider temp_obj = temp_list[i].GetComponent<ChunkCollider>();
-                        Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
-                        
+                       // Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
 
-                            terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitRight(temp_obj.list[(int)directions.EAST].GetComponent<ChunkCollider>().terrain_draft,
-                                                                                                                                temp_obj.terrain_draft);
-                            terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(temp_obj.list[2], temp_obj.list[(int)directions.EAST].GetComponent<ChunkCollider>().terrain_draft);
+
+                        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitRight(temp_obj.terrain_draft, temp_obj.list[(int)directions.WEST].GetComponent<ChunkCollider>().terrain_draft);
+                            terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(temp_list[i], temp_obj.terrain_draft);
                         
 
                     }
@@ -223,19 +220,19 @@ public class PlaneRepeat : MonoBehaviour {
                 }
             }
             //West Case TODO
-            else if (temp_list[(int)directions.WEST] != null && temp_list[(int)directions.NW] != null && temp_list[(int)directions.SW] != null)
+            if (temp_list[(int)directions.WEST] != null && temp_list[(int)directions.NW] != null && temp_list[(int)directions.SW] != null)
             {
                 for (int i = 0; i < 8; i++)
                 {
                     if (temp_list[i] != null)
                     {
                         ChunkCollider temp_obj = temp_list[i].GetComponent<ChunkCollider>();
-                        Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
-                        if (i != 7)
+                      //  Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
+                        if (i != (int)directions.SW)
                         {
 
                             terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitDown(temp_obj.terrain_draft,
-                                                                                                                             temp_obj.list[1].GetComponent<ChunkCollider>().terrain_draft);
+                                                                                                                             temp_obj.list[(int)directions.SOUTH].GetComponent<ChunkCollider>().terrain_draft);
                             terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(temp_list[i], temp_obj.terrain_draft);
                         }
 
@@ -247,12 +244,11 @@ public class PlaneRepeat : MonoBehaviour {
                     if (temp_list[i] != null)
                     {
                         ChunkCollider temp_obj = temp_list[i].GetComponent<ChunkCollider>();
-                        Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
+                      //  Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
 
 
-                        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitRight(temp_obj.list[2].GetComponent<ChunkCollider>().terrain_draft,
-                                                                                                                            temp_obj.terrain_draft);
-                        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(temp_obj.list[2], temp_obj.list[2].GetComponent<ChunkCollider>().terrain_draft);
+                        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitRight(temp_obj.terrain_draft, temp_obj.list[(int)directions.EAST].GetComponent<ChunkCollider>().terrain_draft);
+                        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(temp_list[i], temp_obj.terrain_draft);
 
 
                     }

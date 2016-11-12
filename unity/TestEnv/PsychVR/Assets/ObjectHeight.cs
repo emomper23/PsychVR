@@ -13,12 +13,12 @@ public class ObjectHeight : MonoBehaviour {
         Physics.Raycast(check, out test,100.0f);
         if (test.collider == null)
         {
-            Debug.Log("No collider"+ this.gameObject.transform.position);
+           // Debug.Log("No collider"+ this.gameObject.transform.position);
             //GameObject.Destroy(this.gameObject);
             return;
         }
             
-        Debug.Log(test.collider.gameObject.transform.name);
+      //  Debug.Log(test.collider.gameObject.transform.name);
 
         this.transform.position = tree_pos - new Vector3(0, test.distance, 0);
 

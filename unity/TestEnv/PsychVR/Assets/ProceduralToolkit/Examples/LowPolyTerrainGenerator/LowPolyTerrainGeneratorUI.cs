@@ -74,7 +74,7 @@ namespace ProceduralToolkit.Examples.UI
 			var draft = LowPolyTerrainGenerator.TerrainDraft(terrainSize, cellSize, noiseScale, gradient);
 			vert_x = (int)(terrainSizeX / cellSize);
 			vert_z = (int)(terrainSizeZ / cellSize);
-			Debug.Log(vert_x + " " + vert_z);
+			//Debug.Log(vert_x + " " + vert_z);
 			for (int i = 0; i < 9; i++)
 			{
 				MeshDraft temp = LowPolyTerrainGenerator.TerrainDraft(terrainSize, cellSize, noiseScale, gradient);
@@ -123,9 +123,9 @@ namespace ProceduralToolkit.Examples.UI
 		public void MorphFitRight(MeshDraft fromMesh, MeshDraft toMesh)
 		{
 
-			Debug.Log(toMesh.triangles.ToArray().Length);
-			Debug.Log(toMesh.vertices.ToArray().Length);
-			Debug.Log(toMesh.normals.ToArray().Length);
+			//Debug.Log(toMesh.triangles.ToArray().Length);
+		//	Debug.Log(toMesh.vertices.ToArray().Length);
+			//Debug.Log(toMesh.normals.ToArray().Length);
 			int length = toMesh.normals.ToArray().Length;
 			Vector3[] vert = fromMesh.vertices.ToArray();
 			Vector3[] norm = fromMesh.normals.ToArray();
@@ -188,15 +188,15 @@ namespace ProceduralToolkit.Examples.UI
 				}
 			
 			//center.length.
-			Debug.Log("connected");
+			//Debug.Log("connected");
 		}
 
 		public void ConnectMeshTwo(MeshDraft fromMesh, MeshDraft toMesh)
 		{
 
-			Debug.Log(toMesh.triangles.ToArray().Length);
-			Debug.Log(toMesh.vertices.ToArray().Length);
-			Debug.Log(toMesh.normals.ToArray().Length);
+		//	Debug.Log(toMesh.triangles.ToArray().Length);
+		//	Debug.Log(toMesh.vertices.ToArray().Length);
+		//	Debug.Log(toMesh.normals.ToArray().Length);
 			int length = toMesh.normals.ToArray().Length;
 			Vector3[] vert = fromMesh.vertices.ToArray();
 			Vector3[] norm = fromMesh.normals.ToArray();
@@ -265,15 +265,15 @@ namespace ProceduralToolkit.Examples.UI
 				}
 			}
 			//center.length.
-			Debug.Log("connected");
+		//	Debug.Log("connected");
 		}
 
 		public void MorphFitDown(MeshDraft fromMesh, MeshDraft toMesh)
 		{
 
-			Debug.Log(toMesh.triangles.ToArray().Length);
-			Debug.Log(toMesh.vertices.ToArray().Length);
-			Debug.Log(toMesh.normals.ToArray().Length);
+		//	Debug.Log(toMesh.triangles.ToArray().Length);
+		//	Debug.Log(toMesh.vertices.ToArray().Length);
+		//	Debug.Log(toMesh.normals.ToArray().Length);
 			int length = toMesh.normals.ToArray().Length;
 			Vector3[] vert = fromMesh.vertices.ToArray();
 			Vector3[] norm = fromMesh.normals.ToArray();

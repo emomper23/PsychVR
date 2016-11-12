@@ -11,6 +11,7 @@ public class QtSceneLoad : MonoBehaviour {
     public int m_config_id;
     public string skin_color;
 	public Boolean day;
+    public string session_id;
     private string json_text;
 	// Use this for initialization
 	void Start ()
@@ -21,7 +22,10 @@ public class QtSceneLoad : MonoBehaviour {
         Debug.Log(data[1]["Heights"]);
         Debug.Log(data[1]["Social"]);
         Debug.Log(data[1]["Heights"]["Color"]);
-        PlayerPrefs.SetString("SkinColor", data[1]["Heights"]["Settings"]["Color"]);
+
+
+        //do all write the same at once?
+        PlayerPrefs.SetString("SkinColor", data[1]["Calm"]["Settings"]["Color"]);
 		PlayerPrefs.SetInt("Day", Int16.Parse(data[1]["Heights"]["Settings"]["Day"]));
 
 

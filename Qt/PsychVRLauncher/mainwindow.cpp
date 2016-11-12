@@ -146,15 +146,15 @@ void MainWindow::launchScene()
 
     if(ui->scene_selection->currentIndex()  == MainWindow::scene_idx_t::FEAR_OF_HEIGHTS)
     {
-      command = "start ../heights.exe ";//+ settings.ui ;
+      command = "start ../heights.exe " + giveStuff;
     }
     else if(ui->scene_selection->currentIndex()  ==  MainWindow::scene_idx_t::SPEECH_ANXIETY)
     {
-      command = "start ../speech.exe test_args";
+      command = "start ../speech.exe " + giveStuff;
     }
     else if(ui->scene_selection->currentIndex()  == MainWindow::scene_idx_t::TERRAIN_GENERATION)
     {
-      command = "start ../anxiety.exe test_args";
+      command = "start ../anxiety.exe " + giveStuff;
     }
 
     ui->tab_3->setEnabled(true);
@@ -271,6 +271,7 @@ QString MainWindow::createRun()
     saveFile.write(saveDoc.toJson());
     saveFile.close();
 
+    return "" + ui->userLabel->text().right(1);
 
 }
 

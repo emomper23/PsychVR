@@ -15,6 +15,7 @@ public class ElevatorScript : MonoBehaviour {
 	public Transform bottom;
 	public Transform top;
 	public Transform gondola;
+	public float highestPoint = 0f;
 
 	int direction = 0;
 
@@ -72,6 +73,11 @@ public class ElevatorScript : MonoBehaviour {
 			this.direction = 0;
 		else
 			this.direction = 1;
+
+		if(highestPoint < gondola.transform.position.y)
+		{
+			highestPoint = gondola.transform.position.y;
+		}
 	}
 
 	public void Down()

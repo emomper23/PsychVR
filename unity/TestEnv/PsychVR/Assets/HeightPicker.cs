@@ -12,7 +12,8 @@ public class HeightPicker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		int num = UnityEngine.PlayerPrefs.GetInt("BuildingNum") - 1;
+		int num = UnityEngine.PlayerPrefs.GetInt("BuildingNum");
+        Debug.Log("int this callback");
 
 		elevator.transform.SetParent(buildings[num].transform);
 		elevator.transform.localRotation = Quaternion.identity;

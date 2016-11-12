@@ -18,17 +18,17 @@ public class QtSceneLoad : MonoBehaviour {
     {
         string text = System.IO.File.ReadAllText(m_path);
         var data = JSON.Parse(text);
-        Debug.Log(data[1]["Calm"]);
-        Debug.Log(data[1]["Heights"]);
-        Debug.Log(data[1]["Social"]);
-        Debug.Log(data[1]["Heights"]["Color"]);
+       // Debug.Log(data[1]["Calm"]);
+       // Debug.Log(data[1]["Heights"]);
+       // Debug.Log(data[1]["Social"]);
+        //Debug.Log(data[1]["Heights"]["Color"]);
 
 
         //do all write the same at once?
         PlayerPrefs.SetString("SkinColor", data[1]["Calm"]["Settings"]["Color"]);
-		PlayerPrefs.SetInt("Day", Int16.Parse(data[1]["Heights"]["Settings"]["Day"]));
-
-
+        PlayerPrefs.SetInt("Day", Int16.Parse(data[1]["Heights"]["Settings"]["Day"]));        
+        PlayerPrefs.SetInt("BuildingNum", Int16.Parse(data[1]["Heights"]["Settings"]["Building"]));
+   
 
     }
     public string getJSON

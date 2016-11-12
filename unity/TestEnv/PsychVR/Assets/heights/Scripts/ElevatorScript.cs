@@ -15,6 +15,7 @@ public class ElevatorScript : MonoBehaviour {
 	public Transform bottom;
 	public Transform top;
 	public Transform gondola;
+	public GUIText height;
 	public float highestPoint = 0f;
 
 	int direction = 0;
@@ -50,6 +51,8 @@ public class ElevatorScript : MonoBehaviour {
         gondola.Translate( dir * move);
 
         //this.direction = 0;
+
+		height.text = gondola.transform.position.y + " Meters"; 
 	}
 
 	public void UpPressed()
@@ -86,5 +89,10 @@ public class ElevatorScript : MonoBehaviour {
 			this.direction = 0;
 		else
 			this.direction = -1;
+	}
+
+	public void Exit()
+	{
+
 	}
 }

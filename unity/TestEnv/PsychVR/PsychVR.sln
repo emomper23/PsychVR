@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 2013
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychVR.CSharp.Plugins", "PsychVR.CSharp.Plugins.csproj", "{BC2D997F-6E22-89F0-AF5F-2B94757B8931}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychVR.CSharp", "PsychVR.CSharp.csproj", "{E0BE11D4-3830-B03F-C420-0CC189E191A2}"

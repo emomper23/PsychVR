@@ -1,0 +1,20 @@
+vertices can have a y value between 0-10?
+chunks remember:
+    N edge
+    E edge
+    S edge
+    W edge
+    
+newly generated chunks 
+
+   5___3_      5___3_  
+    |  /|0      |  /|0
+    | / |       | / |
+   4|/  |1     4|/  |1
+     2           2
+
+   5___3_
+    |  /|0
+    | / |
+   4|/  |1
+     2

@@ -81,11 +81,17 @@ namespace ProceduralToolkit.Examples.UI
                 
             }
             draft.Move(Vector3.left*terrainSizeX/2 + Vector3.back*terrainSizeZ/2);
+            
            
             meshFilter.mesh = draft.ToMesh();
             meshCollider.sharedMesh = draft.ToMesh();
             meshCollider2.sharedMesh = draft.ToMesh();
-            ConnectMesh( drafts[4],drafts[5]);
+            ConnectMesh( drafts[4],drafts[3]);
+            //drafts[4].Rotate(Quaternion.Euler(0, -90, 0));
+            //drafts[1].Rotate(Quaternion.Euler(0, -90, 0));
+            //ConnectMesh(drafts[4], drafts[1]);
+            //drafts[4].Rotate(Quaternion.Euler(0, 90, 0));
+            //drafts[1].Rotate(Quaternion.Euler(0, 90, 0));
 
             for (int i = 0; i < 9; i++)
             {
@@ -105,16 +111,16 @@ namespace ProceduralToolkit.Examples.UI
             Vector3[] vert = center.vertices.ToArray();
             Vector3[] norm = center.normals.ToArray();
             int[] tri = center.triangles.ToArray();
-            center.colors.RemoveRange(0, length);
+           // center.colors.RemoveRange(0, length);
             center.vertices.RemoveRange(0, length);
             center.normals.RemoveRange(0, length);
             center.triangles.RemoveRange(0, length);
             
             for (int i = 0; i < length ; i++)
-              {
+            {
                 if (i > vert_x * 6)
                 {
-                    center.colors.Add(new Color(0, 255, 0));
+                //    center.colors.Add(new Color(0, 255, 0));
                     center.vertices.Add(vert[i]);
                     center.triangles.Add(tri[i]);
                     center.normals.Add(norm[i]);
@@ -122,19 +128,127 @@ namespace ProceduralToolkit.Examples.UI
                 else
                 {
                   
-                    center.colors.Add(new Color(255, 0, 0));
-                    center.vertices.Add(draft.vertices[i]);
+                    // center.colors.Add(new Color(255, 0, 0));
+                    // center.vertices.Add(draft.vertices[i]);
                     center.triangles.Add(draft.triangles[i]);
-                    center.normals.Add(draft.normals[i ]);   
+                    center.normals.Add(draft.normals[i ]);
+                    if (i % 6 < 3)
+                    {
+
+                        if (i % 3  == 0)
+                        {
+                            //   center.colors.Add(new Color(0, 0, 255));
+                            center.vertices.Add(new Vector3(vert[i].x,draft.vertices[(length - vert_x * 6)  + i - 1].y , vert[i].z));
+                        }
+                        else
+                        {
+                    //        center.colors.Add(new Color(255, 0, 0));
+                            center.vertices.Add(vert[i]);
+                        }          
+                            
+                        
+                    }
+                    else
+                    {
+                        if (i % 2 == 0)
+                        {
+                            //center.colors.Add(new Color(255, 0, 0));
+                            center.vertices.Add(vert[i]);
+                        }
+                        else
+                        {
+                            //center.colors.Add(new Color(0, 255, 0));
+                            center.vertices.Add(new Vector3(vert[i].x, draft.vertices[(length - vert_x * 6) + i - 1].y, vert[i].z));
+                        }
+                        
+                    }
+                    /* if (i %  == 0)
+                    {
+                        center.colors.Add(new Color(0, 255, 0));
+                        center.vertices.Add(draft.vertices[i]);
+                    }*/
+                    //center.vertices.Add(vert[i]);
+                    //center.triangles.Add(tri[i]);
+                    //center.normals.Add(norm[i]);
+                    }
+                }
+                //center.length.
+                  Debug.Log("connected");        
+        }
+
+        public void ConnectMeshZ(MeshDraft center, MeshDraft draft)
+        {
+
+            Debug.Log(draft.triangles.ToArray().Length);
+            Debug.Log(draft.vertices.ToArray().Length);
+            Debug.Log(draft.normals.ToArray().Length);
+            int length = draft.normals.ToArray().Length;
+            Vector3[] vert = center.vertices.ToArray();
+            Vector3[] norm = center.normals.ToArray();
+            int[] tri = center.triangles.ToArray();
+            // center.colors.RemoveRange(0, length);
+            center.vertices.RemoveRange(0, length);
+            center.normals.RemoveRange(0, length);
+            center.triangles.RemoveRange(0, length);
+
+            for (int i = 0; i < length; i++)
+            {
+                if (i > vert_x * 6)
+                {
+                    //    center.colors.Add(new Color(0, 255, 0));
+                    center.vertices.Add(vert[i]);
+                    center.triangles.Add(tri[i]);
+                    center.normals.Add(norm[i]);
+                }
+                else
+                {
+
+                    // center.colors.Add(new Color(255, 0, 0));
+                    // center.vertices.Add(draft.vertices[i]);
+                    center.triangles.Add(draft.triangles[i]);
+                    center.normals.Add(draft.normals[i]);
+                    if (i % 6 < 3)
+                    {
+
+                        if (i % 3 == 0)
+                        {
+                            //   center.colors.Add(new Color(0, 0, 255));
+                            center.vertices.Add(new Vector3(vert[i].x, draft.vertices[(length - vert_x * 6) + i - 1].y, vert[i].z));
+                        }
+                        else
+                        {
+                            //        center.colors.Add(new Color(255, 0, 0));
+                            center.vertices.Add(vert[i]);
+                        }
+
+
+                    }
+                    else
+                    {
+                        if (i % 2 == 0)
+                        {
+                            //center.colors.Add(new Color(255, 0, 0));
+                            center.vertices.Add(vert[i]);
+                        }
+                        else
+                        {
+                            //center.colors.Add(new Color(0, 255, 0));
+                            center.vertices.Add(new Vector3(vert[i].x, draft.vertices[(length - vert_x * 6) + i - 1].y, vert[i].z));
+                        }
+
+                    }
+                    /* if (i %  == 0)
+                    {
+                        center.colors.Add(new Color(0, 255, 0));
+                        center.vertices.Add(draft.vertices[i]);
+                    }*/
                     //center.vertices.Add(vert[i]);
                     //center.triangles.Add(tri[i]);
                     //center.normals.Add(norm[i]);
                 }
-              }
+            }
             //center.length.
-              Debug.Log("connected");
-             
-     
+            Debug.Log("connected");
 
         }
         public void UpdateVerticies(GameObject terrain, int idx)

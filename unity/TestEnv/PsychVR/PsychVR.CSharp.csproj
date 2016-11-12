@@ -81,6 +81,7 @@
     <Compile Include="Assets\ColorSetter.cs" />
     <Compile Include="Assets\Delicode NI mate\NImateFeed.cs" />
     <Compile Include="Assets\Delicode NI mate\NImateReceiver.cs" />
+    <Compile Include="Assets\HeightPicker.cs" />
     <Compile Include="Assets\ImageLoader.cs" />
     <Compile Include="Assets\KinectDemos\AvatarsDemo\PointMan\PointManController.cs" />
     <Compile Include="Assets\KinectDemos\GesturesDemo\KinectScripts\AvatarController.cs" />
@@ -413,6 +414,7 @@
     <Compile Include="Assets\anxiety\Assets\Scripts\Generic\TranslateRotateControler.cs" />
     <Compile Include="Assets\anxiety\Assets\Scripts\GeomShader\BillboardGeomScript.cs" />
     <Compile Include="Assets\anxiety\Assets\Scripts\GeomShader\VoxelGeomScript.cs" />
+    <Compile Include="Assets\ballToMovement.cs" />
     <Compile Include="Assets\copyPosition.cs" />
     <Compile Include="Assets\copyRotation.cs" />
     <Compile Include="Assets\heights\City\Map\CameraRotate.cs" />

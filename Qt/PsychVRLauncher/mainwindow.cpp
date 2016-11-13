@@ -391,7 +391,6 @@ void MainWindow::readIn()
 {
 
     int usernum = 0;
-    int scenenum = 0;
 
     QString filename = QApplication::applicationDirPath() + "/save.json";
     QFile saveFile(filename);
@@ -401,38 +400,52 @@ void MainWindow::readIn()
        }
 
     QByteArray saveData = saveFile.readAll();
+
     QJsonDocument loadDoc(QJsonDocument::fromJson(saveData));
+
     QJsonArray tester(loadDoc.array());
     saveFile.close();
 
     if (tester.isEmpty())
     {
-        tester = makeJson();
+        return;
     }
 
-    int usern = ui->userLabel->text().right(1).toInt();
+    usernum = ui->userLabel->text().right(1).toInt();
 
+    QJsonObject heightScene = tester.at(usernum).toObject()["Heights"].toObject();
+    QJsonObject calmScene = tester.at(usernum).toObject()["Calm"].toObject();
+    QJsonObject socialScene = tester.at(usernum).toObject()["Social"].toObject();
+    QJsonObject user = tester.at(usernum).toObject();
 
-    QJsonObject heightScene = tester.at(usern).toObject()["Heights"].toObject();
-    QJsonObject calmScene = tester.at(usern).toObject()["Calm"].toObject();
-    QJsonObject socialScene = tester.at(usern).toObject()["Social"].toObject();
-    QJsonObject user = tester.at(usern).toObject();
+    QVector<int> stressBefore;
+    QVector<int> stressAfter;
+    QVector<double> stressScores;
+    QVector<QString> notes;
 
-    QJsonObject settings;
+    int score = 0;
 
-    if(ui->scene_selection->currentIndex() == 0)
+    QJsonArray heightRuns = heightScene["runs"].toArray();
+
+    for(int iter = 0; iter < heightRuns.size(); iter ++)
     {
-        qDebug() << heightScene.value("Settings").toObject().value("Lift_Pos").toInt();
-        qDebug() << heightScene.value("Settings").toObject().value("Day").toInt();
+        stressBefore.append(heightRuns[iter].toObject()["prestress"].toInt());
+        stressAfter.append(heightRuns[iter].toObject()["poststress"].toInt());
+        score = heightRuns[iter].toObject()["answers"].toObject()["1"].toInt() * -1 + 6;
+        score += heightRuns[iter].toObject()["answers"].toObject()["2"].toInt();
+        score += heightRuns[iter].toObject()["answers"].toObject()["3"].toInt();
+        score += heightRuns[iter].toObject()["answers"].toObject()["4"].toInt();
+        score += heightRuns[iter].toObject()["answers"].toObject()["5"].toInt();
+        score += heightRuns[iter].toObject()["answers"].toObject()["6"].toInt();
+        stressScores.append(score);
+        score = 0;
+        notes.append(heightRuns[iter].toObject()["notes"].toString());
     }
-    else if(ui->scene_selection->currentIndex() == 1)
+
+    for(int x = 0; x < stressBefore.size(); x++)
     {
-        qDebug() << socialScene.value("Settings").toObject().value("PPT").toString();
-        qDebug() << socialScene.value("Settings").toObject().value("Position").toInt();
-    }
-    else
-    {
-        qDebug() << calmScene["Settings"].toObject();
+        qDebug() << stressBefore.at(x);
+        qDebug() << stressAfter.at(x);
     }
 
 }

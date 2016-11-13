@@ -49,7 +49,7 @@ namespace ProceduralToolkit.Examples.UI
 
             RenderSettings.skybox = new Material(RenderSettings.skybox);
             meshCollider = terrain.GetComponents<MeshCollider>()[0];
-            meshCollider2 = terrain.GetComponents<MeshCollider>()[1];
+           // meshCollider2 = terrain.GetComponents<MeshCollider>()[1];
 
 
             Generate();
@@ -100,7 +100,7 @@ namespace ProceduralToolkit.Examples.UI
 
             meshFilter.mesh = draft.ToMesh();
             meshCollider.sharedMesh = draft.ToMesh();
-            meshCollider2.sharedMesh = draft.ToMesh();
+            //meshCollider2.sharedMesh = draft.ToMesh();
 
             MorphFitRight(drafts[1], drafts[0]);
             MorphFitRight(drafts[2], drafts[1]);
@@ -161,7 +161,7 @@ namespace ProceduralToolkit.Examples.UI
 
             terrain.GetComponent<MeshFilter>().mesh = meshes[idx];
             terrain.GetComponents<MeshCollider>()[0].sharedMesh = meshes[idx];
-            terrain.GetComponents<MeshCollider>()[1].sharedMesh = meshes[idx];
+            //terrain.GetComponents<MeshCollider>()[1].sharedMesh = meshes[idx];
             terrain.GetComponent<ChunkCollider>().terrain_draft = drafts[idx];
             //Debug.Log("update" + idx);
         }
@@ -197,8 +197,8 @@ namespace ProceduralToolkit.Examples.UI
             Vector3 [] verts = terrain.GetComponent<ChunkCollider>().terrain_draft.vertices.ToArray();
 
             terrain.GetComponent<MeshFilter>().mesh.vertices = verts;
-            terrain.GetComponents<MeshCollider>()[0].sharedMesh.vertices = verts;
-            terrain.GetComponents<MeshCollider>()[1].sharedMesh.vertices = verts;
+            terrain.GetComponent<MeshCollider>().sharedMesh.vertices = verts;
+           // terrain.GetComponents<MeshCollider>()[1].sharedMesh.vertices = verts;
             terrain.GetComponent<MeshFilter>().mesh.UploadMeshData(false);
 
         }

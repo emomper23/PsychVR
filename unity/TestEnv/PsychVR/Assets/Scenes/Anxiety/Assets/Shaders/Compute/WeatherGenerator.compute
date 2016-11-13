@@ -1,0 +1,62 @@
+﻿#pragma kernel CSMain
+
+// Thread group size 
+#define thread_group_size_x 16
+#define thread_group_size_y 16
+#define thread_group_size_z 1
+
+float Speed = 1;
+int wobble = 0;
+float3 wind = float3(0,0,0);
+float spacing = 5;
+
+// Structure to store x,y,z position data in. This is used to populate the outputBuffer
+struct positionStruct
+{
+    float3 pos;
+};
+
+// Structure to describe the data in the startPointBuffer
+struct startYStruct
+{
+    float offset;
+};
+
+// Structure to describe the data in the constBuffer
+struct constStruct
+{
+    float t;
+};
+
+struct posMod
+{
+	float2 mod;
+};
+
+// Compute Buffers
+RWStructuredBuffer<posMod> modBuffer;
+RWStructuredBuffer<constStruct> constBuffer;
+RWStructuredBuffer<startYStruct> startPointBuffer;
+RWStructuredBuffer<positionStruct> outputBuffer;
+
+[numthreads(thread_group_size_x, thread_group_size_y, thread_group_size_z)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    int idx = id.x + id.y * thread_group_size_x * 32;
+    
+	float3 centre = float3(-thread_group_size_x * 15,0,-thread_group_size_y * 15);
+    float3 pos = (float3(id.x, id.z + (startPointBuffer[idx].offset ), id.y) + centre) * spacing;
+
+	pos.y = (lerp((spacing * 2) * 32, 0, (pos.y + (constBuffer[0].t * (modBuffer[idx].mod.x * Speed)  )) % 1 )) * spacing;
+
+	if(wobble)
+	{
+		pos.x +=  (cos(constBuffer[0].t * (modBuffer[idx].mod.x * 100))) * spacing;
+		pos.z +=  (sin(constBuffer[0].t * (modBuffer[idx].mod.y * 100))) * spacing;
+	}
+
+	wind.y = 0; // Don't want the weather going up do we...
+	pos += (wind * constBuffer[0].t * 100);
+ 
+    outputBuffer[idx].pos = pos;
+}

@@ -52,6 +52,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionUser_4, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));
     connect(ui->actionUser_5, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));
     connect(ui->actionGuest_1, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));
+    connect(ui->tabWidget, SIGNAL(currentChanged(int)),this,SLOT(tabChanged(int)));
 
     signalMapper -> setMapping (ui->actionUser_1, 1) ;
     signalMapper -> setMapping (ui->actionUser_2, 2)  ;
@@ -60,10 +61,11 @@ MainWindow::MainWindow(QWidget *parent) :
     signalMapper -> setMapping (ui->actionUser_5, 5)  ;
     signalMapper -> setMapping (ui->actionGuest_1, 6)  ;
     connect (signalMapper, SIGNAL(mapped(int)), this, SLOT(changeUser(int))) ;
-
+    //ui->graphWidget->addGraph();
 
     initButtons();
     loadFiles();
+    readIn();
 
     //Poppler::Document * doc = Poppler::Document::load("/home/emomper/Documents/exam.pdf");
     //QImage img = doc->page(0)->renderToImage();
@@ -131,6 +133,15 @@ void MainWindow::saveModel()
     m_obj_settings->saveObject();
     saveFiles();
 }
+
+void MainWindow::tabChanged(int tab)
+{
+    if(tab == 3)
+    {
+        readIn();
+    }
+}
+
 void MainWindow::newModel()
 {
     CUnityObject * obj = new CUnityObject(this->getMap()->m_objects.size());
@@ -167,6 +178,8 @@ void MainWindow::showSettings()
     m_settings->setupSettings(ui->userLabel->text().right(1).toInt());
     m_settings->setVisible(true);
     m_settings->show();
+
+
 }
 
 void MainWindow::initButtons()
@@ -418,9 +431,10 @@ void MainWindow::readIn()
     QJsonObject socialScene = tester.at(usernum).toObject()["Social"].toObject();
     QJsonObject user = tester.at(usernum).toObject();
 
-    QVector<int> stressBefore;
-    QVector<int> stressAfter;
+    QVector<double> stressBefore;
+    QVector<double> stressAfter;
     QVector<double> stressScores;
+    QVector<double> indexes;
     QVector<QString> notes;
 
     int score = 0;
@@ -429,6 +443,7 @@ void MainWindow::readIn()
 
     for(int iter = 0; iter < heightRuns.size(); iter ++)
     {
+
         stressBefore.append(heightRuns[iter].toObject()["prestress"].toInt());
         stressAfter.append(heightRuns[iter].toObject()["poststress"].toInt());
         score = heightRuns[iter].toObject()["answers"].toObject()["1"].toInt() * -1 + 6;
@@ -437,16 +452,90 @@ void MainWindow::readIn()
         score += heightRuns[iter].toObject()["answers"].toObject()["4"].toInt();
         score += heightRuns[iter].toObject()["answers"].toObject()["5"].toInt();
         score += heightRuns[iter].toObject()["answers"].toObject()["6"].toInt();
+        score = (score / 36) * 10;
         stressScores.append(score);
+        indexes.append((double)iter);
         score = 0;
         notes.append(heightRuns[iter].toObject()["notes"].toString());
     }
 
-    for(int x = 0; x < stressBefore.size(); x++)
+    //---------------------------------------------------------------------------------------------------
+
+    ui->customPlot->legend->setVisible(true);
+    ui->customPlot->legend->setFont(QFont("Helvetica", 9));
+    ui->customPlot->clearGraphs();
+    QPen pen;
+    QStringList lineNames;
+
+    // add graphs with different line styles:
+
+    ui->customPlot->addGraph();
+    ui->customPlot->addGraph();
+    ui->customPlot->addGraph();
+
+
+    pen.setColor(QColor(240,0,0));
+
+    ui->customPlot->graph(0)->setPen(pen);
+    ui->customPlot->graph(0)->setName("Pre-Stress");
+    ui->customPlot->graph(0)->setLineStyle((QCPGraph::LineStyle)1);
+    ui->customPlot->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 10));
+    ui->customPlot->graph(0)->setData(indexes,stressBefore);
+
+    pen.setColor(QColor(0,240,0));
+
+    ui->customPlot->graph(1)->setPen(pen);
+    ui->customPlot->graph(1)->setName("Post-Stress");
+    ui->customPlot->graph(1)->setLineStyle((QCPGraph::LineStyle)1);
+    ui->customPlot->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 10));
+    ui->customPlot->graph(1)->setData(indexes,stressAfter);
+
+    pen.setColor(QColor(0,0,240));
+
+    ui->customPlot->graph(2)->setPen(pen);
+    ui->customPlot->graph(2)->setName("Scores");
+    ui->customPlot->graph(2)->setLineStyle((QCPGraph::LineStyle)1);
+    ui->customPlot->graph(2)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 10));
+    ui->customPlot->graph(2)->setData(indexes,stressScores);
+
+    ui->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+    ui->customPlot->xAxis->setRange(-.2,indexes.size());
+    ui->customPlot->yAxis->setRange(-.2,10);
+
+
+    /*
+
+    for (int i=QCPGraph::lsNone; i<=QCPGraph::lsImpulse; ++i)
     {
-        qDebug() << stressBefore.at(x);
-        qDebug() << stressAfter.at(x);
+      ui->customPlot->addGraph();
+      pen.setColor(QColor(qSin(i*1+1.2)*80+80, qSin(i*0.3+0)*80+80, qSin(i*0.3+1.5)*80+80));
+      ui->customPlot->graph()->setPen(pen);
+      ui->customPlot->graph()->setName(lineNames.at(i-QCPGraph::lsNone));
+      ui->customPlot->graph()->setLineStyle((QCPGraph::LineStyle)i);
+      ui->customPlot->graph()->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 5));
+      // generate data:
+      QVector<double> x(15), y(15);
+      for (int j=0; j<15; ++j)
+      {
+        x[j] = j/15.0 * 5*3.14 + 0.01;
+        y[j] = 7*qSin(x[j])/x[j] - (i-QCPGraph::lsNone)*5 + (QCPGraph::lsImpulse)*5 + 2;
+      }
+      ui->customPlot->graph()->setData(x, y);
+      ui->customPlot->graph()->rescaleAxes(true);
     }
+
+    // zoom out a bit:
+    ui->customPlot->yAxis->scaleRange(1.1, ui->customPlot->yAxis->range().center());
+    ui->customPlot->xAxis->scaleRange(1.1, ui->customPlot->xAxis->range().center());
+    // set blank axis lines:
+    ui->customPlot->xAxis->setTicks(false);
+    ui->customPlot->yAxis->setTicks(true);
+    ui->customPlot->xAxis->setTickLabels(false);
+    ui->customPlot->yAxis->setTickLabels(true);
+    // make top right axes clones of bottom left axes:
+    ui->customPlot->axisRect()->setupFullAxesBox();
+    */
+
 
 }
 
@@ -460,6 +549,8 @@ void MainWindow::changeUser(int userNum)
     {
         ui->userLabel->setText(" Guest ");
     }
+    readIn();
+
 }
 
 QJsonArray MainWindow::makeJson()

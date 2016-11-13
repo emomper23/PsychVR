@@ -745,14 +745,20 @@
           <item row="0" column="0">
            <widget class="QLabel" name="label_3">
             <property name="text">
-             <string>Stress Rating Before</string>
+             <string>General Heights Stress/Fear Level</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label_19">
             <property name="text">
-             <string>Stress Rating After</string>
+             <string>Stress/Fear Level Post- Trial</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -844,15 +850,48 @@
         <attribute name="title">
          <string>Page</string>
         </attribute>
-        <widget class="QCustomPlot" name="widget" native="true">
+        <widget class="QTabWidget" name="tabWidget_2">
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>10</y>
+           <y>0</y>
            <width>1031</width>
-           <height>551</height>
+           <height>571</height>
           </rect>
          </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="tab_5">
+          <attribute name="title">
+           <string>Survey Data</string>
+          </attribute>
+          <widget class="QCustomPlot" name="customPlot" native="true">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>1021</width>
+             <height>541</height>
+            </rect>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="tab_6">
+          <attribute name="title">
+           <string>Scene Data</string>
+          </attribute>
+          <widget class="QCustomPlot" name="customPlot_2" native="true">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>1021</width>
+             <height>541</height>
+            </rect>
+           </property>
+          </widget>
+         </widget>
         </widget>
        </widget>
       </widget>
@@ -1032,11 +1071,11 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_4"/>
-  <buttongroup name="buttonGroup_5"/>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_6"/>
-  <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup_4"/>
+  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_3"/>
+  <buttongroup name="buttonGroup_5"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>

@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = PsychVRLauncher
 TEMPLATE = app
@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     editdialog.cpp \
     cuserstat.cpp \
     surveydata.cpp \
-    settings.cpp
+    settings.cpp \
+    qcustomplot.cpp
 
 HEADERS  += mainwindow.h \
     qglgraphwidget.h \
@@ -39,7 +40,8 @@ HEADERS  += mainwindow.h \
     editdialog.h \
     cuserstat.h \
     surveydata.h \
-    settings.h
+    settings.h \
+    qcustomplot.h
 
 FORMS    += mainwindow.ui \
     editdialog.ui \

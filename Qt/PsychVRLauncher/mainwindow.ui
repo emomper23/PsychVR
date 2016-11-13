@@ -78,7 +78,7 @@
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>3</number>
        </property>
        <widget class="QWidget" name="tab">
         <property name="sizePolicy">
@@ -840,6 +840,21 @@
          </property>
         </widget>
        </widget>
+       <widget class="QWidget" name="tab_4">
+        <attribute name="title">
+         <string>Page</string>
+        </attribute>
+        <widget class="QCustomPlot" name="widget" native="true">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>1031</width>
+           <height>551</height>
+          </rect>
+         </property>
+        </widget>
+       </widget>
       </widget>
      </item>
     </layout>
@@ -1007,15 +1022,21 @@
    <extends>QOpenGLWidget</extends>
    <header>qglgraphwidget.h</header>
   </customwidget>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_6"/>
-  <buttongroup name="buttonGroup_5"/>
-  <buttongroup name="buttonGroup_3"/>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup_4"/>
+  <buttongroup name="buttonGroup_5"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_6"/>
+  <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup_3"/>
  </buttongroups>
 </ui>

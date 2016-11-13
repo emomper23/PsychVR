@@ -48,7 +48,23 @@ public class ChunkCollider : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         //Debug.Log("moving to " + this.transform.position + this.gameObject.transform.name +  other.gameObject.transform.name);
-        terrain_manager.GetComponent<PlaneRepeat>().setPlane(this.gameObject);
+        //terrain_manager.GetComponent<PlaneRepeat>().setPlane(this.gameObject);s
+        if(this.gameObject.transform.name == "TerrainRenderer7")
+            terrain_manager.GetComponent<PlaneRepeat>().SetGrid7();
+        else if (this.gameObject.transform.name == "TerrainRenderer3")
+            terrain_manager.GetComponent<PlaneRepeat>().SetGrid3();
+        else if (this.gameObject.transform.name == "TerrainRenderer5")
+            terrain_manager.GetComponent<PlaneRepeat>().SetGrid5();
+        else if (this.gameObject.transform.name == "TerrainRenderer1")
+            terrain_manager.GetComponent<PlaneRepeat>().SetGrid1();
+        else if (this.gameObject.transform.name == "TerrainRenderer6")
+            terrain_manager.GetComponent<PlaneRepeat>().SetGrid6();
+        else if (this.gameObject.transform.name == "TerrainRenderer0")
+            terrain_manager.GetComponent<PlaneRepeat>().SetGrid0();
+        else if (this.gameObject.transform.name == "TerrainRenderer8")
+            terrain_manager.GetComponent<PlaneRepeat>().SetGrid8();
+        else if (this.gameObject.transform.name == "TerrainRenderer2")
+            terrain_manager.GetComponent<PlaneRepeat>().SetGrid2();
     }
 
     // Update is called once per frame

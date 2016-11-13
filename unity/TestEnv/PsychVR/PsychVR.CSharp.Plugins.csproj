@@ -102,28 +102,6 @@
     <Compile Include="Assets\Standard Assets\Image Effects (Pro Only)\VortexEffect.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\AmbientOcclusion\Shaders\AEFastVertexColors.shader" />
-    <None Include="Assets\AmbientOcclusion\Shaders\AEFastVertexColorsAlpha.shader" />
-    <None Include="Assets\AmbientOcclusion\Shaders\AEFastVertexColorsAlphaOnly.shader" />
-    <None Include="Assets\AmbientOcclusion\Shaders\AERimVertAO.shader" />
-    <None Include="Assets\AmbientOcclusion\Shaders\AEVertAO.shader" />
-    <None Include="Assets\AmbientOcclusion\Shaders\AEVertAOColor.shader" />
-    <None Include="Assets\AmbientOcclusion\Shaders\AEVertAOPixelshaded.shader" />
-    <None Include="Assets\AmbientOcclusion\Shaders\DebugNormals.shader" />
-    <None Include="Assets\LeapMotion\Dependencies.txt" />
-    <None Include="Assets\LeapMotion\README_BEFORE_UPDATING.txt" />
-    <None Include="Assets\LeapMotion\Resources\LeapCG.cginc" />
-    <None Include="Assets\LeapMotion\Resources\PassthroughBackground.shader" />
-    <None Include="Assets\LeapMotion\Resources\PassthroughForeground.shader" />
-    <None Include="Assets\LeapMotion\Resources\RuntimeGizmos.shader" />
-    <None Include="Assets\LeapMotion\Resources\ThresholdOverlay.shader" />
-    <None Include="Assets\LeapMotion\Version.txt" />
-    <None Include="Assets\LeapMotion\readme.txt" />
-    <None Include="Assets\LeapMotionModules\DetectionExamples\Shaders\LeapPinchLine.shader" />
-    <None Include="Assets\LeapMotionModules\PinchUtility\Examples\Shaders\LeapPinchLine.shader" />
-    <None Include="Assets\OVR\Moonlight\Resources\Unlit Transparent Color.shader" />
-    <None Include="Assets\OVR\Moonlight\Shaders\OVRColorRampAlpha.shader" />
-    <None Include="Assets\OVR\Moonlight\Shaders\Unlit Crosshair.shader" />
     <None Include="Assets\Plugins\NiTE.ini.txt" />
     <None Include="Assets\Plugins\OpenNI.ini.txt" />
     <None Include="Assets\Plugins\donotdelete.txt" />
@@ -195,6 +173,28 @@
     <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
     <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\TiltShift.shader" />
     <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\frag_ao.cginc" />
+    <None Include="Assets\Universal Assets\AmbientOcclusion\Shaders\AEFastVertexColors.shader" />
+    <None Include="Assets\Universal Assets\AmbientOcclusion\Shaders\AEFastVertexColorsAlpha.shader" />
+    <None Include="Assets\Universal Assets\AmbientOcclusion\Shaders\AEFastVertexColorsAlphaOnly.shader" />
+    <None Include="Assets\Universal Assets\AmbientOcclusion\Shaders\AERimVertAO.shader" />
+    <None Include="Assets\Universal Assets\AmbientOcclusion\Shaders\AEVertAO.shader" />
+    <None Include="Assets\Universal Assets\AmbientOcclusion\Shaders\AEVertAOColor.shader" />
+    <None Include="Assets\Universal Assets\AmbientOcclusion\Shaders\AEVertAOPixelshaded.shader" />
+    <None Include="Assets\Universal Assets\AmbientOcclusion\Shaders\DebugNormals.shader" />
+    <None Include="Assets\Universal Assets\LeapMotion\Dependencies.txt" />
+    <None Include="Assets\Universal Assets\LeapMotion\README_BEFORE_UPDATING.txt" />
+    <None Include="Assets\Universal Assets\LeapMotion\Resources\LeapCG.cginc" />
+    <None Include="Assets\Universal Assets\LeapMotion\Resources\PassthroughBackground.shader" />
+    <None Include="Assets\Universal Assets\LeapMotion\Resources\PassthroughForeground.shader" />
+    <None Include="Assets\Universal Assets\LeapMotion\Resources\RuntimeGizmos.shader" />
+    <None Include="Assets\Universal Assets\LeapMotion\Resources\ThresholdOverlay.shader" />
+    <None Include="Assets\Universal Assets\LeapMotion\Version.txt" />
+    <None Include="Assets\Universal Assets\LeapMotion\readme.txt" />
+    <None Include="Assets\Universal Assets\LeapMotionModules\DetectionExamples\Shaders\LeapPinchLine.shader" />
+    <None Include="Assets\Universal Assets\LeapMotionModules\PinchUtility\Examples\Shaders\LeapPinchLine.shader" />
+    <None Include="Assets\Universal Assets\OVR\Moonlight\Resources\Unlit Transparent Color.shader" />
+    <None Include="Assets\Universal Assets\OVR\Moonlight\Shaders\OVRColorRampAlpha.shader" />
+    <None Include="Assets\Universal Assets\OVR\Moonlight\Shaders\Unlit Crosshair.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

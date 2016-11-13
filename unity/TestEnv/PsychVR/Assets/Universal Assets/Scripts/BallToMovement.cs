@@ -7,7 +7,6 @@ using CnControls;
 public class BallToMovement : MonoBehaviour
 {
 	public Rigidbody thisRb;
-    public GameObject camera;
     public float speed;
 
 	// Use this for initialization

@@ -195,7 +195,9 @@ void settings::changeColor()
 void settings::changeFile()
 {
     powerpoint =  QFileDialog::getOpenFileName(this,tr("Choose Powerpoint"), "", tr("Image Files (*.png *.jpg *.bmp)"));
-    ui->fileLabel->setText(powerpoint);
+    QString label = powerpoint;
+    label.remove(0,powerpoint.lastIndexOf("/") + 1);
+    ui->fileLabel->setText(label);
 
 }
 

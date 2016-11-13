@@ -103,7 +103,7 @@ void settings::changeSettings()
     {
         {"Color",curCol.name()},
         {"Day", 1},
-        {"Building", ui->heightBox->currentText()}
+        {"Building", ui->heightBox->currentIndex()}
     };
 
     if(ui->radioButton_2->isChecked())
@@ -111,14 +111,30 @@ void settings::changeSettings()
         heightSettings["Day"] = 0;
     }
 
-    QJsonObject animations
+    QJsonArray animations;
+
+    if(ui->checkBox->isChecked())
     {
-        {"Sitting", ui->checkBox->isChecked()},
-        {"Hand On Head", ui->checkBox_2->isChecked()},
-        {"Hand in Lap", ui->checkBox_3->isChecked()},
-        {"Leaning", ui->checkBox_4->isChecked()},
-        {"Sleeping", ui->checkBox_5->isChecked()}
-    };
+        animations.append(0);
+    }
+    if(ui->checkBox_2->isChecked())
+    {
+        animations.append(1);
+    }
+    if(ui->checkBox_3->isChecked())
+    {
+        animations.append(2);
+    }
+    if(ui->checkBox_4->isChecked())
+    {
+        animations.append(3);
+    }
+    if(ui->checkBox_5->isChecked())
+    {
+        animations.append(4);
+    }
+
+
 
     QJsonObject socialSettings
     {

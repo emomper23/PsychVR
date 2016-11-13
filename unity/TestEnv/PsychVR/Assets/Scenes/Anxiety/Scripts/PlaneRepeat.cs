@@ -137,6 +137,10 @@ public class PlaneRepeat : MonoBehaviour
         StitchDown(plane_list[7], plane_list[4]);
         StitchDown(plane_list[6], plane_list[3]);
 
+        UpdatePlane(plane_list[8]);
+        UpdatePlane(plane_list[7]);
+        UpdatePlane(plane_list[6]);
+
     }
 
     public void SetGrid1()
@@ -176,6 +180,13 @@ public class PlaneRepeat : MonoBehaviour
         StitchDown(plane_list[4], plane_list[1]);
         StitchDown(plane_list[3], plane_list[0]);
 
+        UpdatePlane(plane_list[1]);
+        UpdatePlane(plane_list[2]);
+        UpdatePlane(plane_list[3]);
+        UpdatePlane(plane_list[5]);
+        UpdatePlane(plane_list[4]);
+
+
     }
 
     public void SetGrid3()
@@ -213,6 +224,11 @@ public class PlaneRepeat : MonoBehaviour
         StitchDown(plane_list[6], plane_list[3]);
         StitchDown(plane_list[3], plane_list[0]);
 
+        UpdatePlane(plane_list[7]);
+        UpdatePlane(plane_list[4]);
+        UpdatePlane(plane_list[1]);
+        UpdatePlane(plane_list[6]);
+        UpdatePlane(plane_list[3]);
     }
 
     public void SetGrid5()
@@ -252,6 +268,10 @@ public class PlaneRepeat : MonoBehaviour
         StitchDown(plane_list[8], plane_list[5]);
         StitchDown(plane_list[5], plane_list[2]);
 
+        UpdatePlane(plane_list[8]);
+        UpdatePlane(plane_list[5]);
+        UpdatePlane(plane_list[2]);
+     
     }
 
     public void SetGrid6()
@@ -299,6 +319,13 @@ public class PlaneRepeat : MonoBehaviour
         StitchDown(plane_list[7], plane_list[4]);
         StitchDown(plane_list[6], plane_list[3]);
         StitchDown(plane_list[3], plane_list[0]);
+
+        UpdatePlane(plane_list[7]);
+        UpdatePlane(plane_list[8]);
+        UpdatePlane(plane_list[4]);
+        UpdatePlane(plane_list[1]);
+        UpdatePlane(plane_list[6]);
+        UpdatePlane(plane_list[3]);
 
     }
 
@@ -348,6 +375,17 @@ public class PlaneRepeat : MonoBehaviour
         StitchDown(plane_list[4], plane_list[1]);
         StitchDown(plane_list[5], plane_list[2]);
 
+        UpdatePlane(plane_list[7]);
+        UpdatePlane(plane_list[4]);
+        UpdatePlane(plane_list[1]);
+        UpdatePlane(plane_list[2]);
+        UpdatePlane(plane_list[6]);
+        UpdatePlane(plane_list[3]);
+        UpdatePlane(plane_list[5]);
+     
+
+
+
     }
     public void SetGrid8()
     {
@@ -396,6 +434,12 @@ public class PlaneRepeat : MonoBehaviour
         StitchDown(plane_list[7], plane_list[4]);
         StitchDown(plane_list[6], plane_list[3]);
 
+        UpdatePlane(plane_list[8]);
+        UpdatePlane(plane_list[5]);
+        UpdatePlane(plane_list[2]);
+        UpdatePlane(plane_list[7]);
+        UpdatePlane(plane_list[6]);
+ 
     }
     public void SetGrid2()
     {
@@ -443,6 +487,13 @@ public class PlaneRepeat : MonoBehaviour
         StitchDown(plane_list[4], plane_list[1]);
         StitchDown(plane_list[3], plane_list[0]);
 
+        UpdatePlane(plane_list[8]);
+        UpdatePlane(plane_list[5]);
+        UpdatePlane(plane_list[2]);
+        UpdatePlane(plane_list[1]);
+        UpdatePlane(plane_list[4]);
+        UpdatePlane(plane_list[3]);
+
     }
     public GameObject SpawnPlane(Vector3 pos)
     {
@@ -453,13 +504,17 @@ public class PlaneRepeat : MonoBehaviour
     public void StitchRight(GameObject fromTerrain, GameObject toTerrain)
     {
         terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitRight(fromTerrain.GetComponent<ChunkCollider>().terrain_draft, toTerrain.GetComponent<ChunkCollider>().terrain_draft);
-        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(fromTerrain, fromTerrain.GetComponent<ChunkCollider>().terrain_draft);
+       // terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(fromTerrain, fromTerrain.GetComponent<ChunkCollider>().terrain_draft);
     }
 
     public void StitchDown(GameObject fromTerrain, GameObject toTerrain)
     {
         terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitDown(fromTerrain.GetComponent<ChunkCollider>().terrain_draft, toTerrain.GetComponent<ChunkCollider>().terrain_draft);
-        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(fromTerrain, fromTerrain.GetComponent<ChunkCollider>().terrain_draft);
+       // terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(fromTerrain, fromTerrain.GetComponent<ChunkCollider>().terrain_draft);
+    }
+    public void UpdatePlane(GameObject plane)
+    {
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateObject(plane);
     }
     public void renamePlanes()
     {

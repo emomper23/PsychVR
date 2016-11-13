@@ -7,6 +7,7 @@ public class ChunkCollider : MonoBehaviour {
     public GameObject terrain_manager;
     public GameObject[] list = new GameObject[9];
     public ProceduralToolkit.MeshDraft terrain_draft;
+    public Mesh terrain_mesh;
     public Vector3[] dir_list = { Vector3.right, -Vector3.right,Vector3.forward, -Vector3.forward,
         Vector3.right + Vector3.forward, Vector3.right - Vector3.forward, -Vector3.right + Vector3.forward , -Vector3.right - Vector3.forward };
     

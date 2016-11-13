@@ -188,12 +188,23 @@ namespace ProceduralToolkit.Examples.UI
         }
         public void UpdateDraft(GameObject terrain, MeshDraft memberMesh)
         {
-            Mesh temp = memberMesh.ToMesh();
-            terrain.GetComponent<MeshFilter>().mesh = temp;
             terrain.GetComponent<ChunkCollider>().terrain_draft = memberMesh;
-            terrain.GetComponents<MeshCollider>()[0].sharedMesh = temp;
-            terrain.GetComponents<MeshCollider>()[1].sharedMesh = temp;
         }
+
+        public void UpdateObject(GameObject terrain)
+        {
+
+            Vector3 [] verts = terrain.GetComponent<ChunkCollider>().terrain_draft.vertices.ToArray();
+
+            terrain.GetComponent<MeshFilter>().mesh.vertices = verts;
+            terrain.GetComponents<MeshCollider>()[0].sharedMesh.vertices = verts;
+            terrain.GetComponents<MeshCollider>()[1].sharedMesh.vertices = verts;
+            terrain.GetComponent<MeshFilter>().mesh.UploadMeshData(false);
+
+        }
+      
+        
+
     }
 
 

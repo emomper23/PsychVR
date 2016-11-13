@@ -156,6 +156,7 @@
     <Compile Include="Assets\Scenes\Speech\Scripts\HumanController.cs" />
     <Compile Include="Assets\Scenes\Speech\Scripts\ImageLoader.cs" />
     <Compile Include="Assets\Scenes\Speech\Scripts\VisionTracker.cs" />
+    <Compile Include="Assets\Universal Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
     <Compile Include="Assets\Universal Assets\Kinect\GesturesDemo\KinectScripts\AvatarController.cs" />
     <Compile Include="Assets\Universal Assets\Kinect\GesturesDemo\KinectScripts\KinectGestures.cs" />
     <Compile Include="Assets\Universal Assets\Kinect\GesturesDemo\KinectScripts\KinectManager.cs" />

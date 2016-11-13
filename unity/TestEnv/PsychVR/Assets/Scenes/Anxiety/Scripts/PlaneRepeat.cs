@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using System.Collections;
 
-public class PlaneRepeat : MonoBehaviour {
+public class PlaneRepeat : MonoBehaviour
+{
 
     // Use this for initialization
     public Transform char_position;
@@ -16,36 +18,40 @@ public class PlaneRepeat : MonoBehaviour {
     private string old_name;
     int count = 9;
     private bool firstTime = true;
+    float size_x;
+    float size_z;
     enum directions
     {
-           NORTH = 0,
-           SOUTH,
-           EAST,
-           WEST,
-           NE,
-           NW,
-           SE,
-           SW
+        NORTH = 0,
+        SOUTH,
+        WEST,
+        EAST,
+        NW,
+        NE,
+        SW,
+        SE
     }
-	void Start ()
+    public Vector3[] dir_list = { Vector3.right, -Vector3.right,Vector3.forward, -Vector3.forward,
+        Vector3.right + Vector3.forward, Vector3.right - Vector3.forward, -Vector3.right + Vector3.forward , -Vector3.right - Vector3.forward };
+    void Start()
     {
         orig_plane = (GameObject)Instantiate(plane, new Vector3(0, -100, 0), plane.transform.rotation);
         //orig_plane.GetComponent<ObjectSpawner>().tree  = plane.GetComponent<ObjectSpawner>().tree;
         //orig_plane.GetComponent<ObjectSpawner>().rock = plane.GetComponent<ObjectSpawner>().rock;
         orig_plane.transform.name = "og";
         makePlanes();
-       
+
 
     }
     void makePlanes()
     {
 
-      //  Debug.Log("making planes for " + plane);   
-        float size_x = plane.GetComponent<Renderer>().bounds.size.x ;
-        float size_z = plane.GetComponent<Renderer>().bounds.size.z;
+        //  Debug.Log("making planes for " + plane);   
+        size_x = plane.GetComponent<Renderer>().bounds.size.x;
+        size_z = plane.GetComponent<Renderer>().bounds.size.z;
         float pos_x = plane.transform.position.x;
         float pos_z = plane.transform.position.z;
-        
+
         float gx = -1;
         float gz = -1;
         Quaternion rot = plane.transform.rotation;
@@ -84,193 +90,442 @@ public class PlaneRepeat : MonoBehaviour {
 
             firstTime = false;
         }
-        else
-        {
-            ChunkCollider chunk = plane.GetComponent<ChunkCollider>();
-            GameObject[] temp_list = new GameObject[8];
-            for (int i = 0; i < 8; i++)
-            {
-                if (chunk.list[i] == null)
-                {
-                    Vector3 dist = new Vector3(size_x, 0, size_z);
-                    dist.Scale(chunk.dir_list[i]);
-
-                    temp_list[i] = (GameObject)Instantiate(orig_plane, plane.transform.position + dist, plane.transform.rotation);
-                    terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().GetNewPlane(temp_list[i], i);
-                    chunk.list[i] = temp_list[i];
-                    temp_list[i].transform.name = "TerrainRenderer" + count;
-                    count++;
-
-
-                }
-            }
-
-
-            for (int i = 0; i < 8; i++)
-            {
-                if (temp_list[i] != null)
-                {
-                    temp_list[i].GetComponent<ChunkCollider>().Load();
-                    temp_list[i].GetComponent<ObjectSpawner>().Load();
-
-                }
-            }
-            //NORTH CASE DONE
-            if (temp_list[(int)directions.NORTH] != null && temp_list[(int)directions.NE] != null && temp_list[(int)directions.NW] != null)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    if (temp_list[i] != null)
-                    {
-                        ChunkCollider temp_obj = temp_list[i].GetComponent<ChunkCollider>();
-                     //   Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
-                        
-
-                            terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitDown(temp_obj.terrain_draft,
-                                                                                                                             temp_obj.list[(int)directions.SOUTH].GetComponent<ChunkCollider>().terrain_draft);
-                            terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(temp_list[i], temp_obj.terrain_draft);
-                        
-                    }
-                    //Debug.Log("new plane"+ plane.transform.name);   
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    if (temp_list[i] != null)
-                    {
-                        ChunkCollider temp_obj = temp_list[i].GetComponent<ChunkCollider>();
-                      //  Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
-                        if (i != 5 )
-                        {
-                            terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitRight(temp_obj.terrain_draft,
-                                                                                                                             temp_obj.list[(int)directions.WEST].GetComponent<ChunkCollider>().terrain_draft);
-                            terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(temp_list[i], temp_obj.terrain_draft);
-                        }
-                        
-                    }
-                    //Debug.Log("new plane"+ plane.transform.name);   
-                }
-            }
-            //SOUTH CASE DONE
-            if (temp_list[(int)directions.SOUTH] != null && temp_list[(int)directions.SE] != null && temp_list[(int)directions.SW] != null)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    if (temp_list[i] != null)
-                    {
-                        ChunkCollider temp_obj = temp_list[i].GetComponent<ChunkCollider>();
-                        //Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
-                       
-                        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitDown(temp_obj.list[(int)directions.NORTH].GetComponent<ChunkCollider>().terrain_draft, temp_obj.terrain_draft);
-                        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(temp_obj.list[(int)directions.NORTH], temp_obj.list[(int)directions.NORTH].GetComponent<ChunkCollider>().terrain_draft);
-
-                    }
-                    //Debug.Log("new plane"+ plane.transform.name);   
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    if (temp_list[i] != null)
-                    {
-                        ChunkCollider temp_obj = temp_list[i].GetComponent<ChunkCollider>();
-                       // Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
-                        if (i != 6)
-                        {
-                            terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitRight(temp_obj.list[(int)directions.EAST].GetComponent<ChunkCollider>().terrain_draft,temp_obj.terrain_draft
-                                                                                                                             );
-                            terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(temp_obj.list[(int)directions.EAST], temp_obj.list[(int)directions.EAST].GetComponent<ChunkCollider>().terrain_draft);
-                        }
-
-                    }
-                    //Debug.Log("new plane"+ plane.transform.name);   
-                }
-            }
-            //East Case DONE
-            if (temp_list[(int)directions.EAST] != null && temp_list[(int)directions.NE] != null && temp_list[(int)directions.SE] != null)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    if (temp_list[i] != null)
-                    {
-                        ChunkCollider temp_obj = temp_list[i].GetComponent<ChunkCollider>();
-                      //  Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
-                        if (i != (int)directions.SE)
-                        {
-
-                            terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitDown(temp_obj.terrain_draft,
-                                                                                                                             temp_obj.list[(int)directions.SOUTH].GetComponent<ChunkCollider>().terrain_draft);
-                            terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(temp_list[i], temp_obj.terrain_draft);
-                        }
-                        
-                    }
-                    //Debug.Log("new plane"+ plane.transform.name);   
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    if (temp_list[i] != null)
-                    {
-                        ChunkCollider temp_obj = temp_list[i].GetComponent<ChunkCollider>();
-                       // Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
-
-
-                        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitRight(temp_obj.terrain_draft, temp_obj.list[(int)directions.WEST].GetComponent<ChunkCollider>().terrain_draft);
-                            terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(temp_list[i], temp_obj.terrain_draft);
-                        
-
-                    }
-                    //Debug.Log("new plane"+ plane.transform.name);   
-                }
-            }
-            //West Case TODO
-            if (temp_list[(int)directions.WEST] != null && temp_list[(int)directions.NW] != null && temp_list[(int)directions.SW] != null)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    if (temp_list[i] != null)
-                    {
-                        ChunkCollider temp_obj = temp_list[i].GetComponent<ChunkCollider>();
-                      //  Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
-                        if (i != (int)directions.SW)
-                        {
-
-                            terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitDown(temp_obj.terrain_draft,
-                                                                                                                             temp_obj.list[(int)directions.SOUTH].GetComponent<ChunkCollider>().terrain_draft);
-                            terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(temp_list[i], temp_obj.terrain_draft);
-                        }
-
-                    }
-                    //Debug.Log("new plane"+ plane.transform.name);   
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    if (temp_list[i] != null)
-                    {
-                        ChunkCollider temp_obj = temp_list[i].GetComponent<ChunkCollider>();
-                      //  Debug.Log("List at" + i + " " + temp_obj.list[1] + " " + temp_obj);
-
-
-                        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitRight(temp_obj.terrain_draft, temp_obj.list[(int)directions.EAST].GetComponent<ChunkCollider>().terrain_draft);
-                        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(temp_list[i], temp_obj.terrain_draft);
-
-
-                    }
-                    //Debug.Log("new plane"+ plane.transform.name);   
-                }
-            }
-
-        }
-       
     }
+
     public void setPlane(GameObject obj)
     {
         if (obj.name == plane.name)
             return;
         plane = obj;
         makePlanes();
-          
-       
+
+
     }
-	// Update is called once per frame
-	void Update ()
+    public void SetGrid7()
     {
-	
-	}
+        List<GameObject> out_list = new List<GameObject>();
+        Vector3 pos = plane_list[7].transform.position;
+
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[0]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[1]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[2]);
+
+        plane_list[0] = plane_list[3];
+        plane_list[1] = plane_list[4];
+        plane_list[2] = plane_list[5];
+
+        plane_list[3] = plane_list[6];
+        plane_list[4] = plane_list[7];
+        plane_list[5] = plane_list[8];
+
+        Vector3 dist0 = new Vector3(size_x, 0, size_z);
+        Vector3 dist1 = new Vector3(size_x, 0, size_z);
+        Vector3 dist2 = new Vector3(size_x, 0, size_z);
+        dist0.Scale(dir_list[(int)directions.NORTH]);
+        dist1.Scale(dir_list[(int)directions.NE]);
+        dist2.Scale(dir_list[(int)directions.NW]);
+        plane_list[7] = SpawnPlane(pos + dist0);
+        plane_list[6] = SpawnPlane(pos + dist1);
+        plane_list[8] = SpawnPlane(pos + dist2);
+        renamePlanes();
+
+        StitchRight(plane_list[7], plane_list[6]);
+        StitchRight(plane_list[8], plane_list[7]);
+
+
+        StitchDown(plane_list[8], plane_list[5]);
+        StitchDown(plane_list[7], plane_list[4]);
+        StitchDown(plane_list[6], plane_list[3]);
+
+        UpdatePlane(plane_list[8]);
+        UpdatePlane(plane_list[7]);
+        UpdatePlane(plane_list[6]);
+
+    }
+
+    public void SetGrid1()
+    {
+        Debug.Log("1 callback");
+        List<GameObject> out_list = new List<GameObject>();
+        Vector3 pos = plane_list[1].transform.position;
+
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[6]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[7]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[8]);
+
+        plane_list[8] = plane_list[5];
+        plane_list[7] = plane_list[4];
+        plane_list[6] = plane_list[3];
+
+        plane_list[5] = plane_list[2];
+        plane_list[4] = plane_list[1];
+        plane_list[3] = plane_list[0];
+
+        Vector3 dist0 = new Vector3(size_x, 0, size_z);
+        Vector3 dist1 = new Vector3(size_x, 0, size_z);
+        Vector3 dist2 = new Vector3(size_x, 0, size_z);
+        dist0.Scale(dir_list[(int)directions.SW]);
+        dist1.Scale(dir_list[(int)directions.SOUTH]);
+        dist2.Scale(dir_list[(int)directions.SE]);
+        plane_list[2] = SpawnPlane(pos + dist0);
+        plane_list[1] = SpawnPlane(pos + dist1);
+        plane_list[0] = SpawnPlane(pos + dist2);
+        renamePlanes();
+
+        StitchRight(plane_list[2], plane_list[1]);
+        StitchRight(plane_list[1], plane_list[0]);
+
+
+        StitchDown(plane_list[5], plane_list[2]);
+        StitchDown(plane_list[4], plane_list[1]);
+        StitchDown(plane_list[3], plane_list[0]);
+
+        UpdatePlane(plane_list[1]);
+        UpdatePlane(plane_list[2]);
+        UpdatePlane(plane_list[3]);
+        UpdatePlane(plane_list[5]);
+        UpdatePlane(plane_list[4]);
+
+
+    }
+
+    public void SetGrid3()
+    {
+        List<GameObject> out_list = new List<GameObject>();
+        Vector3 pos = plane_list[3].transform.position;
+
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[2]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[5]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[8]);
+
+        plane_list[2] = plane_list[1];
+        plane_list[5] = plane_list[4];
+        plane_list[8] = plane_list[7];
+
+        plane_list[1] = plane_list[0];
+        plane_list[4] = plane_list[3];
+        plane_list[7] = plane_list[6];
+
+        Vector3 dist0 = new Vector3(size_x, 0, size_z);
+        Vector3 dist1 = new Vector3(size_x, 0, size_z);
+        Vector3 dist2 = new Vector3(size_x, 0, size_z);
+        dist0.Scale(dir_list[(int)directions.SE]);
+        dist1.Scale(dir_list[(int)directions.EAST]);
+        dist2.Scale(dir_list[(int)directions.NE]);
+        plane_list[0] = SpawnPlane(pos + dist0);
+        plane_list[3] = SpawnPlane(pos + dist1);
+        plane_list[6] = SpawnPlane(pos + dist2);
+        renamePlanes();
+
+        StitchRight(plane_list[7], plane_list[6]);
+        StitchRight(plane_list[4], plane_list[3]);
+        StitchRight(plane_list[1], plane_list[0]);
+
+        StitchDown(plane_list[6], plane_list[3]);
+        StitchDown(plane_list[3], plane_list[0]);
+
+        UpdatePlane(plane_list[7]);
+        UpdatePlane(plane_list[4]);
+        UpdatePlane(plane_list[1]);
+        UpdatePlane(plane_list[6]);
+        UpdatePlane(plane_list[3]);
+    }
+
+    public void SetGrid5()
+    {
+        List<GameObject> out_list = new List<GameObject>();
+        Vector3 pos = plane_list[5].transform.position;
+
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[6]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[3]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[0]);
+
+        plane_list[6] = plane_list[7];
+        plane_list[0] = plane_list[1];
+        plane_list[3] = plane_list[4];
+
+        plane_list[7] = plane_list[8];
+        plane_list[4] = plane_list[5];
+        plane_list[1] = plane_list[2];
+
+
+
+        Vector3 dist0 = new Vector3(size_x, 0, size_z);
+        Vector3 dist1 = new Vector3(size_x, 0, size_z);
+        Vector3 dist2 = new Vector3(size_x, 0, size_z);
+        dist0.Scale(dir_list[(int)directions.NW]);
+        dist1.Scale(dir_list[(int)directions.WEST]);
+        dist2.Scale(dir_list[(int)directions.SW]);
+        plane_list[8] = SpawnPlane(pos + dist0);
+        plane_list[5] = SpawnPlane(pos + dist1);
+        plane_list[2] = SpawnPlane(pos + dist2);
+        renamePlanes();
+
+        StitchRight(plane_list[8], plane_list[7]);
+        StitchRight(plane_list[5], plane_list[4]);
+        StitchRight(plane_list[2], plane_list[1]);
+
+        StitchDown(plane_list[8], plane_list[5]);
+        StitchDown(plane_list[5], plane_list[2]);
+
+        UpdatePlane(plane_list[8]);
+        UpdatePlane(plane_list[5]);
+        UpdatePlane(plane_list[2]);
+     
+    }
+
+    public void SetGrid6()
+    {
+        List<GameObject> out_list = new List<GameObject>();
+        Vector3 pos = plane_list[6].transform.position;
+
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[8]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[5]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[2]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[1]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[0]);
+
+        plane_list[2] = plane_list[4];
+        plane_list[4] = plane_list[6];
+        plane_list[1] = plane_list[3];
+        plane_list[5] = plane_list[7];
+
+
+
+        Vector3 dist0 = new Vector3(size_x, 0, size_z);
+        Vector3 dist1 = new Vector3(size_x, 0, size_z);
+        Vector3 dist2 = new Vector3(size_x, 0, size_z);
+        Vector3 dist3 = new Vector3(size_x, 0, size_z);
+        Vector3 dist4 = new Vector3(size_x, 0, size_z);
+        dist0.Scale(dir_list[(int)directions.NW]);
+        dist1.Scale(dir_list[(int)directions.NORTH]);
+        dist2.Scale(dir_list[(int)directions.NE]);
+        dist3.Scale(dir_list[(int)directions.EAST]);
+        dist4.Scale(dir_list[(int)directions.SE]);
+
+        plane_list[8] = SpawnPlane(pos + dist0);
+        plane_list[7] = SpawnPlane(pos + dist1);
+        plane_list[6] = SpawnPlane(pos + dist2);
+        plane_list[3] = SpawnPlane(pos + dist3);
+        plane_list[0] = SpawnPlane(pos + dist4);
+        renamePlanes();
+
+        StitchRight(plane_list[8], plane_list[7]);
+        StitchRight(plane_list[7], plane_list[6]);
+        StitchRight(plane_list[4], plane_list[3]);
+        StitchRight(plane_list[1], plane_list[0]);
+
+        StitchDown(plane_list[8], plane_list[5]);
+        StitchDown(plane_list[7], plane_list[4]);
+        StitchDown(plane_list[6], plane_list[3]);
+        StitchDown(plane_list[3], plane_list[0]);
+
+        UpdatePlane(plane_list[7]);
+        UpdatePlane(plane_list[8]);
+        UpdatePlane(plane_list[4]);
+        UpdatePlane(plane_list[1]);
+        UpdatePlane(plane_list[6]);
+        UpdatePlane(plane_list[3]);
+
+    }
+
+    public void SetGrid0()
+    {
+        List<GameObject> out_list = new List<GameObject>();
+        Vector3 pos = plane_list[0].transform.position;
+
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[2]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[5]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[8]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[7]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[6]);
+
+        plane_list[8] = plane_list[4];
+        plane_list[4] = plane_list[0];
+        plane_list[5] = plane_list[1];
+        plane_list[7] = plane_list[3];
+
+
+
+        Vector3 dist0 = new Vector3(size_x, 0, size_z);
+        Vector3 dist1 = new Vector3(size_x, 0, size_z);
+        Vector3 dist2 = new Vector3(size_x, 0, size_z);
+        Vector3 dist3 = new Vector3(size_x, 0, size_z);
+        Vector3 dist4 = new Vector3(size_x, 0, size_z);
+        dist0.Scale(dir_list[(int)directions.NE]);
+        dist1.Scale(dir_list[(int)directions.EAST]);
+        dist2.Scale(dir_list[(int)directions.SE]);
+        dist3.Scale(dir_list[(int)directions.SOUTH]);
+        dist4.Scale(dir_list[(int)directions.SW]);
+
+        plane_list[6] = SpawnPlane(pos + dist0);
+        plane_list[3] = SpawnPlane(pos + dist1);
+        plane_list[0] = SpawnPlane(pos + dist2);
+        plane_list[1] = SpawnPlane(pos + dist3);
+        plane_list[2] = SpawnPlane(pos + dist4);
+        renamePlanes();
+
+        StitchRight(plane_list[7], plane_list[6]);
+        StitchRight(plane_list[4], plane_list[3]);
+        StitchRight(plane_list[1], plane_list[0]);
+        StitchRight(plane_list[2], plane_list[1]);
+
+        StitchDown(plane_list[6], plane_list[3]);
+        StitchDown(plane_list[3], plane_list[0]);
+        StitchDown(plane_list[4], plane_list[1]);
+        StitchDown(plane_list[5], plane_list[2]);
+
+        UpdatePlane(plane_list[7]);
+        UpdatePlane(plane_list[4]);
+        UpdatePlane(plane_list[1]);
+        UpdatePlane(plane_list[2]);
+        UpdatePlane(plane_list[6]);
+        UpdatePlane(plane_list[3]);
+        UpdatePlane(plane_list[5]);
+     
+
+
+
+    }
+    public void SetGrid8()
+    {
+        List<GameObject> out_list = new List<GameObject>();
+        Vector3 pos = plane_list[8].transform.position;
+
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[6]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[3]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[0]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[1]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[2]);
+
+        plane_list[0] = plane_list[4];
+        plane_list[4] = plane_list[8];
+        plane_list[1] = plane_list[5];
+        plane_list[3] = plane_list[7];
+
+
+
+
+        Vector3 dist0 = new Vector3(size_x, 0, size_z);
+        Vector3 dist1 = new Vector3(size_x, 0, size_z);
+        Vector3 dist2 = new Vector3(size_x, 0, size_z);
+        Vector3 dist3 = new Vector3(size_x, 0, size_z);
+        Vector3 dist4 = new Vector3(size_x, 0, size_z);
+        dist0.Scale(dir_list[(int)directions.SW]);
+        dist1.Scale(dir_list[(int)directions.WEST]);
+        dist2.Scale(dir_list[(int)directions.NW]);
+        dist3.Scale(dir_list[(int)directions.NORTH]);
+        dist4.Scale(dir_list[(int)directions.NE]);
+
+        plane_list[2] = SpawnPlane(pos + dist0);
+        plane_list[5] = SpawnPlane(pos + dist1);
+        plane_list[8] = SpawnPlane(pos + dist2);
+        plane_list[7] = SpawnPlane(pos + dist3);
+        plane_list[6] = SpawnPlane(pos + dist4);
+        renamePlanes();
+
+        StitchRight(plane_list[2], plane_list[1]);
+        StitchRight(plane_list[5], plane_list[4]);
+        StitchRight(plane_list[8], plane_list[7]);
+        StitchRight(plane_list[7], plane_list[6]);
+
+        StitchDown(plane_list[5], plane_list[2]);
+        StitchDown(plane_list[8], plane_list[5]);
+        StitchDown(plane_list[7], plane_list[4]);
+        StitchDown(plane_list[6], plane_list[3]);
+
+        UpdatePlane(plane_list[8]);
+        UpdatePlane(plane_list[5]);
+        UpdatePlane(plane_list[2]);
+        UpdatePlane(plane_list[7]);
+        UpdatePlane(plane_list[6]);
+ 
+    }
+    public void SetGrid2()
+    {
+        List<GameObject> out_list = new List<GameObject>();
+        Vector3 pos = plane_list[2].transform.position;
+
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[8]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[7]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[6]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[3]);
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().SendPlane(plane_list[0]);
+
+        plane_list[6] = plane_list[4];
+        plane_list[4] = plane_list[2];
+        plane_list[7] = plane_list[5];
+        plane_list[3] = plane_list[1];
+
+
+
+        Vector3 dist0 = new Vector3(size_x, 0, size_z);
+        Vector3 dist1 = new Vector3(size_x, 0, size_z);
+        Vector3 dist2 = new Vector3(size_x, 0, size_z);
+        Vector3 dist3 = new Vector3(size_x, 0, size_z);
+        Vector3 dist4 = new Vector3(size_x, 0, size_z);
+        dist0.Scale(dir_list[(int)directions.NW]);
+        dist1.Scale(dir_list[(int)directions.WEST]);
+        dist2.Scale(dir_list[(int)directions.SW]);
+        dist3.Scale(dir_list[(int)directions.SOUTH]);
+        dist4.Scale(dir_list[(int)directions.SE]);
+
+        plane_list[8] = SpawnPlane(pos + dist0);
+        plane_list[5] = SpawnPlane(pos + dist1);
+        plane_list[2] = SpawnPlane(pos + dist2);
+        plane_list[1] = SpawnPlane(pos + dist3);
+        plane_list[0] = SpawnPlane(pos + dist4);
+        renamePlanes();
+
+        StitchRight(plane_list[8], plane_list[7]);
+        StitchRight(plane_list[5], plane_list[4]);
+        StitchRight(plane_list[2], plane_list[1]);
+        StitchRight(plane_list[1], plane_list[0]);
+
+        StitchDown(plane_list[8], plane_list[5]);
+        StitchDown(plane_list[5], plane_list[2]);
+        StitchDown(plane_list[4], plane_list[1]);
+        StitchDown(plane_list[3], plane_list[0]);
+
+        UpdatePlane(plane_list[8]);
+        UpdatePlane(plane_list[5]);
+        UpdatePlane(plane_list[2]);
+        UpdatePlane(plane_list[1]);
+        UpdatePlane(plane_list[4]);
+        UpdatePlane(plane_list[3]);
+
+    }
+    public GameObject SpawnPlane(Vector3 pos)
+    {
+        GameObject plane = terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().GetPlane();
+        plane.transform.position = pos;
+        return plane;
+    }
+    public void StitchRight(GameObject fromTerrain, GameObject toTerrain)
+    {
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitRight(fromTerrain.GetComponent<ChunkCollider>().terrain_draft, toTerrain.GetComponent<ChunkCollider>().terrain_draft);
+       // terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(fromTerrain, fromTerrain.GetComponent<ChunkCollider>().terrain_draft);
+    }
+
+    public void StitchDown(GameObject fromTerrain, GameObject toTerrain)
+    {
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().MorphFitDown(fromTerrain.GetComponent<ChunkCollider>().terrain_draft, toTerrain.GetComponent<ChunkCollider>().terrain_draft);
+       // terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateDraft(fromTerrain, fromTerrain.GetComponent<ChunkCollider>().terrain_draft);
+    }
+    public void UpdatePlane(GameObject plane)
+    {
+        terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateObject(plane);
+    }
+    public void renamePlanes()
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            plane_list[i].transform.name = "TerrainRenderer" + i;
+        }
+    }
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }

@@ -24,10 +24,10 @@ public class QtSceneLoad : MonoBehaviour {
         //Debug.Log(data[1]["Heights"]["Color"]);
 
 
-        //do all write the same at once?
-		PlayerPrefs.SetString("SkinColor", skin_color);//data[1]["Calm"]["Settings"]["Color"]);
-        PlayerPrefs.SetInt("Day", Int16.Parse(data[1]["Heights"]["Settings"]["Day"]));        
-        PlayerPrefs.SetInt("BuildingNum", Int16.Parse(data[1]["Heights"]["Settings"]["Building"]));
+       // //do all write the same at once?
+		//PlayerPrefs.SetString("SkinColor", skin_color);//data[1]["Calm"]["Settings"]["Color"]);
+        //PlayerPrefs.SetInt("Day", Int16.Parse(data[1]["Heights"]["Settings"]["Day"]));        
+        //PlayerPrefs.SetInt("BuildingNum", Int16.Parse(data[1]["Heights"]["Settings"]["Building"]));
    
 
     }

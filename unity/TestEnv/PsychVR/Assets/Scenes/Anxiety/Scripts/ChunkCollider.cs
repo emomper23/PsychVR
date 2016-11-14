@@ -48,6 +48,7 @@ public class ChunkCollider : MonoBehaviour {
     }
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("triggered" + gameObject.transform.name);
         //Debug.Log("moving to " + this.transform.position + this.gameObject.transform.name +  other.gameObject.transform.name);
         //terrain_manager.GetComponent<PlaneRepeat>().setPlane(this.gameObject);s
         if(this.gameObject.transform.name == "TerrainRenderer7")

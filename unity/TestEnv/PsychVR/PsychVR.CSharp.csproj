@@ -147,6 +147,7 @@
     <Compile Include="Assets\Scenes\Anxiety\ProceduralToolkit\TextureE.cs" />
     <Compile Include="Assets\Scenes\Anxiety\ProceduralToolkit\Vector2Int.cs" />
     <Compile Include="Assets\Scenes\Anxiety\Scripts\ChunkCollider.cs" />
+    <Compile Include="Assets\Scenes\Anxiety\Scripts\ObjectColorSetter.cs" />
     <Compile Include="Assets\Scenes\Anxiety\Scripts\ObjectHeight.cs" />
     <Compile Include="Assets\Scenes\Anxiety\Scripts\ObjectSpawner.cs" />
     <Compile Include="Assets\Scenes\Anxiety\Scripts\PlaneRepeat.cs" />
@@ -350,6 +351,7 @@
     <None Include="Assets\Scenes\Anxiety\Assets\Shaders\Geom\BillboardGeomShader.shader" />
     <None Include="Assets\Scenes\Anxiety\Assets\Shaders\Geom\VoxelGeomShader.shader" />
     <None Include="Assets\Scenes\Anxiety\Assets\Shaders\PointShader.shader" />
+    <None Include="Assets\Scenes\Anxiety\ColorMap.shader" />
     <None Include="Assets\Scenes\Anxiety\ProceduralToolkit\Shaders\Diffuse Vertex Color.shader" />
     <None Include="Assets\Scenes\Anxiety\ProceduralToolkit\Shaders\Gradient Skybox.shader" />
     <None Include="Assets\Scenes\Anxiety\ProceduralToolkit\Shaders\Specular Vertex Color.shader" />

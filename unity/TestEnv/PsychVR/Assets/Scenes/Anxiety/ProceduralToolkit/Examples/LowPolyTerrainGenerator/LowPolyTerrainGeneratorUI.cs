@@ -39,8 +39,9 @@ namespace ProceduralToolkit.Examples.UI
         private const int maxNoiseScale = 20;
         private int vert_x;
         private int vert_z;
-        private Gradient grad;
-
+        public Gradient grad;
+        public Gradient grad2;
+ 
         private List<ColorHSV> targetPalette = new List<ColorHSV>();
         private List<ColorHSV> currentPalette = new List<ColorHSV>();
 
@@ -49,7 +50,19 @@ namespace ProceduralToolkit.Examples.UI
 
             RenderSettings.skybox = new Material(RenderSettings.skybox);
             meshCollider = terrain.GetComponents<MeshCollider>()[0];
-           // meshCollider2 = terrain.GetComponents<MeshCollider>()[1];
+
+            //Generate Gradient for scene
+            targetPalette = RandomE.TetradicPalette(0.25f, 0.75f);
+            targetPalette.Add(ColorHSV.Lerp(targetPalette[0], targetPalette[1], 0.5f));
+            var gradient = ColorE.Gradient(from: targetPalette[2].WithSV(0.8f, 0.8f),
+               to: targetPalette[3].WithSV(0.8f, 0.8f));
+            grad = gradient;
+
+            targetPalette = RandomE.TetradicPalette(0.25f, 0.75f);
+            targetPalette.Add(ColorHSV.Lerp(targetPalette[0], targetPalette[1], 0.5f));
+            var gradient2= ColorE.Gradient(from: targetPalette[2].WithSV(0.8f, 0.8f),
+               to: targetPalette[3].WithSV(0.8f, 0.8f));
+            grad2 = gradient2;
 
 
             Generate();
@@ -64,8 +77,14 @@ namespace ProceduralToolkit.Examples.UI
                 GameObject temp = (GameObject)Instantiate(terrain, new Vector3(0, -100, 0), terrain.transform.rotation);
                 UpdateDraft(temp, temp_draft);
                 pre_terrains.Add(temp);
+                // temp.GetComponent<BoxCollider>().
             }
+            foreach (GameObject g in pre_terrains)
+            {
+                g.GetComponent<ObjectSpawner>().gradient1 = grad;
+                g.GetComponent<ObjectSpawner>().gradient2 = grad2;
 
+            }
         }
 
         private void Update()
@@ -77,20 +96,13 @@ namespace ProceduralToolkit.Examples.UI
         {
             Vector3 terrainSize = new Vector3(terrainSizeX, terrainSizeY, terrainSizeZ);
 
-            targetPalette = RandomE.TetradicPalette(0.25f, 0.75f);
-            targetPalette.Add(ColorHSV.Lerp(targetPalette[0], targetPalette[1], 0.5f));
-
-            var gradient = ColorE.Gradient(from: targetPalette[2].WithSV(0.8f, 0.8f),
-                to: targetPalette[3].WithSV(0.8f, 0.8f));
-            grad = gradient;
-
-            var draft = LowPolyTerrainGenerator.TerrainDraft(terrainSize, cellSize, noiseScale, gradient);
+            var draft = LowPolyTerrainGenerator.TerrainDraft(terrainSize, cellSize, noiseScale, grad);
             vert_x = (int)(terrainSizeX / cellSize);
             vert_z = (int)(terrainSizeZ / cellSize);
 
             for (int i = 0; i < 9; i++)
             {
-                MeshDraft temp = LowPolyTerrainGenerator.TerrainDraft(terrainSize, cellSize, noiseScale, gradient);
+                MeshDraft temp = LowPolyTerrainGenerator.TerrainDraft(terrainSize, cellSize, noiseScale, grad);
                 temp.Move(Vector3.left * terrainSizeX / 2 + Vector3.back * terrainSizeZ / 2);
                 drafts.Add(temp);
 
@@ -184,6 +196,7 @@ namespace ProceduralToolkit.Examples.UI
         public void SendPlane(GameObject out_p)
         {
             out_p.transform.position = pre_terrains[0].transform.position;
+            out_p.GetComponent<ObjectSpawner>().Burn();
             pre_terrains.Add(out_p);
         }
         public void UpdateDraft(GameObject terrain, MeshDraft memberMesh)
@@ -194,19 +207,19 @@ namespace ProceduralToolkit.Examples.UI
         public void UpdateObject(GameObject terrain)
         {
 
-            Vector3 [] verts = terrain.GetComponent<ChunkCollider>().terrain_draft.vertices.ToArray();
+            // Vector3 [] verts = terrain.GetComponent<ChunkCollider>().terrain_draft.vertices.ToArray();
 
-            terrain.GetComponent<MeshFilter>().mesh.vertices = verts;
-            terrain.GetComponent<MeshCollider>().sharedMesh.vertices = verts;
-           // terrain.GetComponents<MeshCollider>()[1].sharedMesh.vertices = verts;
-            terrain.GetComponent<MeshFilter>().mesh.UploadMeshData(false);
+            terrain.GetComponent<MeshFilter>().mesh.SetVertices(terrain.GetComponent<ChunkCollider>().terrain_draft.vertices);
+            terrain.GetComponent<MeshCollider>().sharedMesh = terrain.GetComponent<ChunkCollider>().terrain_draft.ToMesh();
+            //  terrain.GetComponent<MeshCollider>().
+            // terrain.GetComponents<MeshCollider>()[1].sharedMesh.vertices = verts;
+            //terrain.GetComponent<MeshFilter>().mesh.UploadMeshData(false);
 
         }
-      
-        
+
+
 
     }
 
 
 }
- 

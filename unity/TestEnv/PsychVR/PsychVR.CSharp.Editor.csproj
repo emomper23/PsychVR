@@ -169,6 +169,7 @@
     <None Include="Assets\Scenes\Anxiety\Assets\Shaders\Geom\BillboardGeomShader.shader" />
     <None Include="Assets\Scenes\Anxiety\Assets\Shaders\Geom\VoxelGeomShader.shader" />
     <None Include="Assets\Scenes\Anxiety\Assets\Shaders\PointShader.shader" />
+    <None Include="Assets\Scenes\Anxiety\ColorMap.shader" />
     <None Include="Assets\Scenes\Anxiety\ProceduralToolkit\Shaders\Diffuse Vertex Color.shader" />
     <None Include="Assets\Scenes\Anxiety\ProceduralToolkit\Shaders\Gradient Skybox.shader" />
     <None Include="Assets\Scenes\Anxiety\ProceduralToolkit\Shaders\Specular Vertex Color.shader" />

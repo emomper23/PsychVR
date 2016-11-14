@@ -68,6 +68,8 @@ public class PlaneRepeat : MonoBehaviour
                     // plane_list[i * 3 + j].GetComponent<ObjectSpawner>().tree = plane.GetComponent<ObjectSpawner>().tree;
                     // oriplane_list[i * 3 + j]..GetComponent<ObjectSpawner>().rock = plane.GetComponent<ObjectSpawner>().rock;
                     terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().UpdateVerticies((GameObject)plane_list[i * 3 + j], i * 3 + j);
+                    plane_list[i * 3 + j].GetComponent<ObjectSpawner>().gradient1 = terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().grad;
+                    plane_list[i * 3 + j].GetComponent<ObjectSpawner>().gradient2 = terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().grad2;
                     gz++;
                     //((GameObject)plane_list[i * 3 + j]).GetComponent<MeshFilter>().mesh.RecalculateNormals();
                     //((GameObject)plane_list[i * 3 + j]).GetComponent<MeshFilter>().mesh.RecalculateBounds();
@@ -499,6 +501,8 @@ public class PlaneRepeat : MonoBehaviour
     {
         GameObject plane = terrainGen.GetComponent<ProceduralToolkit.Examples.UI.LowPolyTerrainGeneratorUI>().GetPlane();
         plane.transform.position = pos;
+
+        plane.GetComponent<ObjectSpawner>().Load();
         return plane;
     }
     public void StitchRight(GameObject fromTerrain, GameObject toTerrain)

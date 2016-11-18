@@ -35,6 +35,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     //m_settings->show();
     //ui->tab_3->setEnabled(false);
+    //ui->gridLayout_3->setEnabled(false);
+
+    ui->coverlabel->hide();
+
 
     connect(ui->actionSave,SIGNAL(triggered(bool)),this,SLOT(saveFiles()));
     connect(ui->actionLoad,SIGNAL(triggered(bool)),this,SLOT(loadFiles()));
@@ -139,6 +143,33 @@ void MainWindow::tabChanged(int tab)
     if(tab == 3)
     {
         readIn();
+    }
+    else if(tab == 2)
+    {
+        if(ui->scene_selection->currentIndex()  == MainWindow::scene_idx_t::TERRAIN_GENERATION)
+        {
+            ui->coverlabel->show();
+        }
+        else if(ui->scene_selection->currentIndex() == MainWindow::scene_idx_t::FEAR_OF_HEIGHTS)
+        {
+            ui->coverlabel->hide();
+            ui->quest1->setText("My fear of heights affects\n my day to day life");
+            ui->quest2->setText("I remained calm as I went up");
+            ui->quest3->setText("I remained calm as I went down");
+            ui->quest4->setText("I feel proud of the height I reached");
+            ui->quest5->setText("I feel good about my performance");
+            ui->quest6->setText("I am better able to cope\nwith my fear than before");
+        }
+        else if(ui->scene_selection->currentIndex() == MainWindow::scene_idx_t::SPEECH_ANXIETY)
+        {
+            ui->coverlabel->hide();
+            ui->quest1->setText("My speech anxiety affects\nmy day to day life");
+            ui->quest2->setText("I remained calm during the presentation");
+            ui->quest3->setText("I was able to focus on the presenation");
+            ui->quest4->setText("I remained calm while looking\nat the audience");
+            ui->quest5->setText("I feel good about my performance");
+            ui->quest6->setText("I am better able to cope\nwith my fear than before");
+        }
     }
 }
 
@@ -357,8 +388,8 @@ void MainWindow::SaveData()
     };
 
     curRun.insert("answers",answers);
-    curRun.insert("prestress", ui->stress_slider->sliderPosition());
-    curRun.insert("poststress", ui->anxiety_slider->sliderPosition());
+    curRun.insert("prestress", ((double)ui->stress_slider->sliderPosition())/10);
+    curRun.insert("poststress", ((double)ui->anxiety_slider->sliderPosition())/10);
     curRun.insert("notes", ui->textEdit->toPlainText());
 
     newruns.removeLast();
@@ -411,59 +442,92 @@ void MainWindow::readIn()
            qWarning("Failed to save data.");
            //return false;
        }
-
     QByteArray saveData = saveFile.readAll();
-
     QJsonDocument loadDoc(QJsonDocument::fromJson(saveData));
-
     QJsonArray tester(loadDoc.array());
     saveFile.close();
-
     if (tester.isEmpty())
     {
         return;
     }
 
     usernum = ui->userLabel->text().right(1).toInt();
-
     QJsonObject heightScene = tester.at(usernum).toObject()["Heights"].toObject();
     QJsonObject calmScene = tester.at(usernum).toObject()["Calm"].toObject();
     QJsonObject socialScene = tester.at(usernum).toObject()["Social"].toObject();
     QJsonObject user = tester.at(usernum).toObject();
 
-    QVector<double> stressBefore;
-    QVector<double> stressAfter;
-    QVector<double> stressScores;
-    QVector<double> indexes;
+    QVector<double> stressBefore, stressAfter, stressScores, indexes;
     QVector<QString> notes;
 
     int score = 0;
 
-    QJsonArray heightRuns = heightScene["runs"].toArray();
+    QJsonArray runData;
 
-    for(int iter = 0; iter < heightRuns.size(); iter ++)
+    if(ui->scene_selection->currentIndex() == MainWindow::scene_idx_t::FEAR_OF_HEIGHTS)
+    {
+        runData = heightScene["runs"].toArray();
+    }
+    else if(ui->scene_selection->currentIndex() == MainWindow::scene_idx_t::SPEECH_ANXIETY)
+    {
+        runData = socialScene["runs"].toArray();
+    }
+    else
+    {
+        return;
+    }
+
+    QVector<double> attemptData, buildingHeights, ticks, successes;
+    QVector<QString> labels;
+    double maxHeight = 0;
+
+    for(int iter = 0; iter < runData.size(); iter ++)
     {
 
-        stressBefore.append(heightRuns[iter].toObject()["prestress"].toInt());
-        stressAfter.append(heightRuns[iter].toObject()["poststress"].toInt());
-        score = heightRuns[iter].toObject()["answers"].toObject()["1"].toInt() * -1 + 6;
-        score += heightRuns[iter].toObject()["answers"].toObject()["2"].toInt();
-        score += heightRuns[iter].toObject()["answers"].toObject()["3"].toInt();
-        score += heightRuns[iter].toObject()["answers"].toObject()["4"].toInt();
-        score += heightRuns[iter].toObject()["answers"].toObject()["5"].toInt();
-        score += heightRuns[iter].toObject()["answers"].toObject()["6"].toInt();
+        stressBefore.append(runData[iter].toObject()["prestress"].toDouble());
+        stressAfter.append(runData[iter].toObject()["poststress"].toDouble());
+        attemptData.append(runData[iter].toObject()["height"].toDouble());
+        buildingHeights.append(runData[iter].toObject()["maxHeight"].toDouble()- runData[iter].toObject()["height"].toDouble());
+        if(maxHeight < runData[iter].toObject()["maxHeight"].toDouble())
+            maxHeight = runData[iter].toObject()["maxHeight"].toDouble();
+        if(buildingHeights.at(iter) == 0)
+            successes.append(runData[iter].toObject()["height"].toDouble() + 2);
+        else
+            successes.append(-50);
+        score = runData[iter].toObject()["answers"].toObject()["1"].toInt() * -1 + 6;
+        score += runData[iter].toObject()["answers"].toObject()["2"].toInt();
+        score += runData[iter].toObject()["answers"].toObject()["3"].toInt();
+        score += runData[iter].toObject()["answers"].toObject()["4"].toInt();
+        score += runData[iter].toObject()["answers"].toObject()["5"].toInt();
+        score += runData[iter].toObject()["answers"].toObject()["6"].toInt();
         score = (score / 36) * 10;
         stressScores.append(score);
-        indexes.append((double)iter);
+        indexes.append((double)iter + 1);
+        ticks.append(iter + 1);
+        labels.append(QStringLiteral("Run %1").arg(iter + 1));
         score = 0;
-        notes.append(heightRuns[iter].toObject()["notes"].toString());
+        notes.append(runData[iter].toObject()["notes"].toString());
     }
 
     //---------------------------------------------------------------------------------------------------
 
+    ui->customPlot->clearGraphs();
+    ui->customPlot->clearPlottables();
+    ui->graph2->clearGraphs();
+    ui->graph2->clearPlottables();
+
+    QLinearGradient gradient(0, 0, 0, 400);
+    gradient.setColorAt(1, QColor(210,255,255));
+    gradient.setColorAt(0, QColor(135,206,250));
+    ui->graph2->setBackground(QBrush(gradient));
+    ui->customPlot->setBackground(QBrush(gradient));
+
     ui->customPlot->legend->setVisible(true);
     ui->customPlot->legend->setFont(QFont("Helvetica", 9));
-    ui->customPlot->clearGraphs();
+
+    ui->graph2->legend->setVisible(true);
+    ui->graph2->legend->setFont(QFont("Helvetica", 9));
+
     QPen pen;
     QStringList lineNames;
 
@@ -473,68 +537,82 @@ void MainWindow::readIn()
     ui->customPlot->addGraph();
     ui->customPlot->addGraph();
 
+    QCPBars *attempts = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
+    attempts->setAntialiased(true);
+    attempts->setStackingGap(0);
+    attempts->setName("Height Reached");
+    attempts->setPen(QPen(QColor(100, 100, 50).lighter(170)));
+    attempts->setBrush(QColor(255, 200, 50));
 
-    pen.setColor(QColor(240,0,0));
+    QCPBars *heights = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
+    heights->setAntialiased(true);
+    heights->setStackingGap(0);
+    heights->setName("Remaining height To Top");
+    heights->setPen(QPen(QColor(100, 100, 100).lighter(150)));
+    heights->setBrush(QColor(105, 105, 105));
 
-    ui->customPlot->graph(0)->setPen(pen);
-    ui->customPlot->graph(0)->setName("Pre-Stress");
+    heights->moveAbove(attempts);
+
+    ui->graph2->yAxis->setRange(0, 15);
+    ui->graph2->yAxis->setPadding(5); // a bit more space to the left border
+    ui->graph2->yAxis->setLabel("Total Heights");
+
+    QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
+    textTicker->addTicks(ticks, labels);
+    ui->graph2->xAxis->setTicker(textTicker);
+    ui->graph2->xAxis->setSubTicks(false);
+    ui->customPlot->xAxis->setTicker(textTicker);
+    ui->customPlot->xAxis->setSubTicks(false);
+
+    if(ticks.size() > 8)
+    {
+        ui->graph2->xAxis->setRange(0, 8.5);
+        ui->customPlot->xAxis->setRange(0, 8.5);
+    }
+
+    //customPlot->xAxis->setBasePen(QPen(Qt::white));
+    //customPlot->xAxis->setTickPen(QPen(Qt::white));
+    //customPlot->xAxis->grid()->setVisible(true);
+    //customPlot->xAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+    //customPlot->xAxis->setTickLabelColor(Qt::white);
+    //customPlot->xAxis->setLabelColor(Qt::white);
+
+
+    attempts->setData(ticks, attemptData);
+    heights->setData(ticks, buildingHeights);
+
+
+    ui->graph2->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+
+    ui->graph2->addGraph();
+    ui->graph2->graph(0)->setPen(QPen(QColor(240,0,0)));
+    ui->graph2->graph(0)->setName("Made it to the top!");
+    ui->graph2->graph(0)->setLineStyle((QCPGraph::LineStyle)0);
+    ui->graph2->graph(0)->setScatterStyle(QCPScatterStyle(QPixmap(QApplication::applicationDirPath() + "/checkMark.png")));
+    ui->graph2->graph(0)->setData(indexes,successes);
+
+
+
+
+    ui->customPlot->graph(0)->setPen(QPen(QColor(240,0,0)));
+    ui->customPlot->graph(0)->setName("General Stress Rating");
     ui->customPlot->graph(0)->setLineStyle((QCPGraph::LineStyle)1);
-    ui->customPlot->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 10));
+    ui->customPlot->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,8));
     ui->customPlot->graph(0)->setData(indexes,stressBefore);
-
-    pen.setColor(QColor(0,240,0));
-
-    ui->customPlot->graph(1)->setPen(pen);
-    ui->customPlot->graph(1)->setName("Post-Stress");
+    ui->customPlot->graph(1)->setPen(QPen(QColor(0,200,0)));
+    ui->customPlot->graph(1)->setName("Post-Vr Stress Rating");
     ui->customPlot->graph(1)->setLineStyle((QCPGraph::LineStyle)1);
-    ui->customPlot->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 10));
+    ui->customPlot->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 8));
     ui->customPlot->graph(1)->setData(indexes,stressAfter);
-
-    pen.setColor(QColor(0,0,240));
-
-    ui->customPlot->graph(2)->setPen(pen);
-    ui->customPlot->graph(2)->setName("Scores");
+    ui->customPlot->graph(2)->setPen(QPen(QColor(0,0,200)));
+    ui->customPlot->graph(2)->setName("General Survey Rating");
     ui->customPlot->graph(2)->setLineStyle((QCPGraph::LineStyle)1);
-    ui->customPlot->graph(2)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 10));
+    ui->customPlot->graph(2)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 8));
     ui->customPlot->graph(2)->setData(indexes,stressScores);
 
     ui->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
-    ui->customPlot->xAxis->setRange(-.2,indexes.size());
-    ui->customPlot->yAxis->setRange(-.2,10);
-
-
-    /*
-
-    for (int i=QCPGraph::lsNone; i<=QCPGraph::lsImpulse; ++i)
-    {
-      ui->customPlot->addGraph();
-      pen.setColor(QColor(qSin(i*1+1.2)*80+80, qSin(i*0.3+0)*80+80, qSin(i*0.3+1.5)*80+80));
-      ui->customPlot->graph()->setPen(pen);
-      ui->customPlot->graph()->setName(lineNames.at(i-QCPGraph::lsNone));
-      ui->customPlot->graph()->setLineStyle((QCPGraph::LineStyle)i);
-      ui->customPlot->graph()->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 5));
-      // generate data:
-      QVector<double> x(15), y(15);
-      for (int j=0; j<15; ++j)
-      {
-        x[j] = j/15.0 * 5*3.14 + 0.01;
-        y[j] = 7*qSin(x[j])/x[j] - (i-QCPGraph::lsNone)*5 + (QCPGraph::lsImpulse)*5 + 2;
-      }
-      ui->customPlot->graph()->setData(x, y);
-      ui->customPlot->graph()->rescaleAxes(true);
-    }
-
-    // zoom out a bit:
-    ui->customPlot->yAxis->scaleRange(1.1, ui->customPlot->yAxis->range().center());
-    ui->customPlot->xAxis->scaleRange(1.1, ui->customPlot->xAxis->range().center());
-    // set blank axis lines:
-    ui->customPlot->xAxis->setTicks(false);
-    ui->customPlot->yAxis->setTicks(true);
-    ui->customPlot->xAxis->setTickLabels(false);
-    ui->customPlot->yAxis->setTickLabels(true);
-    // make top right axes clones of bottom left axes:
-    ui->customPlot->axisRect()->setupFullAxesBox();
-    */
+    ui->customPlot->yAxis->setSubTicks(true);
+    ui->customPlot->yAxis->setRange(-.5,10.5);
 
 
 }

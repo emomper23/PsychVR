@@ -18,8 +18,9 @@ public class ElevatorScript : MonoBehaviour {
 	public Transform gondola;
 	public Text height;
 	public float highestPoint = 0f;
+    public GameObject settings;
 
-	int direction = 0;
+    int direction = 0;
 
 	// units per second
 	int speed = 1;
@@ -69,7 +70,11 @@ public class ElevatorScript : MonoBehaviour {
 	public void Depressed()
 	{
 		this.direction = 0;
-	}
+        if (highestPoint < gondola.transform.position.y)
+        {
+            highestPoint = gondola.transform.position.y;
+        }
+    }
 
 	public void Up()
 	{
@@ -94,6 +99,9 @@ public class ElevatorScript : MonoBehaviour {
 
 	public void Exit()
 	{
+        Debug.Log("Quitting Scene...");
+        settings.GetComponent<QtSceneSave>().SaveHeights(highestPoint);
+        Application.Quit();
 
 	}
 }

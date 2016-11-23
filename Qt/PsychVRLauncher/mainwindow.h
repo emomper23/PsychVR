@@ -20,6 +20,9 @@
 
 #include <QColor>
 #include <QColorDialog>
+#include <qcustomplot.h>
+
+
 
 namespace Ui {
 class MainWindow;
@@ -45,6 +48,7 @@ public slots:
     void readIn();
     void showSettings();
     void tabChanged(int tab);
+    void xAxisRangeChanged( const QCPRange &newRange, const QCPRange &oldRange);
     QString createRun();
     QJsonArray makeJson();
 

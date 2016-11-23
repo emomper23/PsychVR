@@ -34,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_obj_settings->setVisible(false);
     ui->listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     //m_settings->show();
-    //ui->tab_3->setEnabled(false);
+    ui->tab_3->setEnabled(false);
     //ui->gridLayout_3->setEnabled(false);
 
     ui->coverlabel->hide();
@@ -57,6 +57,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionUser_5, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));
     connect(ui->actionGuest_1, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));
     connect(ui->tabWidget, SIGNAL(currentChanged(int)),this,SLOT(tabChanged(int)));
+    connect(ui->scene_selection, SIGNAL(currentIndexChanged(int)),this,SLOT(readIn()));
+    //connect(ui->customPlot->xAxis, SIGNAL(rangeChanged(QCPRange,QCPRange)), this, SLOT(xAxisRangeChanged(QCPRange,QCPRange)) );
+
 
     signalMapper -> setMapping (ui->actionUser_1, 1) ;
     signalMapper -> setMapping (ui->actionUser_2, 2)  ;
@@ -73,7 +76,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Poppler::Document * doc = Poppler::Document::load("/home/emomper/Documents/exam.pdf");
     //QImage img = doc->page(0)->renderToImage();
-    //ui->openGLWidget->setImage
 }
 MainWindow::~MainWindow()
 {
@@ -85,6 +87,17 @@ CUnityMap * MainWindow::getMap()
     qDebug()<<ui->scene_selection->currentIndex();
     return  m_map_list[ui->scene_selection->currentIndex()];
 }
+
+void MainWindow::xAxisRangeChanged( const QCPRange &newRange, const QCPRange &oldRange ){
+    if( newRange.lower < 0 ){
+        ui->customPlot->xAxis->setRangeLower( 0 );
+        ui->customPlot->xAxis->setRangeUpper( oldRange.upper );
+    }else{
+        ui->customPlot->xAxis->setRangeUpper( newRange.upper );
+    }
+}
+
+
 void MainWindow::loadFiles()
 {
     this->getMap()->loadSettings();
@@ -466,18 +479,22 @@ void MainWindow::readIn()
 
     if(ui->scene_selection->currentIndex() == MainWindow::scene_idx_t::FEAR_OF_HEIGHTS)
     {
+        ui->tab_4->setEnabled(true);
         runData = heightScene["runs"].toArray();
     }
     else if(ui->scene_selection->currentIndex() == MainWindow::scene_idx_t::SPEECH_ANXIETY)
     {
+        ui->tab_4->setEnabled(true);
         runData = socialScene["runs"].toArray();
     }
     else
     {
+        qDebug() << "wegotaproblem";
+        ui->tab_4->setEnabled(false);
         return;
     }
 
-    QVector<double> attemptData, buildingHeights, ticks, successes;
+    QVector<double> attemptData, buildingHeights, ticks, yAxe1, successes, times;
     QVector<QString> labels;
     double maxHeight = 0;
 
@@ -487,13 +504,14 @@ void MainWindow::readIn()
         stressBefore.append(runData[iter].toObject()["prestress"].toDouble());
         stressAfter.append(runData[iter].toObject()["poststress"].toDouble());
         attemptData.append(runData[iter].toObject()["height"].toDouble());
+        times.append(runData[iter].toObject()["time"].toDouble());
         buildingHeights.append(runData[iter].toObject()["maxHeight"].toDouble()- runData[iter].toObject()["height"].toDouble());
         if(maxHeight < runData[iter].toObject()["maxHeight"].toDouble())
             maxHeight = runData[iter].toObject()["maxHeight"].toDouble();
         if(buildingHeights.at(iter) == 0)
-            successes.append(runData[iter].toObject()["height"].toDouble() + 2);
+            successes.append(runData[iter].toObject()["height"].toDouble());
         else
-            successes.append(-50);
+            successes.append(0);
         score = runData[iter].toObject()["answers"].toObject()["1"].toInt() * -1 + 6;
         score += runData[iter].toObject()["answers"].toObject()["2"].toInt();
         score += runData[iter].toObject()["answers"].toObject()["3"].toInt();
@@ -507,12 +525,15 @@ void MainWindow::readIn()
         labels.append(QStringLiteral("Run %1").arg(iter + 1));
         score = 0;
         notes.append(runData[iter].toObject()["notes"].toString());
+
     }
 
     //---------------------------------------------------------------------------------------------------
 
     ui->customPlot->clearGraphs();
     ui->customPlot->clearPlottables();
+    ui->graphTime->clearGraphs();
+    ui->graphTime->clearPlottables();
     ui->graph2->clearGraphs();
     ui->graph2->clearPlottables();
 
@@ -521,10 +542,12 @@ void MainWindow::readIn()
     gradient.setColorAt(0, QColor(135,206,250));
     ui->graph2->setBackground(QBrush(gradient));
     ui->customPlot->setBackground(QBrush(gradient));
+    ui->graphTime->setBackground(QBrush(gradient));
 
     ui->customPlot->legend->setVisible(true);
     ui->customPlot->legend->setFont(QFont("Helvetica", 9));
-
+    ui->graphTime->legend->setVisible(true);
+    ui->graphTime->legend->setFont(QFont("Helvetica", 9));
     ui->graph2->legend->setVisible(true);
     ui->graph2->legend->setFont(QFont("Helvetica", 9));
 
@@ -536,6 +559,7 @@ void MainWindow::readIn()
     ui->customPlot->addGraph();
     ui->customPlot->addGraph();
     ui->customPlot->addGraph();
+    ui->graphTime->addGraph();
 
     QCPBars *attempts = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
     attempts->setAntialiased(true);
@@ -551,24 +575,47 @@ void MainWindow::readIn()
     heights->setPen(QPen(QColor(100, 100, 100).lighter(150)));
     heights->setBrush(QColor(105, 105, 105));
 
+    QCPBars *madeRuns = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
+    madeRuns->setAntialiased(true);
+    madeRuns->setStackingGap(0);
+    madeRuns->setName("Final Height");
+    madeRuns->setPen(QPen(QColor(100, 100, 50).lighter(170)));
+    madeRuns->setBrush(QColor(20, 235, 20));
+
+
     heights->moveAbove(attempts);
 
-    ui->graph2->yAxis->setRange(0, 15);
+    ui->graph2->yAxis->setRange(0, maxHeight + 4);
     ui->graph2->yAxis->setPadding(5); // a bit more space to the left border
-    ui->graph2->yAxis->setLabel("Total Heights");
+    ui->graph2->yAxis->setLabel("Total Heights in Meters");
 
     QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
+
     textTicker->addTicks(ticks, labels);
     ui->graph2->xAxis->setTicker(textTicker);
     ui->graph2->xAxis->setSubTicks(false);
     ui->customPlot->xAxis->setTicker(textTicker);
     ui->customPlot->xAxis->setSubTicks(false);
+    ui->graphTime->xAxis->setTicker(textTicker);
+    ui->graphTime->xAxis->setSubTicks(false);
 
     if(ticks.size() > 8)
     {
         ui->graph2->xAxis->setRange(0, 8.5);
         ui->customPlot->xAxis->setRange(0, 8.5);
+        ui->graphTime->xAxis->setRange(0, 8.5);
     }
+
+    ui->graphTime->graph(0)->setPen(QPen(QColor(240,0,0)));
+    ui->graphTime->graph(0)->setName("Time Taken On Elevator");
+    ui->graphTime->graph(0)->setLineStyle((QCPGraph::LineStyle)1);
+    ui->graphTime->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,7));
+    ui->graphTime->graph(0)->setData(indexes,times);
+    ui->graphTime->yAxis->setRange(0,20);
+    ui->graphTime->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+    ui->graphTime->yAxis->setPadding(5);
+    ui->graphTime->yAxis->setLabel("Time in Minutes");
+
 
     //customPlot->xAxis->setBasePen(QPen(Qt::white));
     //customPlot->xAxis->setTickPen(QPen(Qt::white));
@@ -580,19 +627,10 @@ void MainWindow::readIn()
 
     attempts->setData(ticks, attemptData);
     heights->setData(ticks, buildingHeights);
+    madeRuns->setData(ticks,successes);
 
 
     ui->graph2->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
-
-    ui->graph2->addGraph();
-    ui->graph2->graph(0)->setPen(QPen(QColor(240,0,0)));
-    ui->graph2->graph(0)->setName("Made it to the top!");
-    ui->graph2->graph(0)->setLineStyle((QCPGraph::LineStyle)0);
-    ui->graph2->graph(0)->setScatterStyle(QCPScatterStyle(QPixmap(QApplication::applicationDirPath() + "/checkMark.png")));
-    ui->graph2->graph(0)->setData(indexes,successes);
-
-
-
 
     ui->customPlot->graph(0)->setPen(QPen(QColor(240,0,0)));
     ui->customPlot->graph(0)->setName("General Stress Rating");

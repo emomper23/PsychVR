@@ -145,10 +145,10 @@
         <widget class="QPushButton" name="launchButton">
          <property name="geometry">
           <rect>
-           <x>330</x>
-           <y>500</y>
-           <width>75</width>
-           <height>23</height>
+           <x>290</x>
+           <y>490</y>
+           <width>181</width>
+           <height>51</height>
           </rect>
          </property>
          <property name="text">
@@ -166,27 +166,6 @@
          </property>
          <property name="text">
           <string>Change Scene Settings</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QWidget" name="tab_2">
-        <attribute name="title">
-         <string>Analysis</string>
-        </attribute>
-        <widget class="QGLGraphWidget" name="openGLWidget">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>10</y>
-           <width>1051</width>
-           <height>541</height>
-          </rect>
-         </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
          </property>
         </widget>
        </widget>
@@ -808,6 +787,9 @@ with my fear than before</string>
             <property name="text">
              <string>General Heights Stress/Fear Level</string>
             </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
             <property name="wordWrap">
              <bool>true</bool>
             </property>
@@ -823,6 +805,9 @@ with my fear than before</string>
             </property>
             <property name="text">
              <string>Stress/Fear Level Post- Trial</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -953,6 +938,9 @@ with my fear than before</string>
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
+        <zorder>coverlabel</zorder>
+        <zorder>gridLayoutWidget_3</zorder>
+        <zorder>label_4</zorder>
        </widget>
        <widget class="QWidget" name="tab_4">
         <attribute name="title">
@@ -968,7 +956,7 @@ with my fear than before</string>
           </rect>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="tab_5">
           <attribute name="title">
@@ -995,7 +983,17 @@ with my fear than before</string>
              <x>0</x>
              <y>0</y>
              <width>1021</width>
-             <height>541</height>
+             <height>321</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QCustomPlot" name="graphTime" native="true">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>320</y>
+             <width>1021</width>
+             <height>221</height>
             </rect>
            </property>
           </widget>
@@ -1165,11 +1163,6 @@ with my fear than before</string>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>QGLGraphWidget</class>
-   <extends>QOpenGLWidget</extends>
-   <header>qglgraphwidget.h</header>
-  </customwidget>
-  <customwidget>
    <class>QCustomPlot</class>
    <extends>QWidget</extends>
    <header>qcustomplot.h</header>
@@ -1179,11 +1172,11 @@ with my fear than before</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
-  <buttongroup name="buttonGroup_3"/>
-  <buttongroup name="buttonGroup_5"/>
   <buttongroup name="buttonGroup_4"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup_6"/>
+  <buttongroup name="buttonGroup_3"/>
+  <buttongroup name="buttonGroup_5"/>
  </buttongroups>
 </ui>

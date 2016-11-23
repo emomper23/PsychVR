@@ -83,6 +83,9 @@
      <property name="text">
       <string>Day</string>
      </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
     </widget>
     <widget class="QRadioButton" name="radioButton_2">
      <property name="geometry">
@@ -404,6 +407,19 @@
      </property>
      <property name="text">
       <string>Browse:</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>154</x>
+       <y>180</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Advance Settings</string>
      </property>
     </widget>
    </widget>

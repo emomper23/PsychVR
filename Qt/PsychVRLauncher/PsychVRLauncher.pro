@@ -45,4 +45,7 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
     editdialog.ui \
-    settings.ui
+    settings.ui \
+    advancesettings.ui
+
+DISTFILES +=

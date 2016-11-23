@@ -11,10 +11,10 @@ public class ColorSetter : MonoBehaviour {
     {
         string hex_val = PlayerPrefs.GetString("SkinColor");
         //Debug.Log(hex_val);
-        Color color = hex_str_to_RGB(hex_val);
+        Color color = hex_str_to_RGB(hex_val.Substring(1));
         skin = this.gameObject.GetComponent<Renderer>();
         skin.sharedMaterial.color = color;
-       // Debug.Log(color); 
+        //Debug.Log(color); 
 	}
 
     private Color hex_str_to_RGB(string str)

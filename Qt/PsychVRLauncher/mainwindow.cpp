@@ -497,9 +497,10 @@ void MainWindow::readIn()
     QVector<double> attemptData, buildingHeights, ticks, yAxe1, successes, times;
     QVector<QString> labels;
     double maxHeight = 0;
-
+    //THE Unity JSON parser likes to stringify everything so do this... toString().toNum() since it works, see save.json and old.json for comparison of formats
     for(int iter = 0; iter < runData.size(); iter ++)
     {
+<<<<<<< HEAD
 
         stressBefore.append(runData[iter].toObject()["prestress"].toDouble());
         stressAfter.append(runData[iter].toObject()["poststress"].toDouble());
@@ -518,6 +519,24 @@ void MainWindow::readIn()
         score += runData[iter].toObject()["answers"].toObject()["4"].toInt();
         score += runData[iter].toObject()["answers"].toObject()["5"].toInt();
         score += runData[iter].toObject()["answers"].toObject()["6"].toInt();
+=======
+        stressBefore.append(runData[iter].toObject()["prestress"].toString().toDouble());
+        stressAfter.append(runData[iter].toObject()["poststress"].toString().toDouble());
+        attemptData.append(runData[iter].toObject()["height"].toString().toDouble());
+        buildingHeights.append(runData[iter].toObject()["maxHeight"].toString().toDouble()- runData[iter].toObject()["height"].toDouble());
+        if(maxHeight < runData[iter].toObject()["maxHeight"].toString().toDouble())
+            maxHeight = runData[iter].toObject()["maxHeight"].toString().toDouble();
+        if(buildingHeights.at(iter) == 0)
+            successes.append(runData[iter].toObject()["height"].toString().toDouble() + 2);
+        else
+            successes.append(-50);
+        score = runData[iter].toObject()["answers"].toObject()["1"].toString().toInt() * -1 + 6;
+        score += runData[iter].toObject()["answers"].toObject()["2"].toString().toInt();
+        score += runData[iter].toObject()["answers"].toObject()["3"].toString().toInt();
+        score += runData[iter].toObject()["answers"].toObject()["4"].toString().toInt();
+        score += runData[iter].toObject()["answers"].toObject()["5"].toString().toInt();
+        score += runData[iter].toObject()["answers"].toObject()["6"].toString().toInt();
+>>>>>>> 3e61a77840ed4c676460dc32b024d0e68fd65bde
         score = (score / 36) * 10;
         stressScores.append(score);
         indexes.append((double)iter + 1);

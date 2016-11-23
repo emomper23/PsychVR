@@ -500,8 +500,6 @@ void MainWindow::readIn()
     //THE Unity JSON parser likes to stringify everything so do this... toString().toNum() since it works, see save.json and old.json for comparison of formats
     for(int iter = 0; iter < runData.size(); iter ++)
     {
-<<<<<<< HEAD
-
         stressBefore.append(runData[iter].toObject()["prestress"].toDouble());
         stressAfter.append(runData[iter].toObject()["poststress"].toDouble());
         attemptData.append(runData[iter].toObject()["height"].toDouble());
@@ -519,7 +517,6 @@ void MainWindow::readIn()
         score += runData[iter].toObject()["answers"].toObject()["4"].toInt();
         score += runData[iter].toObject()["answers"].toObject()["5"].toInt();
         score += runData[iter].toObject()["answers"].toObject()["6"].toInt();
-=======
         stressBefore.append(runData[iter].toObject()["prestress"].toString().toDouble());
         stressAfter.append(runData[iter].toObject()["poststress"].toString().toDouble());
         attemptData.append(runData[iter].toObject()["height"].toString().toDouble());
@@ -536,7 +533,6 @@ void MainWindow::readIn()
         score += runData[iter].toObject()["answers"].toObject()["4"].toString().toInt();
         score += runData[iter].toObject()["answers"].toObject()["5"].toString().toInt();
         score += runData[iter].toObject()["answers"].toObject()["6"].toString().toInt();
->>>>>>> 3e61a77840ed4c676460dc32b024d0e68fd65bde
         score = (score / 36) * 10;
         stressScores.append(score);
         indexes.append((double)iter + 1);

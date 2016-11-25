@@ -489,7 +489,6 @@ void MainWindow::readIn()
     }
     else
     {
-        qDebug() << "wegotaproblem";
         ui->tab_4->setEnabled(false);
         return;
     }
@@ -502,39 +501,41 @@ void MainWindow::readIn()
     {
         stressBefore.append(runData[iter].toObject()["prestress"].toDouble());
         stressAfter.append(runData[iter].toObject()["poststress"].toDouble());
-        attemptData.append(runData[iter].toObject()["height"].toDouble());
-        times.append(runData[iter].toObject()["time"].toDouble());
-        buildingHeights.append(runData[iter].toObject()["maxHeight"].toDouble()- runData[iter].toObject()["height"].toDouble());
-        if(maxHeight < runData[iter].toObject()["maxHeight"].toDouble())
-            maxHeight = runData[iter].toObject()["maxHeight"].toDouble();
-        if(buildingHeights.at(iter) == 0)
-            successes.append(runData[iter].toObject()["height"].toDouble());
-        else
-            successes.append(0);
+        //attemptData.append(runData[iter].toObject()["height"].toDouble());
+        //times.append(runData[iter].toObject()["time"].toString().toDouble());
+        //buildingHeights.append(runData[iter].toObject()["maxHeight"].toString().toDouble()- runData[iter].toObject()["height"].toString().toDouble());
+        //if(maxHeight < runData[iter].toObject()["maxHeight"].toString().toDouble())
+        //    maxHeight = runData[iter].toObject()["maxHeight"].toString().toDouble();
+        //if(buildingHeights.at(iter) == 0)
+        //    successes.append(runData[iter].toObject()["height"].toString().toDouble());
+        //else
+        //    successes.append(0);
         score = runData[iter].toObject()["answers"].toObject()["1"].toInt() * -1 + 6;
         score += runData[iter].toObject()["answers"].toObject()["2"].toInt();
         score += runData[iter].toObject()["answers"].toObject()["3"].toInt();
         score += runData[iter].toObject()["answers"].toObject()["4"].toInt();
         score += runData[iter].toObject()["answers"].toObject()["5"].toInt();
         score += runData[iter].toObject()["answers"].toObject()["6"].toInt();
-        stressBefore.append(runData[iter].toObject()["prestress"].toString().toDouble());
-        stressAfter.append(runData[iter].toObject()["poststress"].toString().toDouble());
+
+        //stressBefore.append(runData[iter].toObject()["prestress"].toString().toDouble());
+        //stressAfter.append(runData[iter].toObject()["poststress"].toString().toDouble());
         attemptData.append(runData[iter].toObject()["height"].toString().toDouble());
-        buildingHeights.append(runData[iter].toObject()["maxHeight"].toString().toDouble()- runData[iter].toObject()["height"].toDouble());
+        buildingHeights.append(runData[iter].toObject()["maxHeight"].toString().toDouble()- runData[iter].toObject()["height"].toString().toDouble());
         if(maxHeight < runData[iter].toObject()["maxHeight"].toString().toDouble())
             maxHeight = runData[iter].toObject()["maxHeight"].toString().toDouble();
         if(buildingHeights.at(iter) == 0)
             successes.append(runData[iter].toObject()["height"].toString().toDouble() + 2);
         else
-            successes.append(-50);
-        score = runData[iter].toObject()["answers"].toObject()["1"].toString().toInt() * -1 + 6;
-        score += runData[iter].toObject()["answers"].toObject()["2"].toString().toInt();
-        score += runData[iter].toObject()["answers"].toObject()["3"].toString().toInt();
-        score += runData[iter].toObject()["answers"].toObject()["4"].toString().toInt();
-        score += runData[iter].toObject()["answers"].toObject()["5"].toString().toInt();
-        score += runData[iter].toObject()["answers"].toObject()["6"].toString().toInt();
-        score = (score / 36) * 10;
-        stressScores.append(score);
+            successes.append(0);
+        //score = runData[iter].toObject()["answers"].toObject()["1"].toString().toInt() * -1 + 6;
+        //score += runData[iter].toObject()["answers"].toObject()["2"].toString().toInt();
+        //score += runData[iter].toObject()["answers"].toObject()["3"].toString().toInt();
+        //score += runData[iter].toObject()["answers"].toObject()["4"].toString().toInt();
+        //score += runData[iter].toObject()["answers"].toObject()["5"].toString().toInt();
+        //score += runData[iter].toObject()["answers"].toObject()["6"].toString().toInt();
+        //score = (score / 36) * 10;
+        //stressScores.append(score);
+
         indexes.append((double)iter + 1);
         ticks.append(iter + 1);
         labels.append(QStringLiteral("Run %1").arg(iter + 1));
@@ -593,7 +594,7 @@ void MainWindow::readIn()
     QCPBars *madeRuns = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
     madeRuns->setAntialiased(true);
     madeRuns->setStackingGap(0);
-    madeRuns->setName("Final Height");
+    madeRuns->setName("Made it All the Way");
     madeRuns->setPen(QPen(QColor(100, 100, 50).lighter(170)));
     madeRuns->setBrush(QColor(20, 235, 20));
 

@@ -392,17 +392,17 @@ void MainWindow::SaveData()
 
     QJsonObject answers
     {
-        {"1",radioQs[0]->checkedId()},
-        {"2",radioQs[1]->checkedId()},
-        {"3",radioQs[2]->checkedId()},
-        {"4",radioQs[3]->checkedId()},
-        {"5",radioQs[4]->checkedId()},
-        {"6",radioQs[5]->checkedId()}
+        {"1",QString("%1").arg(radioQs[0]->checkedId())},
+        {"2",QString("%1").arg(radioQs[1]->checkedId())},
+        {"3",QString("%1").arg(radioQs[2]->checkedId())},
+        {"4",QString("%1").arg(radioQs[3]->checkedId())},
+        {"5",QString("%1").arg(radioQs[4]->checkedId())},
+        {"6",QString("%1").arg(radioQs[5]->checkedId())}
     };
 
     curRun.insert("answers",answers);
-    curRun.insert("prestress", ((double)ui->stress_slider->sliderPosition())/10);
-    curRun.insert("poststress", ((double)ui->anxiety_slider->sliderPosition())/10);
+    curRun.insert("prestress", QString("%1").arg(((double)ui->stress_slider->sliderPosition())/10));
+    curRun.insert("poststress",QString("%1").arg(((double)ui->anxiety_slider->sliderPosition()/10)));
     curRun.insert("notes", ui->textEdit->toPlainText());
 
     newruns.removeLast();
@@ -499,8 +499,8 @@ void MainWindow::readIn()
     //THE Unity JSON parser likes to stringify everything so do this... toString().toNum() since it works, see save.json and old.json for comparison of formats
     for(int iter = 0; iter < runData.size(); iter ++)
     {
-        stressBefore.append(runData[iter].toObject()["prestress"].toDouble());
-        stressAfter.append(runData[iter].toObject()["poststress"].toDouble());
+        stressBefore.append(runData[iter].toObject()["prestress"].toString().toDouble());
+        stressAfter.append(runData[iter].toObject()["poststress"].toString().toDouble());
         //attemptData.append(runData[iter].toObject()["height"].toDouble());
         //times.append(runData[iter].toObject()["time"].toString().toDouble());
         //buildingHeights.append(runData[iter].toObject()["maxHeight"].toString().toDouble()- runData[iter].toObject()["height"].toString().toDouble());
@@ -510,12 +510,12 @@ void MainWindow::readIn()
         //    successes.append(runData[iter].toObject()["height"].toString().toDouble());
         //else
         //    successes.append(0);
-        score = runData[iter].toObject()["answers"].toObject()["1"].toInt() * -1 + 6;
-        score += runData[iter].toObject()["answers"].toObject()["2"].toInt();
-        score += runData[iter].toObject()["answers"].toObject()["3"].toInt();
-        score += runData[iter].toObject()["answers"].toObject()["4"].toInt();
-        score += runData[iter].toObject()["answers"].toObject()["5"].toInt();
-        score += runData[iter].toObject()["answers"].toObject()["6"].toInt();
+        score = runData[iter].toObject()["answers"].toObject()["1"].toString().toInt();
+        score += runData[iter].toObject()["answers"].toObject()["2"].toString().toInt();
+        score += runData[iter].toObject()["answers"].toObject()["3"].toString().toInt();
+        score += runData[iter].toObject()["answers"].toObject()["4"].toString().toInt();
+        score += runData[iter].toObject()["answers"].toObject()["5"].toString().toInt();
+        score += runData[iter].toObject()["answers"].toObject()["6"].toString().toInt();
 
         //stressBefore.append(runData[iter].toObject()["prestress"].toString().toDouble());
         //stressAfter.append(runData[iter].toObject()["poststress"].toString().toDouble());
@@ -534,7 +534,7 @@ void MainWindow::readIn()
         //score += runData[iter].toObject()["answers"].toObject()["5"].toString().toInt();
         //score += runData[iter].toObject()["answers"].toObject()["6"].toString().toInt();
         //score = (score / 36) * 10;
-        //stressScores.append(score);
+        stressScores.append(score);
 
         indexes.append((double)iter + 1);
         ticks.append(iter + 1);
@@ -648,16 +648,19 @@ void MainWindow::readIn()
 
     ui->graph2->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
 
+    qDebug("before");
     ui->customPlot->graph(0)->setPen(QPen(QColor(240,0,0)));
     ui->customPlot->graph(0)->setName("General Stress Rating");
     ui->customPlot->graph(0)->setLineStyle((QCPGraph::LineStyle)1);
     ui->customPlot->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,8));
     ui->customPlot->graph(0)->setData(indexes,stressBefore);
+    qDebug("after");
     ui->customPlot->graph(1)->setPen(QPen(QColor(0,200,0)));
     ui->customPlot->graph(1)->setName("Post-Vr Stress Rating");
     ui->customPlot->graph(1)->setLineStyle((QCPGraph::LineStyle)1);
     ui->customPlot->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 8));
     ui->customPlot->graph(1)->setData(indexes,stressAfter);
+    qDebug("survey");
     ui->customPlot->graph(2)->setPen(QPen(QColor(0,0,200)));
     ui->customPlot->graph(2)->setName("General Survey Rating");
     ui->customPlot->graph(2)->setLineStyle((QCPGraph::LineStyle)1);
@@ -667,7 +670,7 @@ void MainWindow::readIn()
     ui->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
     ui->customPlot->yAxis->setSubTicks(true);
     ui->customPlot->yAxis->setRange(-.5,10.5);
-
+    qDebug("done reading");
 
 }
 

@@ -10,7 +10,8 @@ public class QtSceneSave : MonoBehaviour {
     public GameObject heights;
 	void Start ()
     {
-	}
+        SaveHeights(7);
+    }
     void save()
     {
         
@@ -34,7 +35,7 @@ public class QtSceneSave : MonoBehaviour {
         data[1]["Heights"]["runs"][current_run].Add("time", new JSONData(Time.timeSinceLevelLoad));
         Debug.Log(data);
 
-        var output_file = File.CreateText("E:/repos/PsychVR/Qt/build-PsychVRLauncher-Desktop_Qt_5_6_0_MSVC2015_64bit-Release/release/save.json");
+        var output_file = File.CreateText(this.gameObject.GetComponent<QtSceneLoad>().m_path);
         output_file.Write(data.ToString());
         output_file.Close();
     }

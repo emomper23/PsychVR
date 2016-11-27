@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychVR.Plugins", "PsychVR.Plugins.csproj", "{0FB94CBB-2F36-8110-D8BE-1FE8E13A9DE7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychVR.CSharp.Plugins", "PsychVR.CSharp.Plugins.csproj", "{BC2D997F-6E22-89F0-AF5F-2B94757B8931}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychVR", "PsychVR.csproj", "{5EDF99C1-F5D2-5157-3A16-F7DACA1A26A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychVR.CSharp", "PsychVR.CSharp.csproj", "{E0BE11D4-3830-B03F-C420-0CC189E191A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychVR.Editor.Plugins", "PsychVR.Editor.Plugins.csproj", "{D0AD8A3C-054B-8E82-B8B9-0AE542438854}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychVR.CSharp.Editor.Plugins", "PsychVR.CSharp.Editor.Plugins.csproj", "{FCEDFC72-A744-83A2-F99C-92630A9A2AA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychVR.Editor", "PsychVR.Editor.csproj", "{BC22F5C8-503B-C5B9-408C-FFC53CA1462C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychVR.CSharp.Editor", "PsychVR.CSharp.Editor.csproj", "{FADB9270-F662-AB81-03A6-C235582EE315}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,22 +15,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0FB94CBB-2F36-8110-D8BE-1FE8E13A9DE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0FB94CBB-2F36-8110-D8BE-1FE8E13A9DE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0FB94CBB-2F36-8110-D8BE-1FE8E13A9DE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0FB94CBB-2F36-8110-D8BE-1FE8E13A9DE7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5EDF99C1-F5D2-5157-3A16-F7DACA1A26A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5EDF99C1-F5D2-5157-3A16-F7DACA1A26A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5EDF99C1-F5D2-5157-3A16-F7DACA1A26A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5EDF99C1-F5D2-5157-3A16-F7DACA1A26A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D0AD8A3C-054B-8E82-B8B9-0AE542438854}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0AD8A3C-054B-8E82-B8B9-0AE542438854}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0AD8A3C-054B-8E82-B8B9-0AE542438854}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0AD8A3C-054B-8E82-B8B9-0AE542438854}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BC22F5C8-503B-C5B9-408C-FFC53CA1462C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC22F5C8-503B-C5B9-408C-FFC53CA1462C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BC22F5C8-503B-C5B9-408C-FFC53CA1462C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BC22F5C8-503B-C5B9-408C-FFC53CA1462C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC2D997F-6E22-89F0-AF5F-2B94757B8931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC2D997F-6E22-89F0-AF5F-2B94757B8931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC2D997F-6E22-89F0-AF5F-2B94757B8931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC2D997F-6E22-89F0-AF5F-2B94757B8931}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0BE11D4-3830-B03F-C420-0CC189E191A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0BE11D4-3830-B03F-C420-0CC189E191A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0BE11D4-3830-B03F-C420-0CC189E191A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0BE11D4-3830-B03F-C420-0CC189E191A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCEDFC72-A744-83A2-F99C-92630A9A2AA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCEDFC72-A744-83A2-F99C-92630A9A2AA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCEDFC72-A744-83A2-F99C-92630A9A2AA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCEDFC72-A744-83A2-F99C-92630A9A2AA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FADB9270-F662-AB81-03A6-C235582EE315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FADB9270-F662-AB81-03A6-C235582EE315}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FADB9270-F662-AB81-03A6-C235582EE315}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FADB9270-F662-AB81-03A6-C235582EE315}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

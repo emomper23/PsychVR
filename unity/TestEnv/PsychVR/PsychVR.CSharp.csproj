@@ -75,6 +75,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\MusicEnable.cs" />
+    <Compile Include="Assets\MusicLoader.cs" />
     <Compile Include="Assets\Scenes\Anxiety\Assets\Scripts\ComputeShader\ComputeShaderOutput.cs" />
     <Compile Include="Assets\Scenes\Anxiety\Assets\Scripts\ComputeShader\VoxelComputeShaderOutput.cs" />
     <Compile Include="Assets\Scenes\Anxiety\Assets\Scripts\ComputeShader\WeatherShaderOutput.cs" />
@@ -154,6 +156,9 @@
     <Compile Include="Assets\Scenes\Heights\City\Map\CameraRotate.cs" />
     <Compile Include="Assets\Scenes\Heights\Scripts\ElevatorScript.cs" />
     <Compile Include="Assets\Scenes\Heights\Scripts\HeightPicker.cs" />
+    <Compile Include="Assets\Scenes\Heights\Scripts\OSPAudioSource.cs" />
+    <Compile Include="Assets\Scenes\Heights\Scripts\OSPManager.cs" />
+    <Compile Include="Assets\Scenes\Heights\Scripts\OSPReflectionZone.cs" />
     <Compile Include="Assets\Scenes\Heights\Scripts\SkyScript.cs" />
     <Compile Include="Assets\Scenes\Speech\Scripts\HumanController.cs" />
     <Compile Include="Assets\Scenes\Speech\Scripts\ImageLoader.cs" />

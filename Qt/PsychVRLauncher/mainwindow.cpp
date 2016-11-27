@@ -448,6 +448,9 @@ void MainWindow::readIn()
 {
 
     int usernum = 0;
+    int sceneFlag = 0;
+
+    ui->comboBox->clear();
 
     QString filename = QApplication::applicationDirPath() + "/save.json";
     QFile saveFile(filename);
@@ -473,17 +476,19 @@ void MainWindow::readIn()
     QVector<double> stressBefore, stressAfter, stressScores, indexes;
     QVector<QString> notes;
 
-    int score = 0;
+    double score = 0;
 
     QJsonArray runData;
 
     if(ui->scene_selection->currentIndex() == MainWindow::scene_idx_t::FEAR_OF_HEIGHTS)
     {
         ui->tab_4->setEnabled(true);
+        sceneFlag = 0;
         runData = heightScene["runs"].toArray();
     }
     else if(ui->scene_selection->currentIndex() == MainWindow::scene_idx_t::SPEECH_ANXIETY)
     {
+        sceneFlag = 1;
         ui->tab_4->setEnabled(true);
         runData = socialScene["runs"].toArray();
     }
@@ -493,55 +498,56 @@ void MainWindow::readIn()
         return;
     }
 
-    QVector<double> attemptData, buildingHeights, ticks, yAxe1, successes, times;
-    QVector<QString> labels;
+    QVector<double> attemptData, buildingHeights, ticks, successes, times;
+    QVector<double> time1, time2, time3, time4;
+    QVector<double> singleGraphs, ticks2;
+    QVector<QString> labels, details;
+    details << "thing1" << "thing2" << "thing3" << "thing4";
     double maxHeight = 0;
     //THE Unity JSON parser likes to stringify everything so do this... toString().toNum() since it works, see save.json and old.json for comparison of formats
     for(int iter = 0; iter < runData.size(); iter ++)
     {
-        stressBefore.append(runData[iter].toObject()["prestress"].toString().toDouble());
-        stressAfter.append(runData[iter].toObject()["poststress"].toString().toDouble());
-        //attemptData.append(runData[iter].toObject()["height"].toDouble());
-        //times.append(runData[iter].toObject()["time"].toString().toDouble());
-        //buildingHeights.append(runData[iter].toObject()["maxHeight"].toString().toDouble()- runData[iter].toObject()["height"].toString().toDouble());
-        //if(maxHeight < runData[iter].toObject()["maxHeight"].toString().toDouble())
-        //    maxHeight = runData[iter].toObject()["maxHeight"].toString().toDouble();
-        //if(buildingHeights.at(iter) == 0)
-        //    successes.append(runData[iter].toObject()["height"].toString().toDouble());
-        //else
-        //    successes.append(0);
-        score = runData[iter].toObject()["answers"].toObject()["1"].toString().toInt();
-        score += runData[iter].toObject()["answers"].toObject()["2"].toString().toInt();
-        score += runData[iter].toObject()["answers"].toObject()["3"].toString().toInt();
-        score += runData[iter].toObject()["answers"].toObject()["4"].toString().toInt();
-        score += runData[iter].toObject()["answers"].toObject()["5"].toString().toInt();
-        score += runData[iter].toObject()["answers"].toObject()["6"].toString().toInt();
+        stressBefore.append(runData[iter].toObject()["prestress"].toDouble());
+        stressAfter.append(runData[iter].toObject()["poststress"].toDouble());
+        score = runData[iter].toObject()["answers"].toObject()["1"].toDouble();
+        score += runData[iter].toObject()["answers"].toObject()["2"].toDouble();
+        score += runData[iter].toObject()["answers"].toObject()["3"].toDouble();
+        score += runData[iter].toObject()["answers"].toObject()["4"].toDouble();
+        score += runData[iter].toObject()["answers"].toObject()["5"].toDouble();
+        score += runData[iter].toObject()["answers"].toObject()["6"].toDouble();
+        stressScores.append(score/3.6);
+        score = 0;
 
-        //stressBefore.append(runData[iter].toObject()["prestress"].toString().toDouble());
-        //stressAfter.append(runData[iter].toObject()["poststress"].toString().toDouble());
-        attemptData.append(runData[iter].toObject()["height"].toString().toDouble());
-        buildingHeights.append(runData[iter].toObject()["maxHeight"].toString().toDouble()- runData[iter].toObject()["height"].toString().toDouble());
-        if(maxHeight < runData[iter].toObject()["maxHeight"].toString().toDouble())
-            maxHeight = runData[iter].toObject()["maxHeight"].toString().toDouble();
-        if(buildingHeights.at(iter) == 0)
-            successes.append(runData[iter].toObject()["height"].toString().toDouble() + 2);
-        else
-            successes.append(0);
-        //score = runData[iter].toObject()["answers"].toObject()["1"].toString().toInt() * -1 + 6;
-        //score += runData[iter].toObject()["answers"].toObject()["2"].toString().toInt();
-        //score += runData[iter].toObject()["answers"].toObject()["3"].toString().toInt();
-        //score += runData[iter].toObject()["answers"].toObject()["4"].toString().toInt();
-        //score += runData[iter].toObject()["answers"].toObject()["5"].toString().toInt();
-        //score += runData[iter].toObject()["answers"].toObject()["6"].toString().toInt();
-        //score = (score / 36) * 10;
-        stressScores.append(score);
+        times.append(runData[iter].toObject()["time"].toString().toDouble());
+
+
+        if(sceneFlag == 0)
+        {
+            attemptData.append(runData[iter].toObject()["height"].toString().toDouble());
+            buildingHeights.append(runData[iter].toObject()["maxHeight"].toString().toDouble()- runData[iter].toObject()["height"].toString().toDouble());
+            if(maxHeight < runData[iter].toObject()["maxHeight"].toString().toDouble())
+                maxHeight = runData[iter].toObject()["maxHeight"].toString().toDouble();
+            if(buildingHeights.at(iter) == 0)
+                successes.append(runData[iter].toObject()["height"].toString().toDouble());
+            else
+                successes.append(0);
+
+
+        }
+        else if(sceneFlag == 1)
+        {
+            time1.append(runData[iter].toObject()["time1"].toString().toDouble());
+            time2.append(runData[iter].toObject()["time2"].toString().toDouble());
+            time3.append(runData[iter].toObject()["time3"].toString().toDouble());
+            time4.append(runData[iter].toObject()["time4"].toString().toDouble());
+        }
 
         indexes.append((double)iter + 1);
         ticks.append(iter + 1);
         labels.append(QStringLiteral("Run %1").arg(iter + 1));
-        score = 0;
+        ui->comboBox->addItem(labels.at(iter));
         notes.append(runData[iter].toObject()["notes"].toString());
-        ui->tab_4->repaint();
+        //ui->tab_4->repaint();
 
     }
 
@@ -576,78 +582,139 @@ void MainWindow::readIn()
     ui->customPlot->addGraph();
     ui->customPlot->addGraph();
     ui->customPlot->addGraph();
-    ui->graphTime->addGraph();
-
-    QCPBars *attempts = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
-    attempts->setAntialiased(true);
-    attempts->setStackingGap(0);
-    attempts->setName("Height Reached");
-    attempts->setPen(QPen(QColor(100, 100, 50).lighter(170)));
-    attempts->setBrush(QColor(255, 200, 50));
-
-    QCPBars *heights = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
-    heights->setAntialiased(true);
-    heights->setStackingGap(0);
-    heights->setName("Remaining height To Top");
-    heights->setPen(QPen(QColor(100, 100, 100).lighter(150)));
-    heights->setBrush(QColor(105, 105, 105));
-
-    QCPBars *madeRuns = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
-    madeRuns->setAntialiased(true);
-    madeRuns->setStackingGap(0);
-    madeRuns->setName("Made it All the Way");
-    madeRuns->setPen(QPen(QColor(100, 100, 50).lighter(170)));
-    madeRuns->setBrush(QColor(20, 235, 20));
-
-
-    heights->moveAbove(attempts);
-
-    ui->graph2->yAxis->setRange(0, maxHeight + 4);
-    ui->graph2->yAxis->setPadding(5); // a bit more space to the left border
-    ui->graph2->yAxis->setLabel("Total Heights in Meters");
 
     QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
-
     textTicker->addTicks(ticks, labels);
     ui->graph2->xAxis->setTicker(textTicker);
     ui->graph2->xAxis->setSubTicks(false);
     ui->customPlot->xAxis->setTicker(textTicker);
     ui->customPlot->xAxis->setSubTicks(false);
-    ui->graphTime->xAxis->setTicker(textTicker);
-    ui->graphTime->xAxis->setSubTicks(false);
 
-    if(ticks.size() > 8)
+
+
+
+
+    if(sceneFlag == 0)
     {
-        ui->graph2->xAxis->setRange(0, 8.5);
-        ui->customPlot->xAxis->setRange(0, 8.5);
-        ui->graphTime->xAxis->setRange(0, 8.5);
+        ui->graphTime->addGraph();
+        QCPBars *attempts = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
+        attempts->setAntialiased(true);
+        attempts->setStackingGap(0);
+        attempts->setName("Height Reached");
+        attempts->setPen(QPen(QColor(100, 100, 50).lighter(170)));
+        attempts->setBrush(QColor(255, 200, 50));
+
+        QCPBars *heights = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
+        heights->setAntialiased(true);
+        heights->setStackingGap(0);
+        heights->setName("Remaining height To Top");
+        heights->setPen(QPen(QColor(100, 100, 100).lighter(150)));
+        heights->setBrush(QColor(105, 105, 105));
+
+        QCPBars *madeRuns = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
+        madeRuns->setAntialiased(true);
+        madeRuns->setStackingGap(0);
+        madeRuns->setName("Made it All the Way");
+        madeRuns->setPen(QPen(QColor(100, 100, 50).lighter(170)));
+        madeRuns->setBrush(QColor(20, 235, 20));
+
+        heights->moveAbove(attempts);
+
+        ui->graph2->yAxis->setRange(0, maxHeight + 4);
+        ui->graph2->yAxis->setPadding(5); // a bit more space to the left border
+        ui->graph2->yAxis->setLabel("Total Heights in Meters");
+        ui->graphTime->xAxis->setTicker(textTicker);
+        ui->graphTime->xAxis->setSubTicks(false);
+
+        if(ticks.size() > 8)
+        {
+            ui->graph2->xAxis->setRange(0, 8.5);
+            ui->customPlot->xAxis->setRange(0, 8.5);
+            ui->graphTime->xAxis->setRange(0, 8.5);
+        }
+
+        ui->graphTime->graph(0)->setPen(QPen(QColor(240,0,0)));
+        ui->graphTime->graph(0)->setName("Time Taken On Elevator");
+        ui->graphTime->graph(0)->setLineStyle((QCPGraph::LineStyle)1);
+        ui->graphTime->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,7));
+        ui->graphTime->graph(0)->setData(indexes,times);
+        ui->graphTime->yAxis->setRange(0,20);
+        ui->graphTime->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+        ui->graphTime->yAxis->setPadding(5);
+        ui->graphTime->yAxis->setLabel("Time in Minutes");
+
+        attempts->setData(ticks, attemptData);
+        heights->setData(ticks, buildingHeights);
+        madeRuns->setData(ticks,successes);
     }
-
-    ui->graphTime->graph(0)->setPen(QPen(QColor(240,0,0)));
-    ui->graphTime->graph(0)->setName("Time Taken On Elevator");
-    ui->graphTime->graph(0)->setLineStyle((QCPGraph::LineStyle)1);
-    ui->graphTime->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,7));
-    ui->graphTime->graph(0)->setData(indexes,times);
-    ui->graphTime->yAxis->setRange(0,20);
-    ui->graphTime->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
-    ui->graphTime->yAxis->setPadding(5);
-    ui->graphTime->yAxis->setLabel("Time in Minutes");
+    else if(sceneFlag == 1)
+    {
+        QCPBars *metric1 = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
+        metric1->setAntialiased(true);
+        metric1->setStackingGap(0);
+        metric1->setName("Thing One");
+        metric1->setPen(QPen(QColor(100, 100, 50).lighter(170)));
+        metric1->setBrush(QColor(255, 200, 50));
 
 
-    //customPlot->xAxis->setBasePen(QPen(Qt::white));
-    //customPlot->xAxis->setTickPen(QPen(Qt::white));
-    //customPlot->xAxis->grid()->setVisible(true);
-    //customPlot->xAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
-    //customPlot->xAxis->setTickLabelColor(Qt::white);
-    //customPlot->xAxis->setLabelColor(Qt::white);
+        QCPBars *metric2 = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
+        metric2->setAntialiased(true);
+        metric2->setStackingGap(0);
+        metric2->setName("Thing 2");
+        metric2->setPen(QPen(QColor(100, 100, 100).lighter(150)));
+        metric2->setBrush(QColor(105, 105, 105));
 
+        metric2->moveAbove(metric1);
 
-    attempts->setData(ticks, attemptData);
-    heights->setData(ticks, buildingHeights);
-    madeRuns->setData(ticks,successes);
+        QCPBars *metric3 = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
+        metric3->setAntialiased(true);
+        metric3->setStackingGap(0);
+        metric3->setName("Thing 3");
+        metric3->setPen(QPen(QColor(100, 100, 50).lighter(170)));
+        metric3->setBrush(QColor(20, 235, 20));
 
+        metric3->moveAbove(metric2);
 
-    ui->graph2->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+        QCPBars *metric4 = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
+        metric4->setAntialiased(true);
+        metric4->setStackingGap(0);
+        metric4->setName("Thing 4");
+        metric4->setPen(QPen(QColor(100, 100, 50).lighter(170)));
+        metric4->setBrush(QColor(50, 50, 50));
+
+        metric4->moveAbove(metric3);
+
+        metric1->setData(ticks, time1);
+        metric2->setData(ticks, time2);
+        metric3->setData(ticks,time3);
+        metric4->setData(ticks,time4);
+
+        ui->graph2->yAxis->setPadding(5); // a bit more space to the left border
+        ui->graph2->yAxis->setLabel("Presentation Time Breakdown");
+
+        if(ticks.size() > 8)
+        {
+            ui->graph2->xAxis->setRange(0, 8.5);
+            ui->customPlot->xAxis->setRange(0, 8.5);
+        }
+
+        QCPBars *singleRun = new QCPBars(ui->graphTime->xAxis, ui->graphTime->yAxis);
+        singleRun->setAntialiased(true);
+        singleRun->setStackingGap(0);
+        singleRun->setName(labels.at(ui->comboBox->currentIndex()));
+        singleRun->setPen(QPen(QColor(100, 100, 50).lighter(170)));
+        singleRun->setBrush(QColor(20, 235, 20));
+
+        QSharedPointer<QCPAxisTickerText> ticker2(new QCPAxisTickerText);
+        ticker2->addTicks(singleGraphs, details);
+        ui->graphTime->xAxis->setTicker(ticker2);
+        ui->graphTime->xAxis->setSubTicks(false);
+
+        ticks2 << 1 << 2 << 3 << 4;
+        singleGraphs << time1.at(ui->comboBox->currentIndex()) << time2.at(ui->comboBox->currentIndex()) << time3.at(ui->comboBox->currentIndex()) << time4.at(ui->comboBox->currentIndex());
+        singleRun->setData(ticks2, singleGraphs);
+
+    }
 
     qDebug("before");
     ui->customPlot->graph(0)->setPen(QPen(QColor(240,0,0)));
@@ -668,6 +735,7 @@ void MainWindow::readIn()
     ui->customPlot->graph(2)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 8));
     ui->customPlot->graph(2)->setData(indexes,stressScores);
 
+    ui->graph2->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
     ui->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
     ui->customPlot->yAxis->setSubTicks(true);
     ui->customPlot->yAxis->setRange(-.5,10.5);

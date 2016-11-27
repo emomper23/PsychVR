@@ -33,8 +33,8 @@ public class HumanController : MonoBehaviour
 		rows.Add(row3);
 		rows.Add(row4);
 
-		int students = PlayerPrefs.GetInt("Number Students");
-		students = 6;
+		int students = PlayerPrefs.GetInt("NumberStudents");
+		//students = 6;
 		int studentsRem = students;
 
 		int rowCount = rows.Count;

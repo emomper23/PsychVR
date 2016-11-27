@@ -541,6 +541,7 @@ void MainWindow::readIn()
         labels.append(QStringLiteral("Run %1").arg(iter + 1));
         score = 0;
         notes.append(runData[iter].toObject()["notes"].toString());
+        ui->tab_4->repaint();
 
     }
 

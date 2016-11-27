@@ -13,23 +13,39 @@ public class QtSceneLoad : MonoBehaviour {
 	public Boolean day;
     public string session_id;
     private string json_text;
+    public int scene_idx = 0;
+    public int user_id = 1;
+
 	// Use this for initialization
 	void Start ()
     {
         string text = System.IO.File.ReadAllText(m_path);
-        var data = JSON.Parse(text);
         json_text = text;
-        Debug.Log(data[1]["Calm"]);
-        Debug.Log(data[1]["Heights"]);
-        Debug.Log(data[1]["Social"]);
-        Debug.Log(data[1]["Heights"]["Color"]);
+        var data = JSON.Parse(text);
+
+        
+        Debug.Log(data[user_id]["Calm"]);
+        Debug.Log(data[user_id]["Heights"]);
+        Debug.Log(data[user_id]["Social"]);
+        Debug.Log(data[user_id]["Heights"]["Color"]);
+
+        if (scene_idx == 0)
+        {
+            PlayerPrefs.SetString("SkinColor", data[user_id]["Heights"]["Settings"]["Color"]);
+            PlayerPrefs.SetInt("Day", Int16.Parse(data[user_id]["Heights"]["Settings"]["Day"]));
+            PlayerPrefs.SetInt("BuildingNum", Int16.Parse(data[user_id]["Heights"]["Settings"]["Building"]));
+        }
+        else if (scene_idx == 1)
+        {
+            PlayerPrefs.SetInt("NumberStudents", Int16.Parse(data[user_id]["Social"]["Settings"]["NumberStudents"]));
+            PlayerPrefs.SetString("SkinColor", data[user_id]["Social"]["Settings"]["Color"]);
+        }
+        else if (scene_idx == 2)
+        {
+           PlayerPrefs.SetString("SkinColor", data[user_id]["Anxiety"]["Settings"]["Color"]);
+        }
 
 
-       // //do all write the same at once?
-		PlayerPrefs.SetString("SkinColor", data[1]["Heights"]["Settings"]["Color"]);
-        PlayerPrefs.SetInt("Day", Int16.Parse(data[1]["Heights"]["Settings"]["Day"]));        
-        PlayerPrefs.SetInt("BuildingNum", Int16.Parse(data[1]["Heights"]["Settings"]["Building"]));
-   
 
     }
     public string getJSON()

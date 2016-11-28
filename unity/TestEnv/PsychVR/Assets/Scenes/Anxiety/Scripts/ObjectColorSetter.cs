@@ -22,9 +22,11 @@ public class ObjectColorSetter : MonoBehaviour {
         for(int i = 0; i < temp.Length; i++)
         {
             temp[i] = blend.Evaluate(verts[i].y);
+           //Debug.Log(temp[i]);
         }
         mesh_temp.colors = temp;
         this.gameObject.GetComponent<MeshFilter>().mesh = mesh_temp;
+       // this.gameObject.GetComponents<Material>()[0].set
     }
     public Gradient BlendGradient(Gradient terrain_gradient, Gradient object_gradient)
     {

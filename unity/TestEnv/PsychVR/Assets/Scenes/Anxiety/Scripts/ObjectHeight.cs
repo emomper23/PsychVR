@@ -26,6 +26,9 @@ public class ObjectHeight : MonoBehaviour {
         //test.collider.
         this.transform.position = tree_pos - new Vector3(0, test.distance - height_diff, 0);
 
+        Vector3 world_normal = test.transform.TransformDirection(test.normal);
+        this.transform.rotation.SetLookRotation(world_normal);
+
     }
 
     // Update is called once per frame

@@ -38,7 +38,8 @@ public class QtSceneSave : MonoBehaviour {
         foreach (JSONNode run in data[user_id]["Anxiety"]["runs"].AsArray)
         {
             Debug.Log(run);
-            current_run = Int16.Parse(run["run"]) - 1;
+            if(run["run"] != null)
+                current_run = Int16.Parse(run["run"]) - 1;
         }
         Debug.Log("CURRENT RUN IS " + current_run);
         //OUTUTS FOR ANXIETY HERE

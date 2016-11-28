@@ -6,6 +6,7 @@ public class MusicLoader : MonoBehaviour {
     //public string url = ;
     public AudioSource source;
     public string url;
+    private bool global = false;
     // Use this for initialization
     void Start () {
         WWW www = new WWW(url);
@@ -25,9 +26,22 @@ public class MusicLoader : MonoBehaviour {
         if (www.error == null)
         {
             Debug.Log("WWW Ok!: ");
-            source = transform.GetChild(0).GetComponent<AudioSource>();
+            if (transform.childCount > 0)
+            {
+
+                source = transform.GetChild(0).GetComponent<AudioSource>();
+            }
+
+            else
+            {
+                source = transform.GetComponent<AudioSource>();
+                global = true;
+            }
+                
+
             source.clip = www.GetAudioClip(true, false, AudioType.WAV);
-            if (transform.GetChild(0) !=  null)
+
+            if (transform.childCount > 0)
             {
                 transform.GetChild(0).GetComponent<AudioSource>().clip = source.clip;
                 transform.GetChild(0).gameObject.SetActive(true);
@@ -45,9 +59,9 @@ public class MusicLoader : MonoBehaviour {
         // Update is called once per frame
         void Update () {
 
-        if (source && !source.isPlaying)
+        if (global && source && !source.isPlaying)
         {
-            //Debug.Log("loaded!!");
+            source.Play();
         }
             
     }

@@ -5,8 +5,7 @@ using System.IO;
 public class ImageLoader : MonoBehaviour {
 
     public string prefix;
-    public string url;
-    public string path;
+    public string path; 
     public int number;
     public int total;
     public int loaded;
@@ -17,7 +16,7 @@ public class ImageLoader : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        
+        string url = "file:///" + path;
         DirectoryInfo dir = new DirectoryInfo(path);
         FileInfo[] info = dir.GetFiles("*.JPG");
         total = info.Length;
@@ -38,7 +37,7 @@ public class ImageLoader : MonoBehaviour {
         // check for errors
         if (www.error == null)
         {
-            Debug.Log("WWW Ok!: "+ www.url);
+            //Debug.Log("WWW Ok!: "+ www.url);
             Texture temp =  www.texture;
             temp.name = Path.GetFileName(www.url);
             list[loaded] = temp;
@@ -46,7 +45,7 @@ public class ImageLoader : MonoBehaviour {
         }
         else
         {
-            Debug.Log(www.url);
+            //Debug.Log(www.url);
             Debug.Log("WWW Error: " + www.error);
         }
     }
@@ -63,7 +62,7 @@ public class ImageLoader : MonoBehaviour {
                 }
                 else
                 {
-                    Debug.Log(o.name+ "=="+("Slide" + i + ".JPG"));
+                    //Debug.Log(o.name+ "=="+("Slide" + i + ".JPG"));
                 }
             }
         }
@@ -72,7 +71,7 @@ public class ImageLoader : MonoBehaviour {
         Debug.Log("done!!" + total);
         foreach (Object o in list)
         {
-            Debug.Log(o);
+            //Debug.Log(o);
         }
         screen.GetComponent<Renderer>().material.mainTexture = (Texture2D)list[number % list.Length];
         //Debug.Log(list[number % list.Length].name);

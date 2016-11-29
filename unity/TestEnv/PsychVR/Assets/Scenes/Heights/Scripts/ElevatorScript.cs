@@ -19,6 +19,11 @@ public class ElevatorScript : MonoBehaviour {
 	public Text height;
 	public float highestPoint = 0f;
     public GameObject settings;
+    private float base_wind = 0.2f;
+    private float scale_wind = 0;
+    private float base_ground = 0.2f;
+    private float scale_ground = 1; 
+
 
     int direction = 0;
 
@@ -35,7 +40,6 @@ public class ElevatorScript : MonoBehaviour {
 		else
 			dir = new Vector3( 0, 0, 0);
 
-       
         // magnitude is the total length of a vector.
         // getting the magnitude of the direction gives us the amount left to move
         float dist = dir.magnitude;
@@ -54,9 +58,22 @@ public class ElevatorScript : MonoBehaviour {
 
         //this.direction = 0;
 
-		height.text = gondola.transform.position.y.ToString("F2") + " Meters"; 
-	}
+		height.text = gondola.transform.position.y.ToString("F2") + " Meters";
+        scale_ground = 1f - gondola.position.y / top.position.y;
+        scale_wind = gondola.position.y / top.position.y;
+    }
 
+    public float getWind()
+    {
+        //Debug.Log("wind "+ scale_wind +" " + base_wind);
+        return scale_wind* base_wind;
+        
+    }
+    public float getGround()
+    {
+        //Debug.Log("ground " + scale_ground + " " + base_ground);
+        return scale_ground * base_ground;
+    }
 	public void UpPressed()
 	{
 		this.direction = 1;

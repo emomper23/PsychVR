@@ -75,8 +75,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AudioManager.cs" />
     <Compile Include="Assets\MusicEnable.cs" />
     <Compile Include="Assets\MusicLoader.cs" />
+    <Compile Include="Assets\OSPNative\scripts\ONSPAudioSource.cs" />
+    <Compile Include="Assets\OSPNative\scripts\ONSPVersion.cs" />
+    <Compile Include="Assets\OSPNative\scripts\helpers\ONSPReflectionZone.cs" />
     <Compile Include="Assets\Scenes\Anxiety\Assets\Scripts\ComputeShader\ComputeShaderOutput.cs" />
     <Compile Include="Assets\Scenes\Anxiety\Assets\Scripts\ComputeShader\VoxelComputeShaderOutput.cs" />
     <Compile Include="Assets\Scenes\Anxiety\Assets\Scripts\ComputeShader\WeatherShaderOutput.cs" />

@@ -131,6 +131,8 @@
     <Compile Include="Assets\Editor\ImageEffects\SunShaftsEditor.cs" />
     <Compile Include="Assets\Editor\ImageEffects\TonemappingEditor.cs" />
     <Compile Include="Assets\Editor\ImageEffects\VignetteAndChromaticAberrationEditor.cs" />
+    <Compile Include="Assets\OSPNative\editor\ONSPAudioSourceEditor.cs" />
+    <Compile Include="Assets\OSPNative\editor\ONSPReflectionCustomGUI.cs" />
     <Compile Include="Assets\Scenes\Anxiety\ProceduralToolkit\Editor\MeshFilterExtension.cs" />
     <Compile Include="Assets\Scenes\Anxiety\ProceduralToolkit\Editor\ProceduralToolkitMenu.cs" />
     <Compile Include="Assets\Scenes\Anxiety\ProceduralToolkit\Examples\BuildingGenerator\Editor\BuildingGeneratorUIEditor.cs" />

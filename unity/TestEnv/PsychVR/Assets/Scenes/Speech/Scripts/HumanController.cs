@@ -124,7 +124,7 @@ public class HumanController : MonoBehaviour
 		int p = (int)((((rowCount - row + 1) / (rowCount)) * ((rowCount + (rowCount / 2)) / (rowCount))) * (((students) / (seats + (seats * 0.1)))) * 10000f);
 		//simulate an occurrance of p, if it happens true else false
 		int sim = Random.Range(1, 10001);
-		Debug.Log(row + " " + p + " " + sim + " " + rowCount);
+		//Debug.Log(row + " " + p + " " + sim + " " + rowCount);
 
 		if (sim <= p)
 			return true;

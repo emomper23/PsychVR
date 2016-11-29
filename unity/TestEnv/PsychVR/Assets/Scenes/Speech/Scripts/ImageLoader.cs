@@ -5,7 +5,7 @@ using System.IO;
 public class ImageLoader : MonoBehaviour {
 
     public string prefix;
-    public string path; 
+    private string path; 
     public int number;
     public int total;
     public int loaded;
@@ -16,7 +16,9 @@ public class ImageLoader : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        path = PlayerPrefs.GetString("Powerpoint");
         string url = "file:///" + path;
+        Debug.Log(path);
         DirectoryInfo dir = new DirectoryInfo(path);
         FileInfo[] info = dir.GetFiles("*.JPG");
         total = info.Length;

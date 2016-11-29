@@ -13,40 +13,47 @@ public class QtSceneLoad : MonoBehaviour {
 	public Boolean day;
     public string session_id;
     private string json_text;
-    public int scene_idx = 0;
-    public int user_id = 1;
+    public int scene_idx = 1;
+    public int user_id = 0;
 
 	// Use this for initialization
 	void Start ()
     {
+        Debug.Log(m_path);
         string text = System.IO.File.ReadAllText(m_path);
         json_text = text;
-        var data = JSON.Parse(text);
+        //Debug.Log(text);
+        var data = JSON.Parse(json_text);
 
         
-        Debug.Log(data[user_id]["Calm"]);
-        Debug.Log(data[user_id]["Heights"]);
-        Debug.Log(data[user_id]["Social"]);
-        Debug.Log(data[user_id]["Heights"]["Color"]);
+        //Debug.Log(data[user_id]["Calm"]);
+        //Debug.Log(data[user_id]["Heights"]);
+        //Debug.Log(data[user_id]["Social"]);
+        //Debug.Log(data[user_id]["Heights"]["Color"]);
 
         if (scene_idx == 0)
         {
+            Debug.Log("Loading heights Settings");
             PlayerPrefs.SetString("SkinColor", data[user_id]["Heights"]["Settings"]["Color"]);
             PlayerPrefs.SetInt("Day", Int16.Parse(data[user_id]["Heights"]["Settings"]["Day"]));
             PlayerPrefs.SetInt("BuildingNum", Int16.Parse(data[user_id]["Heights"]["Settings"]["Building"]));
         }
         else if (scene_idx == 1)
         {
-            PlayerPrefs.SetInt("NumberStudents", Int16.Parse(data[user_id]["Social"]["Settings"]["NumberStudents"]));
+            Debug.Log("Loading speech Settings");
+            PlayerPrefs.SetInt("NumberStudents", Int16.Parse(data[user_id]["Social"]["Settings"]["Number Students"]));
             PlayerPrefs.SetString("SkinColor", data[user_id]["Social"]["Settings"]["Color"]);
+            PlayerPrefs.SetString("Powerpoint", data[user_id]["Social"]["Settings"]["Powerpoint"]+"/");
+            PlayerPrefs.SetString("Animations", data[user_id]["Social"]["Settings"]["Animations"]);
         }
         else if (scene_idx == 2)
         {
-           PlayerPrefs.SetString("SkinColor", data[user_id]["Anxiety"]["Settings"]["Color"]);
+            Debug.Log("Loading terrain Settings");
+            PlayerPrefs.SetString("SkinColor", data[user_id]["Anxiety"]["Settings"]["Color"]);
+            PlayerPrefs.SetString("Song", data[user_id]["Anxiety"]["Settings"]["Song"]);
+            PlayerPrefs.SetString ("Tree", data[user_id]["Anxiety"]["Settings"]["Tree"] );
+            PlayerPrefs.SetString("Rock", data[user_id]["Anxiety"]["Settings"]["Rock"]);
         }
-
-
-
     }
     public string getJSON()
     {

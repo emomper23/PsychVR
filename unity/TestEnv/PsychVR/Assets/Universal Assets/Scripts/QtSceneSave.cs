@@ -14,20 +14,6 @@ public class QtSceneSave : MonoBehaviour {
 	void Start ()
     {
         user_id = this.gameObject.GetComponent<QtSceneLoad>().user_id;
-        if (heights != null)
-        {
-            SaveHeights(7);
-        }
-            
-        if (visionTracking != null)
-        {
-            saveSpeech();
-        }
-        if (anxiety != null)
-        {
-            saveAnxiety();
-        }
-        
     }
     public void saveAnxiety()
     {

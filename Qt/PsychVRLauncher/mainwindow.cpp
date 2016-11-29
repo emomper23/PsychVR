@@ -32,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_settings = new settings();
     m_settings->setVisible(false);
     m_obj_settings->setVisible(false);
+
     //m_settings->show();
     ui->tab_3->setEnabled(false);
     //ui->gridLayout_3->setEnabled(false);
@@ -49,7 +50,8 @@ MainWindow::MainWindow(QWidget *parent) :
     song = "";
 
     QPalette pal = ui->color1->palette();
-    QColor curCol = QColor("#D2A18C");
+
+    curCol = QColor("#D2A18C");
     pal.setColor(QPalette::Window,curCol);
 
     ui->color1->setPalette( pal);
@@ -59,8 +61,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->color3->setPalette( pal);
     ui->color3->update();
 
-    QString powerpoint = "test.ppt";
-    ui->fileLabel->setText(powerpoint);
+    powerpoint = "";
+    ui->fileLabel->setText("None Selected");
 
     connect(ui->colorBut1, SIGNAL(clicked(bool)), this, SLOT(changeColor()));
     connect(ui->colorBut2, SIGNAL(clicked(bool)), this, SLOT(changeColor()));
@@ -315,7 +317,6 @@ void MainWindow::showSettings()
     m_settings->setVisible(true);
     m_settings->show();
 
-
 }
 
 void MainWindow::initButtons()
@@ -343,9 +344,9 @@ QString MainWindow::createRun()
     QString filename = QApplication::applicationDirPath() + "/save.json";
     QFile saveFile(filename);
     if (!saveFile.open(QIODevice::ReadOnly)) {
-           qWarning("Failed to save data.");
+           //qWarning("Failed to save data.");
            //return false; c
-            tester = makeJson();
+        tester = makeJson();
     }
     else
     {
@@ -444,9 +445,10 @@ void MainWindow::SaveData()
     QString filename = QApplication::applicationDirPath() + "/save.json";
     QFile saveFile(filename);
     if (!saveFile.open(QIODevice::ReadOnly)) {
-           qWarning("Failed to save data.");
+           //qWarning("Failed to save data.");
            //return false; c
-            tester = makeJson();
+           tester = makeJson();
+
     }
     else
     {
@@ -630,9 +632,10 @@ void MainWindow::readIn()
         }
         else if(sceneFlag == 1)
         {
-            time1.append(runData[iter].toObject()["time1"].toString().toDouble());
-            time2.append(runData[iter].toObject()["time2"].toString().toDouble());
-            time3.append(runData[iter].toObject()["time3"].toString().toDouble());
+            time1.append(runData[iter].toObject()["Boardtime"].toString().toDouble());
+            time2.append(runData[iter].toObject()["EyeTime"].toString().toDouble());
+            time3.append(runData[iter].toObject()["FloorTime"].toString().toDouble());
+            time4.append(times.at(iter) - time1.at(iter) - time2.at(iter) - time3.at(iter));
 
         }
 
@@ -861,15 +864,46 @@ QJsonArray MainWindow::makeJson()
     QJsonObject fakesettings;
     QJsonArray fakeruns;
 
-    QJsonObject scene{
-        {"Settings", fakesettings},
+    QJsonArray animations;
+
+    QJsonObject hSets{
+        {"Color",curCol.name()},
+        {"Day", 1},
+        {"Building", ui->heightBox->currentIndex()},
+        {"Song", song}
+    };
+
+    QJsonObject cSets{
+        {"Color",curCol.name()},
+        {"Song", song},
+        {"Rock", ui->checkBox_6->isChecked()},
+        {"Tree", ui->checkBox_7->isChecked()}
+    };
+
+    QJsonObject sSets{
+        {"Color",curCol.name()},
+        {"Animations", animations},
+        {"Number Students", ui->seatsBox->value()},
+        {"Powerpoint", powerpoint}
+    };
+
+    QJsonObject hscene{
+        {"Settings", hSets},
+        {"runs", fakeruns}
+    };
+    QJsonObject sscene{
+        {"Settings", sSets},
+        {"runs", fakeruns}
+    };
+    QJsonObject cscene{
+        {"Settings", cSets},
         {"runs", fakeruns}
     };
 
     QJsonObject run{
-        {"Heights", scene},
-        {"Social", scene},
-        {"Calm", scene}
+        {"Heights", hscene},
+        {"Social", sscene},
+        {"Calm", cscene}
     };
 
     QJsonArray runs{run,run,run,run,run,run};
@@ -929,8 +963,9 @@ void MainWindow::changeSettings()
     QString filename = QApplication::applicationDirPath() + "/save.json";
     QFile saveFile(filename);
     if (!saveFile.open(QIODevice::ReadOnly)) {
-           qWarning("Failed to save data.");
+           //qWarning("Failed to save data.");
            //return false; c
+           tester = makeJson();
     }
     else
     {
@@ -947,7 +982,6 @@ void MainWindow::changeSettings()
     QJsonObject calmScene = tester.at(usernum).toObject()["Calm"].toObject();
     QJsonObject socialScene = tester.at(usernum).toObject()["Social"].toObject();
     QJsonObject user = tester.at(usernum).toObject();
-
 
     QJsonObject heightSettings
     {

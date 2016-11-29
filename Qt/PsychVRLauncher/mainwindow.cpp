@@ -419,7 +419,7 @@ QString MainWindow::createRun()
 
     saveFile.write(saveDoc.toJson());
     saveFile.close();
-
+    qDebug()<<ui->userLabel->text().right(1);
     return "" + ui->userLabel->text().right(1);
 
 }

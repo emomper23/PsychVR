@@ -32,13 +32,42 @@ MainWindow::MainWindow(QWidget *parent) :
     m_settings = new settings();
     m_settings->setVisible(false);
     m_obj_settings->setVisible(false);
-    ui->listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     //m_settings->show();
     ui->tab_3->setEnabled(false);
     //ui->gridLayout_3->setEnabled(false);
 
     ui->coverlabel->hide();
 
+    QColorDialog setSkin;
+    QString colorList[] = {"#2D221E","#3C2E28","#4B3932","#695046","#785C50","#87675A","#967264","#A57E6E","#C39582","#D2A18C","#E1AC96","#F0B8A0","#FFC3AA","#FFCEB4","#FFDABE","#FFE5C8"};
+
+    for(int arraySpot = 0; arraySpot < 16; arraySpot ++ )
+    {
+        setSkin.setCustomColor(arraySpot,QColor(colorList[arraySpot]));
+    }
+
+    song = "";
+
+    QPalette pal = ui->color1->palette();
+    QColor curCol = QColor("#D2A18C");
+    pal.setColor(QPalette::Window,curCol);
+
+    ui->color1->setPalette( pal);
+    ui->color1->update();
+    ui->color2->setPalette( pal);
+    ui->color2->update();
+    ui->color3->setPalette( pal);
+    ui->color3->update();
+
+    QString powerpoint = "test.ppt";
+    ui->fileLabel->setText(powerpoint);
+
+    connect(ui->colorBut1, SIGNAL(clicked(bool)), this, SLOT(changeColor()));
+    connect(ui->colorBut2, SIGNAL(clicked(bool)), this, SLOT(changeColor()));
+    connect(ui->colorBut3, SIGNAL(clicked(bool)), this, SLOT(changeColor()));
+    connect(ui->fileButton, SIGNAL(clicked(bool)),this,SLOT(changeFile()));
+    connect(ui->MusicButton_2, SIGNAL(clicked(bool)),this,SLOT(changeSong()));
+    connect(ui->MusicButton, SIGNAL(clicked(bool)),this,SLOT(changeSong()));
 
     connect(ui->actionSave,SIGNAL(triggered(bool)),this,SLOT(saveFiles()));
     connect(ui->actionLoad,SIGNAL(triggered(bool)),this,SLOT(loadFiles()));
@@ -46,7 +75,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(m_obj_settings,SIGNAL(accepted()),this,SLOT(saveModel()));
     connect(ui->actionNew_Object,SIGNAL(triggered(bool)),this,SLOT(newModel()));
     connect(this->m_obj_settings, SIGNAL(accepted()),this,SLOT(saveModel()));
-    connect(ui->pushButton, SIGNAL(clicked(bool)),this,SLOT(showSettings()));
+    connect(ui->pushButton, SIGNAL(clicked(bool)),this,SLOT(changeSettings()));
     connect(ui->launchButton, SIGNAL(pressed()),this,SLOT(launchScene()));
     connect(ui->submit_button, SIGNAL(clicked(bool)),this,SLOT(SaveData()));
     connect(ui->pushButton, SIGNAL(clicked(bool)),this,SLOT(openWindow()));
@@ -58,7 +87,14 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionGuest_1, SIGNAL(triggered(bool)),signalMapper,SLOT(map()));
     connect(ui->tabWidget, SIGNAL(currentChanged(int)),this,SLOT(tabChanged(int)));
     connect(ui->scene_selection, SIGNAL(currentIndexChanged(int)),this,SLOT(readIn()));
-    //connect(ui->customPlot->xAxis, SIGNAL(rangeChanged(QCPRange,QCPRange)), this, SLOT(xAxisRangeChanged(QCPRange,QCPRange)) );
+    connect(ui->scene_selection, SIGNAL(activated(int)),this,SLOT(readIn()));
+    connect(ui->runBox, SIGNAL(activated(int)), this, SLOT(readIn()));
+    connect(ui->customPlot->xAxis, SIGNAL(rangeChanged(QCPRange,QCPRange)), this, SLOT(axisRangeChanged(QCPRange,QCPRange)) );
+    connect(ui->customPlot->yAxis, SIGNAL(rangeChanged(QCPRange,QCPRange)), this, SLOT(axisRangeChanged(QCPRange,QCPRange)) );
+    connect(ui->graph2->xAxis, SIGNAL(rangeChanged(QCPRange,QCPRange)), this, SLOT(axisRangeChanged2(QCPRange,QCPRange)) );
+    connect(ui->graph2->yAxis, SIGNAL(rangeChanged(QCPRange,QCPRange)), this, SLOT(axisRangeChanged2(QCPRange,QCPRange)) );
+    connect(ui->graphTime->xAxis, SIGNAL(rangeChanged(QCPRange,QCPRange)), this, SLOT(axisRangeChanged3(QCPRange,QCPRange)) );
+    connect(ui->graphTime->yAxis, SIGNAL(rangeChanged(QCPRange,QCPRange)), this, SLOT(axisRangeChanged3(QCPRange,QCPRange)) );
 
 
     signalMapper -> setMapping (ui->actionUser_1, 1) ;
@@ -88,18 +124,73 @@ CUnityMap * MainWindow::getMap()
     return  m_map_list[ui->scene_selection->currentIndex()];
 }
 
-void MainWindow::xAxisRangeChanged( const QCPRange &newRange, const QCPRange &oldRange ){
-    if( newRange.lower < 0 ){
-        ui->customPlot->xAxis->setRangeLower( 0 );
-        ui->customPlot->xAxis->setRangeUpper( oldRange.upper );
-    }else{
-        ui->customPlot->xAxis->setRangeUpper( newRange.upper );
+void MainWindow::axisRangeChanged( const QCPRange &newRange, const QCPRange &oldRange ){
+    if(newRange == ui->customPlot->xAxis->range())
+    {
+        if( newRange.lower < 0 ){
+            ui->customPlot->xAxis->setRangeLower( 0 );
+            ui->customPlot->xAxis->setRangeUpper( oldRange.upper );
+        }else{
+            ui->customPlot->xAxis->setRangeUpper( newRange.upper );
+        }
+    }
+    else if(newRange == ui->customPlot->yAxis->range())
+    {
+        if( newRange.lower < -.5 ){
+            ui->customPlot->yAxis->setRangeLower( -.5 );
+            ui->customPlot->yAxis->setRangeUpper( oldRange.upper );
+        }else{
+            ui->customPlot->yAxis->setRangeUpper( newRange.upper );
+        }
+    }
+}
+
+void MainWindow::axisRangeChanged2( const QCPRange &newRange, const QCPRange &oldRange ){
+    if(newRange == ui->graph2->xAxis->range())
+    {
+        if( newRange.lower < 0 ){
+            ui->graph2->xAxis->setRangeLower( 0 );
+            ui->graph2->xAxis->setRangeUpper( oldRange.upper );
+        }else{
+            ui->graph2->xAxis->setRangeUpper( newRange.upper );
+        }
+    }
+    else if(newRange == ui->graph2->yAxis->range())
+    {
+        if( newRange.lower < 0 ){
+            ui->graph2->yAxis->setRangeLower( 0 );
+            ui->graph2->yAxis->setRangeUpper( oldRange.upper );
+        }else{
+            ui->graph2->yAxis->setRangeUpper( newRange.upper );
+        }
+    }
+}
+
+void MainWindow::axisRangeChanged3( const QCPRange &newRange, const QCPRange &oldRange ){
+    if(newRange == ui->graphTime->xAxis->range())
+    {
+        if( newRange.lower < 0 ){
+            ui->graphTime->xAxis->setRangeLower( 0 );
+            ui->graphTime->xAxis->setRangeUpper( oldRange.upper );
+        }else{
+            ui->graphTime->xAxis->setRangeUpper( newRange.upper );
+        }
+    }
+    else if(newRange == ui->graphTime->yAxis->range())
+    {
+        if( newRange.lower < 0 ){
+            ui->graphTime->yAxis->setRangeLower( 0 );
+            ui->graphTime->yAxis->setRangeUpper( oldRange.upper );
+        }else{
+            ui->graphTime->yAxis->setRangeUpper( newRange.upper );
+        }
     }
 }
 
 
 void MainWindow::loadFiles()
 {
+    /*
     this->getMap()->loadSettings();
     for(int i = 0; i< this->getMap()->m_objects.size()  ; i++)
     {
@@ -110,6 +201,7 @@ void MainWindow::loadFiles()
         ui->listWidget->addItem(item);
 
     }
+    */
 }
 void MainWindow::saveFiles()
 {
@@ -118,7 +210,7 @@ void MainWindow::saveFiles()
 
 void MainWindow::editModel()
 {
-
+    /*
 
 
     if(ui->listWidget->selectedItems().size() == 0)
@@ -142,7 +234,7 @@ void MainWindow::editModel()
     }
     m_obj_settings->setObject(obj);
     m_obj_settings->setVisible(true);
-
+    */
 }
 
 void MainWindow::saveModel()
@@ -450,7 +542,7 @@ void MainWindow::readIn()
     int usernum = 0;
     int sceneFlag = 0;
 
-    ui->comboBox->clear();
+    ui->runBox->clear();
 
     QString filename = QApplication::applicationDirPath() + "/save.json";
     QFile saveFile(filename);
@@ -485,12 +577,14 @@ void MainWindow::readIn()
         ui->tab_4->setEnabled(true);
         sceneFlag = 0;
         runData = heightScene["runs"].toArray();
+        ui->runBox->hide();
     }
     else if(ui->scene_selection->currentIndex() == MainWindow::scene_idx_t::SPEECH_ANXIETY)
     {
         sceneFlag = 1;
         ui->tab_4->setEnabled(true);
         runData = socialScene["runs"].toArray();
+        ui->runBox->show();
     }
     else
     {
@@ -507,14 +601,14 @@ void MainWindow::readIn()
     //THE Unity JSON parser likes to stringify everything so do this... toString().toNum() since it works, see save.json and old.json for comparison of formats
     for(int iter = 0; iter < runData.size(); iter ++)
     {
-        stressBefore.append(runData[iter].toObject()["prestress"].toDouble());
-        stressAfter.append(runData[iter].toObject()["poststress"].toDouble());
-        score = runData[iter].toObject()["answers"].toObject()["1"].toDouble();
-        score += runData[iter].toObject()["answers"].toObject()["2"].toDouble();
-        score += runData[iter].toObject()["answers"].toObject()["3"].toDouble();
-        score += runData[iter].toObject()["answers"].toObject()["4"].toDouble();
-        score += runData[iter].toObject()["answers"].toObject()["5"].toDouble();
-        score += runData[iter].toObject()["answers"].toObject()["6"].toDouble();
+        stressBefore.append(runData[iter].toObject()["prestress"].toString().toDouble());
+        stressAfter.append(runData[iter].toObject()["poststress"].toString().toDouble());
+        score = runData[iter].toObject()["answers"].toObject()["1"].toString().toDouble();
+        score += runData[iter].toObject()["answers"].toObject()["2"].toString().toDouble();
+        score += runData[iter].toObject()["answers"].toObject()["3"].toString().toDouble();
+        score += runData[iter].toObject()["answers"].toObject()["4"].toString().toDouble();
+        score += runData[iter].toObject()["answers"].toObject()["5"].toString().toDouble();
+        score += runData[iter].toObject()["answers"].toObject()["6"].toString().toDouble();
         stressScores.append(score/3.6);
         score = 0;
 
@@ -539,13 +633,13 @@ void MainWindow::readIn()
             time1.append(runData[iter].toObject()["time1"].toString().toDouble());
             time2.append(runData[iter].toObject()["time2"].toString().toDouble());
             time3.append(runData[iter].toObject()["time3"].toString().toDouble());
-            time4.append(runData[iter].toObject()["time4"].toString().toDouble());
+
         }
 
         indexes.append((double)iter + 1);
         ticks.append(iter + 1);
         labels.append(QStringLiteral("Run %1").arg(iter + 1));
-        ui->comboBox->addItem(labels.at(iter));
+        ui->runBox->addItem(labels.at(iter));
         notes.append(runData[iter].toObject()["notes"].toString());
         //ui->tab_4->repaint();
 
@@ -633,13 +727,14 @@ void MainWindow::readIn()
             ui->graphTime->xAxis->setRange(0, 8.5);
         }
 
+
         ui->graphTime->graph(0)->setPen(QPen(QColor(240,0,0)));
         ui->graphTime->graph(0)->setName("Time Taken On Elevator");
         ui->graphTime->graph(0)->setLineStyle((QCPGraph::LineStyle)1);
         ui->graphTime->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,7));
         ui->graphTime->graph(0)->setData(indexes,times);
         ui->graphTime->yAxis->setRange(0,20);
-        ui->graphTime->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+        ui->graphTime->setInteractions(QCP::iRangeDrag);
         ui->graphTime->yAxis->setPadding(5);
         ui->graphTime->yAxis->setLabel("Time in Minutes");
 
@@ -689,6 +784,7 @@ void MainWindow::readIn()
         metric3->setData(ticks,time3);
         metric4->setData(ticks,time4);
 
+        ui->graph2->yAxis->setRange(0, 30);
         ui->graph2->yAxis->setPadding(5); // a bit more space to the left border
         ui->graph2->yAxis->setLabel("Presentation Time Breakdown");
 
@@ -701,7 +797,7 @@ void MainWindow::readIn()
         QCPBars *singleRun = new QCPBars(ui->graphTime->xAxis, ui->graphTime->yAxis);
         singleRun->setAntialiased(true);
         singleRun->setStackingGap(0);
-        singleRun->setName(labels.at(ui->comboBox->currentIndex()));
+        singleRun->setName(labels.at(ui->runBox->currentIndex()));
         singleRun->setPen(QPen(QColor(100, 100, 50).lighter(170)));
         singleRun->setBrush(QColor(20, 235, 20));
 
@@ -710,8 +806,11 @@ void MainWindow::readIn()
         ui->graphTime->xAxis->setTicker(ticker2);
         ui->graphTime->xAxis->setSubTicks(false);
 
-        ticks2 << 1 << 2 << 3 << 4;
-        singleGraphs << time1.at(ui->comboBox->currentIndex()) << time2.at(ui->comboBox->currentIndex()) << time3.at(ui->comboBox->currentIndex()) << time4.at(ui->comboBox->currentIndex());
+        ticks2 << 1 << 2 << 3;
+        singleGraphs << time1.at(ui->runBox->currentIndex()) << time2.at(ui->runBox->currentIndex()) << time3.at(ui->runBox->currentIndex());
+        qDebug() << time1.at(ui->runBox->currentIndex());
+        qDebug() << ui->runBox->currentIndex();
+        qDebug() << "that'stest";
         singleRun->setData(ticks2, singleGraphs);
 
     }
@@ -735,8 +834,8 @@ void MainWindow::readIn()
     ui->customPlot->graph(2)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 8));
     ui->customPlot->graph(2)->setData(indexes,stressScores);
 
-    ui->graph2->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
-    ui->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+    ui->graph2->setInteractions(QCP::iRangeDrag);
+    ui->customPlot->setInteractions(QCP::iRangeDrag);
     ui->customPlot->yAxis->setSubTicks(true);
     ui->customPlot->yAxis->setRange(-.5,10.5);
     qDebug("done reading");
@@ -776,5 +875,152 @@ QJsonArray MainWindow::makeJson()
     QJsonArray runs{run,run,run,run,run,run};
 
     return runs;
+
+}
+
+void MainWindow::changeColor()
+{
+    curCol = setSkin.getColor();
+
+    QPalette pal = ui->color1->palette();
+    pal.setColor(QPalette::Window,curCol);
+
+
+    ui->color1->setPalette( pal);
+    ui->color1->update();
+    ui->color2->setPalette( pal);
+    ui->color2->update();
+    ui->color3->setPalette( pal);
+    ui->color3->update();
+
+}
+
+void MainWindow::changeFile()
+{
+    powerpoint = QFileDialog::getExistingDirectory(this, tr("Presentation Directory"),
+                                                 "/home",
+                                                 QFileDialog::ShowDirsOnly
+                                                 | QFileDialog::DontResolveSymlinks);
+
+    //powerpoint =  QFileDialog::getOpenFileName(this,tr("Choose Powerpoint"), "", tr("Image Files (*.png *.jpg *.bmp)"));
+    QString label = powerpoint;
+    label.remove(0,label.lastIndexOf("/") + 1);
+    ui->fileLabel->setText(label);
+
+}
+
+void MainWindow::changeSong()
+{
+    song =  QFileDialog::getOpenFileName(this,tr("Choose Music"), "", tr("Audio Files (*.wav *.ogg)"));
+    QString music = song;
+    music.remove(0,music.lastIndexOf("/") + 1);
+    ui->musicLabel->setText(music);
+    ui->musicLabel_2->setText(music);
+
+}
+
+void MainWindow::changeSettings()
+{
+
+    int usernum = ui->userLabel->text().right(1).toInt();
+
+    QJsonArray tester;
+
+    QString filename = QApplication::applicationDirPath() + "/save.json";
+    QFile saveFile(filename);
+    if (!saveFile.open(QIODevice::ReadOnly)) {
+           qWarning("Failed to save data.");
+           //return false; c
+    }
+    else
+    {
+        QByteArray saveData = saveFile.readAll();
+        QJsonDocument loadDoc(QJsonDocument::fromJson(saveData));
+        tester = loadDoc.array();
+    }
+
+    saveFile.close();
+
+   // int usern = ui->userLabel->text().right(1).toInt();
+
+    QJsonObject heightScene = tester.at(usernum).toObject()["Heights"].toObject();
+    QJsonObject calmScene = tester.at(usernum).toObject()["Calm"].toObject();
+    QJsonObject socialScene = tester.at(usernum).toObject()["Social"].toObject();
+    QJsonObject user = tester.at(usernum).toObject();
+
+
+    QJsonObject heightSettings
+    {
+        {"Color",curCol.name()},
+        {"Day", 1},
+        {"Building", ui->heightBox->currentIndex()},
+        {"Song", song}
+    };
+
+    if(ui->radioButton_2->isChecked())
+    {
+        heightSettings["Day"] = 0;
+    }
+
+    QJsonArray animations;
+
+    if(ui->checkBox->isChecked())
+    {
+        animations.append(0);
+    }
+    if(ui->checkBox_2->isChecked())
+    {
+        animations.append(1);
+    }
+    if(ui->checkBox_3->isChecked())
+    {
+        animations.append(2);
+    }
+    if(ui->checkBox_4->isChecked())
+    {
+        animations.append(3);
+    }
+    if(ui->checkBox_5->isChecked())
+    {
+        animations.append(4);
+    }
+
+
+
+    QJsonObject socialSettings
+    {
+        {"Color",curCol.name()},
+        {"Animations", animations},
+        {"Number Students", ui->seatsBox->value()},
+        {"Powerpoint", powerpoint}
+    };
+
+    QJsonObject calmSettings
+    {
+        {"Color",curCol.name()},
+        {"Song", song},
+        {"Rock", ui->checkBox_6->isChecked()},
+        {"Tree", ui->checkBox_7->isChecked()}
+    };
+
+    heightScene["Settings"] = heightSettings;
+    socialScene["Settings"] = socialSettings;
+    calmScene["Settings"] = calmSettings;
+
+    user["Heights"] = heightScene;
+    user["Calm"] = calmScene;
+    user["Social"] = socialScene;
+
+    tester[usernum] = user;
+
+    if (!saveFile.open(QIODevice::WriteOnly)) {
+           qWarning("Failed to save data.");
+           //return false;
+       }
+    QJsonDocument saveDoc(tester);
+
+    saveFile.write(saveDoc.toJson());
+
+    saveFile.close();
 
 }

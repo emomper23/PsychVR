@@ -24,6 +24,7 @@
 
 
 
+
 namespace Ui {
 class MainWindow;
 }
@@ -48,9 +49,15 @@ public slots:
     void readIn();
     void showSettings();
     void tabChanged(int tab);
-    void xAxisRangeChanged( const QCPRange &newRange, const QCPRange &oldRange);
+    void axisRangeChanged( const QCPRange &newRange, const QCPRange &oldRange);
+    void axisRangeChanged2( const QCPRange &newRange, const QCPRange &oldRange);
+    void axisRangeChanged3( const QCPRange &newRange, const QCPRange &oldRange);
     QString createRun();
     QJsonArray makeJson();
+    void changeSettings();
+    void changeColor();
+    void changeFile();
+    void changeSong();
 
 private:
     Ui::MainWindow *ui;
@@ -59,6 +66,10 @@ private:
     CUnityMap * getMap();
     std::vector <QButtonGroup*> radioQs;
     settings * m_settings;
+    QColorDialog setSkin;
+    QColor curCol;
+    QString powerpoint;
+    QString song;
 };
 
 #endif // MAINWINDOW_H

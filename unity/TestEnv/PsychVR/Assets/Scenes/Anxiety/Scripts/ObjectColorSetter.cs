@@ -10,23 +10,63 @@ public class ObjectColorSetter : MonoBehaviour {
     public Gradient gradient1;
     public Gradient gradient2;
 
-    public void Load()
+    public void LoadMountain()
     {
-        Vector3[] verts = this.gameObject.GetComponent<MeshFilter>().mesh.vertices;
         
-        Mesh mesh_temp = this.gameObject.GetComponent<MeshFilter>().mesh;
-        int count = this.gameObject.GetComponent<MeshFilter>().mesh.vertexCount;
-        Debug.Log(this.gameObject.transform.name + " "+count);
-        Color[] temp = new Color[count];
-        Gradient blend = BlendGradient(gradient1,gradient2);
-        for(int i = 0; i < temp.Length; i++)
+       float rand = Random.Range(0, 100);
+        this.gameObject.GetComponent<MeshRenderer>().materials[0].color = gradient1.Evaluate(rand);
+        this.gameObject.GetComponent<MeshRenderer>().materials[1].color = gradient2.Evaluate(rand);
+        this.gameObject.GetComponent<MeshRenderer>().materials[2].color = gradient2.Evaluate(rand);
+        this.gameObject.GetComponent<MeshRenderer>().materials[3].color = gradient1.Evaluate(rand);
+        this.gameObject.GetComponent<MeshRenderer>().materials[4].color = gradient1.Evaluate(rand);
+
+        // this.gameObject.GetComponents<Material>()[0].set
+    }
+
+    public void LoadTree(int selection)
+    {
+
+      
+        float rand = Random.Range(0, 100);
+        float rand1 = Random.Range(0, 100);
+        float rand2= Random.Range(0, 100);
+        if (selection == 0)
         {
-            temp[i] = blend.Evaluate(verts[i].y);
-           //Debug.Log(temp[i]);
+            this.gameObject.GetComponent<MeshRenderer>().materials[0].color = gradient2.Evaluate(rand);
+            this.gameObject.GetComponent<MeshRenderer>().materials[1].color = gradient1.Evaluate(rand1);
+            this.gameObject.GetComponent<MeshRenderer>().materials[2].color = gradient2.Evaluate(rand2);
+            this.gameObject.GetComponent<MeshRenderer>().materials[3].color = gradient1.Evaluate(rand);
+            this.gameObject.GetComponent<MeshRenderer>().materials[4].color = gradient1.Evaluate(rand);
+            this.gameObject.GetComponent<MeshRenderer>().materials[5].color = gradient2.Evaluate(rand2);
+            this.gameObject.GetComponent<MeshRenderer>().materials[6].color = gradient2.Evaluate(rand1);
+            this.gameObject.GetComponent<MeshRenderer>().materials[7].color = gradient1.Evaluate(rand);
+            this.gameObject.GetComponent<MeshRenderer>().materials[8].color = gradient1.Evaluate(rand2);
         }
-        mesh_temp.colors = temp;
-        this.gameObject.GetComponent<MeshFilter>().mesh = mesh_temp;
-       // this.gameObject.GetComponents<Material>()[0].set
+        else
+        {
+            this.gameObject.GetComponent<MeshRenderer>().materials[0].color = gradient1.Evaluate(rand);
+            this.gameObject.GetComponent<MeshRenderer>().materials[1].color = gradient2.Evaluate(rand1);
+        }
+
+        
+
+
+
+        // this.gameObject.GetComponents<Material>()[0].set
+    }
+    public void LoadRock()
+    {
+        float rand = Random.Range(0, 100);
+        int sel = (int)rand;
+        if (sel % 2 == 0)
+        {
+            this.gameObject.GetComponent<MeshRenderer>().materials[0].color = gradient1.Evaluate(rand);
+        }
+        else
+        {
+            this.gameObject.GetComponent<MeshRenderer>().materials[0].color = gradient2.Evaluate(rand);
+        }
+        
     }
     public Gradient BlendGradient(Gradient terrain_gradient, Gradient object_gradient)
     {

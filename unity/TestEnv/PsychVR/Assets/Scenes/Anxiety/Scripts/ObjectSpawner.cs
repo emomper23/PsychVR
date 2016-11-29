@@ -19,15 +19,6 @@ public class ObjectSpawner : MonoBehaviour {
     {
         float diff_x = Random.Range(-100, 100);
         float diff_z = Random.Range(-100, 100);
-
-
-        //((GameObject)temp).GetComponent<ColorSetter>().
-        //((GameObject)temp).GetComponent<ColorSetter>().
-
-
-
-
-
         GameObject temp = (GameObject)GameObject.Instantiate(mountain, this.transform.position - new Vector3(diff_x, -20, diff_z), this.transform.rotation);
         Vector3 scale_vec = new Vector3(Random.Range(0.5f, 1f), Random.Range(0.3f, 3f), Random.Range(0.5f, 1f));
         Vector3 scale = ((GameObject)temp).transform.GetChild(0).localScale;
@@ -36,7 +27,6 @@ public class ObjectSpawner : MonoBehaviour {
         temp.GetComponent<ObjectHeight>().parent_plane = this.gameObject;
         temp.GetComponent<ObjectHeight>().enabled = true;
        
-        
         temp.GetComponentInChildren<ObjectColorSetter>().gradient1 = gradient1;
         temp.GetComponentInChildren<ObjectColorSetter>().gradient2 = gradient2;
         temp.GetComponentInChildren<ObjectColorSetter>().LoadMountain();
@@ -60,7 +50,6 @@ public class ObjectSpawner : MonoBehaviour {
             Vector3 scale = ((GameObject)temp).transform.localScale;
             scale.Scale(scale_vec);
             temp.transform.localScale = scale;
-            //temp.GetComponent<ObjectHeight>().height_diff = temp.GetComponent<ObjectHeight>().height_diff * scale.y;
             temp.GetComponent<ObjectHeight>().parent_plane = this.gameObject;
             temp.GetComponent<ObjectHeight>().enabled = true;
             temp.GetComponentInChildren<ObjectColorSetter>().gradient1 = gradient1;

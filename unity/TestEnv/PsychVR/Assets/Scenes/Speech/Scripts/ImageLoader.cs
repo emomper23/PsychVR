@@ -13,20 +13,30 @@ public class ImageLoader : MonoBehaviour {
     private Object[] list;
     public GameObject screen;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         path = PlayerPrefs.GetString("Powerpoint");
-        string url = "file:///" + path;
-        Debug.Log(path);
-        DirectoryInfo dir = new DirectoryInfo(path);
-        FileInfo[] info = dir.GetFiles("*.JPG");
-        total = info.Length;
-        list = new Object[total];
-        foreach (FileInfo f in info)
+        if (path == "")
         {
-            WWW www = new WWW(url+f.Name);
-            StartCoroutine(WaitForRequest(www));
+            Debug.Log("default ppt");
+            list = Resources.LoadAll("Textures");
+
+        }
+        else
+        {
+            string url = "file:///" + path;
+            Debug.Log(path);
+            DirectoryInfo dir = new DirectoryInfo(path);
+            FileInfo[] info = dir.GetFiles("*.JPG");
+            total = info.Length;
+            list = new Object[total];
+            foreach (FileInfo f in info)
+            {
+                WWW www = new WWW(url + f.Name);
+                StartCoroutine(WaitForRequest(www));
+            }
+
         }
     }
     IEnumerator WaitForRequest(WWW www)

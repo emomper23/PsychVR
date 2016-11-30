@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class HumanController : MonoBehaviour
 {
 
-	public GameObject human01Prefab;
+	public GameObject humanPrefab;
+	public GameObject[] humanModels;
+
+	public RuntimeAnimatorController humanController;
 
 	public Vector3 zeroVector = new Vector3(0, 0, 0);
 	public Vector3 oneVector = new Vector3(1, 1, 1);
@@ -27,6 +31,9 @@ public class HumanController : MonoBehaviour
 
 		//string animations = PlayerPrefs.GetString("");
 
+		List<GameObject> unplacedHumans = new List<GameObject>();
+		foreach (GameObject human in humanModels) unplacedHumans.Add(human);
+
 		ArrayList rows = new ArrayList();
 		rows.Add(row1);
 		rows.Add(row2);
@@ -34,7 +41,7 @@ public class HumanController : MonoBehaviour
 		rows.Add(row4);
 
 		int students = PlayerPrefs.GetInt("NumberStudents");
-		//students = 6;
+		students = 23;
 		int studentsRem = students;
 
 		int rowCount = rows.Count;
@@ -53,12 +60,24 @@ public class HumanController : MonoBehaviour
 			firstPosition = ((GameObject[])rows[0]).Length - 1;
 
 		int firstAnimInt = Random.Range(1, 9);
-		GameObject firstHuman = (GameObject)Instantiate(human01Prefab, zeroVector, zeroQuaternion);
-		firstHuman.transform.parent = ((GameObject[])rows[0])[firstPosition].transform;
-		firstHuman.transform.localScale = oneVector;
-		firstHuman.transform.localEulerAngles = animRotations[firstAnimInt - 1];
-		firstHuman.transform.localPosition = animTransforms[firstAnimInt - 1];
-		firstHuman.GetComponent<Animator>().SetInteger("position", firstAnimInt);
+		int humanSelector = Random.Range(0, unplacedHumans.Count);
+		//float animSpeedMod = Random.Range(0.2f, 2f);
+
+		//GameObject firstHuman = (GameObject)Instantiate(humanPrefab, zeroVector, zeroQuaternion);
+		GameObject firstModel = (GameObject)Instantiate(unplacedHumans[humanSelector], zeroVector, zeroQuaternion);
+		
+		//firstModel.transform.parent = firstHuman.transform;
+
+		firstModel.transform.parent = ((GameObject[])rows[0])[firstPosition].transform;
+		firstModel.transform.localScale = oneVector;
+		firstModel.transform.localEulerAngles = animRotations[firstAnimInt - 1];
+		firstModel.transform.localPosition = animTransforms[firstAnimInt - 1];
+		firstModel.GetComponent<Animator>().runtimeAnimatorController = humanController;
+		firstModel.GetComponent<Animator>().applyRootMotion = false;
+		firstModel.GetComponent<Animator>().SetInteger("position", firstAnimInt);
+		//firstModel.GetComponent<Animator>().speed = firstModel.GetComponent<Animator>().speed * animSpeedMod;
+
+		//unplacedHumans.RemoveAt(humanSelector);
 		studentsRem--;
 		seatsRem--;
 
@@ -94,13 +113,25 @@ public class HumanController : MonoBehaviour
 					if (studentsRem != 0 && prbStudent(seatCount, seatsRem, studentsRem, students, i + 1, rowCount))
 					{
 						int animInt = Random.Range(1, 9);
-						GameObject human = (GameObject)Instantiate(human01Prefab, zeroVector, zeroQuaternion);
-						human.transform.parent = ((GameObject[])rows[i])[position].transform;
-						human.transform.localScale = oneVector;
-						human.transform.localEulerAngles = animRotations[animInt - 1];
-						human.transform.localPosition = animTransforms[animInt - 1];
-						human.GetComponent<Animator>().SetInteger("position", animInt);
+						humanSelector = Random.Range(0, unplacedHumans.Count);
+						//animSpeedMod = Random.Range(0.1f, 0.8f);
 
+						//GameObject human = (GameObject)Instantiate(humanPrefab, zeroVector, zeroQuaternion);
+						GameObject model = (GameObject)Instantiate(unplacedHumans[humanSelector], zeroVector, zeroQuaternion);
+
+						//model.transform.parent = human.transform;
+
+						model.transform.parent = ((GameObject[])rows[i])[position].transform;
+						model.transform.localScale = oneVector;
+						model.transform.localEulerAngles = animRotations[animInt - 1];
+						model.transform.localPosition = animTransforms[animInt - 1];
+
+						model.GetComponent<Animator>().runtimeAnimatorController = humanController;
+						model.GetComponent<Animator>().applyRootMotion = false;
+						model.GetComponent<Animator>().SetInteger("position", animInt);
+						//model.GetComponent<Animator>().speed = model.GetComponent<Animator>().speed * animSpeedMod;
+
+						//unplacedHumans.RemoveAt(humanSelector);
 						studentsRem--;
 					}
 					//We do not want to consider this seat again

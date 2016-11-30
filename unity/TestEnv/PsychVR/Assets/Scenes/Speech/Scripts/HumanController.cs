@@ -32,6 +32,7 @@ public class HumanController : MonoBehaviour
         //if (seats == null)
         int firstAnimInt;
         string animations = PlayerPrefs.GetString("Animations");
+		//animations = "[\"1\",\"2\",\"3\",\"4\",\"5\"]";
         Debug.Log(animations);
         if (animations == "" || animations == "[]")
         {
@@ -57,7 +58,7 @@ public class HumanController : MonoBehaviour
             }
         }
         
-       // firstAnimInt = 
+		//firstAnimInt = 
 
         //Debug.Log(animations);
 
@@ -72,7 +73,7 @@ public class HumanController : MonoBehaviour
         rows.Add(row4);
 
         int students = PlayerPrefs.GetInt("NumberStudents");
-        //students = 20;
+        //students = 13;
         int studentsRem = students;
 
         int rowCount = rows.Count;

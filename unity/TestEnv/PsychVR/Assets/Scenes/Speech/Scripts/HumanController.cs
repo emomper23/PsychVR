@@ -41,7 +41,7 @@ public class HumanController : MonoBehaviour
 		rows.Add(row4);
 
 		int students = PlayerPrefs.GetInt("NumberStudents");
-		students = 23;
+		students = 20;
 		int studentsRem = students;
 
 		int rowCount = rows.Count;
@@ -77,7 +77,7 @@ public class HumanController : MonoBehaviour
 		firstModel.GetComponent<Animator>().SetInteger("position", firstAnimInt);
 		//firstModel.GetComponent<Animator>().speed = firstModel.GetComponent<Animator>().speed * animSpeedMod;
 
-		//unplacedHumans.RemoveAt(humanSelector);
+		unplacedHumans.RemoveAt(humanSelector);
 		studentsRem--;
 		seatsRem--;
 
@@ -131,7 +131,7 @@ public class HumanController : MonoBehaviour
 						model.GetComponent<Animator>().SetInteger("position", animInt);
 						//model.GetComponent<Animator>().speed = model.GetComponent<Animator>().speed * animSpeedMod;
 
-						//unplacedHumans.RemoveAt(humanSelector);
+						unplacedHumans.RemoveAt(humanSelector);
 						studentsRem--;
 					}
 					//We do not want to consider this seat again

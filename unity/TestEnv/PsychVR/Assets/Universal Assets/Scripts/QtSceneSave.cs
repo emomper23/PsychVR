@@ -13,10 +13,11 @@ public class QtSceneSave : MonoBehaviour {
     public GameObject anxiety;
 	void Start ()
     {
-        user_id = this.gameObject.GetComponent<QtSceneLoad>().user_id;
+        
     }
     public void saveAnxiety()
     {
+        user_id = this.gameObject.GetComponent<QtSceneLoad>().getUID();
         json_text = this.gameObject.GetComponent<QtSceneLoad>().getJSON();
         var data = JSON.Parse(json_text);
         Debug.Log(data[user_id]["Anxiety"]);
@@ -38,6 +39,7 @@ public class QtSceneSave : MonoBehaviour {
     }
     public void saveSpeech()
     {
+        user_id = this.gameObject.GetComponent<QtSceneLoad>().getUID() ;
         json_text = this.gameObject.GetComponent<QtSceneLoad>().getJSON();
         var data = JSON.Parse(json_text);
         Debug.Log(data[user_id]["Social"]);
@@ -64,6 +66,7 @@ public class QtSceneSave : MonoBehaviour {
     }
     public void SaveHeights(float max_height)
     {
+        user_id = this.gameObject.GetComponent<QtSceneLoad>().getUID();
         json_text = this.gameObject.GetComponent<QtSceneLoad>().getJSON();
         var data = JSON.Parse(json_text);
         Debug.Log(data[user_id]["Heights"]);

@@ -292,7 +292,11 @@ void MainWindow::launchScene()
     QString command = "";
 
     QString giveStuff = createRun();
-
+    if(giveStuff == " ")
+    {
+        giveStuff = "0";
+    }
+    qDebug()<<giveStuff;
     if(ui->scene_selection->currentIndex()  == MainWindow::scene_idx_t::FEAR_OF_HEIGHTS)
     {
       command = "start ../heights.exe " + giveStuff;
@@ -420,7 +424,6 @@ QString MainWindow::createRun()
 
     saveFile.write(saveDoc.toJson());
     saveFile.close();
-    qDebug()<<ui->userLabel->text().right(1);
     return "" + ui->userLabel->text().right(1);
 
 }
@@ -1028,9 +1031,10 @@ void MainWindow::changeSettings()
         {"Song", song}
     };
 
-    if(ui->radioButton_2->isChecked())
+    if(ui->radioButton_8->isChecked())
     {
         heightSettings["Day"] = 0;
+        qDebug("does this happen??");
     }
 
     QJsonArray animations;

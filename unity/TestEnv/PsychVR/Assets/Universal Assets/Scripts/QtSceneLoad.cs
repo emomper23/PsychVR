@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 using System.IO;
 using SimpleJSON;
+using UnityEngine.UI;
 
 public class QtSceneLoad : MonoBehaviour {
 
@@ -13,21 +14,31 @@ public class QtSceneLoad : MonoBehaviour {
 	public Boolean day;
     public string session_id;
     private string json_text;
-    public int scene_idx = 1;
-    public int user_id = 0;
+    public int scene_idx = 0;
+    private int user_id = 0;
 
-	// Use this for initialization
+    // Use this for initialization
+    public int getUID()
+    {
+        return user_id;
+    }
 	void Start ()
     {
-        Debug.Log(m_path);
-        string text = System.IO.File.ReadAllText(m_path);
+        string[] args = System.Environment.GetCommandLineArgs();
+        if(args.Length > 1)
+            user_id = Int32.Parse(args[1]);
+        //debug.text = "Height:";
+        Debug.Log(System.Environment.CurrentDirectory + "\\save.json");
+        m_path = System.Environment.CurrentDirectory + "\\save.json";
+
+
+       // debug.text = System.Environment.CurrentDirectory + "\\save.json";
+        string text = System.IO.File.ReadAllText(System.Environment.CurrentDirectory + "\\save.json");
         json_text = text;
         //Debug.Log(text);
         var data = JSON.Parse(json_text);
-
-        
-        //Debug.Log(data[user_id]["Calm"]);
-        //Debug.Log(data[user_id]["Heights"]);
+        // Debug.Log(data[user_id]["Calm"]);
+        // Debug.Log(data[user_id]["Heights"]);
         //Debug.Log(data[user_id]["Social"]);
         //Debug.Log(data[user_id]["Heights"]["Color"]);
 
@@ -66,6 +77,6 @@ public class QtSceneLoad : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-	
-	}
+        
+    }
 }

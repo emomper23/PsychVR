@@ -58,6 +58,9 @@ public class QtSceneSave : MonoBehaviour {
         var output_file = File.CreateText(this.gameObject.GetComponent<QtSceneLoad>().m_path);
         output_file.Write(data.ToString());
         output_file.Close();
+        Debug.Log("quit!!");
+        Application.Quit();
+        
     }
     public void SaveHeights(float max_height)
     {
@@ -82,6 +85,7 @@ public class QtSceneSave : MonoBehaviour {
         var output_file = File.CreateText(this.gameObject.GetComponent<QtSceneLoad>().m_path);
         output_file.Write(data.ToString());
         output_file.Close();
+        Application.Quit();
     }
 	
 	// Update is called once per frame

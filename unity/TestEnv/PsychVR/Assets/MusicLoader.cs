@@ -8,7 +8,15 @@ public class MusicLoader : MonoBehaviour {
     public string url;
     private bool global = false;
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+        if (PlayerPrefs.GetString("Song") == "")
+        {
+            global = true;
+            source = transform.GetChild(0).GetComponent<AudioSource>();
+            return;
+        }
+
         WWW www = new WWW(url);
 
         StartCoroutine(WaitForRequest(www));

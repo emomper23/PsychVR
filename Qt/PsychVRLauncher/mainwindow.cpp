@@ -541,9 +541,16 @@ void MainWindow::SaveData()
 void MainWindow::readIn()
 {
 
+    int index = 0;
+    if(ui->runBox->count() < 0)
+    {
+        index = ui->runBox->currentIndex();
+    }
+
     int usernum = 0;
     int sceneFlag = 0;
     double maxTime = 0;
+    double maxPieces = 0;
 
     ui->runBox->clear();
 
@@ -596,10 +603,10 @@ void MainWindow::readIn()
     }
 
     QVector<double> attemptData, buildingHeights, ticks, successes, times;
-    QVector<double> time1, time2, time3, time4;
+    QVector<double> boardTime, eyeTime, floorTime, otherTime;
     QVector<double> singleGraphs, ticks2;
     QVector<QString> labels, details;
-    details << "thing1" << "thing2" << "thing3" << "thing4";
+    details << "Board Time" << "Eye Time" << "Floor Time";// << "Other";
     double maxHeight = 0;
     //THE Unity JSON parser likes to stringify everything so do this... toString().toNum() since it works, see save.json and old.json for comparison of formats
     for(int iter = 0; iter < runData.size(); iter ++)
@@ -638,10 +645,10 @@ void MainWindow::readIn()
         }
         else if(sceneFlag == 1)
         {
-            time1.append(runData[iter].toObject()["Boardtime"].toString().toDouble() / 60);
-            time2.append(runData[iter].toObject()["EyeTime"].toString().toDouble() / 60);
-            time3.append(runData[iter].toObject()["FloorTime"].toString().toDouble() / 60);
-            time4.append(times.at(iter) - time1.at(iter) - time2.at(iter) - time3.at(iter));
+            boardTime.append(runData[iter].toObject()["BoardTime"].toString().toDouble() / 60);
+            eyeTime.append(runData[iter].toObject()["EyeTime"].toString().toDouble() / 60);
+            floorTime.append(runData[iter].toObject()["FloorTime"].toString().toDouble() / 60);
+            otherTime.append(times.at(iter) - boardTime.at(iter) - eyeTime.at(iter) - floorTime.at(iter));
 
         }
 
@@ -654,6 +661,34 @@ void MainWindow::readIn()
 
     }
 
+    if(ui->runBox->count() > index)
+    {
+        ui->runBox->setCurrentIndex(index);
+
+    }
+    if(sceneFlag == 1 && ui->runBox->count() > 0)
+    {
+        maxPieces = boardTime.at(ui->runBox->currentIndex());
+        if(maxPieces < eyeTime.at(ui->runBox->currentIndex()))
+        {
+            maxPieces = eyeTime.at(ui->runBox->currentIndex());
+        }
+        if(maxPieces < floorTime.at(ui->runBox->currentIndex()))
+        {
+            maxPieces = floorTime.at(ui->runBox->currentIndex());
+        }
+        if(maxPieces < otherTime.at(ui->runBox->currentIndex()))
+        {
+            maxPieces = otherTime.at(ui->runBox->currentIndex());
+        }
+
+        qDebug() << "hahahahahaha";
+    }
+    else
+    {
+        maxPieces = 10;
+    }
+    qDebug() << maxPieces;
     //---------------------------------------------------------------------------------------------------
 
     ui->customPlot->clearGraphs();
@@ -753,15 +788,14 @@ void MainWindow::readIn()
         QCPBars *metric1 = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
         metric1->setAntialiased(true);
         metric1->setStackingGap(0);
-        metric1->setName("Thing One");
+        metric1->setName("Time Looking at Presentation");
         metric1->setPen(QPen(QColor(100, 100, 50).lighter(170)));
         metric1->setBrush(QColor(255, 200, 50));
-
 
         QCPBars *metric2 = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
         metric2->setAntialiased(true);
         metric2->setStackingGap(0);
-        metric2->setName("Thing 2");
+        metric2->setName("Time Looking at Audience");
         metric2->setPen(QPen(QColor(100, 100, 100).lighter(150)));
         metric2->setBrush(QColor(105, 105, 105));
 
@@ -770,7 +804,7 @@ void MainWindow::readIn()
         QCPBars *metric3 = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
         metric3->setAntialiased(true);
         metric3->setStackingGap(0);
-        metric3->setName("Thing 3");
+        metric3->setName("Time Looking Down");
         metric3->setPen(QPen(QColor(100, 100, 50).lighter(170)));
         metric3->setBrush(QColor(20, 235, 20));
 
@@ -779,19 +813,19 @@ void MainWindow::readIn()
         QCPBars *metric4 = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
         metric4->setAntialiased(true);
         metric4->setStackingGap(0);
-        metric4->setName("Thing 4");
+        metric4->setName("Other Time");
         metric4->setPen(QPen(QColor(100, 100, 50).lighter(170)));
-        metric4->setBrush(QColor(50, 50, 50));
+        metric4->setBrush(QColor(200, 200, 200));
 
         metric4->moveAbove(metric3);
 
-        metric1->setData(ticks, time1);
-        metric2->setData(ticks, time2);
-        metric3->setData(ticks,time3);
-        metric4->setData(ticks,time4);
+        metric1->setData(ticks, boardTime);
+        metric2->setData(ticks, eyeTime);
+        metric3->setData(ticks,floorTime);
+        metric4->setData(ticks,otherTime);
 
 
-        ui->graph2->yAxis->setRange(0, 33);
+        ui->graph2->yAxis->setRange(0, maxTime + 3);
         ui->graph2->yAxis->setPadding(5); // a bit more space to the left border
         ui->graph2->yAxis->setLabel("Presentation Time Breakdown");
 
@@ -812,13 +846,13 @@ void MainWindow::readIn()
         ticker2->addTicks(singleGraphs, details);
         ui->graphTime->xAxis->setTicker(ticker2);
         ui->graphTime->xAxis->setSubTicks(false);
+        qDebug() << maxPieces;
+        qDebug() << "hooooboy";
+        ui->graphTime->yAxis->setRange(0,maxPieces + 2.5);
 
 
         ticks2 << 1 << 2 << 3;
-        singleGraphs << time1.at(ui->runBox->currentIndex()) << time2.at(ui->runBox->currentIndex()) << time3.at(ui->runBox->currentIndex());
-        qDebug() << time1.at(ui->runBox->currentIndex());
-        qDebug() << ui->runBox->currentIndex();
-        qDebug() << "that'stest";
+        singleGraphs << boardTime.at(ui->runBox->currentIndex()) << eyeTime.at(ui->runBox->currentIndex()) << floorTime.at(ui->runBox->currentIndex());
         singleRun->setData(ticks2, singleGraphs);
 
     }
@@ -881,8 +915,6 @@ QJsonArray MainWindow::makeJson()
     QJsonObject cSets{
         {"Color",curCol.name()},
         {"Song", song},
-        {"Rock", ui->checkBox_6->isChecked()},
-        {"Tree", ui->checkBox_7->isChecked()}
     };
 
     QJsonObject sSets{
@@ -1037,9 +1069,7 @@ void MainWindow::changeSettings()
     QJsonObject calmSettings
     {
         {"Color",curCol.name()},
-        {"Song", song},
-        {"Rock", ui->checkBox_6->isChecked()},
-        {"Tree", ui->checkBox_7->isChecked()}
+        {"Song", song}
     };
 
     heightScene["Settings"] = heightSettings;

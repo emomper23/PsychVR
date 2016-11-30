@@ -543,6 +543,7 @@ void MainWindow::readIn()
 
     int usernum = 0;
     int sceneFlag = 0;
+    double maxTime = 0;
 
     ui->runBox->clear();
 
@@ -614,7 +615,12 @@ void MainWindow::readIn()
         stressScores.append(score/3.6);
         score = 0;
 
-        times.append(runData[iter].toObject()["time"].toString().toDouble());
+        times.append(runData[iter].toObject()["time"].toString().toDouble() / 60);
+
+        if(maxTime < times.at(iter))
+        {
+            maxTime = times.at(iter);
+        }
 
 
         if(sceneFlag == 0)
@@ -632,9 +638,9 @@ void MainWindow::readIn()
         }
         else if(sceneFlag == 1)
         {
-            time1.append(runData[iter].toObject()["Boardtime"].toString().toDouble());
-            time2.append(runData[iter].toObject()["EyeTime"].toString().toDouble());
-            time3.append(runData[iter].toObject()["FloorTime"].toString().toDouble());
+            time1.append(runData[iter].toObject()["Boardtime"].toString().toDouble() / 60);
+            time2.append(runData[iter].toObject()["EyeTime"].toString().toDouble() / 60);
+            time3.append(runData[iter].toObject()["FloorTime"].toString().toDouble() / 60);
             time4.append(times.at(iter) - time1.at(iter) - time2.at(iter) - time3.at(iter));
 
         }
@@ -687,10 +693,6 @@ void MainWindow::readIn()
     ui->customPlot->xAxis->setTicker(textTicker);
     ui->customPlot->xAxis->setSubTicks(false);
 
-
-
-
-
     if(sceneFlag == 0)
     {
         ui->graphTime->addGraph();
@@ -736,7 +738,7 @@ void MainWindow::readIn()
         ui->graphTime->graph(0)->setLineStyle((QCPGraph::LineStyle)1);
         ui->graphTime->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,7));
         ui->graphTime->graph(0)->setData(indexes,times);
-        ui->graphTime->yAxis->setRange(0,20);
+        ui->graphTime->yAxis->setRange(0,maxTime + 2.5);
         ui->graphTime->setInteractions(QCP::iRangeDrag);
         ui->graphTime->yAxis->setPadding(5);
         ui->graphTime->yAxis->setLabel("Time in Minutes");
@@ -745,8 +747,9 @@ void MainWindow::readIn()
         heights->setData(ticks, buildingHeights);
         madeRuns->setData(ticks,successes);
     }
-    else if(sceneFlag == 1)
+    else if(sceneFlag == 1 && ui->runBox->count() > 0)
     {
+
         QCPBars *metric1 = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
         metric1->setAntialiased(true);
         metric1->setStackingGap(0);
@@ -787,7 +790,8 @@ void MainWindow::readIn()
         metric3->setData(ticks,time3);
         metric4->setData(ticks,time4);
 
-        ui->graph2->yAxis->setRange(0, 30);
+
+        ui->graph2->yAxis->setRange(0, 33);
         ui->graph2->yAxis->setPadding(5); // a bit more space to the left border
         ui->graph2->yAxis->setLabel("Presentation Time Breakdown");
 
@@ -808,6 +812,7 @@ void MainWindow::readIn()
         ticker2->addTicks(singleGraphs, details);
         ui->graphTime->xAxis->setTicker(ticker2);
         ui->graphTime->xAxis->setSubTicks(false);
+
 
         ticks2 << 1 << 2 << 3;
         singleGraphs << time1.at(ui->runBox->currentIndex()) << time2.at(ui->runBox->currentIndex()) << time3.at(ui->runBox->currentIndex());

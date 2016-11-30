@@ -2,14 +2,16 @@
 using System.Collections;
 using System.IO;
 
-public class ImageLoader : MonoBehaviour {
+public class ImageLoader : MonoBehaviour
+{
 
     public string prefix;
-    private string path; 
+    private string path;
     public int number;
     public int total;
     public int loaded;
     private bool first = true;
+    private bool bypass = false;
     private Object[] list;
     public GameObject screen;
 
@@ -17,10 +19,27 @@ public class ImageLoader : MonoBehaviour {
     void Start()
     {
         path = PlayerPrefs.GetString("Powerpoint");
-        if (path == "")
+        if (path == "/")
         {
-            Debug.Log("default ppt");
+           // Debug.Log("default ppt");
             list = Resources.LoadAll("Textures");
+            Object[] temp = new Object[list.Length];
+            for (int i = 1; i < list.Length + 1 ; i++)
+            {
+                foreach (Object o in list)
+                {
+                    //Debug.Log(o.name);
+                    if ( o.name == ("Slide" + i))
+                    {
+                        temp[i- 1] = o;
+                    }
+                }
+            }
+
+            list = temp;
+            Debug.Log("done!!" + total);
+            screen.GetComponent<Renderer>().material.mainTexture = (Texture2D)list[number % list.Length];
+            bypass = true;
 
         }
         else
@@ -50,7 +69,7 @@ public class ImageLoader : MonoBehaviour {
         if (www.error == null)
         {
             //Debug.Log("WWW Ok!: "+ www.url);
-            Texture temp =  www.texture;
+            Texture temp = www.texture;
             temp.name = Path.GetFileName(www.url);
             list[loaded] = temp;
             loaded++;
@@ -68,13 +87,10 @@ public class ImageLoader : MonoBehaviour {
         {
             foreach (Object o in list)
             {
-                if (o.name == ("Slide" + i  + ".JPG"))
+               // Debug.Log(o.name);
+                if (o.name == ("Slide" + i + ".JPG"))
                 {
-                    temp[i-1] = o;
-                }
-                else
-                {
-                    //Debug.Log(o.name+ "=="+("Slide" + i + ".JPG"));
+                    temp[i - 1] = o;
                 }
             }
         }
@@ -89,50 +105,49 @@ public class ImageLoader : MonoBehaviour {
         //Debug.Log(list[number % list.Length].name);
     }
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
-        if (first && loaded != 0 && loaded == total)
+       
+        if (! bypass && (first && loaded != 0 && loaded == total))
         {
             first = false;
             sort();
-            
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow ))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-			Next();
+            Next();
         }
-		if (Input.GetKeyDown(KeyCode.LeftArrow))
-		{
-			Previous();
-		}
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            Previous();
+        }
     }
 
-	public void Next ()
-	{
-		if (number != list.Length - 1)
-		{
-			number++;
-		}
-		else
-		{
-			number = 0;
-		}
-		screen.GetComponent<Renderer>().material.mainTexture = (Texture2D)list[number % list.Length];
-        Debug.Log(list[number % list.Length].name);
+    public void Next()
+    {
+        if (number != list.Length - 1)
+        {
+            number++;
+        }
+        else
+        {
+            number = 0;
+        }
+        screen.GetComponent<Renderer>().material.mainTexture = (Texture2D)list[number % list.Length];
 
     }
 
-	public void Previous()
-	{
-		if (number != 0)
-		{
-			number--;
-		}
-		else
-		{
-			number = list.Length - 1;
-		}
-		screen.GetComponent<Renderer>().material.mainTexture = (Texture2D)list[number % list.Length];
+    public void Previous()
+    {
+        if (number != 0)
+        {
+            number--;
+        }
+        else
+        {
+            number = list.Length - 1;
+        }
+        screen.GetComponent<Renderer>().material.mainTexture = (Texture2D)list[number % list.Length];
 
-	}
+    }
 }

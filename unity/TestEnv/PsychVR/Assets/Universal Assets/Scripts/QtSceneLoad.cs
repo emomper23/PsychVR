@@ -44,7 +44,7 @@ public class QtSceneLoad : MonoBehaviour {
             PlayerPrefs.SetInt("NumberStudents", Int16.Parse(data[user_id]["Social"]["Settings"]["Number Students"]));
             PlayerPrefs.SetString("SkinColor", data[user_id]["Social"]["Settings"]["Color"]);
             PlayerPrefs.SetString("Powerpoint", data[user_id]["Social"]["Settings"]["Powerpoint"]+"/");
-            PlayerPrefs.SetString("Animations", data[user_id]["Social"]["Settings"]["Animations"]);
+            PlayerPrefs.SetString("Animations", data[user_id]["Social"]["Settings"]["Animations"].ToString());
         }
         else if (scene_idx == 2)
         {

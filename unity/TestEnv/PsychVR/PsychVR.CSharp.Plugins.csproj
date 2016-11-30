@@ -190,6 +190,7 @@
     <None Include="Assets\Scenes\Anxiety\ProceduralToolkit\Shaders\Specular Vertex Color.shader" />
     <None Include="Assets\Scenes\Anxiety\ProceduralToolkit\Shaders\Standard Vertex Color.shader" />
     <None Include="Assets\Scenes\Anxiety\ProceduralToolkit\Shaders\Unlit Vertex Color.shader" />
+    <None Include="Assets\Scenes\Anxiety\Scripts\ColorMap.shader" />
     <None Include="Assets\Scenes\Anxiety\vertices.txt" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />

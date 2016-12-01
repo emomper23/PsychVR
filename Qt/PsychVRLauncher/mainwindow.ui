@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>PsychVR</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="sizePolicy">
@@ -78,7 +78,7 @@
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="tab">
         <property name="sizePolicy">
@@ -1400,7 +1400,7 @@ with my fear than before</string>
        </widget>
        <widget class="QWidget" name="tab_4">
         <attribute name="title">
-         <string>Page</string>
+         <string>Graphs</string>
         </attribute>
         <widget class="QTabWidget" name="tabWidget_2">
          <property name="geometry">
@@ -1639,10 +1639,10 @@ with my fear than before</string>
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroup_5"/>
-  <buttongroup name="buttonGroup_4"/>
-  <buttongroup name="buttonGroup_2"/>
-  <buttongroup name="buttonGroup_3"/>
-  <buttongroup name="buttonGroup_6"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_4"/>
+  <buttongroup name="buttonGroup_3"/>
+  <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup_6"/>
  </buttongroups>
 </ui>

@@ -574,7 +574,7 @@ void MainWindow::readIn()
 {
 
     int index = 0;
-    if(ui->runBox->count() < 0)
+    if(ui->runBox->count() > 0)
     {
         index = ui->runBox->currentIndex();
     }
@@ -638,14 +638,14 @@ void MainWindow::readIn()
     QVector<double> boardTime, eyeTime, floorTime, otherTime;
     QVector<double> singleGraphs, ticks2;
     QVector<QString> labels, details;
-    details << "Board Time" << "Eye Time" << "Floor Time";// << "Other";
+    details << "Board Time" << "Eye Time" << "Floor Time";  // << "Other";
     double maxHeight = 0;
     //THE Unity JSON parser likes to stringify everything so do this... toString().toNum() since it works, see save.json and old.json for comparison of formats
     for(int iter = 0; iter < runData.size(); iter ++)
     {
         stressBefore.append(runData[iter].toObject()["prestress"].toString().toDouble());
         stressAfter.append(runData[iter].toObject()["poststress"].toString().toDouble());
-        score = runData[iter].toObject()["answers"].toObject()["1"].toString().toDouble();
+        score = 6 - runData[iter].toObject()["answers"].toObject()["1"].toString().toDouble();
         score += runData[iter].toObject()["answers"].toObject()["2"].toString().toDouble();
         score += runData[iter].toObject()["answers"].toObject()["3"].toString().toDouble();
         score += runData[iter].toObject()["answers"].toObject()["4"].toString().toDouble();
@@ -664,12 +664,12 @@ void MainWindow::readIn()
 
         if(sceneFlag == 0)
         {
-            attemptData.append(runData[iter].toObject()["height"].toString().toDouble());
-            buildingHeights.append(runData[iter].toObject()["maxHeight"].toString().toDouble()- runData[iter].toObject()["height"].toString().toDouble());
-            if(maxHeight < runData[iter].toObject()["maxHeight"].toString().toDouble())
-                maxHeight = runData[iter].toObject()["maxHeight"].toString().toDouble();
-            if(buildingHeights.at(iter) == 0)
-                successes.append(runData[iter].toObject()["height"].toString().toDouble());
+            attemptData.append(runData[iter].toObject()["height"].toString().toDouble() *1.5);
+            buildingHeights.append((runData[iter].toObject()["maxHeight"].toString().toDouble()*1.5)- (runData[iter].toObject()["height"].toString().toDouble()*1.5));
+            if(maxHeight < (runData[iter].toObject()["maxHeight"].toString().toDouble() *1.5))
+                maxHeight = runData[iter].toObject()["maxHeight"].toString().toDouble() *1.5;
+            if(buildingHeights.at(iter) < 1)
+                successes.append(runData[iter].toObject()["maxHeight"].toString().toDouble()*1.5);
             else
                 successes.append(0);
 
@@ -689,8 +689,6 @@ void MainWindow::readIn()
         labels.append(QStringLiteral("Run %1").arg(iter + 1));
         ui->runBox->addItem(labels.at(iter));
         notes.append(runData[iter].toObject()["notes"].toString());
-        //ui->tab_4->repaint();
-
     }
 
     if(ui->runBox->count() > index)
@@ -714,13 +712,11 @@ void MainWindow::readIn()
             maxPieces = otherTime.at(ui->runBox->currentIndex());
         }
 
-        qDebug() << "hahahahahaha";
     }
     else
     {
         maxPieces = 10;
     }
-    qDebug() << maxPieces;
     //---------------------------------------------------------------------------------------------------
 
     ui->customPlot->clearGraphs();
@@ -760,8 +756,12 @@ void MainWindow::readIn()
     ui->customPlot->xAxis->setTicker(textTicker);
     ui->customPlot->xAxis->setSubTicks(false);
 
+
+
     if(sceneFlag == 0)
     {
+        ui->graph2->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignLeft|Qt::AlignTop);
+        ui->graphTime->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignLeft|Qt::AlignTop);
         ui->graphTime->addGraph();
         QCPBars *attempts = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
         attempts->setAntialiased(true);
@@ -773,7 +773,7 @@ void MainWindow::readIn()
         QCPBars *heights = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
         heights->setAntialiased(true);
         heights->setStackingGap(0);
-        heights->setName("Remaining height To Top");
+        heights->setName("Remaining Height to Top");
         heights->setPen(QPen(QColor(100, 100, 100).lighter(150)));
         heights->setBrush(QColor(105, 105, 105));
 
@@ -786,17 +786,29 @@ void MainWindow::readIn()
 
         heights->moveAbove(attempts);
 
-        ui->graph2->yAxis->setRange(0, maxHeight + 4);
+        ui->graph2->yAxis->setRange(0, maxHeight + 1);
         ui->graph2->yAxis->setPadding(5); // a bit more space to the left border
         ui->graph2->yAxis->setLabel("Total Heights in Meters");
         ui->graphTime->xAxis->setTicker(textTicker);
         ui->graphTime->xAxis->setSubTicks(false);
 
-        if(ticks.size() > 8)
+        if(ticks.size() < 4)
+        {
+            ui->graph2->xAxis->setRange(0, 4.5);
+            ui->customPlot->xAxis->setRange(0, 4.5);
+            ui->graphTime->xAxis->setRange(0, 4.5);
+        }
+        else if(ticks.size() > 8)
         {
             ui->graph2->xAxis->setRange(0, 8.5);
             ui->customPlot->xAxis->setRange(0, 8.5);
             ui->graphTime->xAxis->setRange(0, 8.5);
+        }
+        else
+        {
+            ui->graph2->xAxis->setRange(0, ticks.size());
+            ui->customPlot->xAxis->setRange(0, ticks.size());
+            ui->graphTime->xAxis->setRange(0, ticks.size());
         }
 
 
@@ -805,7 +817,7 @@ void MainWindow::readIn()
         ui->graphTime->graph(0)->setLineStyle((QCPGraph::LineStyle)1);
         ui->graphTime->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,7));
         ui->graphTime->graph(0)->setData(indexes,times);
-        ui->graphTime->yAxis->setRange(0,maxTime + 2.5);
+        ui->graphTime->yAxis->setRange(0,maxTime + (maxTime/6));
         ui->graphTime->setInteractions(QCP::iRangeDrag);
         ui->graphTime->yAxis->setPadding(5);
         ui->graphTime->yAxis->setLabel("Time in Minutes");
@@ -817,6 +829,25 @@ void MainWindow::readIn()
     else if(sceneFlag == 1 && ui->runBox->count() > 0)
     {
 
+        if(ticks.size() < 4)
+        {
+            ui->graph2->xAxis->setRange(0, 4.5);
+            ui->customPlot->xAxis->setRange(0, 4.5);
+        }
+        else if(ticks.size() > 8)
+        {
+            ui->graph2->xAxis->setRange(0, 8.5);
+            ui->customPlot->xAxis->setRange(0, 8.5);
+        }
+        else
+        {
+            ui->graph2->xAxis->setRange(0, ticks.size());
+            ui->customPlot->xAxis->setRange(0, ticks.size());
+        }
+
+        ui->graphTime->xAxis->setRange(0, 4);
+        ui->graph2->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignLeft|Qt::AlignTop);
+        ui->graphTime->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignRight|Qt::AlignTop);
         QCPBars *metric1 = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
         metric1->setAntialiased(true);
         metric1->setStackingGap(0);
@@ -857,7 +888,7 @@ void MainWindow::readIn()
         metric4->setData(ticks,otherTime);
 
 
-        ui->graph2->yAxis->setRange(0, maxTime + 3);
+        ui->graph2->yAxis->setRange(0, maxTime + (maxTime/6));
         ui->graph2->yAxis->setPadding(5); // a bit more space to the left border
         ui->graph2->yAxis->setLabel("Presentation Time Breakdown");
 
@@ -874,34 +905,34 @@ void MainWindow::readIn()
         singleRun->setPen(QPen(QColor(100, 100, 50).lighter(170)));
         singleRun->setBrush(QColor(20, 235, 20));
 
+
+
         QSharedPointer<QCPAxisTickerText> ticker2(new QCPAxisTickerText);
-        ticker2->addTicks(singleGraphs, details);
+        ticks2 << 1 << 2 << 3;
+
+        ticker2->addTicks(ticks2, details);
+
         ui->graphTime->xAxis->setTicker(ticker2);
         ui->graphTime->xAxis->setSubTicks(false);
-        qDebug() << maxPieces;
-        qDebug() << "hooooboy";
-        ui->graphTime->yAxis->setRange(0,maxPieces + 2.5);
+        ui->graphTime->yAxis->setRange(0,maxPieces + (maxPieces/6));
 
 
-        ticks2 << 1 << 2 << 3;
+
         singleGraphs << boardTime.at(ui->runBox->currentIndex()) << eyeTime.at(ui->runBox->currentIndex()) << floorTime.at(ui->runBox->currentIndex());
         singleRun->setData(ticks2, singleGraphs);
 
     }
 
-    qDebug("before");
     ui->customPlot->graph(0)->setPen(QPen(QColor(240,0,0)));
     ui->customPlot->graph(0)->setName("General Stress Rating");
     ui->customPlot->graph(0)->setLineStyle((QCPGraph::LineStyle)1);
     ui->customPlot->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,8));
     ui->customPlot->graph(0)->setData(indexes,stressBefore);
-    qDebug("after");
     ui->customPlot->graph(1)->setPen(QPen(QColor(0,200,0)));
     ui->customPlot->graph(1)->setName("Post-Vr Stress Rating");
     ui->customPlot->graph(1)->setLineStyle((QCPGraph::LineStyle)1);
     ui->customPlot->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 8));
     ui->customPlot->graph(1)->setData(indexes,stressAfter);
-    qDebug("survey");
     ui->customPlot->graph(2)->setPen(QPen(QColor(0,0,200)));
     ui->customPlot->graph(2)->setName("General Survey Rating");
     ui->customPlot->graph(2)->setLineStyle((QCPGraph::LineStyle)1);
@@ -912,7 +943,6 @@ void MainWindow::readIn()
     ui->customPlot->setInteractions(QCP::iRangeDrag);
     ui->customPlot->yAxis->setSubTicks(true);
     ui->customPlot->yAxis->setRange(-.5,10.5);
-    qDebug("done reading");
 
 }
 
@@ -920,7 +950,6 @@ void MainWindow::changeUser(int userNum)
 {
     QString name =  "User";
     name.append(QString::number(userNum));
-    qDebug() << name.end();
     ui->userLabel->setText(name);
     if(userNum == 6)
     {

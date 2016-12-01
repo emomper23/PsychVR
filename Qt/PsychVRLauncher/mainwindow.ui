@@ -121,7 +121,7 @@
           <rect>
            <x>0</x>
            <y>10</y>
-           <width>881</width>
+           <width>1041</width>
            <height>391</height>
           </rect>
          </property>
@@ -280,6 +280,16 @@
            </property>
            <property name="text">
             <string>No song selected</string>
+           </property>
+          </widget>
+          <widget class="QGraphicsView" name="graphicsViewHeights">
+           <property name="geometry">
+            <rect>
+             <x>490</x>
+             <y>10</y>
+             <width>531</width>
+             <height>341</height>
+            </rect>
            </property>
           </widget>
          </widget>
@@ -522,6 +532,16 @@
             <string>Browse:</string>
            </property>
           </widget>
+          <widget class="QGraphicsView" name="graphicsViewHeights_2">
+           <property name="geometry">
+            <rect>
+             <x>490</x>
+             <y>10</y>
+             <width>531</width>
+             <height>341</height>
+            </rect>
+           </property>
+          </widget>
          </widget>
          <widget class="QWidget" name="tab_8">
           <attribute name="title">
@@ -590,6 +610,16 @@
            </property>
            <property name="text">
             <string>No song selected</string>
+           </property>
+          </widget>
+          <widget class="QGraphicsView" name="graphicsViewHeights_3">
+           <property name="geometry">
+            <rect>
+             <x>490</x>
+             <y>10</y>
+             <width>531</width>
+             <height>341</height>
+            </rect>
            </property>
           </widget>
          </widget>
@@ -1608,11 +1638,11 @@ with my fear than before</string>
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="buttonGroup_5"/>
   <buttongroup name="buttonGroup_4"/>
   <buttongroup name="buttonGroup_3"/>
+  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_6"/>
-  <buttongroup name="buttonGroup_2"/>
-  <buttongroup name="buttonGroup_5"/>
  </buttongroups>
 </ui>

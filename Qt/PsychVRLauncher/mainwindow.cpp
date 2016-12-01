@@ -70,6 +70,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->fileButton, SIGNAL(clicked(bool)),this,SLOT(changeFile()));
     connect(ui->MusicButton_2, SIGNAL(clicked(bool)),this,SLOT(changeSong()));
     connect(ui->MusicButton, SIGNAL(clicked(bool)),this,SLOT(changeSong()));
+    connect(ui->tabWidget_3,SIGNAL(currentChanged(int)),this,SLOT(switchTabs(int)));
+    connect(ui->scene_selection,SIGNAL(currentIndexChanged(int)),this,SLOT(switchScene(int)));
 
     connect(ui->actionSave,SIGNAL(triggered(bool)),this,SLOT(saveFiles()));
     connect(ui->actionLoad,SIGNAL(triggered(bool)),this,SLOT(loadFiles()));
@@ -280,6 +282,16 @@ void MainWindow::tabChanged(int tab)
     }
 }
 
+void MainWindow::switchTabs(int index)
+{
+    ui->scene_selection->setCurrentIndex(index);
+}
+
+void MainWindow::switchScene(int index)
+{
+    ui->tabWidget_3->setCurrentIndex(index);
+}
+
 void MainWindow::newModel()
 {
     CUnityObject * obj = new CUnityObject(this->getMap()->m_objects.size());
@@ -310,9 +322,12 @@ void MainWindow::launchScene()
       command = "start ../anxiety.exe " + giveStuff;
     }
 
-    ui->tab_3->setEnabled(true);
 
-   system(command.toStdString().c_str());
+    ui->tab_3->setEnabled(true);
+    ui->tabWidget->setCurrentIndex(1);
+    changeSettings();
+
+    system(command.toStdString().c_str());
 }
 
 void MainWindow::showSettings()
@@ -441,6 +456,8 @@ void MainWindow::SaveData()
             return;
         }
     }
+    ui->tabWidget->setCurrentIndex(2);
+
     ui->errorLabel->setText("");
 
     QJsonArray tester;
@@ -536,6 +553,14 @@ void MainWindow::SaveData()
     saveFile.write(saveDoc.toJson());
 
     saveFile.close();
+    ui->buttonGroup->button(0)->setChecked(true);
+    ui->buttonGroup_2->button(0)->setChecked(true);
+    ui->buttonGroup_3->button(0)->setChecked(true);
+    ui->buttonGroup_4->button(0)->setChecked(true);
+    ui->buttonGroup_5->button(0)->setChecked(true);
+    ui->buttonGroup_6->button(0)->setChecked(true);
+
+    ui->tab_3->setEnabled(false);
 
     readIn();
 

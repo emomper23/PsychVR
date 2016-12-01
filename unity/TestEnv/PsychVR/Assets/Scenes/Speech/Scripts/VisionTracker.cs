@@ -20,25 +20,25 @@ public class VisionTracker : MonoBehaviour {
 
 		Physics.Raycast(ray, out hit, 30f);
 
-		if (hit.collider.gameObject.tag == "human")
-		{
-			//Debug.Log(hit.collider.gameObject.name);
-			hit.collider.gameObject.transform.parent.parent.parent.parent.parent.parent.parent.GetComponent<Animator>().SetBool("sitUp", true);
-			eyeContactTime += Time.deltaTime;
-		}
-		else if (hit.collider.gameObject.tag == "nearFloor")
-		{
-			floorTime += Time.deltaTime;
-		}
-		else if (hit.collider.gameObject.tag == "board")
-		{
-			boardTime += Time.deltaTime;
-		}
+        if (hit.collider && hit.collider.gameObject.tag == "human")
+        {
+            //Debug.Log(hit.collider.gameObject.name);
+            hit.collider.gameObject.transform.parent.parent.parent.parent.parent.parent.parent.GetComponent<Animator>().SetBool("sitUp", true);
+            eyeContactTime += Time.deltaTime;
+        }
+        else if (hit.collider && hit.collider.gameObject.tag == "nearFloor")
+        {
+            floorTime += Time.deltaTime;
+        }
+        else if (hit.collider && hit.collider.gameObject.tag == "board")
+        {
+            boardTime += Time.deltaTime;
+        }
 
 
-		//Debug.Log(eyeContactTime);
-		//Debug.Log(floorTime);
-		//Debug.Log(boardTime);
+		Debug.Log(eyeContactTime);
+		Debug.Log(floorTime);
+		Debug.Log(boardTime);
 
 	}
 }

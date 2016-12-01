@@ -28,6 +28,8 @@ public class HumanController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+       
+
         List<int> nums = new List<int>();
         //if (seats == null)
         int firstAnimInt;
@@ -107,6 +109,14 @@ public class HumanController : MonoBehaviour
         firstModel.GetComponent<Animator>().runtimeAnimatorController = humanController;
         firstModel.GetComponent<Animator>().applyRootMotion = false;
         firstModel.GetComponent<Animator>().SetInteger("position", firstAnimInt);
+
+        GameObject head = firstModel.transform.FindChild("Unity compliant skeleton/hips/spine/chest/chest1/neck/head").gameObject;
+        head.AddComponent<SphereCollider>();
+        head.GetComponent<SphereCollider>().radius = 0.1f;
+        head.tag = "human";
+        head.GetComponent<SphereCollider>().center = new Vector3(0f, 0.03f, 0f);
+
+
         //firstModel.GetComponent<Animator>().speed = firstModel.GetComponent<Animator>().speed * animSpeedMod;
 
         unplacedHumans.RemoveAt(humanSelector);
@@ -174,6 +184,11 @@ public class HumanController : MonoBehaviour
                         model.GetComponent<Animator>().runtimeAnimatorController = humanController;
                         model.GetComponent<Animator>().applyRootMotion = false;
                         model.GetComponent<Animator>().SetInteger("position", animInt);
+                        head = model.transform.FindChild("Unity compliant skeleton/hips/spine/chest/chest1/neck/head").gameObject;
+                        head.AddComponent<SphereCollider>();
+                        head.GetComponent<SphereCollider>().radius = 0.1f;
+                        head.tag = "human";
+                        head.GetComponent<SphereCollider>().center = new Vector3(0f, 0.03f, 0f);
                         //model.GetComponent<Animator>().speed = model.GetComponent<Animator>().speed * animSpeedMod;
 
                         unplacedHumans.RemoveAt(humanSelector);

@@ -15,7 +15,7 @@ public class QtSceneLoad : MonoBehaviour {
     public string session_id;
     private string json_text;
     public int scene_idx = 0;
-    private int user_id = 0;
+    private int user_id = 1;
 
     // Use this for initialization
     public int getUID()
@@ -59,11 +59,12 @@ public class QtSceneLoad : MonoBehaviour {
         }
         else if (scene_idx == 2)
         {
-            Debug.Log("Loading terrain Settings");
-            PlayerPrefs.SetString("SkinColor", data[user_id]["Anxiety"]["Settings"]["Color"]);
-            PlayerPrefs.SetString("Song", data[user_id]["Anxiety"]["Settings"]["Song"]);
-            PlayerPrefs.SetString ("Tree", data[user_id]["Anxiety"]["Settings"]["Tree"] );
-            PlayerPrefs.SetString("Rock", data[user_id]["Anxiety"]["Settings"]["Rock"]);
+            Debug.Log("Loading terrain Settings for user " + user_id);
+            Debug.Log(data[user_id]["Calm"]["Settings"]);
+            PlayerPrefs.SetString("SkinColor", data[user_id]["Calm"]["Settings"]["Color"]);
+            PlayerPrefs.SetString("Song", data[user_id]["Calm"]["Settings"]["Song"]);
+            PlayerPrefs.SetString ("Tree", data[user_id]["Calm"]["Settings"]["Tree"] );
+            PlayerPrefs.SetString("Rock", data[user_id]["Calm"]["Settings"]["Rock"]);
         }
     }
     public string getJSON()

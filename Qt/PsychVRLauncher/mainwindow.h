@@ -52,6 +52,8 @@ public slots:
     void axisRangeChanged( const QCPRange &newRange, const QCPRange &oldRange);
     void axisRangeChanged2( const QCPRange &newRange, const QCPRange &oldRange);
     void axisRangeChanged3( const QCPRange &newRange, const QCPRange &oldRange);
+    void setSceneMenu(int idx);
+    void setSceneToggle();
     QString createRun();
     QJsonArray makeJson();
     void changeSettings();
@@ -64,7 +66,10 @@ public slots:
 private:
     Ui::MainWindow *ui;
     CUnityMap ** m_map_list;
-    QGraphicsScene * m_scene;
+    QGraphicsScene * m_calm_scene;
+    QGraphicsScene * m_speech_scene;
+    std::vector<QGraphicsScene*> m_height_scenes;
+    //QGraphicsScene * m_height_scene;
     EditDialog * m_obj_settings;
     CUnityMap * getMap();
     std::vector <QButtonGroup*> radioQs;
@@ -73,6 +78,9 @@ private:
     QColor curCol;
     QString powerpoint;
     QString song;
+    void loadImage(QString file, QGraphicsView *view, QGraphicsScene **scene);
+    void allocScene(QString file,QGraphicsView *view,QGraphicsScene** scene);
+    void setScene(int idx);
 };
 
 #endif // MAINWINDOW_H

@@ -38,9 +38,13 @@ public class BallToMovement : MonoBehaviour
 
 		if (CnInputManager.GetAxis("Horizontal") != 0 || CnInputManager.GetAxis("Vertical") != 0)
 		{
-			Vector3 test = Camera.main.worldToCameraMatrix * new Vector3(CnInputManager.GetAxis("Horizontal"), 0, -CnInputManager.GetAxis("Vertical"));
-            test.Scale(new Vector3(speed, speed, speed));
-            thisRb.AddForce(test);
+            if (thisRb.velocity.magnitude < 13)
+            {
+                Vector3 test = Camera.main.worldToCameraMatrix * new Vector3(CnInputManager.GetAxis("Horizontal"), 0, -CnInputManager.GetAxis("Vertical"));
+                test.Scale(new Vector3(speed, speed, speed));
+                thisRb.AddForce(test);
+            }
+			
 		}
 	}
 

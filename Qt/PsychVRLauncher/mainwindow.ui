@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>PsychVR</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="sizePolicy">
@@ -126,7 +126,7 @@
           </rect>
          </property>
          <property name="currentIndex">
-          <number>2</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="tab_2">
           <attribute name="title">
@@ -290,6 +290,12 @@
              <width>531</width>
              <height>341</height>
             </rect>
+           </property>
+           <property name="verticalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
+           </property>
+           <property name="horizontalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
            </property>
           </widget>
          </widget>
@@ -541,6 +547,12 @@
              <height>341</height>
             </rect>
            </property>
+           <property name="verticalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
+           </property>
+           <property name="horizontalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
+           </property>
           </widget>
          </widget>
          <widget class="QWidget" name="tab_8">
@@ -612,14 +624,23 @@
             <string>No song selected</string>
            </property>
           </widget>
-          <widget class="QWidget" name="calmImage" native="true">
+          <widget class="QGraphicsView" name="graphicsViewCalm">
            <property name="geometry">
             <rect>
-             <x>390</x>
+             <x>490</x>
              <y>10</y>
-             <width>641</width>
+             <width>531</width>
              <height>341</height>
             </rect>
+           </property>
+           <property name="verticalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
+           </property>
+           <property name="horizontalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
+           </property>
+           <property name="sizeAdjustPolicy">
+            <enum>QAbstractScrollArea::AdjustIgnored</enum>
            </property>
           </widget>
          </widget>
@@ -1400,7 +1421,7 @@ with my fear than before</string>
        </widget>
        <widget class="QWidget" name="tab_4">
         <attribute name="title">
-         <string>Page</string>
+         <string>Graphs</string>
         </attribute>
         <widget class="QTabWidget" name="tabWidget_2">
          <property name="geometry">

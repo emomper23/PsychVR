@@ -100,6 +100,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->graphTime->xAxis, SIGNAL(rangeChanged(QCPRange,QCPRange)), this, SLOT(axisRangeChanged3(QCPRange,QCPRange)) );
     connect(ui->graphTime->yAxis, SIGNAL(rangeChanged(QCPRange,QCPRange)), this, SLOT(axisRangeChanged3(QCPRange,QCPRange)) );
 
+    connect(ui->radioButton_8,SIGNAL(toggled(bool)),this,SLOT(setSceneToggle()));
+    connect(ui->radioButton_9,SIGNAL(toggled(bool)),this,SLOT(setSceneToggle()));
+    connect(ui->heightBox,SIGNAL(currentIndexChanged(int)),this,SLOT(setSceneMenu(int)));
+
+
+
 
     signalMapper -> setMapping (ui->actionUser_1, 1) ;
     signalMapper -> setMapping (ui->actionUser_2, 2)  ;
@@ -113,13 +119,105 @@ MainWindow::MainWindow(QWidget *parent) :
     initButtons();
     loadFiles();
     readIn();
-    ui->calmImage->hide();
-    ui->calmImage->setStyleSheet("background-image: url(:/Images/Images/Anxiety.png)");
-    ui->calmImage->show();
+    loadImage("Anxiety.png",ui->graphicsViewCalm,&m_calm_scene);
+    loadImage("Speech.png",ui->graphicsViewSpeech,&m_speech_scene);
+
+    //1d
+    QGraphicsScene *scene;
+    loadImage("Height1d.png",ui->graphicsViewHeights,&scene);
+    m_height_scenes.push_back(scene);
+
+    //2d
+    allocScene("Height2d.png",ui->graphicsViewHeights,&scene);
+    m_height_scenes.push_back(scene);
+
+    //3d
+    allocScene("Height3d.png",ui->graphicsViewHeights,&scene);
+    m_height_scenes.push_back(scene);
+
+    //4d
+    allocScene("Height4d.png",ui->graphicsViewHeights,&scene);
+    m_height_scenes.push_back(scene);
+
+    //1n
+    allocScene("Height1n.png",ui->graphicsViewHeights,&scene);
+    m_height_scenes.push_back(scene);
+
+    //2n
+    allocScene("Height2n.png",ui->graphicsViewHeights,&scene);
+    m_height_scenes.push_back(scene);
+
+    //3n
+    allocScene("Height3n.png",ui->graphicsViewHeights,&scene);
+    m_height_scenes.push_back(scene);
+
+    //4n
+    allocScene("Height4n.png",ui->graphicsViewHeights,&scene);
+    m_height_scenes.push_back(scene);
+}
+void MainWindow::setSceneToggle()
+{
+    if(ui->radioButton_8->isChecked())
+    {
+        ui->graphicsViewHeights->hide();
+        ui->graphicsViewHeights->setScene(m_height_scenes[ui->heightBox->currentIndex()]);
+        ui->graphicsViewHeights->show();
+    }
+    else
+    {
+        ui->graphicsViewHeights->hide();
+        ui->graphicsViewHeights->setScene(m_height_scenes[4 + ui->heightBox->currentIndex()]);
+        ui->graphicsViewHeights->show();
+    }
+}
+void MainWindow::setSceneMenu(int idx)
+{
+    if(ui->radioButton_8->isChecked())
+    {
+        ui->graphicsViewHeights->hide();
+        ui->graphicsViewHeights->setScene(m_height_scenes[idx]);
+        ui->graphicsViewHeights->show();
+    }
+    else
+    {
+        ui->graphicsViewHeights->hide();
+        ui->graphicsViewHeights->setScene(m_height_scenes[4 + idx]);
+        ui->graphicsViewHeights->show();
+    }
+
+}
+void MainWindow::allocScene(QString file,QGraphicsView* view,QGraphicsScene** scene)
+{
+    QString path = ""+ QApplication::applicationDirPath() + "/Images/"+file;
+    qDebug()<<path;
+    QImage image(path);
+    QPixmap pixmap = QPixmap::fromImage(image);
+    int width = view->width();
+    int height = view->height();
+    *scene = new QGraphicsScene(QRectF(0, 0, width, height), 0);
+
+    QGraphicsPixmapItem *item = (*scene)->addPixmap(pixmap.scaled(QSize(
+                    (int)(*scene)->width(), (int)(*scene)->height())));
+}
+void MainWindow::loadImage(QString file, QGraphicsView* view, QGraphicsScene** scene )
+{
+    QString path = ""+ QApplication::applicationDirPath() + "/Images/"+file;
+    qDebug()<<path;
+    QImage image(path);
+    QPixmap pixmap = QPixmap::fromImage(image);
+    int width = view->width();
+    int height = view->height();
+    view->hide();
+    *scene = new QGraphicsScene(QRectF(0, 0, width, height), 0);
+
+    QGraphicsPixmapItem *item = (*scene)->addPixmap(pixmap.scaled(QSize(
+                    (int)(*scene)->width(), (int)(*scene)->height())));
 
 
-    //Poppler::Document * doc = Poppler::Document::load("/home/emomper/Documents/exam.pdf");
-    //QImage img = doc->page(0)->renderToImage();
+    view->fitInView(QRectF(0, 0, width, height));
+    view->setScene(*scene);
+    view->show();
+
 }
 MainWindow::~MainWindow()
 {

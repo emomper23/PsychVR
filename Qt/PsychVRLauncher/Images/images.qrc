@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Anxiety.png</file>
+        <file>Height1d.png</file>
+        <file>Height1n.png</file>
+        <file>Height2d.png</file>
+        <file>Height2n.png</file>
+        <file>Height3d.png</file>
+        <file>Height3n.png</file>
+        <file>Height4d.png</file>
+        <file>Height4n.png</file>
+        <file>Speech.png</file>
+    </qresource>
+</RCC>

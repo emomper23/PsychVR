@@ -113,6 +113,11 @@ MainWindow::MainWindow(QWidget *parent) :
     initButtons();
     loadFiles();
     readIn();
+    QPixmap image(":/Images/Anxiety.png");
+    QPicture pic = new QPicture()
+    ui->calmLabel->setPicture();
+    ui->calmLabel->repaint();
+    ui->calmLabel->update();
 
     //Poppler::Document * doc = Poppler::Document::load("/home/emomper/Documents/exam.pdf");
     //QImage img = doc->page(0)->renderToImage();

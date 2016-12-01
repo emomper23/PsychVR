@@ -126,7 +126,7 @@
           </rect>
          </property>
          <property name="currentIndex">
-          <number>2</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="tab_2">
           <attribute name="title">
@@ -532,7 +532,7 @@
             <string>Browse:</string>
            </property>
           </widget>
-          <widget class="QGraphicsView" name="graphicsViewSpeech">
+          <widget class="QGraphicsView" name="graphicsViewHeights_2">
            <property name="geometry">
             <rect>
              <x>490</x>
@@ -612,12 +612,12 @@
             <string>No song selected</string>
            </property>
           </widget>
-          <widget class="QWidget" name="calmImage" native="true">
+          <widget class="QGraphicsView" name="graphicsViewHeights_3">
            <property name="geometry">
             <rect>
-             <x>390</x>
+             <x>490</x>
              <y>10</y>
-             <width>641</width>
+             <width>531</width>
              <height>341</height>
             </rect>
            </property>
@@ -1394,9 +1394,6 @@ with my fear than before</string>
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <zorder>coverlabel</zorder>
-        <zorder>gridLayoutWidget_3</zorder>
-        <zorder>label_4</zorder>
        </widget>
        <widget class="QWidget" name="tab_4">
         <attribute name="title">
@@ -1639,10 +1636,18 @@ with my fear than before</string>
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroup_5"/>
+<<<<<<< HEAD
+=======
+  <buttongroup name="buttonGroup_6"/>
+>>>>>>> d5b3f9381ba1b4078eaa9675396be945fd4c3e27
   <buttongroup name="buttonGroup_4"/>
   <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup_3"/>
-  <buttongroup name="buttonGroup_6"/>
+  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+<<<<<<< HEAD
+  <buttongroup name="buttonGroup_6"/>
+=======
+>>>>>>> d5b3f9381ba1b4078eaa9675396be945fd4c3e27
  </buttongroups>
 </ui>

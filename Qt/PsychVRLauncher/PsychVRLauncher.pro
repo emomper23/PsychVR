@@ -49,3 +49,6 @@ FORMS    += mainwindow.ui \
     advancesettings.ui
 
 DISTFILES +=
+
+RESOURCES += \
+    Images/images.qrc

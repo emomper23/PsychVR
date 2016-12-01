@@ -64,6 +64,7 @@ public slots:
 private:
     Ui::MainWindow *ui;
     CUnityMap ** m_map_list;
+    QGraphicsScene * m_scene;
     EditDialog * m_obj_settings;
     CUnityMap * getMap();
     std::vector <QButtonGroup*> radioQs;

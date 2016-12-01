@@ -48,6 +48,4 @@ FORMS    += mainwindow.ui \
     settings.ui \
     advancesettings.ui
 
-DISTFILES +=
 
-RESOURCES +=

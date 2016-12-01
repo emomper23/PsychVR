@@ -58,6 +58,8 @@ public slots:
     void changeColor();
     void changeFile();
     void changeSong();
+    void switchTabs(int index);
+    void switchScene(int index);
 
 private:
     Ui::MainWindow *ui;

@@ -1364,9 +1364,6 @@ with my fear than before</string>
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <zorder>coverlabel</zorder>
-        <zorder>gridLayoutWidget_3</zorder>
-        <zorder>label_4</zorder>
        </widget>
        <widget class="QWidget" name="tab_4">
         <attribute name="title">
@@ -1608,11 +1605,11 @@ with my fear than before</string>
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="buttonGroup_5"/>
+  <buttongroup name="buttonGroup_6"/>
   <buttongroup name="buttonGroup_4"/>
+  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup_3"/>
   <buttongroup name="buttonGroup"/>
-  <buttongroup name="buttonGroup_6"/>
-  <buttongroup name="buttonGroup_2"/>
-  <buttongroup name="buttonGroup_5"/>
  </buttongroups>
 </ui>

@@ -72,7 +72,8 @@ public class QtSceneSave : MonoBehaviour {
         Debug.Log(data[user_id]["Heights"]);
         int current_run = 0;
         float building_height = 0;
-        building_height = heights.GetComponent<HeightPicker>().heights[UnityEngine.PlayerPrefs.GetInt("BuildingNum")];
+        float[] hardCodeHeights = { 12.708f,17.62f,24.682f,30.82f}; 
+        building_height = hardCodeHeights[UnityEngine.PlayerPrefs.GetInt("BuildingNum")];
         foreach (JSONNode run in data[user_id]["Heights"]["runs"].AsArray)
         {
             Debug.Log(run);

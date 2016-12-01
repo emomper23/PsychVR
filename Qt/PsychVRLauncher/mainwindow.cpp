@@ -950,15 +950,15 @@ void MainWindow::readIn()
         metric1->setAntialiased(true);
         metric1->setStackingGap(0);
         metric1->setName("Time Looking at Presentation");
-        metric1->setPen(QPen(QColor(100, 100, 50).lighter(170)));
-        metric1->setBrush(QColor(255, 200, 50));
+        metric1->setPen(QPen(QColor(100, 100, 100).lighter(170)));
+        metric1->setBrush(QColor(220, 110, 50));
 
         QCPBars *metric2 = new QCPBars(ui->graph2->xAxis, ui->graph2->yAxis);
         metric2->setAntialiased(true);
         metric2->setStackingGap(0);
         metric2->setName("Time Looking at Audience");
         metric2->setPen(QPen(QColor(100, 100, 100).lighter(150)));
-        metric2->setBrush(QColor(105, 105, 105));
+        metric2->setBrush(QColor(20, 235, 20));
 
         metric2->moveAbove(metric1);
 
@@ -966,8 +966,8 @@ void MainWindow::readIn()
         metric3->setAntialiased(true);
         metric3->setStackingGap(0);
         metric3->setName("Time Looking Down");
-        metric3->setPen(QPen(QColor(100, 100, 50).lighter(170)));
-        metric3->setBrush(QColor(20, 235, 20));
+        metric3->setPen(QPen(QColor(100, 100, 100).lighter(170)));
+        metric3->setBrush(QColor(105, 105, 105));
 
         metric3->moveAbove(metric2);
 
@@ -975,7 +975,7 @@ void MainWindow::readIn()
         metric4->setAntialiased(true);
         metric4->setStackingGap(0);
         metric4->setName("Other Time");
-        metric4->setPen(QPen(QColor(100, 100, 50).lighter(170)));
+        metric4->setPen(QPen(QColor(100, 100, 100).lighter(170)));
         metric4->setBrush(QColor(200, 200, 200));
 
         metric4->moveAbove(metric3);

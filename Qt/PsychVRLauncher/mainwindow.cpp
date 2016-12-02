@@ -413,15 +413,15 @@ void MainWindow::launchScene()
     qDebug()<<giveStuff;
     if(ui->scene_selection->currentIndex()  == MainWindow::scene_idx_t::FEAR_OF_HEIGHTS)
     {
-      command = "start ../heights.exe " + giveStuff;
+      command = "start ../x86_64/heights.exe " + giveStuff;
     }
     else if(ui->scene_selection->currentIndex()  ==  MainWindow::scene_idx_t::SPEECH_ANXIETY)
     {
-      command = "start ../speech.exe " + giveStuff;
+      command = "start ../x86_64/speech.exe " + giveStuff;
     }
     else if(ui->scene_selection->currentIndex()  == MainWindow::scene_idx_t::TERRAIN_GENERATION)
     {
-      command = "start ../anxiety.exe " + giveStuff;
+      command = "start ../x86_64/anxiety.exe " + giveStuff;
     }
 
 

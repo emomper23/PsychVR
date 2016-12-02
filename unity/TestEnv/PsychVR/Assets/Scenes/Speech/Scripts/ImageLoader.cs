@@ -19,7 +19,7 @@ public class ImageLoader : MonoBehaviour
     void Start()
     {
         path = PlayerPrefs.GetString("Powerpoint");
-        if (path == "/")
+        if (path == "/"||true)
         {
            // Debug.Log("default ppt");
             list = Resources.LoadAll("Textures");

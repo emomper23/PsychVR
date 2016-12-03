@@ -36,9 +36,9 @@ public class VisionTracker : MonoBehaviour {
         }
 
 
-		Debug.Log(eyeContactTime);
-		Debug.Log(floorTime);
-		Debug.Log(boardTime);
+		//Debug.Log(eyeContactTime);
+		//Debug.Log(floorTime);
+		//Debug.Log(boardTime);
 
 	}
 }

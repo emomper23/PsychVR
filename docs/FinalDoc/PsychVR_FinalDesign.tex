@@ -1147,7 +1147,7 @@ Time spent making eye contact with audience members compared with time spent loo
 The fear of heights module is built around the success of past and present research. Fear of heights, referred to as acrophobia, is a popular target for studying the impact of virtual reality on treatment. Past experiments and studies on using virtual reality for acrophobia treatment have lacked high quality graphical experiences which can detract from the immersion. Our background will feature a detailed cityscape to increase the realism which the user experiences and likely increase the effectiveness of treatment.
 
 \subsubsection{Past Research}
-In said research labs, researchers have had proven that virtual reality can help with Acrophobia.  Below is a list of 4 different studies, with a brief overview of how they were run and what their results were.
+In said research labs, researchers have proven that virtual reality can help with Acrophobia.  Below is a list of 4 different studies, with a brief overview of how they were run and what their results were.
 \begin{itemize}
 	\item In the summer of 1995, a team of researches did a case study with a single student who suffered from agoraphobia.  They 5 sessions, using VR exposure therapy , and then ran a series of tests on the student to see how it had affected them.  While their sample size was small, the case study provided evidence that VR could be used to treat Acrophobia.\cite{phobiaOne}
 	%http://www.sciencedirect.com/science/article/pii/S0005789405801005
@@ -1186,41 +1186,81 @@ As far as cityscapes go we are considering four options [Fig 31-34]:
 	\caption{Urban City Unity Asset Store Entry}
 	\label{fig:urbanCity}
 \end{figure}
-Currently we plan on implementing the Urban City pack [Fig 34] as our environment due to it's high quality and tall structures. As a stretch goal we may implement the ability for the user to switch between some of these landscapes to provide more variety to the environment.
+We have implemented the Urban City pack [Fig 34] as our environment due to it's high quality and tall structures. We have arranged the assets so the user may pick between multiple building heights.
 \par~\\
-For our elevator we will be using a window cleaning platform [Fig 35].
+For our elevator we used a window cleaning platform [Fig 35].
 \begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/59736
 	\centerline {\includegraphics[scale = 0.50]{elevator.png}}
 	\caption{Window Cleaning Machine Unity Asset Store Entry}
 	\label{fig:elevator}
 \end{figure}
-The user will be able to interact with controls on the platform via Leap Motion to scale the building up and down.
+The user is able to interact with controls on the platform via Leap Motion to move the elevator up and down.
 \subsubsection{Interaction and User Inputs}
-Interaction with this scene will be use simple look and click mechanics. Looking will be controlled by head tracking on the Oculus Rift and clicking will be controlled with Leap Motion. While on the elevator platform the user will have access to a control panel to set the height of the platform between ground floor and the top of the building. The user will also be able to abort the scene at any time should they become too frightened. 
+Interaction with this scene consists of simple look and press mechanics. Looking is controlled by head tracking on the Oculus Rift while button presses are controlled with Leap Motion. Via the Kinect sensor the user us able to traverse the platform and lean over the edge. While on the elevator platform the user will have access to a control panel to set the height of the platform between ground floor and the top of the building. The user will also be able to abort the scene at any time should they become too frightened. 
 
 \subsubsection{Configuration from Qt Launcher}
-Configurations in module 1 are mostly a stretch goal if we have time after completing our other scenes. Since our configuration here would be additional environments and buildings, the assets for this can become expensive quickly.
+We have provided the user the ability to select from four building heights as well as configure the time of day. Height options are 21 meters, 30 meters, 39 meters, and 54 meters. The available time settings are night and day. When the user changes these settings in the launcher a preview is shown of the scene.
 
 \subsubsection{User Progress Feedback}
-Users may optionally respond to a questionnaire before and after the scene. The use of the Samsung S Health app will be suggested but is also optional. For this the user would run the app on their smartphone and fill in our software with the feedback given to them from the S Health stress sensor. In addition to this the scene will track how high up the user went and how much time was spent at each level. All of these metrics will be combined and analyzed over multiple sessions to provide the user feedback on their efforts.%NEEDS WORK spreadsheet?
+Users may optionally respond to a questionnaire after the scene. In addition to this the scene will track how high up the user went and how much time was spent at each level. All of these metrics will be combined and analyzed over multiple sessions to provide the user feedback on their efforts.%NEEDS WORK spreadsheet?
 
 \pagebreak
-\begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/59736
-	%TODO HEIGHT STORYBOARD
-	\centerline {\includegraphics[scale = 0.13, angle = 180]{sbHeight.jpg}}%NEED PIC
-	\caption{Storyboard for Acrophobia Module}
-	\label{fig:sbHeight}
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=210px, height=210px, keepaspectratio]{qtHeightSettings.png}
+		\label{qtHeightSettings}
+		\caption{Fear of Heights Configuration}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=210px, height=210px, keepaspectratio]{heightSS1.png}
+		\label{heightSS1}
+		\caption{Fear of Heights Start}
+	\end{minipage}
 \end{figure}
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=210px, height=210px, keepaspectratio]{heightSS2.png}
+		\label{heightSS2}
+		\caption{Fear of Heights Leaning}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=210px, height=210px, keepaspectratio]{heightSurvey.png}
+		\label{heightSurvey}
+		\caption{Fear of Heights Survey}
+	\end{minipage}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=210px, height=210px, keepaspectratio]{heightQtGraph.png}
+		\label{heightQtGraph}
+		\caption{Fear of Heights Data Graph}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=210px, height=210px, keepaspectratio]{heightQtSurveyResults.png}
+		\label{heightQtSurveyResults}
+		\caption{Fear of Heights Progress Graph}
+	\end{minipage}
+\end{figure}
+
 \begin{enumerate}
-	\item The user turns on the vr, and starts the acrophobia module
-	\item The user will be placed near a platform at the bottom of a very tall building
+	\item PsychVR launcher is opened
+	\item The heights scene is configured and started
+	\item The user turns on the VR and enters the acrophobia module
+	\item The user will be placed on a platform at the bottom of a very tall building
 	\item The platform can move up and down on the building
-	\item The user controls how the platform moves up and down with their controller
-	\item If the user in anyway becomes panicked, they can hit a panic button
-	\item This will remove them from the experience entirely, no questions asked.
-	\item When the user either decides they are finished, or reaches the top
-	\item They are asked to fill out a stress and emotion questionnaire
-	\item They are then shown a results screen, that is based on data acquired from sensors, from how high they went/time it took, and their questionnaires.
+	\item The user controls how the platform moves up and down with their hands
+	\item If the user in anyway becomes panicked, they may end the simulation
+	\item Upon completion or exit the user is asked to fill out a stress and emotion questionnaire
+	\item They are then shown a results screen based on data acquired from sensors consisting of high they went and the time it took, and their responses to the questionnaire
 \end{enumerate}
 \pagebreak
 \subsection{Module 2 Speech Anxiety Simulator} %PETER PETER PETER PETER
@@ -1238,9 +1278,11 @@ Just like for the Acrophobia section, here are some studies that have been done 
 \end{itemize}
 
 \subsubsection{Our Implementation}
-In our implementation the user will be able to configure the environment in which they practice public speaking to better suit their needs and deliver a more personal experience. We will begin with a classroom environment with chair spots which the user can place different students into and configure their actions such as sleeping, focused, or texting. As a stretch goal for this module we will implement more varying environments like a conference room and a stage.
+In our implementation the user will be able to configure the environment in which they practice public speaking to better suit their needs and deliver a more personal experience. We will begin with a classroom environment with chair spots which the user can place different students into and configure their actions such as sleeping, focused, or distracted.
 
-Presentation will begin with the user sitting down. Momentarily they will be called upon to present and must stand and walk to the front of the room. If they have a power point preloaded through Qt they will walk to the front desk and plug it into the equipment which will display it onto the screen behind them as in an actual classroom. Following this the user will deliver their speech to the configured audience. Once finished, the user will sit back in their seat and the scene will end.
+To further customize the scene the user may load a power point through Qt which will then display it onto the screen behind them as in an actual classroom.
+
+Upon launch the user will deliver their speech to the configured audience. The slides can be traversed with the "Next" and "Prev" buttons. When the user is finished 
 
 \subsubsection{Models and Resources}
 For the speech anxiety module we need a room for the user to practice public speaking in, relevant objects to go in it, and human models to listen to the speaker. The majority of models used for this scene will be designed in Google SketchUp while the human models will be created in MakeHuman. 
@@ -1266,7 +1308,7 @@ This tool allows us to design a human model to our liking with free features, cl
 Models created in MakeHuman are fully rigged and can be exported as fbx files. This format is compatible with Unity's Mecanim which will be used to animate our models so they can perform various actions. These actions can be set according to how the user has configured the environment in our Qt launcher.
 
 \subsubsection{Interaction and User Inputs}
-The user begins the scene by moving from their desk to the front of the room. From here they may prepare any presentation materials they configured through Qt such as a Powerpoint presentation. Movement will be controlled via an input device which we will determine as we progress in development, we plan to control object interactions with LeapMotion. 
+The user begins the scene by moving from their desk to the front of the room. From here they may prepare any presentation materials they configured through Qt such as a Powerpoint presentation. Movement will be controlled via the Kinect sensor, we plan to control object interactions with LeapMotion. 
 
 \subsubsection{Configuration from Qt Launcher}
 This scene will be our most configurable. Qt will allow the user to specify which chairs have a model in them and what behavior that model will perform. A user will also be able to include a Powerpoint during configuration so they may have a presentation aid during their practice. As a stretch goal we hope to include more than just a classroom setting and allow users to pick from a few environments.
@@ -1277,7 +1319,7 @@ Users may optionally respond to a questionnaire before and after the scene. The 
 \begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/59736
 
 %TODO SPEECH STORYBOARD
-	\centerline {\includegraphics[scale = 0.12, angle = 180]{sbPresent.jpg}}%DIFFERENT IMAGE
+	\centerline {\includegraphics[scale = 0.12, angle = 180]{heightQtSurveyResults.png}}%DIFFERENT IMAGE
 	\caption{Storyboard for Social Anxiety Module}
 	\label{fig:sbPresent}
 \end{figure}
@@ -1316,7 +1358,7 @@ As before, here is some past research into the field of anxiety and VR.
 \begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/59736
 %TODO TERRAIN STORYBOARD
 
-	\centerline {\includegraphics[scale = 0.13, angle = 180]{sbCalm.jpg}}%DIFFERENT IMAGE
+	\centerline {\includegraphics[scale = 0.13, angle = 180]{heightQtSurveyResults.png}}%DIFFERENT IMAGE
 	\caption{Storyboard for Calming Module}
 	\label{fig:sbCalm}
 \end{figure}

@@ -1,0 +1,25 @@
+public bool prbStudent(float seats, float seatsRem, float studentsRem,
+    float students, float row, float rowCount)
+{
+    if (seatsRem == studentsRem)
+        return true;
+
+    //Exponential curve from 0 to 1
+
+    //Get the point along this curve (our probability) based on 
+    //how many rows there are and which we are on
+    
+    //Students being placed must impact future decisions!
+    
+    int p = (int) ((((rowCount - row + 1) 
+                / (rowCount)) * ((rowCount + (rowCount / 2)) 
+                / (rowCount))) * (((students) 
+                / (seats + (seats * 0.1)))) * 10000f);
+    
+    //Simulate an occurrance of p, if it happens true else false
+    int sim = Random.Range(1, 10001);
+
+    if (sim <= p)
+        return true;
+    return false;
+}

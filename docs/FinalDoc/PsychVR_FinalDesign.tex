@@ -179,7 +179,7 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 	\end{itemize}
 	\pagebreak
 %D. Detailed design reqs add more here...
-\section{Specifications and Requirements} %RECONSIDER ALL
+\section{Specifications and Requirements}
 	\subsection{Functional Requirements}
 	\begin{enumerate}
 		\item Interactive Environments
@@ -233,20 +233,13 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 		\end{itemize}
 		\textbf{Now that these basic functional requirements have been defined, specific module requirements are as follows:}
 		
-		\item Scene 1 Fear of Heights Hand Movement
+		\item Scene 1 Fear of Heights Objective 
 		\begin{itemize}
-		\item Description: The scene shall use Leap Motion hand and gesture tracking to create deeper immersion for the user.
-		\item Dependency: Usability of the scene.
-		\item Evaluation: Test that scene controls work properly with Leap Motion. 
+		\item Description: The user shall be put into some sort of simulated high up place with configurable scenery, this scene shall have some sort of objective (walk to point, stand for so long etc.)
+		\item Dependency: Giving the user some realistic simulation with an objective (metric).
+		\item Evaluation: Test the scene with subjects and obtain feedback from the Psychology department. 
 		\end{itemize}
-		
-		\item Scene 1 Fear Heights of Player 
-		\begin{itemize}
-		\item Description: The scene shall use Leap Motion hand and gesture tracking to create deeper immersion for the user.
-		\item Dependency: Usability of the scene.
-		\item Evaluation: Test that scene controls work properly with Leap Motion. 
-		\end{itemize}
-		
+	
 		\item Scene 1 Fear of Heights Interaction 
 		\begin{itemize}
 		\item Description: The user shall be put into some sort of simulated high up place with configurable scenery, they should be able to move around and interact with the scene.
@@ -254,13 +247,22 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 		\item Evaluation: Test the scene with subjects and obtain feedback from the Psychology department. 
 		\end{itemize}
 		
-		
-		\item Scene 1 Fear of Heights Objective 
+		\item All Scenes: Hand Movement
 		\begin{itemize}
-		\item Description: The user shall be put into some sort of simulated high up place with configurable scenery, this scene shall have some sort of objective (walk to point, stand for so long etc.)
-		\item Dependency: Giving the user some realistic simulation with an objective (metric).
-		\item Evaluation: Test the scene with subjects and obtain feedback from the Psychology department. 
+		\item Description: The scene shall use Leap Motion hand and gesture tracking to create deeper immersion for the user.
+		\item Dependency: Usability of the scene.
+		\item Evaluation: Test that scene controls work properly with Leap Motion. 
 		\end{itemize}
+		
+		
+		\item Scenes 1 and 2: Player Movement
+		\begin{itemize}
+		\item Description: The scene shall use a Kinect or Similar depth of field sensor in unity to Allow the user to move around in the scene.
+		\item Dependency: Usability of the scene.
+		\item Evaluation: Test that scene controls work properly with Leap Motion. 
+		\end{itemize}
+		
+		
 		
 		\item Scene 2 Speech Anxiety Interaction
 		\begin{itemize}
@@ -268,14 +270,13 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 		\item Dependency: Usability of the scene.
 		\item Evaluation: Test the scene with subjects and obtain feedback from the Psychology department.  
 		\end{itemize}
-		\item Scene 1 Fear of Heights Objective 
+		\item Scene 2 Speech Anxiety Objective 
 		\begin{itemize}
 		\item Description: The user shall have some sort of objective, or metric to measure speech improvement, (overall feeling, mannerisms, different observations)
 		\item Dependency: Giving the user some realistic simulation with an objective (metric).
 		\item Evaluation: Test the scene with subjects and obtain feedback from the Psychology department. 
 		\end{itemize}
-		
-		
+				
 		\item Scene 3 Calming Environment Interactions
 		\begin{itemize}
 		\item Description: The user will be placed in a procedurally generated, relaxing, environment tailored to their configurations.
@@ -283,7 +284,7 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 		\item Evaluation: Test the scene with subjects and obtain feedback from the Psychology department. 
 		\end{itemize}
 		
-		\item Scene 3 Calming Environment Interactions 
+		\item Scene 3 Calming Environment Description 
 		\begin{itemize}
 		\item Description: The scene shall have configurable calming sounds and visuals
 		\item Dependency: Calming art / experience for the user.
@@ -296,6 +297,14 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 		\item Dependency: Large environments for the user to explore, creating a more in-depth experience.
 		\item Evaluation: Test the scene with subjects and obtain feedback from the Psychology department. 
 		\end{itemize}
+		
+		\item Scene 3 Calming Environment 
+		\begin{itemize}
+		\item Description: The scene shall have some sort of interactable control interface to allow the user to move around the scene so that they can explore a large space due to the movement limits presented by the Kinect.
+		\item Dependency: Usability of the scene.
+		\item Evaluation: Test that scene controls work properly with Leap Motion. 
+		\end{itemize}
+		
 		
 	\end{enumerate}
 
@@ -326,7 +335,7 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 	  \end{itemize}
 	\item Media Assets
 	\begin{itemize}
-	  \item Description: Game Character models need to be designed or purchased. Autodesk Maya, Google Sketchup, and blender will be used for designing additional models. 
+	  \item Description: Game Character models need to be designed or purchased. Autodesk Maya, Google Sketchup, and blender have been used for designing additional models. 
 	  \item Dependency: Creating realistic visuals 
 	  \item Evaluation Method: Test software to ensure it performs well and represents a high quality, immersive, environment.
 	\end{itemize} %MORE on animation?
@@ -337,20 +346,20 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 	\item Providing User Progress Feedback for Fear of Heights Scene
 	\begin{itemize}
 	  \item Description: There needs to be a metric by which users can measure psychological progress.
-	  \item Dependency: An optional stress questionnaire and S Health sensor input. Also time spent at certain heights, and highest elevation.
+	  \item Dependency: An optional stress questionnaire and scene feedback including time spent at certain heights, and highest elevation.
 	  \item Evaluation Method: Compare before and after stress and compare times and heights across sessions of treatment.
 	\end{itemize}
 	\item Providing User Progress Feedback for Speech Anxiety Scene
 	\begin{itemize}
 		\item Description: There needs to be a metric by which users can measure psychological progress.
-	  \item Dependency: An optional stress questionnaire and S Health sensor input. Also head tracking, eye contact, and posture.
+	  \item Dependency: An optional stress questionnaire and and scene feedback including  head tracking, eye contact, represented as time focusing on board, floor, or audience, along with total time.
 		\item Evaluation Method: Compare before and after stress levels and analyze where the user spent their time looking while delivering their speech.
 	\end{itemize}
 	\item Providing User Progress Feedback for Calming Environment Scene
 	\begin{itemize}
-		\item Description: There needs to be a metric by which users can measure psychological progress.
-		\item Dependency: An optional stress questionnaire, S Health sensor input.
-		\item Evaluation Method: Compare before and after stress levels and 
+		\item Description: There is no necessary feedback as this scene is meant to be a calming break from the other scenes.
+		\item Dependency: Displaying no graph required and disabling survey component.
+		\item Evaluation Method: Check that no graphs or metrics are displayed. 
 	\end{itemize}	
 	\end{enumerate}
 	
@@ -1627,6 +1636,17 @@ This kernel is a compute shader that is run on the GPU and allows for synchroniz
 \end{figure}
 
 \pagebreak
+\subsubsection{Our Implementation}
+For our terrain generation we used a Unity Asset Procedural terrain generator
+
+
+\subsubsection{Models and Resources}
+\subsubsection{Interaction and User Inputs}
+The user begins the scene by moving from their desk to the front of the room. From here they may prepare any presentation materials they configured through Qt such as a Powerpoint presentation. Movement will be controlled via the Kinect sensor, we plan to control object interactions with LeapMotion. 
+
+\subsubsection{Configuration from Qt Launcher}
+This scene will be our most configurable. Qt will allow the user to specify which chairs have a model in them and what behavior that model will perform. A user will also be able to include a Powerpoint during configuration so they may have a presentation aid during their practice. As a stretch goal we hope to include more than just a classroom setting and allow users to pick from a few environments.
+
 %E. Explicit Design Summary with diagrams
 %F. Build, prototype, test, and evaluation plan
 \section{Design Documentation}

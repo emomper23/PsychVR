@@ -51,7 +51,8 @@ public class QtSceneLoad : MonoBehaviour {
         }
         else if (scene_idx == 1)
         {
-            Debug.Log("Loading speech Settings");
+            //Debug.Log("Loading speech Settings");
+            Debug.Log( data[user_id]["Social"]["Settings"]["Powerpoint"] + "/");
             PlayerPrefs.SetInt("NumberStudents", Int16.Parse(data[user_id]["Social"]["Settings"]["Number Students"]));
             PlayerPrefs.SetString("SkinColor", data[user_id]["Social"]["Settings"]["Color"]);
             PlayerPrefs.SetString("Powerpoint", data[user_id]["Social"]["Settings"]["Powerpoint"]+"/");

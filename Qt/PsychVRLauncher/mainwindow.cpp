@@ -402,6 +402,7 @@ void MainWindow::newModel()
 }
 void MainWindow::launchScene()
 {
+    qDebug()<<"launching Scene\n";
     QProcess proc;
     QString command = "";
 
@@ -1141,7 +1142,7 @@ void MainWindow::changeFile()
 
 void MainWindow::changeSong()
 {
-    song =  QFileDialog::getOpenFileName(this,tr("Choose Music"), "", tr("Audio Files (*.wav *.ogg)"));
+    song =  QFileDialog::getOpenFileName(this,tr("Choose Music"), "", tr("Audio Files (*.wav)"));
     QString music = song;
     music.remove(0,music.lastIndexOf("/") + 1);
     ui->musicLabel->setText(music);

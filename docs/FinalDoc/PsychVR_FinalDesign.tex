@@ -41,6 +41,7 @@
   %controller prefab
   %buttons
   %lighting
+  % readmeconfig 
 %opening
 \pagenumbering{roman}
 %1. Cover page with title, group number, team members, date, and any other relevant information, such as participating organizations and sponsors.
@@ -64,7 +65,7 @@ This is due to a number of factors including the available openings for research
 \par ~\\
 The first three environments to be developed will target fear of heights, speech anxiety, and stress relief. Our platform will feature customization of these environments and expandability so more can be added by users.  To tackle the issue of hardware cost to the average user our platform will be available for a variety of virtual reality headsets and controls, most notably the Samsung Gear VR. It is projected that the Gear VR will soon be the most widely available virtual reality headset at a cost of only \$100 along with a compatible Samsung smartphone. Our suite will be developed in Unity for the Oculus Rift, as all projects developed for the Oculus rift will be compatible with the Samsung Gear VR, since they use the same framework.
 \par ~\\
-As our project will be used for therapy, one of our main objectives will be to give the user the most immersive, believable experience possible. We plan to use a few different systems to provide detailed modeling and tracking relevant to the particular scene. We will use the Kinect for motion and skeleton tracking to allow the user to move around, Leap Motion for detailed hand and arm tracking, and the VR headset (Oculus or Samsung Gear) for rotation and head tracking. 
+As our project  used for therapy, one of our main objectives is to give the user the most immersive, believable experience possible. We plan to use a few different systems to provide detailed modeling and tracking relevant to the particular scene. We will use the Kinect for motion and skeleton tracking to allow the user to move around, Leap Motion for detailed hand and arm tracking, and the VR headset (Oculus or Samsung Gear) for rotation and head tracking. 
 \par ~\\
 On a larger scale, our main objective is to bring VR therapy to a wider audience.  VR is an amazing tool for helping people, and our platform will bring that help to the wide, consumer market.  With an immersive suite of fully researched, psychologically helpful therapy tools, PsychVR will bring Virtual Reality therapy out of labs and into homes.
 
@@ -746,10 +747,7 @@ Following is our research on the various virtual reality devices and peripherals
 	\label{fig:leapImg}
 \end{figure}
 	%leap motion research
-	
-\subsubsection{Red Samurai Bluetooth Controller}
-	A cheap, \$8 bluetooth controller, that pairs very well with the Gear VR on Android, this would be allow the user to move around the scene as we would be unable to get the other Peripherals to work with the phone.
-	
+\pagebreak	
 \subsubsection{Oculus Head Tracking Research}
 The following information is from the Oculus Rift prototype research paper see the it for more details on the math behind their calculations \cite{riftPaper}~\\
 All sensing is performed by a single circuit board (figure \ref{fig:magnetsHowDoTheyWork}) 
@@ -800,7 +798,7 @@ The Leap Motion works using the following sensors and lights \cite{leapProc}
  \item The software recognized viewing range is 2 ft (60 cm) for the standard drivers and 2.6 feet (80 cm) with the Orion Beta Driver. 
  \item The LED light that is used in detection is the limiting factor as the brightness intensity is limited by the amount of power delivered to the unit
  over USB.
- \item The 3 USB lights emit at a wavelength of 850 nanometers, outside the visible light spectrum.
+ \item The 3 USB powered lights emit at a wavelength of 850 nanometers, outside the visible light spectrum.
 \end{itemize}
 
 The Leap Motion SDK offers the following heuristics for assisting with the tracking problem.\cite{leapHeuristics}
@@ -987,14 +985,22 @@ To increase the possible interaction space, the Kinect can tilt +27 and -27 degr
 \subsection {Psychology research}
 This Section will discuss our research and information about the psychological side of our project including a history of VR therapy, warnings, limitations, trends, other successful tests, and specifics about different phobias or disorders that we are researching. 
 \subsubsection{History of VR Therapy}
-The very first study on using Virtual Reality for therapy purposes was done in 1995, by Barbara Rothham and Larry Hodges.  Barbara was a researcher at Emory University with a PHD, while Larry was a computer scientist.  Together they demonstrated that virtual reality could help people overcome their fear of heights, or acrophobia.  \cite{alCarl}
+The very first study on using Virtual Reality for therapy purposes was done in 1995, by Barbara Rothham and Larry Hodges.  Barbara was a researcher at Emory University with a PHD, while 
+Larry was a computer scientist.  Together they demonstrated that virtual reality could help people overcome their fear of heights, or acrophobia.  \cite{alCarl}
 %http://www.apa.org/monitor/julaug05/cure.aspx
-The next year, Albert Carlin, PhD, and Hunter Hoffman, PhD, both at the University of Washington, created a study showing that Virtual Reality could help with fear of spiders, including in extreme phobia cases.  These two cases set a precedent for experimentation that continued for the next decade, with many papers and studies being published.
+The next year, Albert Carlin, PhD, and Hunter Hoffman, PhD, both at the University of Washington, created a study showing that Virtual Reality could help with fear of spiders, including 
+in extreme phobia cases.  These two cases set a precedent for experimentation that continued for the next decade, with many papers and studies being published.
 \par~\\
-Today, VR is used for phobia and anxiety treatment in labs all over the world.  In fact, near UCF there is a major medical center focusing on this stuff, known as the Virtual Reality Medical Center.  Their website says the following about them: "The Virtual Reality Medical Center uses Virtual Reality-enhanced Cognitive Behavioral Therapy (VR-CBT) to treat clients with panic disorder, specific phobias, agoraphobia, and social phobia. Specific phobias are conditions such as fear of flying, fear of heights, claustrophobia, fear of driving, fear of thunderstorms, arachnophobia, and fear of public speaking. Virtual reality exposure therapy places you in a computer-generated world where you "experience" the various stimuli related to your phobia. You will wear a head- mounted display with small TV monitors and stereo earphones to receive both visual and auditory cues."\cite{vrPhobia}
+Today, VR is used for phobia and anxiety treatment in labs all over the world.  In fact, near UCF there is a major medical center focusing on this stuff, known as the Virtual Reality
+Medical Center.  Their website says the following about them: "The Virtual Reality Medical Center uses Virtual Reality-enhanced Cognitive Behavioral Therapy (VR-CBT) to treat clients 
+with panic disorder, specific phobias, agoraphobia, and social phobia. Specific phobias are conditions such as fear of flying, fear of heights, claustrophobia, fear of driving, fear of
+thunderstorms, arachnophobia, and fear of public speaking. Virtual reality exposure therapy places you in a computer-generated world where you "experience" the various stimuli related 
+to your phobia. You will wear a head- mounted display with small TV monitors and stereo earphones to receive both visual and auditory cues."\cite{vrPhobia}
 %http://www.vrphobia.com/aboutus.htm
 \par~\\
-Virtual Reality therapy has grown from an idea to an industry, and we hope to take the results of that, scale them down, and bring them into user's homes.  The below section will go into the specific areas of Psychology that our project will be working with.  Meanwhile, in the specific research section for each of our 3 modules, there is more info on specific scientific studies relating to said Virtual reality therapy.
+Virtual Reality therapy has grown from an idea to an industry, and the goal of our project is to take the results of that, scale them down, and bring them into user's homes.  
+The below section will go into the specific areas of Psychology that our project focuses on with.  Meanwhile, in the specific research section for each of our 3 modules, 
+there is more info on specific scientific studies relating to said Virtual reality therapy.
 \par~\\
 \pagebreak
 
@@ -1002,14 +1008,21 @@ Virtual Reality therapy has grown from an idea to an industry, and we hope to ta
 Any cited DSM excepts following include this statement as a disclaimer. \cite{dsmCaution}
 \begin{itemize}
 
-\item The specified diagnostic criteria for each mental disorder are offered as guidelines for making diagnoses, because it has been demonstrated that the use of such criteria enhances agreement among clinicians and investigators. The proper use of these criteria requires specialized clinical training that provides both a body of knowledge and clinical skills. 
+\item The specified diagnostic criteria for each mental disorder are offered as guidelines for making diagnoses, because it has been demonstrated that the use of such criteria
+enhances agreement among clinicians and investigators. The proper use of these criteria requires specialized clinical training that provides both a body of knowledge and clinical skills. 
 
-\item These diagnostic criteria and the DSM-IV Classification of mental disorders reflect a consensus of current formulations of evolving knowledge in our field. They do not encompass, however, all the conditions for which people may be treated or that may be appropriate topics for research efforts. 
+\item These diagnostic criteria and the DSM-IV Classification of mental disorders reflect a consensus of current formulations of evolving knowledge in our field. They do 
+not encompass, however, all the conditions for which people may be treated or that may be appropriate topics for research efforts. 
 
-\item The purpose of DSM-IV is to provide clear descriptions of diagnostic categories in order to enable clinicians and investigators to diagnose, communicate about, study, and treat people with various mental disorders. It is to be understood that inclusion here, for clinical and research purposes, of a diagnostic category such as Pathological Gambling or Pedophilia does not imply that the condition meets legal or other non-medical criteria for what constitutes mental disease, mental disorder, or mental disability. The clinical and scientific considerations involved in categorization of these conditions as mental disorders may not be wholly  relevant to legal judgments, for example, that take into account such issues as individual responsibility, disability determination, and competency.
+\item The purpose of DSM-IV is to provide clear descriptions of diagnostic categories in order to enable clinicians and investigators to diagnose, communicate about, study,
+and treat people with various mental disorders. It is to be understood that inclusion here, for clinical and research purposes, of a diagnostic category such as Pathological
+Gambling or Pedophilia does not imply that the condition meets legal or other non-medical criteria for what constitutes mental disease, mental disorder, or mental disability.
+The clinical and scientific considerations involved in categorization of these conditions as mental disorders may not be wholly  relevant to legal judgments, for example, that 
+take into account such issues as individual responsibility, disability determination, and competency.
 \end{itemize}
 \par~\\
-To summarize, while the DSM is important and helpful, it is by no means complete.  We will be using it to get a better basic understanding but it is not perfect.  Our platform will contain a similar disclaimer.
+To summarize, while the DSM is important and helpful, it is by no means complete.  We understand that it is intended to get a better basic understanding but it is not perfect.  
+%README DISCLAIMER TODO
 \par
 \subsubsection{DSM Criteria for Specific Phobias}
 \paragraph{DSM IV}~\\
@@ -1046,7 +1059,8 @@ Agoraphobia Without History of Panic Disorder. \cite{dsmPhobia}
 \begin{itemize}
 	\item Excessive anxiety and worry (apprehensive expectation), occurring more days than not for at least 6 months, about a number of events or activities (such as work or school performance).
 	\item The individual finds it difficult to control the worry.
-	\item The anxiety and worry are associated with three (or more) of the following six symptoms (with at least some symptoms having been present for more days than not for the past 6 months): (Note: Only one item is required in children.)
+	\item The anxiety and worry are associated with three (or more) of the following six symptoms (with at least some symptoms having been present for more days than not for the past 6 months):
+	(Note: Only one item is required in children.)
 	\begin{itemize}
 		\item Restlessness or feeling keyed up or on edge.
 		\item Being easily fatigued.
@@ -1058,16 +1072,25 @@ Agoraphobia Without History of Panic Disorder. \cite{dsmPhobia}
 	
 	\item The anxiety, worry, or physical symptoms cause clinically significant distress or impairment in social, occupational, or other important areas of functioning.
 	\item The disturbance is not attributable to the physiological effects of a substance (e.g., a drug of abuse, a medication) or another medical condition (e.g., hyperthyroidism).
-	\item The disturbance is not better explained by another mental disorder (e.g., anxiety or worry about having panic attacks in panic disorder, negative evaluation in social anxiety disorder social phobia, contamination or other obsessions in obsessive-compulsive disorder, separation from attachment figures in separation anxiety disorder, reminders of traumatic events in posttraumatic stress disorder, gaining weight in anorexia nervosa, physical complaints in somatic symptom disorder, perceived appearance flaws in body dysmorphic disorder, having a serious illness in illness anxiety disorder, or the content of delusional beliefs in schizophrenia or delusional disorder)\cite{dsmAnxiety}
+	\item The disturbance is not better explained by another mental disorder (e.g., anxiety or worry about having panic attacks in panic disorder, negative evaluation in social anxiety
+	disorder social phobia, contamination or other obsessions in obsessive-compulsive disorder, separation from attachment figures in separation anxiety disorder, reminders of traumatic
+	events in posttraumatic stress disorder, gaining weight in anorexia nervosa, physical complaints in somatic symptom disorder, perceived appearance flaws in body dysmorphic disorder,
+	having a serious illness in illness anxiety disorder, or the content of delusional beliefs in schizophrenia or delusional disorder)\cite{dsmAnxiety}
 \end{itemize}
-It is important that we remain aware of this info in our project, and also attempt to inform the user as best we can.  Knowing the definitions of the most extreme version of what we are attempting to help deal with helps us to know how to deal with less extreme versions of the same issues.
+It is important that we remain aware of this info in our project, and also attempt to inform the user as best we can.  Knowing the definitions of the most extreme version of what we are
+attempting to help deal with helps us to know how to deal with less extreme versions of the same issues.
 \par
 
 \subsubsection{Exposure Therapy}
-Additionally, as we will be treating with Exposure Therapy, it is important to have a definition of that.  The Society of Clinical Psychologists (a section of the American Psychology Association) includes it as one of it's empirically supported treatment options, so it is a viable option.  Following is some of the info that Society of Clinical Psychologists gives, with some info about how it relates to our project.
+Additionally, as we are treating with Exposure Therapy, it is important to have a definition of that.  The Society of Clinical Psychologists (a section of the American Psychology 
+Association) includes it as one of it's empirically supported treatment options, so it is a viable option.  Following is some of the info that Society of Clinical Psychologists gives,
+with some info about how it relates to our project.
 \par~\\ 
 They define exposure therapy as, "Exposure therapy is a psychological treatment that was developed to help people confront their fears. When people
-are fearful of something, they tend to avoid the feared objects, activities, or situations. Although this avoidance might help reduce feelings of fear in the short term, over the long term it can make the fear become even worse. In such situations, a psychologist might recommend a program of exposure therapy in order to help break the pattern of avoidance and fear. In this form of therapy, psychologists create a safe environment in which to "expose" individuals to the things they fear and avoid. The exposure to the feared objects, activities, or situations in a safe environment helps reduce fear and decrease avoidance. "
+are fearful of something, they tend to avoid the feared objects, activities, or situations. Although this avoidance might help reduce feelings of fear in the short term, over the long 
+term it can make the fear become even worse. In such situations, a psychologist might recommend a program of exposure therapy in order to help break the pattern of avoidance and fear.
+In this form of therapy, psychologists create a safe environment in which to "expose" individuals to the things they fear and avoid. The exposure to the feared objects, activities, or 
+situations in a safe environment helps reduce fear and decrease avoidance. "
 \par~\\ 
 Additionally, they state that exposure therapy can be useful for 
 \begin{itemize}
@@ -1078,7 +1101,7 @@ Additionally, they state that exposure therapy can be useful for
 	\item Posttraumatic Stress Disorder
 	\item Generalized Anxiety Disorder 
 \end{itemize}
-Our project will be focusing on using exposure therapy for phobias and Social Anxiety Disorder.  
+Our project's main focus is using exposure therapy for phobias and Social Anxiety Disorder.  
 \par~\\ 
 Additionally, they seperate the different ways that exposure therapy can be paced:
 \begin{itemize}
@@ -1086,86 +1109,71 @@ Additionally, they seperate the different ways that exposure therapy can be pace
 	\item Flooding, in which the system is reversed, and the most feared things are dealt with first
 	\item Systematic Desensitization, in which relaxing exercises and such are used to help the client associate fears with relaxation and have an easier time doing the therapy.
 \end{itemize}
-Our project will be using Graded Exposure, as flooding could be dangerous without a psychologist around to help, and we do not have the resources to create something that can do both relaxation and exposure therapy at the same time, which would be required for Systematic Desensitization. However, the program will come with a suggestion to try the relaxation module in between exposure therapy, potentially making said therapy easier.
+Our project uses Graded Exposure, as flooding could be dangerous without a psychologist around to help, and we do not have the resources to create something that can do
+both relaxation and exposure therapy at the same time, which would be required for Systematic Desensitization. However, the program comes with the relaxation
+module in between exposure therapy, potentially making said therapy easier.
 \par~\\ 
 Lastly, the Society defines 4 ways in which exposure therapy helps the user:
 \begin{itemize}
 	\item Habituation, which is the same term as forming a habit.  It means that over time, fear reactions will become lessened.
 	\item Extinction, which means that Exposure Therapy can remove established connections between fears and negative results
 	\item Self-efficiacy, which is the user becoming aware of their fears and becoming more able to control/manage their fears and worry
-	\item Emotional Processing, which allowing the user to process their fears and emotions in a safe place, and change or create new beliefs about the things they fear, and even understand fear better.
+	\item Emotional Processing, which allowing the user to process their fears and emotions in a safe place, and change or create new beliefs about the things they fear, 
+	and even understand fear better.
 \end{itemize}
 
-We believe that our project will excel at the first 3 options on this list, as they can be done by a user independently.  Processing emotions is something that we can not guarantee the user will do, as we do not have the power a therapist does to communicate directly with their client.  However, our project will absolutely give users a greater power to do so, and in terms of helping users become more aware of their fears, and creating new positive connections/destroying negative ones, our project will excel. \cite{exposeTherapy}
+We believe that our project allows the user to focus on the first 3 options on this list, as they can be done by a user independently.  Processing emotions is something that we can not guarantee 
+the user will do, as we do not have the power a therapist does to communicate directly with their client.  However, our project gives users a greater power to do so, and in terms 
+of helping users become more aware of their fears, and helps them create new positive connections and destroy negative ones. \cite{exposeTherapy}
 
 
 \pagebreak
 
 \pagebreak
 \subsection{Options for Psychological Monitoring and Feedback Channels}
-This is perhaps the most difficult part of the project, providing a metric for each scene to convey psychological progress. Whether it is conquering a phobia or reducing anxiety and stress levels, this topic on its own constitutes an entire project. We have looked into various methods of measuring the success of each of our scenes in order to provide users with useful feedback.
+This is perhaps the most difficult part of the project, providing a metric for each scene to convey psychological progress. Whether it is conquering a phobia or
+reducing anxiety and stress levels, this topic on its own constitutes an entire project. We have looked into various methods of measuring the success of each of our
+scenes in order to provide users with useful feedback.
 
 \par~\\ 
-Our research has led us to multiple parameters which we can use to assess progress, most of which will be specific to a particular scene. Before we discuss those metrics, let's first take a look at how other studies have reached this goal.
+Our research has led us to multiple parameters which we can use to assess progress, most of which are specific to a particular scene. Before we discuss those metrics, 
+let's first take a look at how other studies have reached this goal.
 
 \subsubsection{How have other studies provided treatment feedback?}
-The majority of professional virtual reality treatment is conducted in the presence of a licensed psychologist who is able to assess the participant on the spot. In addition to this monitoring the participant is often given a questionnaire to fill out before and after treatment. Virtual Reality Medical Center (VRMC) uses this type of assessment to acquire treatment data and provide feedback to their patients. \cite{vrPhobia}
+The majority of professional virtual reality treatment is conducted in the presence of a licensed psychologist who is able to assess the participant on the spot. In addition 
+to this monitoring the participant is often given a questionnaire to fill out before and after treatment. Virtual Reality Medical Center (VRMC) uses this type of assessment to 
+acquire treatment data and provide feedback to their patients. \cite{vrPhobia}
 
 \subsubsection{Stress Analysis}
-After our status presentation it came to our attention we had no plan for providing users feedback of their progress so we began research on this topic. It turns out, measuring stress is a difficult task. 
+After our status presentation it came to our attention we had no plan for providing users feedback of their progress so we began research on this topic.
+It turns out, measuring stress is a difficult task. 
 \par~\\
-The most promising and simple way for a user at home to do this, we concluded, was the S Health [Fig 28] service on Samsung smartphones. Samsung's S Health sensors can combine readings from multiple biological factors (heart rate, oxygen levels, and heartbeat consistency) to estimate a stress level. Furthermore, there is a public API available to obtain data from these sensors. This API includes an android application [Fig 29] that can extract recorded data from the S Health application and provides code examples for how to accomplish this. 
-
-\begin{figure}[H]
-	\centering
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\includegraphics[scale = 0.07]{sHealthHome.png}
-		\label{sHealthHome}
-		\caption{S Health Home}
-	\end{minipage}\hfill
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\includegraphics[scale = 0.07]{dataViewerAPK.png}
-		\label{dataViewerAPK}
-		\caption{S Health Data Viewer}
-	\end{minipage}
-\end{figure}
-	
-The caveat to this is Samsung has not made public their method of determining stress data nor can recorded stress values be accessed by the API. Currently, using S Health as a way to measure stress is not feasible as we would have to design stress detection from the ground up. In order for us to implement this as a metric users would need access to an eligible Samsung device, measure their stress level, and record it in our software.
-
-\par~\\
-\textbf{Update:}
-We were accepted by Samsung as an S Health Partner [Fig 30] on Thursday, Apr 28, 2016 at 12:20 AM. We will be receiving a more functional version of their S Health SDK with Partner exclusive features. We need to review the newly provided documentation in order to determine if we want to further integrate S Health data into our scene analysis and metrics.
-\begin{figure}[H] %image from gmail
-	\centerline {\includegraphics[scale = 0.65]{sHealthPartner.png}}
-	\caption{S Health Partner Acceptance Email}
-	\label{fig:sHealthPartner}
-\end{figure}
-
+%JOHN SURVEY PIECE ON STRESS ANALYSIS ADD MORE??
 
 \subsubsection{Stress Questionnaire}
-As a stand-in for a psychologist we will be issuing a stress questionnaire. Before the user launches any scene they will be given the option of responding to questions with the goal of assessing their current level of stress. Once a scene is completed they will again be presented with this questionnaire. The before and after data will be analyzed alongside other metrics for the specific scene. Over multiple sessions this data should provide insight to whether or not the treatment is providing any benefit.
+A stand-in for a psychologist will be issuing a stress questionnaire. Before the user launches any scene they will be given the option of responding to questions
+with the goal of assessing their current level of stress. Once a scene is completed they will again be presented with this questionnaire. The before and after data will be 
+analyzed alongside other metrics for the specific scene. Over multiple sessions this data should provide insight to whether or not the treatment is providing any benefit.
 
 \subsubsection{Scene Progress}
-Another metric we devised to provide users feedback is scene progress. This is mostly specific to our fear of heights scene. Each time the user runs the simulation the height they have reached will be recorded. Progress would be determined if the user shows reduced stress in the questionnaire along with the same or greater height.
+Another metric we devised to provide users feedback is scene progress. This is mostly specific to our fear of heights scene. Each time the user runs the simulation 
+the height they have reached will be recorded. Progress would be determined if the user shows reduced stress in the questionnaire along with the same or greater height.
 
 \subsubsection{Time Spent in Stressful Simulation}
-Time spent in the scene will give insight to how uncomfortable the user is. This metric can be applied to both our fear of heights scene and speech anxiety scene. If a user spends more time at a high altitude than before with relatively similar questionnaire results then it is reasonable to say the user is becoming more comfortable with their stressful situation. As for the speech anxiety scene, the user would provide an amount of time they wish to present for and over multiple sessions work to increase that time.
+Time spent in the scene will give insight to how uncomfortable the user is. This metric can be applied to both our fear of heights scene and speech anxiety scene. 
+If a user spends more time at a high altitude than before with relatively similar questionnaire results then it is reasonable to say the user is becoming more comfortable
+with their stressful situation. As for the speech anxiety scene, the user would provide an amount of time they wish to present for and over multiple sessions work to increase that time.
 
 \subsubsection{Head Tracking}
-Head tracking data from within our speech anxiety scene will function as another way to measure improvement. Time spent making eye contact with audience members compared with time spent looking elsewhere, such as the board or downward, should improve as a user becomes more comfortable with public speaking.
-
-\subsubsection{Posture Tracking} %NEEDS WORK
-Posture is a good measure of confidence. We will monitor the users posture within our speech anxiety scene to approximate their level of confidence while delivering their speech. To accomplish this we will use the Kinect sensor to follow body movement and track changes in their shoulder height throughout their presentation.
-
+Head tracking data from within our speech anxiety scene will function as another way to measure improvement. 
+Time spent making eye contact with audience members compared with time spent looking elsewhere, such as the board or downward, should improve as a user becomes more comfortable with public speaking.
 
 \pagebreak
 \subsection{Module 1 Fear of Heights}
-The fear of heights module will be built around the success of past and present research. Fear of heights, referred to as acrophobia, is a popular target for studying the impact of virtual reality on treatment. Past experiments and studies on using virtual reality for acrophobia treatment have lacked high quality graphical experiences which can detract from the immersion. Our background will feature a detailed cityscape to increase the realism which the user experiences and likely increase the effectiveness of treatment.
+The fear of heights module is built around the success of past and present research. Fear of heights, referred to as acrophobia, is a popular target for studying the impact of virtual reality on treatment. Past experiments and studies on using virtual reality for acrophobia treatment have lacked high quality graphical experiences which can detract from the immersion. Our background will feature a detailed cityscape to increase the realism which the user experiences and likely increase the effectiveness of treatment.
 
 \subsubsection{Past Research}
-In said research labs, researches have had proven that virtual reality can help with Acrophobia.  Below is a list of 4 different studies, with a brief overview of how they were run and what their results were.
+In said research labs, researchers have had proven that virtual reality can help with Acrophobia.  Below is a list of 4 different studies, with a brief overview of how they were run and what their results were.
 \begin{itemize}
 	\item In the summer of 1995, a team of researches did a case study with a single student who suffered from agoraphobia.  They 5 sessions, using VR exposure therapy , and then ran a series of tests on the student to see how it had affected them.  While their sample size was small, the case study provided evidence that VR could be used to treat Acrophobia.\cite{phobiaOne}
 	%http://www.sciencedirect.com/science/article/pii/S0005789405801005
@@ -1178,10 +1186,10 @@ In said research labs, researches have had proven that virtual reality can help 
 
 
 \subsubsection{Our Implementation}
-For this scene the user will start at the base of a tall building. The user be able to enter a glass elevator and select their desired floor. Once they have reached the floor they will be able to walk out onto a balcony and view the surrounding landscape. At all times there will be an option to end the simulation if the user becomes too frightened.
+For this scene the user will start at the base of a tall building. They will ascend the builing on a window washing gondola. The up and down controls will move the user up and down as they push the desired button, they will be able to select different buildings and configure the time of day. At all times there will be an option to end the simulation if the user becomes too frightened.
 
 \subsubsection{Models and Resources}
-We will need a landscape, tower, and window cleaning platform model. The Unity Asset store has several options for cityscapes and tall buildings as well as a perfectly suited window cleaning platform.
+We used unity assets for the cityscape, tower, and window cleaning platform model. The Unity Asset store has several options for cityscapes and tall buildings as well as a perfectly suited window cleaning platform.
 \par~\\ 
 As far as cityscapes go we are considering four options [Fig 31-34]:
 \begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/38412
@@ -1224,6 +1232,7 @@ Users may optionally respond to a questionnaire before and after the scene. The 
 
 \pagebreak
 \begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/59736
+	%TODO HEIGHT STORYBOARD
 	\centerline {\includegraphics[scale = 0.13, angle = 180]{sbHeight.jpg}}
 	\caption{Storyboard for Acrophobia Module}
 	\label{fig:sbHeight}
@@ -1292,6 +1301,7 @@ This scene will be our most configurable. Qt will allow the user to specify whic
 Users may optionally respond to a questionnaire before and after the scene. The use of the Samsung S Health app will be suggested but is also optional. For this the user would run the app on their smartphone and fill in our software with the feedback given to them from the S Health stress sensor. In addition to these optional metrics, throughout the scene the users posture, head, and where they are looking (ex: eye contact) will be tracked in order to provide feedback about their performance during the scene. All of these metrics will be combined and analyzed over multiple sessions to provide the user feedback on their efforts. %NEEDS WORK spreadsheet?
 
 \begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/59736
+%TODO SPEECH STORYBOARD
 	\centerline {\includegraphics[scale = 0.12, angle = 180]{sbPresent.jpg}}
 	\caption{Storyboard for Social Anxiety Module}
 	\label{fig:sbPresent}
@@ -1308,8 +1318,8 @@ Users may optionally respond to a questionnaire before and after the scene. The 
 	\item They are then shown a results screen, that is based on data acquired from sensors and their questionnaires.
 \end{enumerate}
 \pagebreak
-\subsection{Module 3 Calm Environment} % SO HYPED!!!
-This module will feature a calming environment that will help patients with stress or anxiety relax in a calming peaceful environment. This environment will have random terrain which will have chunks that are procedurally generated while the user moves throughout the scene.  The art style/ graphic design for this project is inspired by indie games like Minecraft, Myst, or Proteus \textbf{(See Figure \ref{fig:proteus})}, except without puzzles or enemies. It will feature simple generated terrains that form a  peaceful landscape which the user can move throughout with various plants or natural features that decorate the scene.  Some configuration options for this scene include different color patterns or selecting what models are loaded or how the scene looks in general. 
+\subsection{Module 3 Calm Environment} % SO HYPED!!! %TODO TERRAIN DETAILS CONTROLLER, STITCHING, GEN
+This module features a calming environment that will help patients with stress or anxiety relax in a calming peaceful environment. This environment will have random terrain which will have chunks that are procedurally generated while the user moves throughout the scene.  The art style/ graphic design for this project is inspired by indie games like Minecraft, Myst, or Proteus \textbf{(See Figure \ref{fig:proteus})}, except without puzzles or enemies. It will feature simple generated terrains that form a  peaceful landscape which the user can move throughout with various plants or natural features that decorate the scene.  Some configuration options for this scene include the music selection for the user to relax to, all of the objects and the coloring of the scene are configured for the unity scene to provide a random dynamic environment for the user to explore.
 
 \begin{figure}[H]
 	\centerline{\includegraphics[scale= 0.4]{proteus.jpg}}
@@ -1321,7 +1331,7 @@ This module will feature a calming environment that will help patients with stre
 \subsubsection{Past Research}
 As before, here is some past research into the field of anxiety and VR.
 \begin{itemize}
-	\item A study done in 2010 concluded that creating an environment to help subjects with GAD (Generalized Anxiety Disorder) was helpful in dealing with their GAD.  However, it also discovered that the project could be made even more effective if biofeedback from the user is incorporated into the environment.  This is something we will have to consider, although it may be too complex and too resource heavy for our project. \cite{calmOne}
+	\item A study done in 2010 concluded that creating an environment to help subjects with GAD (Generalized Anxiety Disorder) was helpful in dealing with their GAD.  However, it also discovered that the project could be made even more effective if biofeedback from the user is incorporated into the environment.  This is something we could have to consider, although it may be too complex and too resource heavy for our project. \cite{calmOne}
 	%https://www.researchgate.net/profile/Claudia_Repetto2/publication/44668615_Virtual_reality_in_the_treatment_of_generalized_anxiety_disorders/links/0922b4f8e9de327968000000.pdf
 	\item Another experiment tried to teach cancer patients both relaxation and Tai Chi methods to see if these things were easier to do through VR, and what effects the VR would have on them.  It found that giving the user an area that they were in charge of could possibly help people who felt like they had no control over their lives. This is a positive thing we will try to recreate with our project.
 	%https://www.researchgate.net/profile/David_Becker10/publication/2659560_Using_A_Virtual_Environment_to_Teach_Cancer_Patients_T'ai_Chi_Relaxation_and_Self-Imagery/links/53ce75e80cf279d93530ac34.pdf
@@ -1329,6 +1339,7 @@ As before, here is some past research into the field of anxiety and VR.
 \pagebreak
 
 \begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/59736
+%TODO TERRAIN STORYBOARD
 	\centerline {\includegraphics[scale = 0.13, angle = 180]{sbCalm.jpg}}
 	\caption{Storyboard for Calming Module}
 	\label{fig:sbCalm}
@@ -1592,6 +1603,7 @@ configuration option for the app, It will also be responsible for launching scen
 		This figure shows the program flow for different user options, including configuration, launching, recording, and vie
 		\pagebreak
 
+%TODO JSON CONFIG
 \subsubsection {Configuration Design Details}
 (See figure \ref{fig:qtMockupMap})
 \begin{itemize}
@@ -1614,17 +1626,15 @@ configuration option for the app, It will also be responsible for launching scen
 \pagebreak
 \subsubsection{Data Analysis Design}
 (See figure \ref{fig:qtMockupData})
+%JOHN SURVEY DESIGN
   \begin{itemize}
-  \item User stress data from Samsung stress app on (acquired from android phone or another input device will be parsed and graphed in the OpenGL Graph widget.
+  \item User stress data from surveys will be displayed in a graph that shows the aggregate pre-stess, post-stress, and the sum of the survey questions
   \item Any other analysis will be shown as dialog boxes or additional readouts next to the graph.
-  \item Input Options include reading from the android sensor DataManager app which allows users to export their stress data to a csv, or the user can input their stress readings
-  from the Samsung Health app manually which ever requires the least installation, setup, or amount of work each time for the user which we will see which option is easier from a human 
-  factors standpoint.
   \item Other Scene specific data could also be recorded and graphed to provide additional feedback some examples for the specific modules include:
 	\begin{itemize}
 	\item Distance moved or time spent in fear of heights session.
-	\item Speech Gestures, rate or word recognition with speech anxiety session.
-	\item Distance covered or movement data from stress relief sessions.
+	\item Time in the speech along with times spent looking back at the presentation slides, the floor(looking down), and the audience. 
+	\item The anxiety scene will have no metrics taken as its purpose is to be a break from the sessions.
 	\end{itemize}
 \item All of these graph options could be selectable as options for each scene graph widget and would be subclassed accordingly.
   \end{itemize}
@@ -1659,14 +1669,14 @@ configuration option for the app, It will also be responsible for launching scen
 				\pagebreak
 		\subsubsection{Unity Design Details}	
 \begin{itemize}
-	\item Configurable scenes are going to initially read an expected Qt configuration file that 
-	will contain scene specific settings and include any additional models added to the scene mapped 
-	by the mapping tool. 
-	\item The Kinect camera, Oculus Rift, and Leap motion will be added as input controls mapped to a first person avatar that has is own models and textures for hands, legs, arms and body. 
-	\item The scene models will have interactive scripts that will interact with the user such as doors, or other objects they can move or pick up. 
-	\item Models and scene assets that can be configured will be written to a QtConfigFormatFile which will be parsed by Qt to get icons, sizes, and names of the CUnityObject class models that can be configured. 
+	\item Configurable scenes are initially read an expected Qt configuration file that 
+	will contain scene specific settings and addons to the to the scenes including colors, music, and additional configuration settings.
+	
+	\item The Kinect camera, Oculus Rift, and Leap motion were added as input controls mapped to a first person avatar that has is own models for hands, legs, arms and body. 
+	\item The scene models will have interactive scripts that will interact with the user such as buttons, or other objects the user can interact with
+	\item Models and scene assets that can be configured will be written to a json file which will be parsed by Qt to get icons, sizes, and names of the CUnityObject class models that can be configured. 
 	\item The settings will be stored as QSettings objects from Qt which will store them as a .ini file which is supported by unity and will allow the two applications to synchronize options by parsing the .ini files on load. 
-	\item Unity assets will be purchased in the asset store or designed in Google SketchUp \& Blender then imported. 
+	\item Unity assets were purchased in the asset store or designed in Google SketchUp \& Blender then imported. 
 \begin{figure}[H]
 	\label{fig:sceneTemplate}
 \lstinputlisting {test.ini}
@@ -1862,6 +1872,7 @@ Cross Platform Support:
 %I. Consultants, subcontractors, and suppliers (mostly text)
 %A. Budget and financing (text, numbers, tables, charts, figures, diagrams).
 %B. Milestone chart for all activities related to the project
+%TODO MONEYS HERE!!!!
 \section{Administrative Content}
 \subsection{Budget and Financing}
 Financing is still being looked into at this point. Due to our lack of a sponsor, we are currently self-financing but also contacting people willing to help with funding. Therefore, our budget and financing are extremely subject to change. 
@@ -1953,9 +1964,9 @@ This is entirely self funded at the moment.  All of us have well-paying jobs in 
 \section{Project Summary and Conclusions}
 In conclusion, we hope that you understand the not just what our project is, but the goal behind it.  PsychVR's goal isn't to create something entirely new, but rather to bring something that already exists into the hands of everyone who can't afford professionally conducted virtul reality therapy.  Virtual reality therapy is a well explored, well established field, but consumer level virtual reality hardware is not.  We hope to combine an established psychological practice with a new, exciting hardware and software market to create a project that can truly help people. 
 \par ~\\
-We've done a large amount of research on both sides of our project, Virtual Reality and psychology, and how they intersect.  The history of commercial vr, while interesting, mainly points out to us how new the market truly is, as nothing like it existed until the Oculus.  However, the more recent history of VR has a large number of competing headsets and peripherals.  Based on our research and resources, we choose the Oculus Rift.  Additionally, we chose to work in unity as the Oculus is designed to be compatible with unity.  
+We've done a large amount of research on both sides of our project, Virtual Reality and psychology, and how they intersect.  The history of commercial vr, while interesting, mainly points out to us how new the market truly is, as nothing like it existed until the Oculus.  However, the more recent history of VR has a large number of competing headsets and peripherals.  Based on our research and resources, we choose the Oculus Rift.  Additionally, we chose to work in unity as the Oculus is designed to be compatible with Unity.  
 \par ~\\
-We chose three scenes based on our psychology research, one for acrophobia, one for social anxiety, and one for general anxiety.  We laid out how we are going to create these scenes, and mapped most of them out.  We also showed the programs, assets, and tools we would use to make them and factored those into our budget.
+We chose three scenes based on our psychology research, one for acrophobia, one for social anxiety, and one for general anxiety.  We laid out how we are going to create these scenes, and fully realized them in our final implementation. We have also showed the programs, assets, and tools we used to make them and factored those into our final budget.
 \par ~\\
 The Psych VR team believes that we have done the necessary research, planning, prototyping, and decision making to create a product that could actually make a difference in people's lives.
 \par ~\\

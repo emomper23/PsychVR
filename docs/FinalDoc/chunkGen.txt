@@ -1,0 +1,14 @@
+//***************************************************
+//perlin noise for height of individual vertex in mesh
+//x, z are the sample verticies where the total number of 
+segemnts (verticies in a given direction) is the length or
+width divided by the cell size at a given random noiseOffset
+this is used passed to a perlin nosie function which is detailed below.
+//****************************************************
+private static float GetHeight(int x, int z, int xSegments, int zSegments, 
+                                Vector2 noiseOffset, float noiseScale)
+{
+    float noiseX = noiseScale*x/xSegments + noiseOffset.x;
+    float noiseZ = noiseScale*z/zSegments + noiseOffset.y;
+    return Mathf.PerlinNoise(noiseX, noiseZ);
+} 

@@ -1214,17 +1214,18 @@ We have provided the user the ability to select from four building heights as we
 Users may optionally respond to a questionnaire after the scene. In addition to this the scene will track how high up the user went and how much time was spent at each level. All of these metrics will be combined and analyzed over multiple sessions to provide the user feedback on their efforts.
 
 \pagebreak
+\subsubsection{Module Storyboard: Fear Of Heights}
 \begin{figure}[H]
 	\centering
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=210px, height=210px, keepaspectratio]{qtHeightSettings.png}
+		\includegraphics[width=200px, height=210px, keepaspectratio]{qtHeightSettings.png}
 		\label{qtHeightSettings}
 		\caption{Fear of Heights Configuration}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=210px, height=210px, keepaspectratio]{heightSS1.png}
+		\includegraphics[width=200px, height=210px, keepaspectratio]{heightSS1.png}
 		\label{heightSS1}
 		\caption{Fear of Heights Start}
 	\end{minipage}
@@ -1233,13 +1234,13 @@ Users may optionally respond to a questionnaire after the scene. In addition to 
 	\centering
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=210px, height=210px, keepaspectratio]{heightSS2.png}
+		\includegraphics[width=200px, height=210px, keepaspectratio]{heightSS2.png}
 		\label{heightSS2}
 		\caption{Fear of Heights Leaning}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=210px, height=210px, keepaspectratio]{qtHeightSurvey.png}
+		\includegraphics[width=200px, height=210px, keepaspectratio]{qtHeightSurvey.png}
 		\label{heightSurvey}
 		\caption{Fear of Heights Survey}
 	\end{minipage}
@@ -1248,13 +1249,13 @@ Users may optionally respond to a questionnaire after the scene. In addition to 
 	\centering
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=210px, height=210px, keepaspectratio]{qtHeightGraph.png}
+		\includegraphics[width=200px, height=210px, keepaspectratio]{qtHeightGraph.png}
 		\label{heightQtGraph}
 		\caption{Fear of Heights Data Graph}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=210px, height=210px, keepaspectratio]{qtHeightProgress.png}
+		\includegraphics[width=200px, height=210px, keepaspectratio]{qtHeightProgress.png}
 		\label{heightQtSurveyResults}
 		\caption{Fear of Heights Progress Graph}
 	\end{minipage}
@@ -1352,17 +1353,18 @@ Each of the animation types can be enabled or disabled from the launcher such as
 Users may optionally respond to a questionnaire before and after the scene. In addition to the optional survey metrics, throughout the scene the users head, and where they are looking (ex: eye contact) will be tracked in order to provide feedback about their performance during the scene. All of these metrics will be combined and analyzed over multiple sessions to provide the user detailed feedback on their efforts and performance. %NEEDS WORK spreadsheet?
 
 \pagebreak
+\subsubsection{Module Storyboard: Speech Anxiety}
 \begin{figure}[H]
 	\centering
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=210px, height=210px, keepaspectratio]{qtSpeechSettings.png}
+		\includegraphics[width=200px, height=210px, keepaspectratio]{qtSpeechSettings.png}
 		\label{qtSpeechSettings}
 		\caption{Speech Anxiety Configuration}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=210px, height=210px, keepaspectratio]{speechSS1.png}
+		\includegraphics[width=200px, height=210px, keepaspectratio]{speechSS1.png}
 		\label{speechSS1}
 		\caption{Speech Anxiety Start}
 	\end{minipage}
@@ -1371,13 +1373,13 @@ Users may optionally respond to a questionnaire before and after the scene. In a
 	\centering
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=210px, height=210px, keepaspectratio]{speechSS2.png}
+		\includegraphics[width=200px, height=210px, keepaspectratio]{speechSS2.png}
 		\label{speechSS2}
 		\caption{Speech Anxiety Leaning}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=210px, height=210px, keepaspectratio]{qtSpeechSurvey.png}
+		\includegraphics[width=200px, height=210px, keepaspectratio]{qtSpeechSurvey.png}
 		\label{qtSpeechSurvey}
 		\caption{Speech Anxiety Survey}
 	\end{minipage}
@@ -1386,13 +1388,13 @@ Users may optionally respond to a questionnaire before and after the scene. In a
 	\centering
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=210px, height=210px, keepaspectratio]{qtSpeechGraph.png}
+		\includegraphics[width=200px, height=210px, keepaspectratio]{qtSpeechGraph.png}
 		\label{qtSpeechGraph}
 		\caption{Speech Anxiety Data Graph}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=210px, height=210px, keepaspectratio]{qtSpeechProgress.png}
+		\includegraphics[width=200px, height=210px, keepaspectratio]{qtSpeechProgress.png}
 		\label{qtSpeechProgress}
 		\caption{Speech Anxiety Progress Graph}
 	\end{minipage}
@@ -1464,7 +1466,6 @@ and deal with the extra processing overhead for the GPU while making sure we can
 \end{itemize}
 % https://scrawkblog.com/category/directcompute/
 % http://answers.unity3d.com/questions/162096/gpu-programming-with-unity.html
-\pagebreak
 \subsubsection{GPGPU Research Outline}
 Any generated terrain Unity supports compute shaders which are written in Direct X HLSL, and allow the application to do computations on the GPU for
 these terrain calculations. These compute shaders allow the application to do most of the heavy computations on the GPU which provides massive speedups compared to the a CPU implementation.
@@ -1637,17 +1638,55 @@ This kernel is a compute shader that is run on the GPU and allows for synchroniz
 
 \pagebreak
 \subsubsection{Our Implementation}
-For our terrain generation with a ramping height created with a perlin noise mapped to a mesh that was instantiated and rendered in the scene, A Unity asset was used that allowed for easy configuration of parameters to this generation which is detailed below.
+For our terrain generation with a ramping height created with a perlin noise mapped to a mesh that was instantiated and rendered in the scene, A Unity asset was used that allowed for easy configuration of parameters to this generation which is detailed below:~\\
 
+\paragraph{Chunk Generation} 
 The Individual terrain chunks have a maximum x, and z size and and height limit y there is also a cell size that controls the number of triangle 
 
+\paragraph{Terrain stitching}
+Terrain stitching
 
-\subsubsection{Models and Resources}
+\paragraph{Object Spawning}
+
+\paragraph{Movement}
+
 \subsubsection{Interaction and User Inputs}
 The user begins the scene by moving from their desk to the front of the room. From here they may prepare any presentation materials they configured through Qt such as a Powerpoint presentation. Movement will be controlled via the Kinect sensor, we plan to control object interactions with LeapMotion. 
 
 \subsubsection{Configuration from Qt Launcher}
-This scene will be our most configurable. Qt will allow the user to specify which chairs have a model in them and what behavior that model will perform. A user will also be able to include a Powerpoint during configuration so they may have a presentation aid during their practice. As a stretch goal we hope to include more than just a classroom setting and allow users to pick from a few environments.
+As detailed above, this scene is generated randomly to provide a unique explorable environment for the user.
+\pagebreak
+\subsubsection{Module Storyboard: Calming Environment}
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=200px, height=210px, keepaspectratio]{qtCalmSettings.png}
+		\labelq
+		\caption{Calming Environment Configuration}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=200px, height=210px, keepaspectratio]{calmSpawn.png}
+		\label{speechSS1}
+		\caption{Speech Calming Environment Start}
+	\end{minipage}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=200px, height=210px, keepaspectratio]{calmMove.png}
+		\label{speechSS2}
+		\caption{Calming Environment Movement}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=200px, height=210px, keepaspectratio]{qtCalmSurvey.png}
+		\label{qtSpeechSurvey}
+		\caption{Calming Environemnt Exit}
+	\end{minipage}
+\end{figure}
 
 %E. Explicit Design Summary with diagrams
 %F. Build, prototype, test, and evaluation plan

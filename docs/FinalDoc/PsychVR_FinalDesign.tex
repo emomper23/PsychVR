@@ -1631,7 +1631,9 @@ This kernel is a compute shader that is run on the GPU and allows for synchroniz
 
 \pagebreak
 \subsubsection{Our Implementation}
-For our terrain generation we used a Unity Asset Procedural terrain generator
+For our terrain generation with a ramping height created with a perlin noise mapped to a mesh that was instantiated and rendered in the scene, A Unity asset was used that allowed for easy configuration of parameters to this generation which is detailed below.
+
+The Individual terrain chunks have a maximum x, and z size and and height limit y there is also a cell size that controls the number of triangle 
 
 
 \subsubsection{Models and Resources}

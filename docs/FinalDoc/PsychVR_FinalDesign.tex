@@ -209,17 +209,9 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 		\item Qt Environment Maps
 		\begin{itemize}
 		\item Description: The Qt configuration tool should have settings that allow the user to change the environemnt in some meaningful way, dependent on the scene.
-		\item Dependency:  Qt drag and drop and OpenGL drawing widgets. 
+		\item Dependency:  Qt settings should be passed to the unity scenes. 
 		\item Evaluation:  Testing this feature.
 		\end{itemize}
-		\item Qt Object Lists
-		\begin{itemize}
-		\item Description: The Qt app should have a list of available objects to be placed or moved in the Scene, (this can be done by another configuration tool 
-		(Creator module) or be a hard coded list of assets linked with the scene), this will need to be stored in a different config file. 
-		\item Dependency:  The environment map needs a list of Objects to configure. 
-		\item Evaluation:  Try this feature with a list of objects.
-		\end{itemize}
-
 		\item Qt Usability
 		\begin{itemize}
 		\item Description: The Qt Desktop app should be usable at various resolutions with easy simple controls. 
@@ -233,7 +225,7 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 		\item Dependency:  Making the scenes configurable.
 		\item Evaluation:  Save map editor configurations and read them in in Unity.
 		\end{itemize}
-		\item Qt Portability (If Configuration is supported on Android)
+		\item Qt Portability (If Project is supported on Android or linux)
 		\begin{itemize}
 		\item Description: If we support configurable scenes on android, we need to build an android version of the Qt app, this may already be supported by Qt, as it is highly portable.
 		\item Dependency:  Portability of the configuration tool.
@@ -241,7 +233,14 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 		\end{itemize}
 		\textbf{Now that these basic functional requirements have been defined, specific module requirements are as follows:}
 		
-		\item Scene 1 Fear of Heights Movement 
+		\item Scene 1 Fear of Heights Hand Movement
+		\begin{itemize}
+		\item Description: The scene shall use Leap Motion hand and gesture tracking to create deeper immersion for the user.
+		\item Dependency: Usability of the scene.
+		\item Evaluation: Test that scene controls work properly with Leap Motion. 
+		\end{itemize}
+		
+		\item Scene 1 Fear Heights of Player 
 		\begin{itemize}
 		\item Description: The scene shall use Leap Motion hand and gesture tracking to create deeper immersion for the user.
 		\item Dependency: Usability of the scene.

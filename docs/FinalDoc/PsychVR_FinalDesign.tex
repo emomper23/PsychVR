@@ -329,10 +329,10 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 	  \end{itemize}
 	\item Media Assets
 	\begin{itemize}
-	  \item Description: Game Character models need to be designed or purchased. Autodesk Maya, Google Sketchup, and blender have been used for designing additional models. 
+	  \item Description: Game Character models need to be designed or purchased. Autodesk Maya, Google Sketchup, and blender have been used for designing additional models. iPi Recorder 3 and iPi Mocap Studio 3 have been used to create animations from scratch. 
 	  \item Dependency: Creating realistic visuals 
 	  \item Evaluation Method: Test software to ensure it performs well and represents a high quality, immersive, environment.
-	\end{itemize} %MORE on animation?
+	\end{itemize}
 	\end{enumerate}
 
 	\subsection{Data Requirements}%JOHN JOHN JOHN
@@ -1255,6 +1255,7 @@ Users may optionally respond to a questionnaire after the scene. In addition to 
 	\end{minipage}
 \end{figure}
 
+\subsubsection{Typical Event Sequence: Fear Of Heights}
 \begin{enumerate}
 	\item PsychVR launcher is opened
 	\item The heights scene is configured and started
@@ -1264,7 +1265,7 @@ Users may optionally respond to a questionnaire after the scene. In addition to 
 	\item The user controls how the platform moves up and down with their hands
 	\item If the user in anyway becomes panicked, they may end the simulation
 	\item Upon completion or exit the user is asked to fill out a stress and emotion questionnaire
-	\item They are then shown a results screen based on data acquired from sensors consisting of high they went and the time it took, and their responses to the questionnaire
+	\item They are then shown a results screen based on data acquired from sensors consisting of how high they went out of the maximum height chosen, the time it took, and their responses to the questionnaire
 \end{enumerate}
 \pagebreak
 \subsection{Module 2 Speech Anxiety Simulator}
@@ -1344,7 +1345,7 @@ This is our most configurable scene. Qt will allow the user to specify how many 
 Each of the animation types can be enabled or disabled from the launcher such as sleeping or sitting up. The user will also be able to include a Power Point in the scene configuration so they may have a presentation aid during their practice.
 
 \subsubsection{User Progress Feedback}
-Users may optionally respond to a questionnaire before and after the scene. In addition to the optional survey metrics, throughout the scene the users head, and where they are looking (ex: eye contact) will be tracked in order to provide feedback about their performance during the scene. All of these metrics will be combined and analyzed over multiple sessions to provide the user detailed feedback on their efforts and performance. %NEEDS WORK spreadsheet?
+Users may optionally respond to a questionnaire before and after the scene. In addition to the optional survey metrics, throughout the scene the users head, and where they are looking (ex: eye contact) will be tracked in order to provide feedback about their performance during the scene. All of these metrics will be combined and analyzed over multiple sessions to provide the user detailed feedback on their efforts and performance. 
 
 \pagebreak
 \subsubsection{Module Storyboard: Speech Anxiety}
@@ -1394,18 +1395,20 @@ Users may optionally respond to a questionnaire before and after the scene. In a
 	\end{minipage}
 \end{figure}
 \begin{enumerate}
-	\item The user turns on the vr, and starts the acrophobia module
-	\item The user will be in a classroom, and be asked to give a presentation.
-	\item The user will use the control to move to the front of the class
-	\item The number of people, attitudes, and size of the classroom will be customizable through the QT app
-	\item Through measurements like the Samsung sensor, Kinect, and leap motion the user's actions while presenting will be measuring
-	\item The user will do their presentation in the virtual space
-	\item If the user in anyway becomes panicked, they can hit a panic button, and remove them from the experience
-	\item They are asked to fill out a stress and emotion questionnaire
-	\item They are then shown a results screen, that is based on data acquired from sensors and their questionnaires.
+	\item PsychVR launcher is opened
+	\item The speech scene animations and student number are configured
+	\item The user may select their Power Point in the launcher
+	\item The speech scene is started
+	\item The user will be in a classroom to deliver their presentation or speech
+	\item The user can walk within the Kinect sensor to move around the front of the classroom
+	\item Eye contact, time spent looking at slides, time spent looking at the floor, and total time are tracked
+	\item The "Next" and "Prev" buttons are used to control the slideshow
+	\item When finished the user presses the "End" button
+	\item Upon exit the user is asked to fill out a stress and emotion questionnaire
+	\item They are then shown a results screen based on data acquired from sensors consisting of time spent looking at various things, total time spent, and their responses to the questionnaire
 \end{enumerate}
 \pagebreak
-\subsection{Module 3 Calm Environment} % SO HYPED!!! %TODO TERRAIN DETAILS CONTROLLER, STITCHING, GEN
+\subsection{Module 3 Calm Environment}
 This module features a calming environment that will help patients with stress or anxiety relax in a calming peaceful environment. This environment will have random terrain which will have chunks that are procedurally generated while the user moves throughout the scene.  The art style/ graphic design for this project is inspired by indie games like Minecraft, Myst, or Proteus \textbf{(See Figure \ref{fig:proteus})}, except without puzzles or enemies. It will feature simple generated terrains that form a  peaceful landscape which the user can move throughout with various plants or natural features that decorate the scene.  Some configuration options for this scene include the music selection for the user to relax to, all of the objects and the coloring of the scene are configured for the unity scene to provide a random dynamic environment for the user to explore.
 
 \begin{figure}[H]
@@ -1426,7 +1429,6 @@ As before, here is some past research into the field of anxiety and VR.
 \pagebreak
 
 \begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/59736
-%TODO TERRAIN STORYBOARD
 
 	\centerline {\includegraphics[scale = 0.13, angle = 180]{unityMecanim.png}}%DIFFERENT IMAGE
 	\caption{Storyboard for Calming Module}
@@ -1662,13 +1664,13 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=200px, height=210px, keepaspectratio]{qtCalmSettings.png}
-		\labelq
+		\label{qtCalmSettings}
 		\caption{Calming Environment Configuration}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=200px, height=210px, keepaspectratio]{calmSpawn.png}
-		\label{speechSS1}
+		\label{calmSpawn}
 		\caption{Speech Calming Environment Start}
 	\end{minipage}
 \end{figure}
@@ -1677,14 +1679,14 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=200px, height=210px, keepaspectratio]{calmMove.png}
-		\label{speechSS2}
+		\label{calmMove}
 		\caption{Calming Environment Movement}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=200px, height=210px, keepaspectratio]{qtCalmSurvey.png}
-		\label{qtSpeechSurvey}
-		\caption{Calming Environemnt Exit}
+		\label{qtCalmSurvey}
+		\caption{Calming Environment Exit}
 	\end{minipage}
 \end{figure}
 

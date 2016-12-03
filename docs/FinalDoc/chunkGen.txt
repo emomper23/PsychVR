@@ -1,14 +1,23 @@
 //***************************************************
-//perlin noise for height of individual vertex in mesh
-//x, z are the sample verticies where the total number of 
+perlin noise for height of individual vertex in mesh
+x, z are the sample verticies where the total number of 
 segemnts (verticies in a given direction) is the length or
 width divided by the cell size at a given random noiseOffset
 this is used passed to a perlin nosie function which is detailed below.
-//****************************************************
-private static float GetHeight(int x, int z, int xSegments, int zSegments, 
+this segment of the code an excerpt from a unity configurable terrain
+chunk is from a unity procedural terrain generator.
+https://www.assetstore.unity3d.com/en/#!/content/16508 
+//****************************************************/
+GenerateVerticiesPseudoCode(int x, int z, int xSegments, int zSegments, 
                                 Vector2 noiseOffset, float noiseScale)
 {
+    //random offset into sampling
     float noiseX = noiseScale*x/xSegments + noiseOffset.x;
     float noiseZ = noiseScale*z/zSegments + noiseOffset.y;
-    return Mathf.PerlinNoise(noiseX, noiseZ);
-} 
+    height =  Mathf.PerlinNoise(noiseX, noiseZ);
+    vertices[index] = vec3((x + 0)*xCellSize, height*terrainSize.y, 
+                        (z + 0)*zCellSize);
+    colors[index] = colorGradient.Evaluate(height);
+    normal = Vector3.Cross(vertex01 - vertex00,
+                        vertex11 - vertex00).normalized;
+}

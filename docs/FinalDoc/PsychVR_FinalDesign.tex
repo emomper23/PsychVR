@@ -1286,13 +1286,13 @@ Just like for the Acrophobia section, here are some studies that have been done 
 In our implementation the user will be able to configure the environment in which they practice public speaking to better suit their needs and deliver a more personal experience. We will begin with a classroom environment with chair spots which the user can place different students into and configure their actions such as sleeping, focused, or distracted.
 
 \par~\\
-To further customize the scene the user may load a power point through Qt which will then display it onto the screen behind them as in an actual classroom.
+To further customize the scene the user may load a PowerPoint through Qt which will then display it onto the screen behind them as in an actual classroom.
 
 \par~\\
 Upon launch the user will deliver their speech to the configured audience. The slides can be traversed with the "Next" and "Prev" buttons. When the user is finished they will click the "End" button and be shown their statistics. These statistics will include the time spent making eye contact, looking at their slides, and looking down out of the total time they spent.
 
 \subsubsection{Models and Resources}
-For the speech anxiety module we designed a classroom for the user to practice speaking in, relevant objects to go in it such as a Power Point display, and human models to listen to the speaker. The majority of models used for this scene have been designed in Google SketchUp while the human models were created in MakeHuman. Animations and rigs were built with our Kinect sensor using iPi Recorder 3 and iPi Mocap Studio 3.
+For the speech anxiety module we designed a classroom for the user to practice speaking in, relevant objects to go in it such as a PowerPoint display, and human models to listen to the speaker. The majority of models used for this scene have been designed in Google SketchUp while the human models were created in MakeHuman. Animations and rigs were built with our Kinect sensor using iPi Recorder 3 and iPi Mocap Studio 3.
 
 \par~\\
 We will create a model of UCF's Harrison Engineering Corp. building room 108 for our first configurable room and if there is enough time we will design more options for the practice environment such as a lecture hall or conference room. Our classroom model will include the presentation equipment (projector, drop down screen, etc.) so that the user may practice the speech as close as possible to how it would actually be delivered. The room will be designed in Google SketchUp and objects such as chairs and presentation equipment will be sourced from the Google SketchUp 3D Warehouse.
@@ -1331,18 +1331,18 @@ Because animations are very expensive and we could not find free animations whic
 Unity controls how the animations are structured and transition. Certain animations are able to transition, such as sleeping to sitting up, based on user actions like making eye contact or looking towards the model.
 
 \subsubsection{Interaction and User Inputs}
-The user begins the scene by facing the board with their Power Point slides on it. Next the user turns to face the class and delivers their presentation. During presentation the "Next" and "Prev" buttons can be used via Leap Motion hand movements to traverse their slides. Positioning at the front of the classroom is controlled via the Kinect sensor. Once the user has finished they may use the "End" button to quit the scene and save their data.
+The user begins the scene by facing the board with their PowerPoint slides on it. Next the user turns to face the class and delivers their presentation. During presentation the "Next" and "Prev" buttons can be used via Leap Motion hand movements to traverse their slides. Positioning at the front of the classroom is controlled via the Kinect sensor. Once the user has finished they may use the "End" button to quit the scene and save their data.
 
 \subsubsection{Configuration from Qt Launcher}
 This is our most configurable scene. Qt will allow the user to specify how many students will be present and an algorithm will place them seemingly naturally throughout the classroom. At least one student will always be in the front row and the rest will be statistically distributed. Next is the algorithm which decides if a student should be placed in a chair, running from back to front after the first student has been placed randomly in either middle chair of the front row.
 
 \begin{figure}[H]
 	\label{fig:seatingCode}
-	\lstinputlisting [ C] {seatingAlgorithm.txt}
+	\lstinputlisting [ language = C] {seatingAlgorithm.txt}
 	\caption{Seating Algorithm by Peter Lomason}
 \end{figure}
 
-Each of the animation types can be enabled or disabled from the launcher such as sleeping or sitting up. The user will also be able to include a Power Point in the scene configuration so they may have a presentation aid during their practice.
+Each of the animation types can be enabled or disabled from the launcher such as sleeping or sitting up. The user will also be able to include a PowerPoint in the scene configuration so they may have a presentation aid during their practice.
 
 \subsubsection{User Progress Feedback}
 Users may optionally respond to a questionnaire before and after the scene. In addition to the optional survey metrics, throughout the scene the users head, and where they are looking (ex: eye contact) will be tracked in order to provide feedback about their performance during the scene. All of these metrics will be combined and analyzed over multiple sessions to provide the user detailed feedback on their efforts and performance. 
@@ -1397,7 +1397,7 @@ Users may optionally respond to a questionnaire before and after the scene. In a
 \begin{enumerate}
 	\item PsychVR launcher is opened
 	\item The speech scene animations and student number are configured
-	\item The user may select their Power Point in the launcher
+	\item The user may select their PowerPoint in the launcher
 	\item The speech scene is started
 	\item The user will be in a classroom to deliver their presentation or speech
 	\item The user can walk within the Kinect sensor to move around the front of the classroom
@@ -1428,12 +1428,7 @@ As before, here is some past research into the field of anxiety and VR.
 \end{itemize}
 \pagebreak
 
-\begin{figure}[H] %https://www.assetstore.unity3d.com/en/#!/content/59736
 
-	\centerline {\includegraphics[scale = 0.13, angle = 180]{unityMecanim.png}}%DIFFERENT IMAGE
-	\caption{Storyboard for Calming Module}
-	\label{fig:sbCalm}
-\end{figure}
 \begin{enumerate}
 	\item The program generates a procedurally generated environment.
 	\item The user can explore this environment, with quiet sounds and music sometimes being played.
@@ -1635,22 +1630,48 @@ This kernel is a compute shader that is run on the GPU and allows for synchroniz
 \pagebreak
 \subsubsection{Our Implementation}
 For our terrain generation with a ramping height created with a perlin noise mapped to a mesh that was instantiated and rendered in the scene, A Unity asset was used that allowed for easy configuration of parameters to this generation which is detailed below:~\\
+\begin{itemize}
+ \item Generate terrain meshes using perlin noise sampling
+ \item Stitch terrain to connect meshes
+ \item Spawn Objects randomly on terrain
+ \item As the user moves through the scene create and destroy chunks so the user can move in an infinite environemnt.
+
+\end{itemize}
+
 
 \paragraph{Chunk Generation} 
-The meshes of individual terrain chunks are generated by a Perlin noise sampling, they are also 
+The meshes of individual terrain chunks are generated by a Perlin noise sampling, they are also colored and the normals are calculated. 
 
 \begin{figure}[H]
-	\label{fig:TerrainChunkGen}
-	\lstinputlisting [ C] {chunkGen.txt}
+	\label{fig:TerrainChunkCode}
+	\lstinputlisting [language = C] {chunkGen.txt}
 	\caption{Terrain Chunk Gerneration Pseudo Code by Eric Momper}
 \end{figure}
+Due to our older version of Unity we are on 5.3.2f1 only supports meshes with upto 65,000 verticies so our terrain was size 200,200 with cell size of 2 (giving it a total of 60K vertices per mesh). A 3X3 grid of meshes are spawned and stitched together (explained in the next section). 
+
+
+\pagebreak
 
 \paragraph{Terrain stitching}
-Terrain stitching
+Terrain stitching is done to connect the verticies 
+\begin{figure}[H]
+	\label{fig:terrainStitchCode}
+	\lstinputlisting [language = C] {stitch.txt}
+	\caption{Chunk edge stitching pseudocode by Eric Momper}
+\end{figure}
+\begin{figure}[H]
+	\label{fig:terrainMoveCode}
+	\lstinputlisting [language = C] {terrainMove.txt}
+	\caption{Chunk movement pseudocode by Eric Momper}
+\end{figure}
+
+
 
 \paragraph{Object Spawning}
 
 \paragraph{Movement}
+
+
 
 \subsubsection{Interaction and User Inputs}
 The user begins the scene by moving from their desk to the front of the room. From here they may prepare any presentation materials they configured through Qt such as a Powerpoint presentation. Movement will be controlled via the Kinect sensor, we plan to control object interactions with LeapMotion. 
@@ -1658,37 +1679,6 @@ The user begins the scene by moving from their desk to the front of the room. Fr
 \subsubsection{Configuration from Qt Launcher}
 As detailed above, this scene is generated randomly to provide a unique explorable environment for the user.
 \pagebreak
-\subsubsection{Module Storyboard: Calming Environment}
-\begin{figure}[H]
-	\centering
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\includegraphics[width=200px, height=210px, keepaspectratio]{qtCalmSettings.png}
-		\label{qtCalmSettings}
-		\caption{Calming Environment Configuration}
-	\end{minipage}\hfill
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\includegraphics[width=200px, height=210px, keepaspectratio]{calmSpawn.png}
-		\label{calmSpawn}
-		\caption{Speech Calming Environment Start}
-	\end{minipage}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\includegraphics[width=200px, height=210px, keepaspectratio]{calmMove.png}
-		\label{calmMove}
-		\caption{Calming Environment Movement}
-	\end{minipage}\hfill
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\includegraphics[width=200px, height=210px, keepaspectratio]{qtCalmSurvey.png}
-		\label{qtCalmSurvey}
-		\caption{Calming Environment Exit}
-	\end{minipage}
-\end{figure}
 
 %E. Explicit Design Summary with diagrams
 %F. Build, prototype, test, and evaluation plan

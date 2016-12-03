@@ -1,0 +1,38 @@
+//vertx = number of verticies in a row of a given square grid 
+
+StitchRight(Mesh fromMesh, Mesh toMesh)
+{
+    int length = toMesh.normals.Count;
+
+    int limit = vert_x * 6;
+
+    for (int i = 0; i < limit; i += 6)
+    {
+        int offset = (length - vert_x * 6);
+
+        fromMesh.vertices[i] = (new Vector3(fromMesh.vertices[i].x,
+                toMesh.vertices[offset + i + 1].y, fromMesh.vertices[i].z));
+        fromMesh.vertices[i + 3] = (new Vector3(fromMesh.vertices[i + 3].x, 
+                toMesh.vertices[offset + i + 1].y, fromMesh.vertices[i + 3].z));
+        fromMesh.vertices[i + 5] = (new Vector3(fromMesh.vertices[i + 5].x, 
+                toMesh.vertices[offset + i + 2].y, fromMesh.vertices[i + 5].z));
+
+    }
+}
+
+
+StitchDown(Mesh fromMesh, Mesh toMesh)
+{
+    int length = toMesh.normals.Count;
+    int row = (vert_x * 6);
+
+    for (int i = 0; i < length; i += row)
+    {
+        fromMesh.vertices[i] = (new Vector3(fromMesh.vertices[i].x, 
+                toMesh.vertices[i + row - 1].y, fromMesh.vertices[i].z));
+        fromMesh.vertices[i + 1] = (new Vector3(fromMesh.vertices[i + 1].x, 
+                toMesh.vertices[i + row - 2].y, fromMesh.vertices[i + 1].z));
+        fromMesh.vertices[i + 3] = (new Vector3(fromMesh.vertices[i + 3].x,
+                toMesh.vertices[i + row - 1].y, fromMesh.vertices[i + 3].z));
+    }
+} 

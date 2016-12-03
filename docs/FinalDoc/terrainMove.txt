@@ -1,0 +1,45 @@
+//movement from grid4 to grid7 (NORTH)
+public void SetGrid7()
+{
+    Vector3 pos = plane_list[7].transform.position;
+
+    terrainGen.SendPlane(plane_list[0]);
+    terrainGen.SendPlane(plane_list[1]);
+    terrainGen.SendPlane(plane_list[2]);
+
+    //swap planes that are still in list
+    plane_list[0] = plane_list[3];
+    plane_list[1] = plane_list[4];
+    plane_list[2] = plane_list[5];
+    plane_list[3] = plane_list[6];
+    plane_list[4] = plane_list[7];
+    plane_list[5] = plane_list[8];
+
+    Vector3 dist0 = new Vector3(size_x, 0, size_z);
+    Vector3 dist1 = new Vector3(size_x, 0, size_z);
+    Vector3 dist2 = new Vector3(size_x, 0, size_z);
+    dist0.Scale(dir_list[(int)directions.NORTH]);
+    dist1.Scale(dir_list[(int)directions.NE]);
+    dist2.Scale(dir_list[(int)directions.NW]);
+ 
+    //spawn new planes at given locations
+    plane_list[7] = SpawnPlane(pos + dist0);
+    plane_list[6] = SpawnPlane(pos + dist1);
+    plane_list[8] = SpawnPlane(pos + dist2);
+    
+    //change planes to names in list
+    renamePlanes();
+    
+    StitchRight(plane_list[7], plane_list[6]);
+    StitchRight(plane_list[8], plane_list[7]);
+    
+    StitchDown(plane_list[8], plane_list[5]);
+    StitchDown(plane_list[7], plane_list[4]);
+    StitchDown(plane_list[6], plane_list[3]);
+    
+    //update meshes of stitched planes
+    UpdatePlane(plane_list[8]);
+    UpdatePlane(plane_list[7]);
+    UpdatePlane(plane_list[6]);
+
+} 

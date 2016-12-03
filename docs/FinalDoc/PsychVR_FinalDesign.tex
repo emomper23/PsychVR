@@ -1280,12 +1280,14 @@ Just like for the Acrophobia section, here are some studies that have been done 
 \subsubsection{Our Implementation}
 In our implementation the user will be able to configure the environment in which they practice public speaking to better suit their needs and deliver a more personal experience. We will begin with a classroom environment with chair spots which the user can place different students into and configure their actions such as sleeping, focused, or distracted.
 
+\par~\\
 To further customize the scene the user may load a power point through Qt which will then display it onto the screen behind them as in an actual classroom.
 
-Upon launch the user will deliver their speech to the configured audience. The slides can be traversed with the "Next" and "Prev" buttons. When the user is finished 
+\par~\\
+Upon launch the user will deliver their speech to the configured audience. The slides can be traversed with the "Next" and "Prev" buttons. When the user is finished they will click the "End" button and be shown their statistics. These statistics will include the time spent making eye contact, looking at their slides, and looking down out of the total time they spent.
 
 \subsubsection{Models and Resources}
-For the speech anxiety module we need a room for the user to practice public speaking in, relevant objects to go in it, and human models to listen to the speaker. The majority of models used for this scene will be designed in Google SketchUp while the human models will be created in MakeHuman. 
+For the speech anxiety module we designed a classroom for the user to practice speaking in, relevant objects to go in it such as a Power Point display, and human models to listen to the speaker. The majority of models used for this scene have been designed in Google SketchUp while the human models were created in MakeHuman. Animations and rigs were built with our Kinect sensor using iPi Recorder 3 and iPi Mocap Studio 3.
 
 \par~\\
 We will create a model of UCF's Harrison Engineering Corp. building room 108 for our first configurable room and if there is enough time we will design more options for the practice environment such as a lecture hall or conference room. Our classroom model will include the presentation equipment (projector, drop down screen, etc.) so that the user may practice the speech as close as possible to how it would actually be delivered. The room will be designed in Google SketchUp and objects such as chairs and presentation equipment will be sourced from the Google SketchUp 3D Warehouse.
@@ -1307,59 +1309,83 @@ This tool allows us to design a human model to our liking with free features, cl
 \end{figure}
 Models created in MakeHuman are fully rigged and can be exported as fbx files. This format is compatible with Unity's Mecanim which will be used to animate our models so they can perform various actions. These actions can be set according to how the user has configured the environment in our Qt launcher.
 
+\par
+\begin{figure}[H] %screenshot taken by Peter Lomason
+	\centerline {\includegraphics[scale = 0.28]{motionCapture.png}}
+	\caption{iPi Mocap Studio 3, screenshot taken by Peter Lomason}
+	\label{fig:motionCapture}
+\end{figure}
+Because animations are very expensive and we could not find free animations which fit our needs we had to make them ourselves. Using our Kinect sensor and iPi Recorder 3 we created depth and movement data files. Next, iPi Mocap Studio 3 was used to process, trace, and split these captures. After removing jitter, several passes of smoothing, and many recording attempts we had created 16 animation clips to be used with our models in Unity.
+
+\par
+\begin{figure}[H] %screenshot taken by Peter Lomason
+	\centerline {\includegraphics[scale = 0.28]{animatorController.png}}
+	\caption{Animator Controller, screenshot taken by Peter Lomason}
+	\label{fig:animatorController}
+\end{figure}
+Unity controls how the animations are structured and transition. Certain animations are able to transition, such as sleeping to sitting up, based on user actions like making eye contact or looking towards the model.
+
 \subsubsection{Interaction and User Inputs}
-The user begins the scene by moving from their desk to the front of the room. From here they may prepare any presentation materials they configured through Qt such as a Powerpoint presentation. Movement will be controlled via the Kinect sensor, we plan to control object interactions with LeapMotion. 
+The user begins the scene by facing the board with their Power Point slides on it. Next the user turns to face the class and delivers their presentation. During presentation the "Next" and "Prev" buttons can be used via Leap Motion hand movements to traverse their slides. Positioning at the front of the classroom is controlled via the Kinect sensor. Once the user has finished they may use the "End" button to quit the scene and save their data.
 
 \subsubsection{Configuration from Qt Launcher}
-This scene will be our most configurable. Qt will allow the user to specify which chairs have a model in them and what behavior that model will perform. A user will also be able to include a Powerpoint during configuration so they may have a presentation aid during their practice. As a stretch goal we hope to include more than just a classroom setting and allow users to pick from a few environments.
+This is our most configurable scene. Qt will allow the user to specify how many students will be present and an algorithm will place them seemingly naturally throughout the classroom. At least one student will always be in the front row and the rest will be statistically distributed. Next is the algorithm which decides if a student should be placed in a chair, running from back to front after the first student has been placed randomly in either middle chair of the front row.
+
+\begin{figure}[H]
+	\label{fig:reductionCode}
+	\lstinputlisting [language = C] {seatingAlgorithm.txt}
+	\caption{Seating Algorithm by Peter Lomason}
+\end{figure}
+
+Each of the animation types can be enabled or disabled from the launcher such as sleeping or sitting up. The user will also be able to include a Power Point in the scene configuration so they may have a presentation aid during their practice.
 
 \subsubsection{User Progress Feedback}
-Users may optionally respond to a questionnaire before and after the scene. The use of the Samsung S Health app will be suggested but is also optional. For this the user would run the app on their smartphone and fill in our software with the feedback given to them from the S Health stress sensor. In addition to these optional metrics, throughout the scene the users posture, head, and where they are looking (ex: eye contact) will be tracked in order to provide feedback about their performance during the scene. All of these metrics will be combined and analyzed over multiple sessions to provide the user feedback on their efforts. %NEEDS WORK spreadsheet?
+Users may optionally respond to a questionnaire before and after the scene. In addition to the optional survey metrics, throughout the scene the users head, and where they are looking (ex: eye contact) will be tracked in order to provide feedback about their performance during the scene. All of these metrics will be combined and analyzed over multiple sessions to provide the user detailed feedback on their efforts and performance. %NEEDS WORK spreadsheet?
 
 \pagebreak
 \begin{figure}[H]
 	\centering
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=210px, height=210px, keepaspectratio]{qtHeightSettings.png}
-		\label{qtHeightSettings}
-		\caption{Fear of Heights Configuration}
+		\includegraphics[width=210px, height=210px, keepaspectratio]{qtSpeechSettings.png}
+		\label{qtSpeechSettings}
+		\caption{Speech Anxiety Configuration}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=210px, height=210px, keepaspectratio]{heightSS1.png}
-		\label{heightSS1}
-		\caption{Fear of Heights Start}
+		\includegraphics[width=210px, height=210px, keepaspectratio]{speechSS1.png}
+		\label{speechSS1}
+		\caption{Speech Anxiety Start}
 	\end{minipage}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=210px, height=210px, keepaspectratio]{heightSS2.png}
-		\label{heightSS2}
-		\caption{Fear of Heights Leaning}
+		\includegraphics[width=210px, height=210px, keepaspectratio]{speechSS2.png}
+		\label{speechSS2}
+		\caption{Speech Anxiety Leaning}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=210px, height=210px, keepaspectratio]{qtHeightSurvey.png}
-		\label{heightSurvey}
-		\caption{Fear of Heights Survey}
+		\includegraphics[width=210px, height=210px, keepaspectratio]{qtSpeechSurvey.png}
+		\label{qtSpeechSurvey}
+		\caption{Speech Anxiety Survey}
 	\end{minipage}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=210px, height=210px, keepaspectratio]{qtHeightGraph.png}
-		\label{heightQtGraph}
-		\caption{Fear of Heights Data Graph}
+		\includegraphics[width=210px, height=210px, keepaspectratio]{qtSpeechGraph.png}
+		\label{qtSpeechGraph}
+		\caption{Speech Anxiety Data Graph}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=210px, height=210px, keepaspectratio]{qtHeightProgress.png}
-		\label{heightQtSurveyResults}
-		\caption{Fear of Heights Progress Graph}
+		\includegraphics[width=210px, height=210px, keepaspectratio]{qtSpeechProgress.png}
+		\label{qtSpeechProgress}
+		\caption{Speech Anxiety Progress Graph}
 	\end{minipage}
 \end{figure}
 \begin{enumerate}

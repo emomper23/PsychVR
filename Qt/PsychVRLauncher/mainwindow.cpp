@@ -901,9 +901,9 @@ void MainWindow::readIn()
         }
         else if(ticks.size() > 8)
         {
-            ui->graph2->xAxis->setRange(0, 8.5);
-            ui->customPlot->xAxis->setRange(0, 8.5);
-            ui->graphTime->xAxis->setRange(0, 8.5);
+            ui->graph2->xAxis->setRange(0, 25);
+            ui->customPlot->xAxis->setRange(0, 25);
+            ui->graphTime->xAxis->setRange(0, 25);
         }
         else
         {

@@ -78,7 +78,7 @@
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>1</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="tab">
         <property name="sizePolicy">
@@ -113,7 +113,7 @@
           </rect>
          </property>
          <property name="text">
-          <string>Change Scene Settings</string>
+          <string>Save Scene Settings</string>
          </property>
         </widget>
         <widget class="QTabWidget" name="tabWidget_3">
@@ -126,7 +126,7 @@
           </rect>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="tab_2">
           <attribute name="title">
@@ -190,8 +190,8 @@
           <widget class="QLabel" name="label_6">
            <property name="geometry">
             <rect>
-             <x>200</x>
-             <y>30</y>
+             <x>240</x>
+             <y>40</y>
              <width>91</width>
              <height>16</height>
             </rect>
@@ -203,10 +203,10 @@
           <widget class="QComboBox" name="heightBox">
            <property name="geometry">
             <rect>
-             <x>200</x>
+             <x>240</x>
              <y>70</y>
-             <width>101</width>
-             <height>22</height>
+             <width>111</width>
+             <height>31</height>
             </rect>
            </property>
            <item>
@@ -234,7 +234,7 @@
            <property name="geometry">
             <rect>
              <x>20</x>
-             <y>70</y>
+             <y>60</y>
              <width>75</width>
              <height>23</height>
             </rect>
@@ -249,37 +249,11 @@
              <x>110</x>
              <y>20</y>
              <width>51</width>
-             <height>51</height>
+             <height>71</height>
             </rect>
            </property>
            <property name="autoFillBackground">
             <bool>true</bool>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="MusicButton">
-           <property name="geometry">
-            <rect>
-             <x>350</x>
-             <y>30</y>
-             <width>111</width>
-             <height>41</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Choose Music</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="musicLabel">
-           <property name="geometry">
-            <rect>
-             <x>360</x>
-             <y>100</y>
-             <width>91</width>
-             <height>20</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>No song selected</string>
            </property>
           </widget>
           <widget class="QGraphicsView" name="graphicsViewHeights">
@@ -306,8 +280,8 @@
           <widget class="QPushButton" name="colorBut2">
            <property name="geometry">
             <rect>
-             <x>10</x>
-             <y>50</y>
+             <x>20</x>
+             <y>60</y>
              <width>75</width>
              <height>23</height>
             </rect>
@@ -319,8 +293,8 @@
           <widget class="QLabel" name="label_7">
            <property name="geometry">
             <rect>
-             <x>10</x>
-             <y>20</y>
+             <x>20</x>
+             <y>30</y>
              <width>81</width>
              <height>21</height>
             </rect>
@@ -332,10 +306,10 @@
           <widget class="QWidget" name="color2" native="true">
            <property name="geometry">
             <rect>
-             <x>90</x>
+             <x>110</x>
              <y>20</y>
-             <width>41</width>
-             <height>51</height>
+             <width>51</width>
+             <height>71</height>
             </rect>
            </property>
            <property name="autoFillBackground">
@@ -345,8 +319,8 @@
           <widget class="QLabel" name="label_8">
            <property name="geometry">
             <rect>
-             <x>140</x>
-             <y>20</y>
+             <x>180</x>
+             <y>40</y>
              <width>61</width>
              <height>20</height>
             </rect>
@@ -358,8 +332,8 @@
           <widget class="QSpinBox" name="seatsBox">
            <property name="geometry">
             <rect>
-             <x>210</x>
-             <y>20</y>
+             <x>250</x>
+             <y>40</y>
              <width>51</width>
              <height>31</height>
             </rect>
@@ -377,8 +351,8 @@
           <widget class="QLabel" name="label_9">
            <property name="geometry">
             <rect>
-             <x>270</x>
-             <y>20</y>
+             <x>320</x>
+             <y>40</y>
              <width>51</width>
              <height>21</height>
             </rect>
@@ -390,8 +364,8 @@
           <widget class="QLabel" name="label_11">
            <property name="geometry">
             <rect>
-             <x>10</x>
-             <y>100</y>
+             <x>20</x>
+             <y>110</y>
              <width>241</width>
              <height>16</height>
             </rect>
@@ -403,8 +377,8 @@
           <widget class="QFrame" name="frame">
            <property name="geometry">
             <rect>
-             <x>10</x>
-             <y>130</y>
+             <x>20</x>
+             <y>140</y>
              <width>341</width>
              <height>61</height>
             </rect>
@@ -500,7 +474,7 @@
            <property name="geometry">
             <rect>
              <x>30</x>
-             <y>200</y>
+             <y>220</y>
              <width>111</width>
              <height>16</height>
             </rect>
@@ -512,8 +486,8 @@
           <widget class="QLabel" name="fileLabel">
            <property name="geometry">
             <rect>
-             <x>130</x>
-             <y>220</y>
+             <x>150</x>
+             <y>230</y>
              <width>191</width>
              <height>31</height>
             </rect>
@@ -528,8 +502,8 @@
           <widget class="QPushButton" name="fileButton">
            <property name="geometry">
             <rect>
-             <x>30</x>
-             <y>230</y>
+             <x>40</x>
+             <y>250</y>
              <width>75</width>
              <height>23</height>
             </rect>
@@ -562,8 +536,8 @@
           <widget class="QPushButton" name="colorBut3">
            <property name="geometry">
             <rect>
-             <x>30</x>
-             <y>70</y>
+             <x>20</x>
+             <y>60</y>
              <width>75</width>
              <height>23</height>
             </rect>
@@ -575,7 +549,7 @@
           <widget class="QLabel" name="label_13">
            <property name="geometry">
             <rect>
-             <x>30</x>
+             <x>20</x>
              <y>30</y>
              <width>81</width>
              <height>21</height>
@@ -588,10 +562,10 @@
           <widget class="QWidget" name="color3" native="true">
            <property name="geometry">
             <rect>
-             <x>120</x>
-             <y>40</y>
+             <x>110</x>
+             <y>20</y>
              <width>51</width>
-             <height>61</height>
+             <height>71</height>
             </rect>
            </property>
            <property name="autoFillBackground">

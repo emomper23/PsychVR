@@ -58,7 +58,7 @@ public class ElevatorScript : MonoBehaviour {
 
         //this.direction = 0;
 
-		height.text = gondola.transform.position.y.ToString("F2") + " Meters";
+		height.text = (1.8f*gondola.transform.position.y).ToString("F2") + " Meters";
         scale_ground = 1f - gondola.position.y / top.position.y;
         scale_wind = gondola.position.y / top.position.y;
     }

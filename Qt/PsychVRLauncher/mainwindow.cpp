@@ -765,12 +765,12 @@ void MainWindow::readIn()
 
         if(sceneFlag == 0)
         {
-            attemptData.append(runData[iter].toObject()["height"].toString().toDouble() *1.5);
-            buildingHeights.append((runData[iter].toObject()["maxHeight"].toString().toDouble()*1.5)- (runData[iter].toObject()["height"].toString().toDouble()*1.5));
-            if(maxHeight < (runData[iter].toObject()["maxHeight"].toString().toDouble() *1.5))
-                maxHeight = runData[iter].toObject()["maxHeight"].toString().toDouble() *1.5;
+            attemptData.append(runData[iter].toObject()["height"].toString().toDouble() *1.8);
+            buildingHeights.append((runData[iter].toObject()["maxHeight"].toString().toDouble()*1.8)- (runData[iter].toObject()["height"].toString().toDouble()*1.8));
+            if(maxHeight < (runData[iter].toObject()["maxHeight"].toString().toDouble() *1.8))
+                maxHeight = runData[iter].toObject()["maxHeight"].toString().toDouble() *1.8;
             if(buildingHeights.at(iter) < 1)
-                successes.append(runData[iter].toObject()["maxHeight"].toString().toDouble()*1.5);
+                successes.append(runData[iter].toObject()["maxHeight"].toString().toDouble()*1.8);
             else
                 successes.append(0);
 

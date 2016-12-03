@@ -69,7 +69,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->colorBut3, SIGNAL(clicked(bool)), this, SLOT(changeColor()));
     connect(ui->fileButton, SIGNAL(clicked(bool)),this,SLOT(changeFile()));
     connect(ui->MusicButton_2, SIGNAL(clicked(bool)),this,SLOT(changeSong()));
-    connect(ui->MusicButton, SIGNAL(clicked(bool)),this,SLOT(changeSong()));
+    //connect(ui->MusicButton, SIGNAL(clicked(bool)),this,SLOT(changeSong()));
     connect(ui->tabWidget_3,SIGNAL(currentChanged(int)),this,SLOT(switchTabs(int)));
     connect(ui->scene_selection,SIGNAL(currentIndexChanged(int)),this,SLOT(switchScene(int)));
 
@@ -1147,7 +1147,7 @@ void MainWindow::changeSong()
     song =  QFileDialog::getOpenFileName(this,tr("Choose Music"), "", tr("Audio Files (*.wav)"));
     QString music = song;
     music.remove(0,music.lastIndexOf("/") + 1);
-    ui->musicLabel->setText(music);
+   // ui->musicLabel->setText(music);
     ui->musicLabel_2->setText(music);
 
 }

@@ -351,11 +351,11 @@ void MainWindow::saveModel()
 
 void MainWindow::tabChanged(int tab)
 {
-    if(tab == 3)
+    if(tab == 2)
     {
         readIn();
     }
-    else if(tab == 2)
+    else if(tab == 1)
     {
         if(ui->scene_selection->currentIndex()  == MainWindow::scene_idx_t::TERRAIN_GENERATION)
         {
@@ -364,6 +364,7 @@ void MainWindow::tabChanged(int tab)
         else if(ui->scene_selection->currentIndex() == MainWindow::scene_idx_t::FEAR_OF_HEIGHTS)
         {
             ui->coverlabel->hide();
+            ui->genLabel->setText("General Heights Stress/Fear Level");
             ui->quest1->setText("My fear of heights affects\n my day to day life");
             ui->quest2->setText("I remained calm as I went up");
             ui->quest3->setText("I remained calm as I went down");
@@ -374,7 +375,8 @@ void MainWindow::tabChanged(int tab)
         else if(ui->scene_selection->currentIndex() == MainWindow::scene_idx_t::SPEECH_ANXIETY)
         {
             ui->coverlabel->hide();
-            ui->quest1->setText("My speech anxiety affects\nmy day to day life");
+            ui->genLabel->setText("General Social Stress/Fear Level");
+            ui->quest1->setText("My speech anxiety affects\nmy day to day life");   
             ui->quest2->setText("I remained calm during the presentation");
             ui->quest3->setText("I was able to focus on the presenation");
             ui->quest4->setText("I remained calm while looking\nat the audience");

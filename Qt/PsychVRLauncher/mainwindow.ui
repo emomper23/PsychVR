@@ -78,7 +78,7 @@
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="tab">
         <property name="sizePolicy">
@@ -660,10 +660,94 @@
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
-          <item row="11" column="2">
-           <widget class="QPushButton" name="submit_button">
+          <item row="10" column="0">
+           <widget class="QLabel" name="genLabel">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
-             <string>Submit</string>
+             <string>General Heights Stress/Fear Level</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="11" column="0">
+           <widget class="QLabel" name="label_19">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Stress/Fear Level Post- Trial</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="1" colspan="2">
+           <widget class="QSlider" name="stress_slider">
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="tracking">
+             <bool>false</bool>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="invertedAppearance">
+             <bool>false</bool>
+            </property>
+            <property name="invertedControls">
+             <bool>false</bool>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TicksBelow</enum>
+            </property>
+            <property name="tickInterval">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+          <item row="12" column="2">
+           <widget class="QTextEdit" name="textEdit">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>125</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="13" column="0">
+           <widget class="QLabel" name="errorLabel">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+              <weight>75</weight>
+              <italic>true</italic>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -1023,6 +1107,25 @@
             </property>
            </widget>
           </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="quest3">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>I remained calm as I went down</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
           <item row="4" column="0">
            <widget class="QLabel" name="quest1">
             <property name="font">
@@ -1043,8 +1146,8 @@
             </property>
            </widget>
           </item>
-          <item row="6" column="0">
-           <widget class="QLabel" name="quest3">
+          <item row="9" column="0">
+           <widget class="QLabel" name="quest6">
             <property name="font">
              <font>
               <weight>75</weight>
@@ -1052,7 +1155,8 @@
              </font>
             </property>
             <property name="text">
-             <string>I remained calm as I went down</string>
+             <string>I am better able to cope
+with my fear than before</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1136,8 +1240,15 @@
             </item>
            </layout>
           </item>
-          <item row="9" column="0">
-           <widget class="QLabel" name="quest6">
+          <item row="2" column="0" rowspan="2" colspan="4">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Please rate how much you agree with the following statements, from strongly disagree to strongly agree.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="12" column="0">
+           <widget class="QLabel" name="label_10">
             <property name="font">
              <font>
               <weight>75</weight>
@@ -1145,21 +1256,10 @@
              </font>
             </property>
             <property name="text">
-             <string>I am better able to cope
-with my fear than before</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
+             <string>Notes: </string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0" rowspan="2" colspan="4">
-           <widget class="QLabel" name="label_5">
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Please rate how much you agree with the following statements, from strongly disagree to strongly agree.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -1237,79 +1337,7 @@ with my fear than before</string>
             </item>
            </layout>
           </item>
-          <item row="10" column="0">
-           <widget class="QLabel" name="label_10">
-            <property name="font">
-             <font>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Notes: </string>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_3">
-            <property name="font">
-             <font>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>General Heights Stress/Fear Level</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_19">
-            <property name="font">
-             <font>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Stress/Fear Level Post- Trial</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="11" column="0">
-           <widget class="QLabel" name="errorLabel">
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-              <weight>75</weight>
-              <italic>true</italic>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1" colspan="3">
+          <item row="11" column="1" colspan="2">
            <widget class="QSlider" name="anxiety_slider">
             <property name="maximum">
              <number>100</number>
@@ -1331,38 +1359,10 @@ with my fear than before</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="1" colspan="3">
-           <widget class="QSlider" name="stress_slider">
-            <property name="maximum">
-             <number>100</number>
-            </property>
-            <property name="tracking">
-             <bool>false</bool>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="invertedAppearance">
-             <bool>false</bool>
-            </property>
-            <property name="invertedControls">
-             <bool>false</bool>
-            </property>
-            <property name="tickPosition">
-             <enum>QSlider::TicksBelow</enum>
-            </property>
-            <property name="tickInterval">
-             <number>1</number>
-            </property>
-           </widget>
-          </item>
-          <item row="10" column="2">
-           <widget class="QTextEdit" name="textEdit">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>125</height>
-             </size>
+          <item row="13" column="1" colspan="2">
+           <widget class="QPushButton" name="submit_button">
+            <property name="text">
+             <string>Submit</string>
             </property>
            </widget>
           </item>
@@ -1415,9 +1415,6 @@ with my fear than before</string>
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <zorder>coverlabel</zorder>
-        <zorder>gridLayoutWidget_3</zorder>
-        <zorder>label_4</zorder>
        </widget>
        <widget class="QWidget" name="tab_4">
         <attribute name="title">
@@ -1659,11 +1656,11 @@ with my fear than before</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_5"/>
-  <buttongroup name="buttonGroup"/>
-  <buttongroup name="buttonGroup_4"/>
-  <buttongroup name="buttonGroup_3"/>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup_6"/>
+  <buttongroup name="buttonGroup_5"/>
+  <buttongroup name="buttonGroup_4"/>
+  <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_3"/>
  </buttongroups>
 </ui>

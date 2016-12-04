@@ -335,7 +335,7 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 	\end{itemize}
 	\end{enumerate}
 
-	\subsection{Data Requirements}%JOHN JOHN JOHN
+	\subsection{Data Requirements}
 	\begin{enumerate}
 	\item Providing User Progress Feedback for Fear of Heights Scene
 	\begin{itemize}
@@ -358,7 +358,7 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 	\end{enumerate}
 	
 
-	\subsection{Human Factors Requirements} %MORE JOHN
+	\subsection{Human Factors Requirements}
 	\begin{enumerate}
 	\item UI Simplicity
 	    \begin{itemize}
@@ -373,7 +373,7 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 	      \item Evaluation Method: Test app on users get feedback.
 	    \end{itemize}
 	\item The models, textures, and graphics in the environment must be decent quality to help immerse the user.
-	    \begin{itemize}	%NEEDS WORK ? ? ? ?
+	    \begin{itemize}
 	      \item Description: Game Character models need to be designed or purchased. Autodesk Maya, Google Sketchup or blender should be used for designing additional models. 
 	      \item Dependency: Creating realistic visuals 
 	      \item Evaluation Method: Test app to ensure it performs well and represents a high quality environment.
@@ -382,7 +382,7 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 	
 	\subsection{Documentation Requirements}
 	\begin{enumerate}
-	  \item Clear Simple User Guides	%NEEDS WORK
+	  \item Clear Simple User Guides	%NEEDS WORK%README DISCLAIMER TODO
 	  \begin{itemize}
 	    \item Description: Make sure the guides are easy to read.
 	    \item  Dependency: Guide Quality and font size/ paper format.
@@ -390,7 +390,7 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 	  \end{itemize}
 	\item Accessibility of Guides
 	  \begin{itemize}
-	    \item Description: Make sure the guides are included. %NEEDS WORK DO WE NEED A GUIDE?
+	    \item Description: Make sure the guides are included.
 	    \item  Dependency: Guide Quality and accessibility.  
 	    \item Evaluation Method: Check user guides are accessible and to users (included with software).
 	  \end{itemize}
@@ -576,9 +576,6 @@ Following is our research on the various virtual reality devices and peripherals
 \begin{figure}[H]
 	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{cv.jpg}
 	\caption{Oculus Rift Consumer Version}
-	%to ref fig number
-	%Figure \ref{fig:block1} shows our blockDiagram.
-	%NOTHING
 	\label{fig:RiftCVImg}
 	\end{figure}
 	\pagebreak
@@ -999,7 +996,6 @@ take into account such issues as individual responsibility, disability determina
 \end{itemize}
 \par~\\
 To summarize, while the DSM is important and helpful, it is by no means complete.  We understand that it is intended to get a better basic understanding but it is not perfect.  
-%README DISCLAIMER TODO
 \par
 \subsubsection{DSM Criteria for Specific Phobias}
 \paragraph{DSM IV}~\\
@@ -1122,11 +1118,9 @@ to this monitoring the participant is often given a questionnaire to fill out be
 acquire treatment data and provide feedback to their patients. \cite{vrPhobia}
 
 \subsubsection{Stress Analysis}
-After our status presentation it came to our attention we had no plan for providing users feedback of their progress so we began research on this topic.
-It turns out, measuring stress is a difficult task. 
+After our status presentation it came to our attention we had no plan for providing users feedback of their progress so we began research on this topic. It turns out, measuring stress is a difficult task. 
 \par~\\
 %JOHN SURVEY PIECE ON STRESS ANALYSIS ADD MORE??
-
 \subsubsection{Stress Questionnaire}
 A stand-in for a psychologist will be issuing a stress questionnaire. Before the user launches any scene they will be given the option of responding to questions
 with the goal of assessing their current level of stress. Once a scene is completed they will again be presented with this questionnaire. The before and after data will be 
@@ -1585,8 +1579,7 @@ In order to avoid all of the transfer penalties the frequency, size, and amount 
 
 
 \subsubsection{Unity Camera Rendering Pipeline}
-Unity supports the exposes the command buffer which is similar to the main rendering pipeline in most graphics processing frameworks (OpenGL's paint or render loop, OpenCL's command queue etc.) This framework supports blitting, drawing meshes, drawing procedural geometry (compute shaders), and many other common graphics drawing features. \textbf{(See Figure \ref{fig:gpuPipe})} %NEEDS WORK blitting?
-
+Unity supports the exposes the command buffer which is similar to the main rendering pipeline in most graphics processing frameworks (OpenGL's paint or render loop, OpenCL's command queue etc.) This framework supports blitting, drawing meshes, drawing procedural geometry (compute shaders), and many other common graphics drawing features. \textbf{(See Figure \ref{fig:gpuPipe})}
 \begin{figure}[H]
 	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{cameraRender.png}
 	\caption{Unity Command Buffer Camera Pipeline}
@@ -1620,7 +1613,7 @@ calculations such as min, max, mean, sum etc... anything that can be reduced to 
 \paragraph{Shader Processor Atomics} 
 This is another powerful feature that is supported in Unity Compute shaders, it creates atomic accesses for compute units and shader processors which allow the kernels to avoid race conditions. 
 \begin{figure}[H]
-	\lstinputlisting [language =C] {atomic_inc.hlsl} %NEEDS WORK math call error?
+	\lstinputlisting [language =C] {atomic_inc.hlsl}
 	This kernel is a compute shader that is run on the GPU and allows for synchronization adding or various operations that are done in an atomic fashion, avoiding, race conditions.
 	\caption{Atomic Code}
 	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
@@ -1748,7 +1741,7 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 		This figure shows the program flow for different user options, including configuration, launching, recording, and vie
 		\pagebreak
 
-%TODO JSON CONFIG
+%TODO JSON CONFIG JOHN
 \subsubsection {Configuration Design Details}
 (See figure \ref{fig:qtMockupMap})
 \begin{itemize}
@@ -1803,7 +1796,7 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 				\end{figure}
 				\pagebreak
 		\subsubsection{Unity Design Details}	
-\begin{itemize} %JOHN but nah he will never so ERIC
+\begin{itemize} %JOHN
 	\item Configurable scenes are initially read an expected Qt configuration file that 
 	will contain scene specific settings and addons to the to the scenes including colors, music, and additional configuration settings.
 	\item The Kinect camera, Oculus Rift, and Leap motion were added as input controls mapped to a first person avatar that has is own models for hands, legs, arms and body. 

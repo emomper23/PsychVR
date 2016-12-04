@@ -72,9 +72,9 @@ at limited locations, or on a very exclusive basis.
 \par~\\ 
 This is due to a number of factors including the available openings for research, cost of the hardware and software involved, and locations of the few companies which professionally offer virtual reality therapy. Psychological and social factors also play a role in the underwhelming prevalence of virtual reality for psychology.  PsychVR serves as a solution to this problem by offering a suite of treatment environments targeted at some of the most prominent psychological issues which respond well to virtual reality therapy, as well as customization of these environments.  All of this is targeted at both marketing and design towards home users and consumers, allowing for all who may be interested to experience virtual reality as a therapy tool.
 \par ~\\
-The first three environments we have developed target fear of heights, speech anxiety, and stress relief. Our platform features customization of these environments as well as easy modular expandability so more can be designed and added by users.  Tackling the issue of hardware cost to the average user our platform supports the Oculus Rift DK1, Kinect V1, and Leap Motion. It also supports the higher tier Oculus headsets. Our suite has been developed in Unity and is provided fully open source so that knowledgeable users may create future modules to add to our launcher.
+The first three environments we have developed target fear of heights, speech anxiety, and stress relief. Our platform features customization of these environments as well as easy modular expandability so more can be designed and added by users.  Tackling the issue of hardware cost to the average user, our platform supports the Oculus Rift DK1, Kinect V1, and Leap Motion. It also supports the higher tier Oculus headsets. Our suite has been developed in Unity and is provided fully open source so that knowledgeable users may create future modules to add to our launcher.
 \par ~\\
-As our project  used for therapy, one of our main objectives is to give the user the most immersive, believable experience possible. We plan to use a few different systems to provide detailed modeling and tracking relevant to the particular scene. We will use the Kinect for motion and skeleton tracking to allow the user to move around, Leap Motion for detailed hand and arm tracking, and the VR headset (Oculus or Samsung Gear) for rotation and head tracking. 
+As our project is used for therapy, one of our main objectives is to give the user the most immersive, believable experience possible. We plan to use a few different systems to provide detailed modeling and tracking relevant to the particular scene. We will use the Kinect for motion and skeleton tracking to allow the user to move around, Leap Motion for detailed hand and arm tracking, and the VR headset (Oculus or Samsung Gear) for rotation and head tracking. 
 
 Since our project is to be used for therapy, one of our main objectives is to provide the user an immersive and believable experience possible. To meet this goal we have aggregated the data from multiple low cost sensors for a controller free experience. We utilized the Kinect for motion and skeleton tracking, allowing the user to move around within a scene. Leap Motion provides detailed hand and arm tracking so users may interact with our environments. Finally, the Oculus Rift DK1 or newer provides rotation and head tracking for a truly believable virtual reality experience.
 \par ~\\
@@ -558,7 +558,7 @@ Current predictions for the VR market are overall positive.  The next couple of 
 \end{figure}
 \subsubsection{Market Conclusions}
 
-There are two main conclusions that we can come to from this data, and the first one is cautionary.  When we look at the different VR platforms, one common theme stands out, and that is they are generally marketed as video game peripherals.  Out of the 5 devices, three of them are focused on selling video games.  Because our project shares little market space with the video game market, we may have difficulties on those platforms.  This is one reason our project will be using the Samsung Gear VR, as it is the first mass market VR headset that isn't primarily marketed as a game platform.  However, our second conclusion is more optimistic: from the statistics we found, Virtual Reality isn't predicted to slow down any time soon.  This is great news for our project as we will be entering a rapidly growing and expanding market.
+There are two main conclusions that we can come to from this data, and the first one is cautionary.  When we look at the different VR platforms, one common theme stands out, and that is they are generally marketed as video game peripherals.  Out of the 5 devices, three of them are focused on selling video games.  Because our project shares little market space with the video game market, we may have difficulties on those platforms.  Our project will have to push against this, as it is not an entertainment focused product and could easily be mistaken as such.  However, our second conclusion is more optimistic: from the statistics we found, Virtual Reality isn't predicted to slow down any time soon.  This is great news for our project as we are entering a rapidly growing and expanding market.
 
 
 \subsection{VR Headset Options and Technical Capabilities}
@@ -733,7 +733,7 @@ Following is our research on the various virtual reality devices and peripherals
 	%leap motion research
 \pagebreak	
 \subsubsection{Oculus Head Tracking Research}
-The following information is from the Oculus Rift prototype research paper see the it for more details on the math behind their calculations \cite{riftPaper}~\\
+The following information is from the Oculus Rift prototype research paper; See it for more details on the math behind their calculations \cite{riftPaper}~\\
 All sensing is performed by a single circuit board (figure \ref{fig:magnetsHowDoTheyWork}) 
 \begin{itemize}
 \item The main components [Fig 17] are:
@@ -1132,7 +1132,7 @@ After our status presentation it came to our attention we had no plan for provid
 \par~\\
 
 \subsubsection{Stress Questionnaire}
-As a stand-in for a psychologist, the program itself will be issuing a stress questionnaire. After the user finishes either the acrophobia scene or the social anxiety scene they are given the option of responding to questions with the goal of assessing their current level of stress and feelings about the scene. This data is analyzed alongside other metrics (see below) for the specific scene, and then this information is given to the user in graph form. Over multiple sessions this data should provide insight to the user as to whether or not the treatment is providing any benefit.
+As a stand-in for a psychologist, the program itself issues a stress questionnaire. After the user finishes either the acrophobia scene or the social anxiety scene they are given the option of responding to questions with the goal of assessing their current level of stress and feelings about the scene. This data is analyzed alongside other metrics (see below) for the specific scene, and then this information is given to the user in graph form. Over multiple sessions this data should provide insight to the user as to whether or not the treatment is providing any benefit.
 
 \subsubsection{Scene Progress}
 We also devised other metrics within the acrophobia and social anxiety scenes.  The social anxiety scene's metrics are discussed in the Head Tracking section below, while the acrophobia scene uses the simple metric of height reached to convey progress.  In each scene, the maximum height the user reached is compared against the height of the building being climbed, to show the user their progress compared to previous attempts along with how close they got to the top of the building.  Combining these metrics with the questionnaire's information on the user's stress levels gives a satisfying amount of information about how the user is doing.
@@ -1141,7 +1141,7 @@ We also devised other metrics within the acrophobia and social anxiety scenes.  
 Time spent in the scene can give insight to how uncomfortable the user is. This metric is applied to both our fear of heights scene and speech anxiety scene. If a user spends more time at a high altitude than before with relatively similar questionnaire results then it is reasonable to say the user is becoming more comfortable with their stressful situation. Meanwhile with the speech anxiety scene, the user can track how much time they have been presenting for over multiple attempts at the same presentation. 
 
 \subsubsection{Head Tracking}
-The speech anxiety scene uses head tracing data for improvement metrics.  Time spent making eye contact with audience members, time spent looking at the presentation on the board, and time spent looking at the floor are all compared against the total time in the scene so the user knows where they spent most of their time looking.  Through tracking this and their stress levels, the user will become more aware of the progress in this scene.
+The speech anxiety scene uses head tracing data for improvement metrics.  Time spent making eye contact with audience members, time spent looking at the presentation on the board, and time spent looking at the floor are all compared against the total time in the scene so the user knows where they spent most of their time looking.  Through tracking this and their stress levels, the user becomes more aware of the progress in this scene.
 
 \pagebreak
 \subsection{Module 1 Fear of Heights}
@@ -1161,7 +1161,7 @@ In said research labs, researchers have proven that virtual reality can help wit
 
 
 \subsubsection{Our Implementation}
-For this scene the user starts at the base of a tall building. They will ascend the building on a window washing gondola. The up and down controls will move the user up and down as they push the desired button, they will be able to select different buildings and configure the time of day. At all times there will be an option to end the simulation if the user becomes too frightened.
+For this scene the user starts at the base of a tall building. They will ascend the building on a window washing gondola. The up and down controls will move the user up and down as they push the desired button, they are able to select different buildings and configure the time of day. At all times there is an option to end the simulation if the user becomes too frightened.
 
 \subsubsection{Models and Resources}
 We used unity assets for the cityscape, tower, and window cleaning platform model. The Unity Asset store has several options for cityscapes and tall buildings as well as a perfectly suited window cleaning platform.
@@ -1203,7 +1203,7 @@ Interaction with this scene consists of simple look and press mechanics. Looking
 We have provided the user the ability to select from four building heights as well as configure the time of day. Height options are 21 meters, 30 meters, 39 meters, and 54 meters. The available time settings are night and day. When the user changes these settings in the launcher a preview is shown of the scene. In addition to these settings the user is also able to select the skin color for their hands and arms from a set of skin tone colors or any RGB color through the color picker.
 
 \subsubsection{User Progress Feedback}
-Users may optionally respond to a questionnaire after the scene. In addition to this the scene will track how high up the user went and how much time was spent at each level. All of these metrics will be combined and analyzed over multiple sessions to provide the user feedback on their efforts.
+Users may optionally respond to a questionnaire after the scene. In addition to this the scene will track how high up the user went and how much time was spent at each level. All of these metrics are combined and analyzed over multiple sessions to provide the user feedback on their efforts.
 
 \pagebreak
 \subsubsection{Module Storyboard: Fear Of Heights}
@@ -1259,7 +1259,7 @@ Users may optionally respond to a questionnaire after the scene. In addition to 
 	\item PsychVR launcher is opened
 	\item The heights scene is configured and started
 	\item The user turns on the VR and enters the acrophobia module
-	\item The user will be placed on a platform at the bottom of a very tall building
+	\item The user is placed on a platform at the bottom of a very tall building
 	\item The platform can move up and down on the building
 	\item The user controls how the platform moves up and down with their hands
 	\item If the user in anyway becomes panicked, they may end the simulation
@@ -1277,12 +1277,12 @@ Just like for the Acrophobia section, here are some studies that have been done 
 	%http://online.liebertpub.com/doi/abs/10.1089/109493102321018187
 	\item In 2013, a study was done similarly to the acrophobia study above that compared in vivo ("real") exposure therapy with Virtual Reality exposure therapy for social anxiety disorder.  This included 8 sessions of therapy, and a 12 month follow up period.  The researches concluded that VR exposure therapy was just as effective as in vivo exposure therapy.  Once again, this is fantastic for our platform as it means we VR therapy can work for social anxiety disorder..\cite{anxTwo}
 	%http://psycnet.apa.org/journals/ccp/81/5/751/
-	\item In 2014, a study was conducted on the use of Video Self Modeling to treat social anxiety disorder.  VSM is the use of watching oneself complete a task successfully on video in order to help oneself become able to do said task.  The study tested 101 students and found that in general, for the purpose of social anxiety disorder, VSM was not an effective treatment.  Therefore for our project we will be avoiding this specific type of treatment.\cite{anxThree}
+	\item In 2014, a study was conducted on the use of Video Self Modeling to treat social anxiety disorder.  VSM is the use of watching oneself complete a task successfully on video in order to help oneself become able to do said task.  The study tested 101 students and found that in general, for the purpose of social anxiety disorder, VSM was not an effective treatment.  Therefore for our project we are avoiding this specific type of treatment.\cite{anxThree}
 	%http://cornerstone.lib.mnsu.edu/etds/30/
 \end{itemize}
 
 \subsubsection{Our Implementation}
-In our implementation the user will be able to configure the environment in which they practice public speaking to better suit their needs and deliver a more personal experience. We will begin with a classroom environment with chair spots which the user can place different students into and configure their actions such as sleeping, focused, or distracted.
+In our implementation the user is able to configure the environment in which they practice public speaking to better suit their needs and deliver a more personal experience. We will begin with a classroom environment with chair spots which the user can place different students into and configure their actions such as sleeping, focused, or distracted.
 
 \par~\\
 To further customize the scene the user may load a PowerPoint through Qt which will then display it onto the screen behind them as in an actual classroom.
@@ -1294,10 +1294,10 @@ Upon launch the user will deliver their speech to the configured audience. The s
 For the speech anxiety module we designed a classroom for the user to practice speaking in, relevant objects to go in it such as a PowerPoint display, and human models to listen to the speaker. The majority of models used for this scene have been designed in Google SketchUp while the human models were created in MakeHuman. Animations and rigs were built with our Kinect sensor using iPi Recorder 3 and iPi Mocap Studio 3.
 
 \par~\\
-We will create a model of UCF's Harrison Engineering Corp. building room 108 for our first configurable room and if there is enough time we will design more options for the practice environment such as a lecture hall or conference room. Our classroom model will include the presentation equipment (projector, drop down screen, etc.) so that the user may practice the speech as close as possible to how it would actually be delivered. The room will be designed in Google SketchUp and objects such as chairs and presentation equipment will be sourced from the Google SketchUp 3D Warehouse.
+We will create a model of UCF's Harrison Engineering Corp. building room 108 for our first configurable room and if there is enough time we will design more options for the practice environment such as a lecture hall or conference room. Our classroom model will include the presentation equipment (projector, drop down screen, etc.) so that the user may practice the speech as close as possible to how it would actually be delivered. The room was designed in Google SketchUp and objects such as chairs and presentation equipment are sourced from the Google SketchUp 3D Warehouse.
 
 \par~\\
-For audience members we originally planned to use human models from the Unity Asset store but there were few models that fit our purpose and most were very expensive relative to how we will be using them. Instead of sourcing our human models from the asset store we will be designing them with a free tool called MakeHuman. 
+For audience members we originally planned to use human models from the Unity Asset store but there were few models that fit our purpose and most were very expensive relative to how we are using them. Instead of sourcing our human models from the asset store we designed them with a free tool called MakeHuman. 
 \begin{figure}[H] %screenshot taken by Peter Lomason
 	\centerline {\includegraphics[scale = 0.28]{makeHuman.png}}
 	\caption{MakeHuman Model Editor, screenshot taken by Peter Lomason}
@@ -1311,7 +1311,7 @@ This tool allows us to design a human model to our liking with free features, cl
 	\caption{Bone Model in Unity Mecanim, screenshot taken by Peter Lomason}
 	\label{fig:unityMecanim}
 \end{figure}
-Models created in MakeHuman are fully rigged and can be exported as fbx files. This format is compatible with Unity's Mecanim which will be used to animate our models so they can perform various actions. These actions can be set according to how the user has configured the environment in our Qt launcher.
+Models created in MakeHuman are fully rigged and can be exported as fbx files. This format is compatible with Unity's Mecanim which is used to animate our models so they can perform various actions. These actions can be set according to how the user has configured the environment in our Qt launcher.
 
 \par
 \begin{figure}[H] %screenshot taken by Peter Lomason
@@ -1333,7 +1333,7 @@ Unity controls how the animations are structured and transition. Certain animati
 The user begins the scene by facing the board with their PowerPoint slides on it. Next the user turns to face the class and delivers their presentation. During presentation the "Next" and "Prev" buttons can be used via Leap Motion hand movements to traverse their slides. Positioning at the front of the classroom is controlled via the Kinect sensor. Once the user has finished they may use the "End" button to quit the scene and save their data.
 
 \subsubsection{Configuration from Qt Launcher}
-This is our most configurable scene. Qt will allow the user to specify how many students will be present and an algorithm will place them seemingly naturally throughout the classroom. At least one student will always be in the front row and the rest will be statistically distributed. Next is the algorithm which decides if a student should be placed in a chair, running from back to front after the first student has been placed randomly in either middle chair of the front row.  In addition to these settings the user is also able to select the skin color for their hands and arms from a set of skin tone colors or any RGB color through the color picker.
+This is our most configurable scene. Qt allows the user to specify how many students are present and an algorithm will place them seemingly naturally throughout the classroom. At least one student will always be in the front row and the rest are statistically distributed. Next is the algorithm which decides if a student should be placed in a chair, running from back to front after the first student has been placed randomly in either middle chair of the front row.  In addition to these settings the user is also able to select the skin color for their hands and arms from a set of skin tone colors or any RGB color through the color picker.
 
 \begin{figure}[H]
 	\lstinputlisting [ language = C] {seatingAlgorithm.txt}
@@ -1344,7 +1344,7 @@ This is our most configurable scene. Qt will allow the user to specify how many 
 Each of the animation types can be enabled or disabled from the launcher such as sleeping or sitting up. The user will also be able to include a PowerPoint in the scene configuration so they may have a presentation aid during their practice.
 
 \subsubsection{User Progress Feedback}
-Users may optionally respond to a questionnaire before and after the scene. In addition to the optional survey metrics, throughout the scene the users head, and where they are looking (ex: eye contact) will be tracked in order to provide feedback about their performance during the scene. All of these metrics will be combined and analyzed over multiple sessions to provide the user detailed feedback on their efforts and performance. 
+Users may optionally respond to a questionnaire before and after the scene. In addition to the optional survey metrics, throughout the scene the users head, and where they are looking (ex: eye contact) is tracked in order to provide feedback about their performance during the scene. All of these metrics are combined and analyzed over multiple sessions to provide the user detailed feedback on their efforts and performance. 
 
 \pagebreak
 \subsubsection{Module Storyboard: Speech Anxiety}
@@ -1400,7 +1400,7 @@ Users may optionally respond to a questionnaire before and after the scene. In a
 	\item The speech scene animations and student number are configured
 	\item The user may select their PowerPoint in the launcher
 	\item The speech scene is started
-	\item The user will be in a classroom to deliver their presentation or speech
+	\item The user is placed in a classroom to deliver their presentation or speech
 	\item The user can walk within the Kinect sensor to move around the front of the classroom
 	\item Eye contact, time spent looking at slides, time spent looking at the floor, and total time are tracked
 	\item The "Next" and "Prev" buttons are used to control the slideshow
@@ -1437,8 +1437,8 @@ As before, here is some past research into the field of anxiety and VR.
 \begin{enumerate}
 	\item If the user enters the secondary mode, it will provide an obvious notification of if the user is calm
 	\item If they are not calm, it will show them with the same obvious notification
-	\item The user's relaxation level will be checked by the same sensors as indicated above
-	\item A results page will be shown at the end with how well the user was able to remain calm.  This secondary mode is intended to help users learn to remain calm, not attempt to calm themselves down.
+	\item The user's relaxation level is checked by the same sensors as indicated above
+	\item A results page is shown at the end with how well the user was able to remain calm.  This secondary mode is intended to help users learn to remain calm, not attempt to calm themselves down.
 \end{enumerate}
 
 
@@ -1555,7 +1555,7 @@ HLSL-only or GLSL-only compute shaders
 Typically compute shader files are written in HLSL, and compiled or translated into all needed platforms automatically. However it is possible to either prevent translation to GLSL (i.e. only keep HLSL platforms), or to write GLSL compute code manually.
 \begin{itemize}
 \item Compute shader source surrounded by CGPROGRAM and ENDCG keywords will not be processed for OpenGL/GLSL platforms.
-\item Compute shader source surrounded by GLSLPROGRAM and ENDGLSL keywords will be treated as GLSL source, and emitted verbatim. This will only work when targetting OpenGL/GLSL platforms.
+\item Compute shader source surrounded by GLSLPROGRAM and ENDGLSL keywords are treated as GLSL source, and emitted verbatim. This will only work when targetting OpenGL/GLSL platforms.
 \end{itemize}
 \pagebreak
 
@@ -1685,7 +1685,7 @@ Each chunk has a set of objects that are scaled and spawned randomly across the 
 
 \pagebreak
 \paragraph{Movement}
-Since the user will be moving across an infinite space options like the Kinect will not work in capturing their movement. This is because they would be confined to the local space it can capture. For this scene we designed a controller that allows the user to manipulate a joystick to traverse the scene. This joystick responds to the Leap Motion hands and applies a directional force vector to a ball. The user is attached to this invisible ball which creates a natural style of movement, slowing down going up hills, and speeding up while going downhill. 
+Since the user is moving across an infinite space options like the Kinect does not work in capturing their movement. This is because they would be confined to the local space it can capture. For this scene we designed a controller that allows the user to manipulate a joystick to traverse the scene. This joystick responds to the Leap Motion hands and applies a directional force vector to a ball. The user is attached to this invisible ball which creates a natural style of movement, slowing down going up hills, and speeding up while going downhill. 
 	\begin{figure}[H]
 	\centerline{\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{mover.png}}
 	\caption{Ball Controller mover}
@@ -1733,7 +1733,7 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 			\caption{Qt Design Diagram}
 			\label{fig:qtHighLevel}
 		\end{figure}
-		This figure shows the general design for the Qt Configuration Tool/ Launcher. This launcher will be the main editing/configuration option for the app, It will also be responsible for launching scenes, scene settings and configuration, and graphing user stress data.
+		This figure shows the general design for the Qt Configuration Tool/ Launcher. This launcher is the main editing/configuration option for the application. It is also responsible for launching scenes, scene settings and configuration, and graphing user stress data.
 
 		\pagebreak
 \subsubsection{Qt Activity Diagram}
@@ -1749,7 +1749,7 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 (See figure \ref{fig:qtMockupMap})
 \begin{itemize}
 \item Users can Select the scene to edit the configurations, with the set scene options we have added, new scenes could be added to the drop-down if new scenes were created.
-\item Configurations are saved to a settings json file that will be parsed by the unity scene on load.
+\item Configurations are saved to a settings json file that is parsed by the unity scene on load.
 \item These items are saved per user/per scene in said file, and are re-saved every time a scene is launched
 \item The color option is saved between different scenes
 \item Basic settings such as resolution and quality options are done in the unity launcher.
@@ -2202,7 +2202,7 @@ Most of the images are either public domain or Creative Commons license, but all
 	``the fair use of a copyrighted work, including such use by reproduction in copies or phonorecords or by any other means specified by that section, for purposes such as criticism, comment, news reporting, teaching (including multiple copies for classroom use), scholarship, or research, is not an infringement of copyright.''
 \end{quotation}
 
-Ours will be used for scholarship and research.
+Ours are used for scholarship and research.
 %B. Data-sheets (if necessary)
 %C. Software (if necessary)
 %D. Other

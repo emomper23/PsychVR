@@ -1202,7 +1202,7 @@ The user is able to interact with controls on the platform via Leap Motion to mo
 Interaction with this scene consists of simple look and press mechanics. Looking is controlled by head tracking on the Oculus Rift while button presses are controlled with Leap Motion. Via the Kinect sensor the user us able to traverse the platform and lean over the edge. While on the elevator platform the user will have access to a control panel to set the height of the platform between ground floor and the top of the building. The user will also be able to abort the scene at any time should they become too frightened. 
 
 \subsubsection{Configuration from Qt Launcher}
-We have provided the user the ability to select from four building heights as well as configure the time of day. Height options are 21 meters, 30 meters, 39 meters, and 54 meters. The available time settings are night and day. When the user changes these settings in the launcher a preview is shown of the scene.
+We have provided the user the ability to select from four building heights as well as configure the time of day. Height options are 21 meters, 30 meters, 39 meters, and 54 meters. The available time settings are night and day. When the user changes these settings in the launcher a preview is shown of the scene. In addition to these settings the user is also able to select the skin color for their hands and arms from a set of skin tone colors or any RGB color through the color picker.
 
 \subsubsection{User Progress Feedback}
 Users may optionally respond to a questionnaire after the scene. In addition to this the scene will track how high up the user went and how much time was spent at each level. All of these metrics will be combined and analyzed over multiple sessions to provide the user feedback on their efforts.
@@ -1335,7 +1335,7 @@ Unity controls how the animations are structured and transition. Certain animati
 The user begins the scene by facing the board with their PowerPoint slides on it. Next the user turns to face the class and delivers their presentation. During presentation the "Next" and "Prev" buttons can be used via Leap Motion hand movements to traverse their slides. Positioning at the front of the classroom is controlled via the Kinect sensor. Once the user has finished they may use the "End" button to quit the scene and save their data.
 
 \subsubsection{Configuration from Qt Launcher}
-This is our most configurable scene. Qt will allow the user to specify how many students will be present and an algorithm will place them seemingly naturally throughout the classroom. At least one student will always be in the front row and the rest will be statistically distributed. Next is the algorithm which decides if a student should be placed in a chair, running from back to front after the first student has been placed randomly in either middle chair of the front row.
+This is our most configurable scene. Qt will allow the user to specify how many students will be present and an algorithm will place them seemingly naturally throughout the classroom. At least one student will always be in the front row and the rest will be statistically distributed. Next is the algorithm which decides if a student should be placed in a chair, running from back to front after the first student has been placed randomly in either middle chair of the front row.  In addition to these settings the user is also able to select the skin color for their hands and arms from a set of skin tone colors or any RGB color through the color picker.
 
 \begin{figure}[H]
 	\lstinputlisting [ language = C] {seatingAlgorithm.txt}
@@ -1663,44 +1663,43 @@ Terrain stitching is done to connect the verticies of adjacent chunks so they ar
 \begin{figure}[H]
 	\centerline{\lstinputlisting [language = C, basicstyle=\small] {terrainMove.txt}}
 	\caption{Chunk Movement Pseudocode by Eric Momper and Peter Lomason}
-	\label{code:terrainMoveCode}
+	\label{code:terrainMove}
 \end{figure}
-In our implementation, we optimized the generation process, by instantiating 100 chunks off camera at one position in the map 
-Terrain movement is handled in all cardinal directions, when the user moves from the center tile the grid is redrawn so that the current tile is in the center, corresponding planes are removed and created, and the necessary planes are restitched. 
 
+\pagebreak
+In our implementation we optimized the generation process by instantiating 10 chunks off camera beneath the map. Terrain movement is handled in all possible directions: when the user moves from the center tile to any other the grid is redrawn so that the current tile is in the center, the appropriate planes are removed or created, then the necessary edges are restitched. This process is outlined in figure \ref{fig:terrainMove} below.
+ 
 \begin{figure}[H]
 	\centerline{\includegraphics[scale=0.5,keepaspectratio]{terrainMove.png}}
 	\caption{Terrain North move Example}
 	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
-	\label{fig:moveTerrain}
+	\label{fig:terrainMove}
 	\end{figure}
 
 \pagebreak
 
 
 \paragraph{Object Spawning}
-Each Chunk has a set of objects that are scaled and spawned randomly across the plane, the object include two trees, three rocks and mountains. The example script below shows the spawning process for a chunk, which is executed once its loaded. 
+Each chunk has a set of objects that are scaled and spawned randomly across the it. These objects consist of trees, rocks, and mountains. The code excerpt below \ref{code:spawnCode} shows the spawning process for a chunk, which is executed once its loaded. 
 \begin{figure}[H]
 	\centerline{\lstinputlisting [language = C, basicstyle=\small] {spawn.txt}}
-	\label{fig:terrainMoveCode}
-	\caption{Object Spawning pseudocode by Eric Momper}
+	\label{code:spawnCode}
+	\caption{Object Spawning Pseudocode by Eric Momper}
 \end{figure}
 
-
+\pagebreak
 \paragraph{Movement}
-Since the user will be moving across an infinite space options like the Kinect will not work in capturing their movement. This is because they would be confined to the local space it can capture. For this scene we designed a controller that allows the user to manipulate a joystick to traverse the scene. This joystick responds to the Leap Motion hands and applies a directional force vector to a ball. The user is attached this invisible ball which creates a natural style of movement, slowing down on hills, and speeding up while going downhill. 
-\begin{figure}[H]
+Since the user will be moving across an infinite space options like the Kinect will not work in capturing their movement. This is because they would be confined to the local space it can capture. For this scene we designed a controller that allows the user to manipulate a joystick to traverse the scene. This joystick responds to the Leap Motion hands and applies a directional force vector to a ball. The user is attached to this invisible ball which creates a natural style of movement, slowing down going up hills, and speeding up while going downhill. 
+	\begin{figure}[H]
 	\centerline{\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{mover.png}}
 	\caption{Ball Controller mover}
 	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
 	\label{fig:moveTerrain}
 	\end{figure}
 
-\subsubsection{Interaction and User Inputs}
-The user begins the scene by moving from their desk to the front of the room. From here they may prepare any presentation materials they configured through Qt such as a PowerPoint presentation. Movement will be controlled via the Kinect sensor, we plan to control object interactions with Leap Motion. 
 
 \subsubsection{Configuration from Qt Launcher}
-As detailed above, this scene is generated randomly to provide a unique explorable environment for the user.
+As detailed above, this scene is generated randomly to provide a unique explorable environment for the user. Custom music may be loaded instead of the default via a file selection dialog. In addition to this the user can also select the skin color for their hands and arms from a set of skin tone colors or any RGB color through the color picker.
 \pagebreak
 
 %E. Explicit Design Summary with diagrams
@@ -1710,8 +1709,6 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 	\begin{figure}[H]
 	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{HardwareConfig.png}
 	\caption{Hardware Block Diagram}
-	%to ref fig number
-	%Figure \ref{fig:block1} shows our blockDiagram.
 	\label{fig:hblock}
 	\end{figure}
 	This diagram represents a hardware configuration of a typical VR system that our application would expect. This may change depending on the device we use, but is a good overview.
@@ -1719,8 +1716,6 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 	\begin{figure}[H]
 	\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{SoftwareConfig.png}
 	\caption{Software Block Diagram}
-	%to ref fig number
-	%Figure \ref{fig:block2} shows our blockDiagram.
 	\label{fig:sblock}
 	\end{figure}
 	This diagram represents the software design of our project and the various functional modules that should exist in order to fulfill the user interaction requirements. 
@@ -1729,8 +1724,6 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 		\begin{figure}[H]
 			\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{highUseCase.png}
 			\caption{High Level Use Case Diagram}
-			%to ref fig number
-			%Figure \ref{fig:block2} shows our blockDiagram.
 			\label{fig:highlevelusecase}
 		\end{figure}
 		This Figure represents the general use case and standard user interactions. It also includes some optional parts that are related to the therapy and treatment which 
@@ -1742,8 +1735,6 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 		\begin{figure}[H]
 			\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{qtConfigDiag.png}
 			\caption{Qt Design Diagram}
-			%to ref fig number
-			%Figure \ref{fig:block2} shows our blockDiagram.
 			\label{fig:qtHighLevel}
 		\end{figure}
 		This figure shows the general design for the Qt Configuration Tool/ Launcher. This launcher will be the main editing/configuration option for the app, It will also be responsible for launching scenes, scene settings and configuration, and graphing user stress data.
@@ -1753,8 +1744,6 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 		\begin{figure}[H]
 			\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{qtActivityDiag.png}
 			\caption{Qt Activity Diagram}
-			%to ref fig number
-			%Figure \ref{fig:block2} shows our blockDiagram.
 			\label{fig:qtactivity}
 		\end{figure}
 		This figure shows the program flow for different user options, including configuration, launching, recording, and vie
@@ -1772,12 +1761,10 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 
 \end{itemize}
 \begin{figure}[H]
-				    \centerline{\includegraphics[scale = 0.5]{qtHeightSettings.png}}
-					\caption{Qt Design Mock-up}
-					%to ref fig number
-					%Figure \ref{fig:block2} shows our blockDiagram.
-					\label{fig:qtMockupMap}
-				\end{figure}
+	\centerline{\includegraphics[scale = 0.5]{qtHeightSettings.png}}
+	\caption{Qt Design Mock-up}
+	\label{fig:qtMockupMap}
+\end{figure}
 \pagebreak
 \subsubsection{Data Analysis Design}
 (See figure \ref{fig:qtMockupData})
@@ -1796,8 +1783,6 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 \begin{figure}[H]
 				    \centerline{\includegraphics[scale = 0.5]{qtHeightGraph.png}}
 					\caption{Qt Design Mock-up}
-					%to ref fig number
-					%Figure \ref{fig:block2} shows our blockDiagram.
 					\label{fig:qtMockupData}
 				\end{figure}
 
@@ -1807,8 +1792,6 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 		\begin{figure}[H]
 					\centerline{\includegraphics[]{UnityHighlevel.png}}
 					\caption{Unity High Level Design Diagram}
-					%to ref fig number
-					%Figure \ref{fig:block2} shows our blockDiagram.
 					\label{fig:unitydesign}
 				\end{figure}
 				
@@ -1817,8 +1800,6 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 				\begin{figure}[H]
 					\centerline{\includegraphics[]{unityActivityDiag.png}}
 					\caption{Unity Activity Diagram}
-					%to ref fig number
-					%Figure \ref{fig:block2} shows our blockDiagram.
 					\label{fig:unityactivity}
 				\end{figure}
 				\pagebreak
@@ -1838,13 +1819,10 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 \end{figure}
 \end{itemize}	
 		\pagebreak
-		%\subsubsection{Scene Shared Assets}
 		\subsubsection{Survey High Level Design}
 			\begin{figure}[H]
 					\centerline{\includegraphics[]{survey.png}}
 					\caption{Survey High Level Diagram}
-					%to ref fig number
-					%Figure \ref{fig:block2} shows our blockDiagram.
 					\label{fig:surveyDiag}
 				\end{figure}
 				This diagram represents an option for our survey design for gathering user stress feedback. It will ask the user a set series of questions to determine their stress level.
@@ -1854,24 +1832,18 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 \begin{figure}[H]
 					\centerline{\includegraphics[scale = 0.6]{fohActivityDiag.png}}
 					\caption{Fear of Heights Activity Diagram}
-					%to ref fig number
-					%Figure \ref{fig:block2} shows our blockDiagram.
 					\label{fig:fohAct}
 				\end{figure}
 \subsubsection{Speech Anxiety Activity Diagram}
 \begin{figure}[H]
 					\centerline{\includegraphics[scale = 0.6]{spcActivityDiag.png}}
 					\caption{Speech Anxiety  Activity Diagram}
-					%to ref fig number
-					%Figure \ref{fig:block2} shows our blockDiagram.
 					\label{fig:spcAct}
 				\end{figure}
 \subsubsection{Stress Relief Activity Diagram}
 \begin{figure}[H]
 					\centerline{\includegraphics[scale = 0.8]{stressActivityDiag.png}}
 					\caption{Stress Relief Activity Diagram}
-					%to ref fig number
-					%Figure \ref{fig:block2} shows our blockDiagram.
 					\label{fig:stressAct}
 				\end{figure}
 				\pagebreak

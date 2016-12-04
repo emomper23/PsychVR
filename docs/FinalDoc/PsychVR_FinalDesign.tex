@@ -20,6 +20,7 @@
 \usepackage{geometry}
 \usepackage{helvet}
 \usepackage{soul}
+\usepackage{titling}
 \usepackage{url}
 \renewcommand{\familydefault}{\sfdefault}
 	\geometry{
@@ -44,7 +45,16 @@
 %opening
 \pagenumbering{roman}
 %1. Cover page with title, group number, team members, date, and any other relevant information, such as participating organizations and sponsors.
-\title{PsychVR, Group 12, Final Design Document}
+\pretitle{%
+  \begin{center}
+  %\includegraphics{graphics/OMDB_logo_text_trans.png}
+  \hfill\includegraphics[scale=.25]{logo.png}\hspace*{\fill}
+  \newline
+  \LARGE
+}
+\posttitle{\end{center}}
+
+\title{Group 12, Final Design Document}
 \author{Eric Momper, Peter Lomason, John Barber}
 \setlength{\parindent}{0pt}
 \begin{document}

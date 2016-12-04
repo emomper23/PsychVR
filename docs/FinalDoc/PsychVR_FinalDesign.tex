@@ -1118,30 +1118,24 @@ to this monitoring the participant is often given a questionnaire to fill out be
 acquire treatment data and provide feedback to their patients. \cite{vrPhobia}
 
 \subsubsection{Stress Analysis}
-After our status presentation it came to our attention we had no plan for providing users feedback of their progress so we began research on this topic. It turns out, measuring stress is a difficult task. 
+After our status presentation it came to our attention we had no plan for providing users feedback of their progress so we began research on this topic. It turns out, measuring stress is a difficult task, especially without a psychologist.
 \par~\\
 %JOHN SURVEY PIECE ON STRESS ANALYSIS ADD MORE??
 \subsubsection{Stress Questionnaire}
-A stand-in for a psychologist will be issuing a stress questionnaire. Before the user launches any scene they will be given the option of responding to questions
-with the goal of assessing their current level of stress. Once a scene is completed they will again be presented with this questionnaire. The before and after data will be 
-analyzed alongside other metrics for the specific scene. Over multiple sessions this data should provide insight to whether or not the treatment is providing any benefit.
+As a stand-in for a psychologist, the program itself will be issuing a stress questionnaire. After the user finishes either the Acrophobia scene or the social anxiety scene they are given the option of responding to questions with the goal of assessing their current level of stress and feelings about the scene. This data is analyzed alongside other metrics (see below) for the specific scene, and then this information is given to the user in graph form. Over multiple sessions this data should provide insight to the user as to whether or not the treatment is providing any benefit.
 
 \subsubsection{Scene Progress}
-Another metric we devised to provide users feedback is scene progress. This is mostly specific to our fear of heights scene. Each time the user runs the simulation 
-the height they have reached will be recorded. Progress would be determined if the user shows reduced stress in the questionnaire along with the same or greater height.
+We also devised other metrics within the acrophobia and social anxiety scenes.  The social anxiety scene's metrics are discussed in the Head Tracking section below, while the acrophobia scene uses the simple metric of height reached to convey progress.  In each scene, the maximum height the user reached is compared against the height of the building being climbed, to show the user their progress compared to previous attempts along with how close they got to the top of the building.  Combining these metrics with the questionnaire's information on the user's stress levels gives a satisfying amount of information about how the user is doing.
 
 \subsubsection{Time Spent in Stressful Simulation}
-Time spent in the scene will give insight to how uncomfortable the user is. This metric can be applied to both our fear of heights scene and speech anxiety scene. 
-If a user spends more time at a high altitude than before with relatively similar questionnaire results then it is reasonable to say the user is becoming more comfortable
-with their stressful situation. As for the speech anxiety scene, the user would provide an amount of time they wish to present for and over multiple sessions work to increase that time.
+Time spent in the scene can give insight to how uncomfortable the user is. This metric is applied to both our fear of heights scene and speech anxiety scene. If a user spends more time at a high altitude than before with relatively similar questionnaire results then it is reasonable to say the user is becoming more comfortable with their stressful situation. Meanwhile with the speech anxiety scene, the user can track how much time they have been presenting for over multiple attempts at the same presentation. 
 
 \subsubsection{Head Tracking}
-Head tracking data from within our speech anxiety scene will function as another way to measure improvement. 
-Time spent making eye contact with audience members compared with time spent looking elsewhere, such as the board or downward, should improve as a user becomes more comfortable with public speaking.
+The speech anxiety scene uses head tracing data for improvement metrics.  Time spent making eye contact with audience members, time spent looking at the presentation on the board, and time spent looking at the floor are all compared against the total time in the scene so the user knows where they spent most of their time looking.  Through tracking this and their stress levels, the user will become more aware of the progress in this scene.
 
 \pagebreak
 \subsection{Module 1 Fear of Heights}
-The fear of heights module is built around the success of past and present research. Fear of heights, referred to as acrophobia, is a popular target for studying the impact of virtual reality on treatment. Past experiments and studies on using virtual reality for acrophobia treatment have lacked high quality graphical experiences which can detract from the immersion. Our background will feature a detailed cityscape to increase the realism which the user experiences and likely increase the effectiveness of treatment.
+The fear of heights module is built around the success of past and present research. Fear of heights, referred to as acrophobia, is a popular target for studying the impact of virtual reality on treatment. Past experiments and studies on using virtual reality for acrophobia treatment have lacked high quality graphical experiences which can detract from the immersion. Our background features a detailed cityscape to increase the realism which the user experiences and likely increase the effectiveness of treatment.
 
 \subsubsection{Past Research}
 In said research labs, researchers have proven that virtual reality can help with Acrophobia.  Below is a list of 4 different studies, with a brief overview of how they were run and what their results were.
@@ -1157,7 +1151,7 @@ In said research labs, researchers have proven that virtual reality can help wit
 
 
 \subsubsection{Our Implementation}
-For this scene the user will start at the base of a tall building. They will ascend the building on a window washing gondola. The up and down controls will move the user up and down as they push the desired button, they will be able to select different buildings and configure the time of day. At all times there will be an option to end the simulation if the user becomes too frightened.
+For this scene the user starts at the base of a tall building. They will ascend the building on a window washing gondola. The up and down controls will move the user up and down as they push the desired button, they will be able to select different buildings and configure the time of day. At all times there will be an option to end the simulation if the user becomes too frightened.
 
 \subsubsection{Models and Resources}
 We used unity assets for the cityscape, tower, and window cleaning platform model. The Unity Asset store has several options for cityscapes and tall buildings as well as a perfectly suited window cleaning platform.

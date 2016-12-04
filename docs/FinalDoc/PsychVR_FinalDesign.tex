@@ -1756,19 +1756,20 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 (See figure \ref{fig:qtMockupData})
 %JOHN SURVEY DESIGN
   \begin{itemize}
-  \item User stress data from surveys is in a graph that shows the aggregate pre-stess, post-stress, and the sum of the survey questions
-  \item Any other analysis will be shown as dialog boxes or additional readouts next to the graph.
-  \item Other Scene specific data could also be recorded and graphed to provide additional feedback some examples for the specific modules include:
+  \item User stress data from surveys is in a graph that shows the stress ratings given by the users, and an aggregate of their answers to the likert-scale questions.
+  \item These are displayed per run in a single line graph, so that the user can see the changes between runs
+  \item Scene specific data is graphed on the next tab of the graphs page.  This differs between the two pages:
 	\begin{itemize}
-	\item Distance moved or time spent in fear of heights session.
-	\item Time in the speech along with times spent looking back at the presentation slides, the floor(looking down), and the audience. 
-	\item The anxiety scene will have no metrics taken as its purpose is to be a break from the sessions.
+	\item The upper graph shows height reached and height of the building climbed.  If the two are equal, the bar turns green and is labeled as "Made it to the top"
+	\item The lower graph shows the amount of time taken per attempt
+	\item The upper bar graph shows the breakdown between time spent looking at the audience, looking down, looking at the presentation slides, and looking anywhere else in the scene.  This is shown in a multi-part bar graph representing total time per attempt
+	\item Each attempt is given it's own breakdown in the lower graph
+	\item These can be selected between by way of a selection box
 	\end{itemize}
-\item All of these graph options could be selectable as options for each scene graph widget and would be subclassed accordingly.
   \end{itemize}
 \begin{figure}[H]
 				    \centerline{\includegraphics[scale = 0.5]{qtHeightGraph.png}}
-					\caption{Qt Design Mock-up}
+					\caption{Qt Heights Scene Metrics}
 					\label{fig:qtMockupData}
 				\end{figure}
 
@@ -1791,12 +1792,10 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 				\pagebreak
 		\subsubsection{Unity Design Details}	
 \begin{itemize} %JOHN
-	\item Configurable scenes are initially read an expected Qt configuration file that 
-	will contain scene specific settings and addons to the to the scenes including colors, music, and additional configuration settings.
+	\item All configurable options are written into a json file to be read later by the unity scene, including colors, music, and additional configuration settings.
 	\item The Kinect camera, Oculus Rift, and Leap motion were added as input controls mapped to a first person avatar that has is own models for hands, legs, arms and body. 
-	\item The scene models will have interactive scripts that will interact with the user such as buttons, or other objects the user can interact with
-	\item Models and scene assets that can be configured will be written to a json file which will be parsed by Qt to get icons, sizes, and names of the CUnityObject class models that can be configured. 
-	\item The settings will be stored as QSettings objects from Qt which will store them as a .ini file which is supported by unity and will allow the two applications to synchronize options by parsing the .ini files on load. 
+	\item The scene models interactive scripts that will interact with the user such as buttons or the controller object in the calming scene
+	\item Settings for different models, like animations for the models in the classroom scene are written into said json file
 	\item Unity assets were purchased in the asset store or designed in Google SketchUp \& Blender then imported. 
 \begin{figure}[H]
 	\lstinputlisting {test.ini}

@@ -1255,6 +1255,7 @@ Users may optionally respond to a questionnaire after the scene. In addition to 
 	\end{minipage}
 \end{figure}
 
+\pagebreak
 \subsubsection{Typical Event Sequence: Fear Of Heights}
 \begin{enumerate}
 	\item PsychVR launcher is opened
@@ -1394,6 +1395,8 @@ Users may optionally respond to a questionnaire before and after the scene. In a
 		\label{fig:qtSpeechProgress}
 	\end{minipage}
 \end{figure}
+\pagebreak
+\subsubsection{Typical Event Sequence: Fear Of Heights}
 \begin{enumerate}
 	\item PsychVR launcher is opened
 	\item The speech scene animations and student number are configured
@@ -1427,8 +1430,6 @@ As before, here is some past research into the field of anxiety and VR.
 	%https://www.researchgate.net/profile/David_Becker10/publication/2659560_Using_A_Virtual_Environment_to_Teach_Cancer_Patients_T'ai_Chi_Relaxation_and_Self-Imagery/links/53ce75e80cf279d93530ac34.pdf
 \end{itemize}
 \pagebreak
-
-
 \begin{enumerate}
 	\item The program generates a procedurally generated environment.
 	\item The user can explore this environment, with quiet sounds and music sometimes being played.
@@ -1458,8 +1459,7 @@ and deal with the extra processing overhead for the GPU while making sure we can
 % https://scrawkblog.com/category/directcompute/
 % http://answers.unity3d.com/questions/162096/gpu-programming-with-unity.html
 \subsubsection{GPGPU Research Outline}
-Any generated terrain Unity supports compute shaders which are written in Direct X HLSL, and allow the application to do computations on the GPU for
-these terrain calculations. These compute shaders allow the application to do most of the heavy computations on the GPU which provides massive speedups compared to the a CPU implementation.
+Any generated terrain Unity supports compute shaders which are written in Direct X HLSL, and allow the application to do computations on the GPU for these terrain calculations. These compute shaders allow the application to do most of the heavy computations on the GPU which provides massive speedups compared to the a CPU implementation.
 \paragraph{This Section will discuss the following:}
 \begin{itemize}
 	\item GPU Overview 
@@ -1518,7 +1518,7 @@ can be modified to optimize for different algorithms depending on how they acces
 	\end{figure}
 	
 	\begin{figure}[H]
-	\centerline{ \includegraphics[scale=0.5]{gpuMem.png}}
+	\centerline{\includegraphics[scale=0.5]{gpuMem.png}}
 	\caption{GPU Memory Diagram}
 	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
 	\label{fig:gpuMem}
@@ -1695,7 +1695,7 @@ Since the user will be moving across an infinite space options like the kinect w
 	\end{figure}
 
 \subsubsection{Interaction and User Inputs}
-The user begins the scene by moving from their desk to the front of the room. From here they may prepare any presentation materials they configured through Qt such as a PowerPoint presentation. Movement will be controlled via the Kinect sensor, we plan to control object interactions with LeapMotion. 
+The user begins the scene by moving from their desk to the front of the room. From here they may prepare any presentation materials they configured through Qt such as a PowerPoint presentation. Movement will be controlled via the Kinect sensor, we plan to control object interactions with Leap Motion. 
 
 \subsubsection{Configuration from Qt Launcher}
 As detailed above, this scene is generated randomly to provide a unique explorable environment for the user.
@@ -1738,14 +1738,13 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 	\subsection{Qt Design Plan}
 		\subsubsection{Qt High Level Diagram}
 		\begin{figure}[H]
-					\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{qtConfigDiag.png}
-					\caption{Qt Design Diagram}
-					%to ref fig number
-					%Figure \ref{fig:block2} shows our blockDiagram.
-					\label{fig:qtHighLevel}
-				\end{figure}
-This figure shows the general design for the Qt Configuration Tool/ Launcher. This launcher will be the main editing/ 
-configuration option for the app, It will also be responsible for launching scenes, scene settings and configuration, and graphing user stress data.
+			\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{qtConfigDiag.png}
+			\caption{Qt Design Diagram}
+			%to ref fig number
+			%Figure \ref{fig:block2} shows our blockDiagram.
+			\label{fig:qtHighLevel}
+		\end{figure}
+		This figure shows the general design for the Qt Configuration Tool/ Launcher. This launcher will be the main editing/configuration option for the app, It will also be responsible for launching scenes, scene settings and configuration, and graphing user stress data.
 
 		\pagebreak
 \subsubsection{Qt Activity Diagram}

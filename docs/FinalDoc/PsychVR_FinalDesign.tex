@@ -500,7 +500,7 @@ Meanwhile, Google announced a strange variation on the VR headset:  they set out
 	%Figure \ref{fig:block1} shows our blockDiagram.
 	\label{fig:cardboard}
 \end{figure}
-Sony would also make an announcment, unveiling the long rumored Project Morpheus at GDC.  Later it would be renamed Playstation VR, and is very heavily reliant on their playstation game console.  Most recently, Oculus announced a collaboration with Samsung to create the Samsung Gear VR.  Like the Google Cardboard, it uses a smartphone as it's display device, however it is a much more specialized device with phones built to work with VR[Fig. 5].
+Sony would also make an announcement, unveiling the long rumored Project Morpheus at GDC.  Later it would be renamed Playstation VR, and is very heavily reliant on their Playstation game console.  Most recently, Oculus announced a collaboration with Samsung to create the Samsung Gear VR.  Like the Google Cardboard, it uses a smartphone as it's display device, however it is a much more specialized device with phones built to work with VR[Fig. 5].
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{galaxy5.png}}
@@ -665,10 +665,10 @@ Following is our research on the various virtual reality devices and peripherals
 	  \item Recommended GPU: NVIDIA GTX 970 / AMD 280 
 	  \item Recommended RAM: 4GB
 	  \item Positional Tracking: IR Camera Sensor (15 x 15 feet)
-	  \item Controls: Motion Controllers (included) (similar to Occulus Touch)  
+	  \item Controls: Motion Controllers (included) (similar to Oculus Touch)  
 	  \item Release Date: Q1 2016 (Delayed)
 	  \item Manufacturer: HTC, With technology by Valve Corporation
-	  \item Cross Platfrom: Valve OpenGL Mesa support/ SteamVR support on Linux soon hopefully
+	  \item Cross Platform: Valve OpenGL Mesa support/ SteamVR support on Linux soon hopefully
 	  \item Unity Support: Yes
 	  \item Cost: \$799
 	\end{itemize}
@@ -692,7 +692,7 @@ Following is our research on the various virtual reality devices and peripherals
   \item Controls: Playstation Move Controllers (not included)
   \item Release Date: Q1 2016 (Delayed)
   \item Manufacturer: Sony
-  \item Cross Platfrom: No
+  \item Cross Platform: No
     \item Unity Support: Yes
   \item Unity Support: Yes
   \item Cost: \$399
@@ -756,10 +756,10 @@ and the PC over USB. The gyroscope, accelerometer, and magnetometer provide thre
   \end{enumerate}
 \end{itemize}
 % http://msl.cs.uiuc.edu/~lavalle/papers/LavYerKatAnt14.pdf
-These measurements are used to calcaulate the following:
+These measurements are used to calculate the following:
 By Euler’s Rotation Theorem, any 3D orientation can
 be produced by a single rotation about one particular axis
-through the origin. This representation maps to the following Coordiante system [Fig 18]:
+through the origin. This representation maps to the following coordinate system [Fig 18]:
  \begin{figure}[H]
 	\centerline{\includegraphics[scale=0.7]{riftHead.png}}
 	\caption{Rift Head Coordinate System}
@@ -856,7 +856,7 @@ This graph [Fig 19] shows the advanced tracking capabilities of the system as a 
 	advanced Capabilities (see the beginning of this subsection for more specific details). Both devices work with Unity and the SDK and Documentation show many uses including gesture 
 	recognition, body tracking, head scanning, and user modeling.
 	\pagebreak	
-\subsubsection{Kinect Coordiante Mapping System}
+\subsubsection{Kinect Coordinate Mapping System}
 The follow information and figures are from the Microsoft Kinect SDK Documentation \cite{msdnKinect}
 \paragraph{Data Capture}
 \begin{itemize}
@@ -1051,7 +1051,7 @@ Agoraphobia Without History of Panic Disorder. \cite{dsmPhobia}
 	\item The disturbance is not attributable to the physiological effects of a substance (e.g., a drug of abuse, a medication) or another medical condition (e.g., hyperthyroidism).
 	\item The disturbance is not better explained by another mental disorder (e.g., anxiety or worry about having panic attacks in panic disorder, negative evaluation in social anxiety
 	disorder social phobia, contamination or other obsessions in obsessive-compulsive disorder, separation from attachment figures in separation anxiety disorder, reminders of traumatic
-	events in posttraumatic stress disorder, gaining weight in anorexia nervosa, physical complaints in somatic symptom disorder, perceived appearance flaws in body dysmorphic disorder,
+	events in post-traumatic stress disorder, gaining weight in anorexia nervosa, physical complaints in somatic symptom disorder, perceived appearance flaws in body dysmorphic disorder,
 	having a serious illness in illness anxiety disorder, or the content of delusional beliefs in schizophrenia or delusional disorder)\cite{dsmAnxiety}
 \end{itemize}
 It is important that we remain aware of this info in our project, and also attempt to inform the user as best we can.  Knowing the definitions of the most extreme version of what we are
@@ -1075,12 +1075,12 @@ Additionally, they state that exposure therapy can be useful for
 	\item Panic Disorder
 	\item Social Anxiety Disorder
 	\item Obsessive-Compulsive Disorder
-	\item Posttraumatic Stress Disorder
+	\item Post-traumatic Stress Disorder
 	\item Generalized Anxiety Disorder 
 \end{itemize}
 Our project's main focus is using exposure therapy for phobias and Social Anxiety Disorder.  
 \par~\\ 
-Additionally, they seperate the different ways that exposure therapy can be paced:
+Additionally, they separate the different ways that exposure therapy can be paced:
 \begin{itemize}
 	\item Graded Exposure, in which a psychologist and client create a ranked list of fears, and then slowly expose themselves to said fears, working their way up the list
 	\item Flooding, in which the system is reversed, and the most feared things are dealt with first
@@ -1094,7 +1094,7 @@ Lastly, the Society defines 4 ways in which exposure therapy helps the user:
 \begin{itemize}
 	\item Habituation, which is the same term as forming a habit.  It means that over time, fear reactions will become lessened.
 	\item Extinction, which means that Exposure Therapy can remove established connections between fears and negative results
-	\item Self-efficiacy, which is the user becoming aware of their fears and becoming more able to control/manage their fears and worry
+	\item Self-efficacy, which is the user becoming aware of their fears and being more able to control/manage their fears and worry
 	\item Emotional Processing, which allowing the user to process their fears and emotions in a safe place, and change or create new beliefs about the things they fear, 
 	and even understand fear better.
 \end{itemize}
@@ -1163,7 +1163,7 @@ In said research labs, researchers have proven that virtual reality can help wit
 
 
 \subsubsection{Our Implementation}
-For this scene the user will start at the base of a tall building. They will ascend the builing on a window washing gondola. The up and down controls will move the user up and down as they push the desired button, they will be able to select different buildings and configure the time of day. At all times there will be an option to end the simulation if the user becomes too frightened.
+For this scene the user will start at the base of a tall building. They will ascend the building on a window washing gondola. The up and down controls will move the user up and down as they push the desired button, they will be able to select different buildings and configure the time of day. At all times there will be an option to end the simulation if the user becomes too frightened.
 
 \subsubsection{Models and Resources}
 We used unity assets for the cityscape, tower, and window cleaning platform model. The Unity Asset store has several options for cityscapes and tall buildings as well as a perfectly suited window cleaning platform.
@@ -1214,14 +1214,14 @@ Users may optionally respond to a questionnaire after the scene. In addition to 
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=200px, height=210px, keepaspectratio]{qtHeightSettings.png}
-		\label{qtHeightSettings}
 		\caption{Fear of Heights Configuration}
+		\label{fig:qtHeightSettings}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=200px, height=210px, keepaspectratio]{heightSS1.png}
-		\label{heightSS1}
 		\caption{Fear of Heights Start}
+		\label{fig:heightSS1}
 	\end{minipage}
 \end{figure}
 \begin{figure}[H]
@@ -1229,14 +1229,14 @@ Users may optionally respond to a questionnaire after the scene. In addition to 
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=200px, height=210px, keepaspectratio]{heightSS2.png}
-		\label{heightSS2}
 		\caption{Fear of Heights Leaning}
+		\label{fig:heightSS2}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=200px, height=210px, keepaspectratio]{qtHeightSurvey.png}
-		\label{heightSurvey}
 		\caption{Fear of Heights Survey}
+		\label{fig:heightSurvey}
 	\end{minipage}
 \end{figure}
 \begin{figure}[H]
@@ -1244,14 +1244,14 @@ Users may optionally respond to a questionnaire after the scene. In addition to 
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=200px, height=210px, keepaspectratio]{qtHeightGraph.png}
-		\label{heightQtGraph}
 		\caption{Fear of Heights Data Graph}
+		\label{fig:heightQtGraph}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=200px, height=210px, keepaspectratio]{qtHeightProgress.png}
-		\label{heightQtSurveyResults}
 		\caption{Fear of Heights Progress Graph}
+		\label{fig:heightQtSurveyResults}
 	\end{minipage}
 \end{figure}
 
@@ -1337,9 +1337,9 @@ The user begins the scene by facing the board with their PowerPoint slides on it
 This is our most configurable scene. Qt will allow the user to specify how many students will be present and an algorithm will place them seemingly naturally throughout the classroom. At least one student will always be in the front row and the rest will be statistically distributed. Next is the algorithm which decides if a student should be placed in a chair, running from back to front after the first student has been placed randomly in either middle chair of the front row.
 
 \begin{figure}[H]
-	\label{fig:seatingCode}
 	\lstinputlisting [ language = C] {seatingAlgorithm.txt}
 	\caption{Seating Algorithm by Peter Lomason}
+	\label{code:seatingCode}
 \end{figure}
 
 Each of the animation types can be enabled or disabled from the launcher such as sleeping or sitting up. The user will also be able to include a PowerPoint in the scene configuration so they may have a presentation aid during their practice.
@@ -1354,14 +1354,14 @@ Users may optionally respond to a questionnaire before and after the scene. In a
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=200px, height=210px, keepaspectratio]{qtSpeechSettings.png}
-		\label{qtSpeechSettings}
 		\caption{Speech Anxiety Configuration}
+		\label{fig:qtSpeechSettings}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=200px, height=210px, keepaspectratio]{speechSS1.png}
-		\label{speechSS1}
 		\caption{Speech Anxiety Start}
+		\label{fig:speechSS1}
 	\end{minipage}
 \end{figure}
 \begin{figure}[H]
@@ -1369,14 +1369,14 @@ Users may optionally respond to a questionnaire before and after the scene. In a
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=200px, height=210px, keepaspectratio]{speechSS2.png}
-		\label{speechSS2}
 		\caption{Speech Anxiety Leaning}
+		\label{fig:speechSS2}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=200px, height=210px, keepaspectratio]{qtSpeechSurvey.png}
-		\label{qtSpeechSurvey}
 		\caption{Speech Anxiety Survey}
+		\label{fig:qtSpeechSurvey}
 	\end{minipage}
 \end{figure}
 \begin{figure}[H]
@@ -1384,14 +1384,14 @@ Users may optionally respond to a questionnaire before and after the scene. In a
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=200px, height=210px, keepaspectratio]{qtSpeechGraph.png}
-		\label{qtSpeechGraph}
 		\caption{Speech Anxiety Data Graph}
+		\label{fig:qtSpeechGraph}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=200px, height=210px, keepaspectratio]{qtSpeechProgress.png}
-		\label{qtSpeechProgress}
 		\caption{Speech Anxiety Progress Graph}
+		\label{fig:qtSpeechProgress}
 	\end{minipage}
 \end{figure}
 \begin{enumerate}
@@ -1530,7 +1530,7 @@ can be modified to optimize for different algorithms depending on how they acces
 \subsubsection{Unity Support for Asynchronous Compute Shaders and Kenrels}
 \paragraph{Shading Languages used in Unity} 
 In Unity, shader programs are written in a variant of HLSL language (also called Cg but for most practical uses the two are the same). Unity recommends developers have a good understanding 
-of OpencL Or CUDA, OpenGL, and other Graphics/ GPGPU parallel compute languages.  
+of OpenCL Or CUDA, OpenGL, and other Graphics/ GPGPU parallel compute languages.  
 
 Internally, different shader compilers are used for shader program compilation:\cite{unityShaders}
 \begin{itemize}
@@ -1603,9 +1603,9 @@ processing, need to be checked if they are included in Unity's implementation of
 is similar to the HLSL code snippets listed below.
 \paragraph{Shared Memory Reduction Kernel}
 \begin{figure}[H]
+	\lstinputlisting [language =C] {shared_mem_reduction.hlsl}
+	\caption{Reduction Code}
 	\label{fig:reductionCode}
-\lstinputlisting [language =C] {shared_mem_reduction.hlsl}
-\caption{Reduction Code}
 \end{figure}
 
 This kernel is a Compute Shader that is run on the GPU and allows for synchronization of shared memory across multiple compute units, this technique is useful for parallel reduction algorithms which include
@@ -1620,11 +1620,11 @@ calculations such as min, max, mean, sum etc... anything that can be reduced to 
 \paragraph{Shader Processor Atomics} 
 This is another powerful feature that is supported in Unity Compute shaders, it creates atomic accesses for compute units and shader processors which allow the kernels to avoid race conditions. 
 \begin{figure}[H]
-\lstinputlisting [language =C] {atomic_inc.hlsl} %NEEDS WORK math call error?
-This kernel is a compute shader that is run on the GPU and allows for synchronization adding or various operations that are done in an atomic fashion, avoiding, race conditions.
-\caption{Atomic Code}
-%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
-\label{fig:atomicCode}
+	\lstinputlisting [language =C] {atomic_inc.hlsl} %NEEDS WORK math call error?
+	This kernel is a compute shader that is run on the GPU and allows for synchronization adding or various operations that are done in an atomic fashion, avoiding, race conditions.
+	\caption{Atomic Code}
+	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
+	\label{fig:atomicCode}
 \end{figure}
 
 \pagebreak
@@ -1634,7 +1634,7 @@ For our terrain generation with a ramping height created with a perlin noise map
  \item Generate terrain meshes using perlin noise sampling
  \item Stitch terrain to connect meshes
  \item Spawn Objects randomly on terrain
- \item As the user moves through the scene create, respawn, and restitch and destroy chunks so the user can move in an infinite environemnt.
+ \item As the user moves through the scene create, respawn, and restitch and destroy chunks so the user can move in an infinite environment.
 \end{itemize}
 
 
@@ -1642,20 +1642,20 @@ For our terrain generation with a ramping height created with a perlin noise map
 The meshes of individual terrain chunks are generated by a Perlin noise sampling, they are also colored and the normals are calculated. 
 
 \begin{figure}[H]
-	\label{fig:TerrainChunkCode}
 	\lstinputlisting [language = C, basicstyle=\tiny] {chunkGen.txt}
-	\caption{Terrain Chunk Gerneration Pseudo Code}
+	\caption{Terrain Chunk Generation Pseudo Code}
+	\label{fig:TerrainChunkCode}
 \end{figure}
-Due to our hardware we have for the project (the Oculus Rift DK1) we are using an older version of Unity (5.3.2f1) which only supports meshes with upto 65,000 verticies so our terrain was size 200 X 200 with cell size of 2 (giving it a total of 60K vertices per mesh). A 3X3 grid of meshes are spawned and stitched together (explained in the next section). 
+Due to the hardware we are supporting (the Oculus Rift DK1) we must use an older version of Unity: 5.3.2f1. This version only supports meshes with up to 65,000 verticies, therefore our terrain has a tile size of 200x200 with a cell size of 2 resulting in a total of 60K verticies per mesh. A 3x3 grid of these meshes are spawned and stitched together to form the world, more on this in the next section.
 
 \pagebreak
 
 \paragraph{Terrain stitching}
-Terrain stitching is done to connect the verticies of adjacent chunks so they are connected at the edges, the terrain stitch code stitches the initial 3x3 grid and runs to restitch the newly created chunks as the user moves (example shown below)
+Terrain stitching is done to connect the verticies of adjacent chunks so they are connected at the edges. The terrain stitch code stitches the initial 3x3 grid and runs to restitch the newly created chunks as the user moves. See \ref{code:terrainStitchCode} and \ref{code:terrainMoveCode}.
 \begin{figure}[H]
-	\label{fig:terrainStitchCode}
-	\centerline{\lstinputlisting [language = C, basicstyle=\tiny] {stitch.txt} }
-	\caption{Chunk edge stitching pseudocode by Eric Momper and Peter Lomason}
+	\centerline{\lstinputlisting [language = C, basicstyle=\small] {stitch.txt} }
+	\caption{Chunk Edge Stitching Pseudocode by Eric Momper and Peter Lomason}
+	\label{code:terrainStitchCode}
 \end{figure}
 In our implementation, we optimized the gerneration process, by instantiating 100 chunks off camera at one position in the map 
 Terrain movement is handeled in all cardinal directions, when the user moves from the center tile the grid is redrawn so that the current tile is in the center, corresponding planes are removed and created, and the necessary planes are restitched. 
@@ -1667,12 +1667,12 @@ Terrain movement is handeled in all cardinal directions, when the user moves fro
 	\end{figure}
 	
 \begin{figure}[H]
-	\centerline{\lstinputlisting [language = C, basicstyle=\tiny] {terrainMove.txt}}
-	\label{fig:terrainMoveCode}
-	\caption{Chunk movement pseudocode by Eric Momper and Peter Lomason}
+	\centerline{\lstinputlisting [language = C, basicstyle=\small] {terrainMove.txt}}
+	\caption{Chunk Movement Pseudocode by Eric Momper and Peter Lomason}
+	\label{code:terrainMoveCode}
 \end{figure}
 
-
+\pagebreak
 
 
 \paragraph{Object Spawning}
@@ -1683,12 +1683,13 @@ Each Chunk has a set of objects that are scaled and spawned randomly across the 
 	\caption{Chunk movement pseudocode by Eric Momper}
 \end{figure}
 
+
 \paragraph{Movement}
 
 
 
 \subsubsection{Interaction and User Inputs}
-The user begins the scene by moving from their desk to the front of the room. From here they may prepare any presentation materials they configured through Qt such as a Powerpoint presentation. Movement will be controlled via the Kinect sensor, we plan to control object interactions with LeapMotion. 
+The user begins the scene by moving from their desk to the front of the room. From here they may prepare any presentation materials they configured through Qt such as a PowerPoint presentation. Movement will be controlled via the Kinect sensor, we plan to control object interactions with LeapMotion. 
 
 \subsubsection{Configuration from Qt Launcher}
 As detailed above, this scene is generated randomly to provide a unique explorable environment for the user.
@@ -1744,8 +1745,7 @@ configuration option for the app, It will also be responsible for launching scen
 \subsubsection{Qt Activity Diagram}
 		\begin{figure}[H]
 			\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{qtActivityDiag.png}
-			\caption{Qt Activity Diagram} 
-			
+			\caption{Qt Activity Diagram}
 			%to ref fig number
 			%Figure \ref{fig:block2} shows our blockDiagram.
 			\label{fig:qtactivity}
@@ -1767,7 +1767,7 @@ configuration option for the app, It will also be responsible for launching scen
 
 \end{itemize}
 \begin{figure}[H]
-				      \centerline{\includegraphics[scale = 0.35]{qtConfigMap.png}}
+				    \centerline{\includegraphics[scale = 0.35]{qtConfigMap.png}}
 					\caption{Qt Design Mock-up}
 					%to ref fig number
 					%Figure \ref{fig:block2} shows our blockDiagram.
@@ -1789,7 +1789,7 @@ configuration option for the app, It will also be responsible for launching scen
 \item All of these graph options could be selectable as options for each scene graph widget and would be subclassed accordingly.
   \end{itemize}
 \begin{figure}[H]
-				      \centerline{\includegraphics[scale = 0.35]{qtConfigData.png}}
+				    \centerline{\includegraphics[scale = 0.35]{qtConfigData.png}}
 					\caption{Qt Design Mock-up}
 					%to ref fig number
 					%Figure \ref{fig:block2} shows our blockDiagram.
@@ -1821,16 +1821,15 @@ configuration option for the app, It will also be responsible for launching scen
 \begin{itemize}
 	\item Configurable scenes are initially read an expected Qt configuration file that 
 	will contain scene specific settings and addons to the to the scenes including colors, music, and additional configuration settings.
-	
 	\item The Kinect camera, Oculus Rift, and Leap motion were added as input controls mapped to a first person avatar that has is own models for hands, legs, arms and body. 
 	\item The scene models will have interactive scripts that will interact with the user such as buttons, or other objects the user can interact with
 	\item Models and scene assets that can be configured will be written to a json file which will be parsed by Qt to get icons, sizes, and names of the CUnityObject class models that can be configured. 
 	\item The settings will be stored as QSettings objects from Qt which will store them as a .ini file which is supported by unity and will allow the two applications to synchronize options by parsing the .ini files on load. 
 	\item Unity assets were purchased in the asset store or designed in Google SketchUp \& Blender then imported. 
 \begin{figure}[H]
+	\lstinputlisting {test.ini}
+	\caption{Example scene template file}
 	\label{fig:sceneTemplate}
-\lstinputlisting {test.ini}
-\caption{Example scene template file}
 \end{figure}
 \end{itemize}	
 		\pagebreak
@@ -1915,10 +1914,10 @@ Cross Platform Support:
   is added or another VR device is used development for building to other operating systems or
   implementing other headsets should be simple.
   \begin{itemize}
-  \item Qt is designed to be cross platformm. 
+  \item Qt is designed to be cross platform. 
   \item Leap Motion is already cross platform unless the orion driver is needed
   ~\\\url{https://developer.leapmotion.com/get-started}
-    \item OpenKinect is an Opensource project that supports C\#.
+    \item OpenKinect is an open source project that supports C\#.
   \url{https://openkinect.org/wiki/CSharp_Wrapper}
   \item Unity Scenes Build cross platform, just download Binaries.\
   \item Also Unity is cross platform as an experimental version.
@@ -2057,11 +2056,11 @@ This is entirely self funded at the moment.  All of us have well-paying jobs in 
 	\section{Schedule}
 	Original schedule [Fig 64]:
 	\begin{figure}[H]
-	\includegraphics[width=\linewidth]{scheduleSR.png}
-	\caption{Prototype Phase Gantt Chart:}
-	%to ref fig number
-	%Figure \ref{fig:block1} shows our blockDiagram.
-	\label{fig:pchart}
+		\includegraphics[width=\linewidth]{scheduleSR.png}
+		\caption{Prototype Phase Gantt Chart:}
+		%to ref fig number
+		%Figure \ref{fig:block1} shows our blockDiagram.
+		\label{fig:pchart}
 	\end{figure}
 	\pagebreak
 	
@@ -2112,7 +2111,7 @@ This is entirely self funded at the moment.  All of us have well-paying jobs in 
 \pagebreak
 %5. Project Summary and conclusions.
 \section{Project Summary and Conclusions}
-In conclusion, we hope that you understand the not just what our project is, but the goal behind it.  PsychVR's goal isn't to create something entirely new, but rather to bring something that already exists into the hands of everyone who can't afford professionally conducted virtul reality therapy.  Virtual reality therapy is a well explored, well established field, but consumer level virtual reality hardware is not.  We hope to combine an established psychological practice with a new, exciting hardware and software market to create a project that can truly help people. 
+In conclusion, we hope that you understand the not just what our project is, but the goal behind it.  PsychVR's goal isn't to create something entirely new, but rather to bring something that already exists into the hands of everyone who can't afford professionally conducted virtual reality therapy.  Virtual reality therapy is a well explored, well established field, but consumer level virtual reality hardware is not.  We hope to combine an established psychological practice with a new, exciting hardware and software market to create a project that can truly help people. 
 \par ~\\
 We've done a large amount of research on both sides of our project, Virtual Reality and psychology, and how they intersect.  The history of commercial vr, while interesting, mainly points out to us how new the market truly is, as nothing like it existed until the Oculus.  However, the more recent history of VR has a large number of competing headsets and peripherals.  Based on our research and resources, we choose the Oculus Rift.  Additionally, we chose to work in unity as the Oculus is designed to be compatible with Unity.  
 \par ~\\

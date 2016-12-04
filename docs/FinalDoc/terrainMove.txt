@@ -1,5 +1,5 @@
 //movement from grid4 to grid7 (NORTH)
-public void SetGrid7()
+public void MoveNorth()
 {
     Vector3 pos = plane_list[7].transform.position;
 

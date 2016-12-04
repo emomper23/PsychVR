@@ -1,4 +1,4 @@
-//vertx = number of verticies in a row of a given square grid 
+//vert_x = number of verticies in a row of a given square grid 
 
 StitchRight(Mesh fromMesh, Mesh toMesh)
 {

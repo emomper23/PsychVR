@@ -1122,7 +1122,7 @@ After our status presentation it came to our attention we had no plan for provid
 \par~\\
 
 \subsubsection{Stress Questionnaire}
-As a stand-in for a psychologist, the program itself will be issuing a stress questionnaire. After the user finishes either the Acrophobia scene or the social anxiety scene they are given the option of responding to questions with the goal of assessing their current level of stress and feelings about the scene. This data is analyzed alongside other metrics (see below) for the specific scene, and then this information is given to the user in graph form. Over multiple sessions this data should provide insight to the user as to whether or not the treatment is providing any benefit.
+As a stand-in for a psychologist, the program itself will be issuing a stress questionnaire. After the user finishes either the acrophobia scene or the social anxiety scene they are given the option of responding to questions with the goal of assessing their current level of stress and feelings about the scene. This data is analyzed alongside other metrics (see below) for the specific scene, and then this information is given to the user in graph form. Over multiple sessions this data should provide insight to the user as to whether or not the treatment is providing any benefit.
 
 \subsubsection{Scene Progress}
 We also devised other metrics within the acrophobia and social anxiety scenes.  The social anxiety scene's metrics are discussed in the Head Tracking section below, while the acrophobia scene uses the simple metric of height reached to convey progress.  In each scene, the maximum height the user reached is compared against the height of the building being climbed, to show the user their progress compared to previous attempts along with how close they got to the top of the building.  Combining these metrics with the questionnaire's information on the user's stress levels gives a satisfying amount of information about how the user is doing.
@@ -1748,7 +1748,7 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 \end{itemize}
 \begin{figure}[H]
 	\centerline{\includegraphics[scale = 0.5]{qtHeightSettings.png}}
-	\caption{Qt Design Mock-up}
+	\caption{Qt Design Screenshot}
 	\label{fig:qtMockupMap}
 \end{figure}
 \pagebreak
@@ -1768,7 +1768,7 @@ As detailed above, this scene is generated randomly to provide a unique explorab
   \end{itemize}
 \begin{figure}[H]
 				    \centerline{\includegraphics[scale = 0.5]{qtHeightGraph.png}}
-					\caption{Qt Design Mock-up}
+					\caption{Qt Design Screenshot}
 					\label{fig:qtMockupData}
 				\end{figure}
 
@@ -1849,7 +1849,7 @@ These are the hardware/ development environment setup instructions.
   \item Getting our software: These instructions assume you have already installed the hardware system device drivers 
 listed in the Install section.
 \item Install Qt:
-Our Project uses Qt Creator 3.6.1 Based on Qt 5.6.0. Community (Opensource Version) 
+Our Project uses Qt Creator 3.6.1 Based on Qt 5.6.0. Community (open source version) 
 it can be installed from ~\\\url{https://www.qt.io/download-open-source/}
 For help with installation or more detailed instructions see
 http://doc.qt.io/qt-5/gettingstarted.html 
@@ -1987,32 +1987,36 @@ Cross Platform Support:
 %TODO MONEYS HERE!!!!
 \section{Administrative Content}
 \subsection{Budget and Financing}
-Budget on our project was kept to a minimum we this was mainly due to our lack of a sponsor, we are currently self-financing but also borrowed an Oculus Rift from the UCF Psychology department, the rest of our system components were acquired efficiently so we could minimie the cost of our system to ourselves and our potential users. Other headsets and technologies could have improved the visual display quality to the user but they could easily be upgraded, given funding. 
+Budget on our project was kept to a minimum. At first this was due to our lack of a sponsor, leading us to be self-financed. We saw this as an opportunity to develop our project with the goal of a low budget which in turn increases the potential user base. Luckily we were able to borrow an Oculus Rift from the UCF Psychology department. The rest of our system components were acquired as cheaply as possible so we could minimize the cost of our system both for ourselves and our potential users.
 \par~\\ 
-We already have the hardware necessary to run virtual reality devices, so that saves us the cost of building one ourselves which can run upwards of \$1000. VR headsets vary in price, although our current target, the Oculus Rift DK2, costs 600 dollars. We have already acquired an Oculus Rift DK1 from the psychology department at no cost.
+We already had the hardware necessary to run virtual reality devices, so that saved us the cost of building a capable PC ourselves which can run close to \$800. VR headsets vary in price, although our lowest supported Oculus headset, the Rift DK1, costs \$250. We acquired our Oculus Rift DK1 from the psychology department at no cost.
 \par~\\ 
 Using Unity Pro runs 75 dollars a month, so over the next 8 months it would add up to another 600 dollars. This can be ignored though since our research has found that we can accomplish our design goals without the pro features of Unity.
 \par~\\ 
-Our next greatest cost will be Unity Asset Store models, animations, and environments. Because designing models and creating animations is very time consuming, purchasing these assets is our best option. Our research on the models and environments we will need puts us at a maximum of \$400 in asset store costs for the highest quality options.
+The next items on our budget were Unity Asset Store items, the cityscape and gondola elements specifically. Because designing models is very time consuming purchasing these assets was our best option. Together these assets cost us \$30.
 \par~\\
-Peripherals will also need to be factored in. Leap Motion costs \$60 for the controller so we can detect hand gestures. Kinect will cost another \$60-\$120 so we can include more advanced motion tracking than simply head tracking.
-\par~\\ 
-Additionally, if we find a sponsor or funding from UCF, we can increase our budget and invest in higher end VR technology, and possibly be able to test for multiple platforms. A number of on campus facilities have alternatives to the Oculus Rift such as Sony’s VR headset Morpheus. The upper limit of our goals would be the HTC Vive with better motion tracking and controls at a cost of \$800. The benefit of this would be bringing our project to a wider audience.
+Peripherals also need to be factored in. Leap Motion cost \$51 at the time of our purchase. Kinect would have cost another \$40 but fortunately Eric already had this sensor. To use the Kinect with a PC we had to purchase an adapter for \$15.
+
 \pagebreak
 \subsection{Summary:}
-Current Budget: Approx. \$1000.  
+Our Budget Total: \$96
 \begin{itemize}
-	\item \$400-600 for Oculus DK2, we have acquired a DK1 from the psychology department but would like to use a device with a higher frame rate, resolution, and other features to make the tests more immersive (See Section \ref{section:headset} for more details)
-	\item  \st{\$600 for development Engine, (Unity Professional) we would only need this if we go with custom compute shaders and find that we need to optimize or work directly with the Unity rendering pipleine.}
-	\item	\$400 for Unity Asset store models, environments, and animations.
-	\item  \$60 for a Leap Motion controller
-	\item  \$120 for a Kinect V2 sensor. 
+	\item Leap Motion \$51
+	\item Kinect Connector \$15
+	\item Unity Assets \$30
+	\item Donated DK1 \$0
+	\item Eric's Kinect Sensor \$0
+	\item Eric's VR Capable PC or Peter's VR Capable Laptop \$0
 \end{itemize}
-
-\subsection{Funding}
-This is entirely self funded at the moment.  All of us have well-paying jobs in the Orlando area, and would be able to spend \$500 if necessary.  However, we hope we will be able to out the \$600 Oculus Rift DK2 cost by using UCF facilities, and possibly reducing the \$400 asset costs by reaching out to asset store publishers.
-
-~\\ Over the summer we will continue seeking a sponsor from UCF's psychology department for possible funding that will allow us to purchase better hardware and use more detailed models to improve the overall quality of our project and provide a more immersive effect.
+End User Cost Total: \$886-\$2147
+\begin{itemize}
+	\item Leap Motion \$51
+	\item Kinect Connector \$15
+	\item Unity Assets \$30 (only if they want to work on our heights scene, not included in total)
+	\item VR Headset \$250-\$800
+	\item Kinect Sensor \$40-\$50
+	\item VR Capable PC \$500-\$1200
+\end{itemize}
 			    
 	\pagebreak    
 	%software licensing costs, cloud based service costs, code repo's, graphic design costs
@@ -2027,7 +2031,7 @@ This is entirely self funded at the moment.  All of us have well-paying jobs in 
 	\end{figure}
 	
 	Our schedule allowed us to have some time over the summer to work on implementation of the project and further design of the scenes. The main architecture of our project is
-	prototyping for the different modules and testing different VR platforms, sensors, and controls as we can acquire them. Some basic building of modules and design was done in the spring, and most of the implementaion and testing was done int he fall as shown in our scehdule.
+	prototyping for the different modules and testing different VR platforms, sensors, and controls as we can acquire them. Some basic building of modules and design was done in the spring, and most of the implementation and testing was done int he fall as shown in our schedule.
 	\par~\\
 	\pagebreak
 	\begin{figure}[H]
@@ -2071,15 +2075,13 @@ This is entirely self funded at the moment.  All of us have well-paying jobs in 
 \pagebreak
 %5. Project Summary and conclusions.
 \section{Project Summary and Conclusions}
-In conclusion, we hope that you understand the not just what our project is, but the goal behind it.  PsychVR's goal isn't to create something entirely new, but rather to bring something that already exists into the hands of everyone who can't afford professionally conducted virtual reality therapy.  Virtual reality therapy is a well explored, well established field, but consumer level virtual reality hardware is not.  We hope to combine an established psychological practice with a new, exciting hardware and software market to create a project that can truly help people. 
+In conclusion, we hope that you understand the not just what our project is, but the motivation behind it. PsychVR's goal isn't to create something entirely new, rather to bring something that already exists into the hands of everyone who can't afford professionally conducted virtual reality therapy. VR therapy is a well explored and quite established field but consumer level virtual reality hardware is not quite there yet. We hope to combine an established psychological practice with an emerging and exciting hardware and software market to create a project that can truly help people. 
 \par ~\\
-We've done a large amount of research on both sides of our project, Virtual Reality and psychology, and how they intersect.  The history of commercial vr, while interesting, mainly points out to us how new the market truly is, as nothing like it existed until the Oculus.  However, the more recent history of VR has a large number of competing headsets and peripherals.  Based on our research and resources, we choose the Oculus Rift.  Additionally, we chose to work in unity as the Oculus is designed to be compatible with Unity.  
+We've done a large amount of research on both sides of our project, virtual reality and psychology, and how they intersect. The history of commercial VR, while interesting, mainly points out to us how new the market truly is, as nothing like it existed until the Oculus. However, the more recent history of VR has a large number of competing headsets and peripherals. Based on our research and resources, we choose the Oculus Rift to have the broadest impact possible. Additionally, we chose to work in Unity as is has been designed to be the most user friendly and well supported option for VR development.  
 \par ~\\
-We chose three scenes based on our psychology research, one for acrophobia, one for social anxiety, and one for general anxiety.  We laid out how we are going to create these scenes, and fully realized them in our final implementation. We have also showed the programs, assets, and tools we used to make them and factored those into our final budget.
+We chose three scenes based on our psychology research, one for acrophobia, one for social anxiety, and one for general anxiety.  We laid out how we designed and constructed these scenes, and fully realized them in our final implementation. We have also shown the programs, assets, and tools we used to make them and factored those into our final budget.
 \par ~\\
-The Psych VR team believes that we have done the necessary research, planning, prototyping, and decision making to create a product that could actually make a difference in people's lives.
-\par ~\\
-Thank you for reading.
+The PsychVR team believes that we have done the necessary research, planning, prototyping, and decision making to create a product that could actually make a difference in people's lives.
 \pagebreak
 
 %6. References

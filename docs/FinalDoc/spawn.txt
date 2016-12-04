@@ -1,0 +1,30 @@
+//example spawn code for a mountain and trees
+public void Load ()
+{
+    float diff_x = Random.Range(-100, 100);
+    float diff_z = Random.Range(-100, 100);
+    GameObject temp = (GameObject)GameObject.Instantiate(mountain, 
+    this.transform.position - new Vector3(diff_x, -20, diff_z), 
+                    this.transform.rotation);
+    
+    Vector3 scale_vec = new Vector3(Random.Range(0.5f, 1f),
+                Random.Range(0.3f, 3f), Random.Range(0.5f, 1f));
+    Vector3 scale = ((GameObject)temp).transform.GetChild(0).localScale;
+    scale.Scale(scale_vec);
+    ((GameObject)temp).transform.GetChild(0).localScale = scale;
+    
+    //enable height script to raycast collide to put objects on hills
+    temp.GetComponent<ObjectHeight>().parent_plane = this.gameObject;
+    temp.GetComponent<ObjectHeight>().enabled = true;
+    
+    //set color of mountains to gradients one from plane one contrasting
+    temp.GetComponentInChildren<ObjectColorSetter>().gradient1 = gradient1;
+    temp.GetComponentInChildren<ObjectColorSetter>().gradient2 = gradient2;
+    temp.GetComponentInChildren<ObjectColorSetter>().LoadMountain();
+    
+    ((GameObject)temp).transform.GetChild(0).localScale = scale;
+    
+    obj_list.Add((GameObject)temp);
+    makeForest(14);
+    makeRocks(7);
+}

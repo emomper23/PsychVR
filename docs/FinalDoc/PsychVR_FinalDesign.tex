@@ -387,19 +387,19 @@ On a larger scale, our main objective is to bring VR therapy to a wider audience
 	    \item Description: Make sure the guides are easy to read.
 	    \item  Dependency: Guide Quality and font size/ paper format.
 	    \item Evaluation Method: Check user guides are readable.
-	   \end{itemize}
-	 \item Accessibility of Guides
+	  \end{itemize}
+	\item Accessibility of Guides
 	  \begin{itemize}
 	    \item Description: Make sure the guides are included. %NEEDS WORK DO WE NEED A GUIDE?
 	    \item  Dependency: Guide Quality and accessibility.  
 	    \item Evaluation Method: Check user guides are accessible and to users (included with software).
-	   \end{itemize}
-   	 \item Qt Launcher Explanation
-   	 \begin{itemize}
-	   	 	\item Description: Users must know how to use the launcher.
-	   	 	\item  Dependency: Thorough explanation of the tools and customization options which the Qt launcher provides.  
-	   	 	\item Evaluation Method: Provide documentation to test subjects and confirm they are able to use the launcher independently of our assistance.
-   	 \end{itemize}
+	  \end{itemize}
+	\item Qt Launcher Explanation
+	\begin{itemize}
+			\item Description: Users must know how to use the launcher.
+			\item  Dependency: Thorough explanation of the tools and customization options which the Qt launcher provides.  
+			\item Evaluation Method: Provide documentation to test subjects and confirm they are able to use the launcher independently of our assistance.
+	\end{itemize}
 	\end{enumerate}
 
 	
@@ -731,9 +731,9 @@ All sensing is performed by a single circuit board (figure \ref{fig:magnetsHowDo
 \begin{itemize}
 \item The main components [Fig 17] are:
 \begin{itemize}
- \item STMicroelectronics 32F103C8 ARM Cortex-M3 microcontroller
- \item Invensense MPU-6000 (gyroscope + accelerometer)
- \item Honeywell HMC5983 magnetometer.
+\item STMicroelectronics 32F103C8 ARM Cortex-M3 microcontroller
+\item Invensense MPU-6000 (gyroscope + accelerometer)
+\item Honeywell HMC5983 magnetometer.
 \end{itemize}
 \begin{figure}[H]
 	\centerline{\includegraphics[]{riftMagnets.png}}
@@ -760,34 +760,34 @@ These measurements are used to calculate the following:
 By Euler’s Rotation Theorem, any 3D orientation can
 be produced by a single rotation about one particular axis
 through the origin. This representation maps to the following coordinate system [Fig 18]:
- \begin{figure}[H]
+\begin{figure}[H]
 	\centerline{\includegraphics[scale=0.7]{riftHead.png}}
 	\caption{Rift Head Coordinate System}
 	%to ref fig number
 	%Figure \ref{fig:block1} shows our blockDiagram.
 	\label{fig:magnets2}
 	\end{figure}
- \pagebreak
+\pagebreak
 \subsubsection{Leap Motion Hand Tracking}
 The Leap Motion works using the following sensors and lights \cite{leapProc}
 \begin{itemize}
- \item Wide angle lenses give the Leap a maximum detection area of eight cubic feet, the intersection of the binocular cameras’ fields of view. 
- \item The software recognized viewing range is 2 ft (60 cm) for the standard drivers and 2.6 feet (80 cm) with the Orion Beta Driver. 
- \item The LED light that is used in detection is the limiting factor as the brightness intensity is limited by the amount of power delivered to the unit
- over USB.
- \item The 3 USB powered lights emit at a wavelength of 850 nanometers, outside the visible light spectrum.
+\item Wide angle lenses give the Leap a maximum detection area of eight cubic feet, the intersection of the binocular cameras’ fields of view. 
+\item The software recognized viewing range is 2 ft (60 cm) for the standard drivers and 2.6 feet (80 cm) with the Orion Beta Driver. 
+\item The LED light that is used in detection is the limiting factor as the brightness intensity is limited by the amount of power delivered to the unit
+over USB.
+\item The 3 USB powered lights emit at a wavelength of 850 nanometers, outside the visible light spectrum.
 \end{itemize}
 
 The Leap Motion SDK offers the following heuristics for assisting with the tracking problem.\cite{leapHeuristics}
 \begin{itemize}
- \item Tracking consistency:  The API offers a diagnostic visualizer, and a tracking confidence level.
- \item Ease of detection: This is related to how well defined certain motions are. 
- \item Occlusion: Accounting for blockage of the tracked hand by other objects, the Orion beta driver has made some improvements with this issue.
- \item All of these features show the advanced design of the sensor, and many of the innovations Leap Motion has brought to the field of virtual reality. 
+\item Tracking consistency:  The API offers a diagnostic visualizer, and a tracking confidence level.
+\item Ease of detection: This is related to how well defined certain motions are. 
+\item Occlusion: Accounting for blockage of the tracked hand by other objects, the Orion beta driver has made some improvements with this issue.
+\item All of these features show the advanced design of the sensor, and many of the innovations Leap Motion has brought to the field of virtual reality. 
 \end{itemize}
 
 This graph [Fig 19] shows the advanced tracking capabilities of the system as a possible state transition of user movement inputs.
- \begin{figure}[H]
+\begin{figure}[H]
 \centerline{\includegraphics[scale=0.4]{leapGraph.png}}
 	\caption{Leap Motion gesture graph}
 	%to ref fig number
@@ -889,14 +889,14 @@ are visible in the depth sensor. The position of a skeleton and each of the skel
 	
 \paragraph{Floor Determination}
 \begin{itemize}
- 
+
 \item Each skeleton frame also contains a floor-clipping-plane vector, which contains the coefficients of an estimated floor-plane equation. It is used as a clipping plane for
 removing the background and segmenting players.
 \item \textbf{The general plane equation is:}
 \begin{equation}
   Ax + By + Cz + D = 0 
 \end{equation}
- \textit{Where A,B,C,D are the coordinates of the floor clip points.}~\\
+\textit{Where A,B,C,D are the coordinates of the floor clip points.}~\\
 The plane equation is normalized so that the physical interpretation of D is the height of the camera from the floor, if the floor is not detectable 
 the plane is the zero vector.
 
@@ -1631,10 +1631,10 @@ This is another powerful feature that is supported in Unity Compute shaders, it 
 \subsubsection{Our Implementation}
 For our terrain generation with a ramping height created with a perlin noise mapped to a mesh that was instantiated and rendered in the scene, a Unity asset was used that allowed for easy configuration of parameters to this generation which is detailed below:~\\
 \begin{itemize}
- \item Generate terrain meshes using perlin noise sampling
- \item Stitch terrain to connect meshes
- \item Spawn Objects randomly on terrain
- \item As the user moves through the scene create, respawn, and restitch and destroy chunks so the user can move in an infinite environment.
+\item Generate terrain meshes using perlin noise sampling
+\item Stitch terrain to connect meshes
+\item Spawn Objects randomly on terrain
+\item As the user moves through the scene create, respawn, and restitch and destroy chunks so the user can move in an infinite environment.
 \end{itemize}
 
 
@@ -1642,7 +1642,7 @@ For our terrain generation with a ramping height created with a perlin noise map
 The meshes of individual terrain chunks are generated by a Perlin noise sampling, they are also colored and the normals are calculated. 
 
 \begin{figure}[H]
-	\lstinputlisting [language = C, basicstyle=\tiny] {chunkGen.txt}
+	\lstinputlisting [language = C, basicstyle=\small] {chunkGen.txt}
 	\caption{Terrain Chunk Generation Pseudo Code}
 	\label{fig:TerrainChunkCode}
 \end{figure}
@@ -1657,6 +1657,7 @@ Terrain stitching is done to connect the verticies of adjacent chunks so they ar
 	\caption{Chunk Edge Stitching Pseudocode by Eric Momper and Peter Lomason}
 	\label{code:terrainStitchCode}
 \end{figure}
+\pagebreak
 In our implementation, we optimized the gerneration process, by instantiating 100 chunks off camera at one position in the map 
 Terrain movement is handeled in all cardinal directions, when the user moves from the center tile the grid is redrawn so that the current tile is in the center, corresponding planes are removed and created, and the necessary planes are restitched. 
 \begin{figure}[H]
@@ -1874,16 +1875,16 @@ configuration option for the app, It will also be responsible for launching scen
 
 These are the hardware/ development environment setup instructions. 
 \begin{itemize}
- \item Install Instructions:
- \begin{itemize}
- \item  Getting Binaries: Download from github
+\item Install Instructions:
+\begin{itemize}
+\item  Getting Binaries: Download from github
   \item Install the Oculus Rift Home Drivers: Download the drivers from~\\ \url{https://www.oculus.com/en-us/setup/}
   \item Install the Leap Motion Drivers: https://developer.leapmotion.com/get-started
   \item Install the Kinect For Windows Drivers: ~\\\url{https://www.microsoft.com/en-us/download/details.aspx?id=44559}
- \end{itemize}
- \item Development Instructions:
+\end{itemize}
+\item Development Instructions:
   \begin{itemize}
-   \item Getting our software: These instructions assume you have already installed the hardware system device drivers 
+  \item Getting our software: These instructions assume you have already installed the hardware system device drivers 
 listed in the Install section.
 \item Install Qt:
 Our Project uses Qt Creator 3.6.1 Based on Qt 5.6.0. Community (Opensource Version) 
@@ -1934,62 +1935,62 @@ Cross Platform Support:
 	\item Test Conditions: The user selects a scene and presses the launch button
 	\item Expected Results: The user should be able to launch the scene they select.
     \end{itemize}
-     \item  Qt Save/Load Configuration File
+    \item  Qt Save/Load Configuration File
     \begin{itemize}
 	\item Test Objective: Check that Unity Scenes configurations can be loaded by the Qt app.
 	\item Test Description: Check that the configuration options can be saved and loaded
 	\item Test Conditions: The user loads or saves a file. 
 	\item Expected Results: The configuration options should be persistent.
     \end{itemize}
-     \item  Qt Data Measurement
-     \begin{itemize}
+    \item  Qt Data Measurement
+    \begin{itemize}
 	\item Test Objective: Check Qt records or reads some acquired stress or scene related data.
 	\item Test Description: Check that this data is recorded.
 	\item Test Conditions: Use a scene, record data.
 	\item Expected Results: The data should  be recorded.
     \end{itemize}
     \item  Unity Data Measurement
-     \begin{itemize}
+    \begin{itemize}
 	\item Test Objective: Check Unity records or reads some acquired stress or scene related data.
 	\item Test Description: Check that this data is recorded.
 	\item Test Conditions: Use a scene, record data.
 	\item Expected Results: The data should  be recorded.
     \end{itemize}
     \item  Qt Data Analysis
-     \begin{itemize}
+    \begin{itemize}
 	\item Test Objective: Check Qt analyzes or graphs some acquired stress or scene related data.
 	\item Test Description: Check that this data is analyzed or graphed.
 	\item Test Conditions: Use a scene, record data, check graph or analysis.
 	\item Expected Results: The data should  be analyzed or graphed.
     \end{itemize}
-     \item Kinect Movement Tracking
-     \begin{itemize}
+    \item Kinect Movement Tracking
+    \begin{itemize}
 	\item Test Objective: Check that user Kinect movement and gesture tracking works
 	\item Test Description: Kinect movement and Skeleton tracking should allow the user to move aroud the scene and the system should be able to track gestures.
 	\item Test Conditions: Use a scene, verify that the user can move.
 	\item Expected Results: The user movements should be fluid and accurate.
     \end{itemize}
-     \item Leap Motion Tracking
-     \begin{itemize}
+    \item Leap Motion Tracking
+    \begin{itemize}
 	\item Test Objective: Check that user Leap Motion hand movement and gesture tracking works
 	\item Test Description: Leap Motion should allow the user to be able to interact with their hands.
 	\item Test Conditions: Use a scene, verify that the user can move their hands.
 	\item Expected Results: The hand movements should be fluid and accurate.
     \end{itemize}
-     \item Oculus Rift Motion Tracking
-     \begin{itemize}
+    \item Oculus Rift Motion Tracking
+    \begin{itemize}
 	\item Test Objective: The User's view/ head orientation should turn with the Rift.
 	\item Test Description: Oculus gyroscopes and sensors should allow rotation.
 	\item Test Conditions: Use a scene, verify that the user can rotate their view.
 	\item Expected Results: The rotation should be fluid and accurate.
     \end{itemize}
-     
+    
 \end{enumerate}
 
 \subsubsection{Module Specific tests}
 \begin{enumerate}
     \item  Fear of Heights Usability
-     \begin{itemize}
+    \begin{itemize}
 	\item Test Objective: Check The fear of heights scene is usable.
 	\item Test Description: The scene should be realistic, interactive, and run well, the user should be immersed in 
 	the scene and should experience some believable stress or immersion in the scene.
@@ -1997,14 +1998,14 @@ Cross Platform Support:
 	\item Expected Results: The scene should meet these standards.
     \end{itemize}
     \item  Speech Anxiety Usability
-     \begin{itemize}
+    \begin{itemize}
 	\item Test Objective: Check The speech anxiety  scene is usable.
 	\item Test Description: The user should be put in a presentation or interaction where they feel some immersion to speaking in front of an audience.
 	\item Test Conditions: Use this scene, verify that it is usable.
 	\item Expected Results: The scene should meet these standards.
     \end{itemize}
     \item  Stress Relief Usability
-     \begin{itemize}
+    \begin{itemize}
 	\item Test Objective: Check The stress relief scene is usable.
 	\item Test Description: The user should be put in a calming peaceful environment that they can interact with.
 	\item Test Conditions: Use this scene, verify that it is usable.

@@ -1686,8 +1686,13 @@ Each Chunk has a set of objects that are scaled and spawned randomly across the 
 
 
 \paragraph{Movement}
-
-
+Since the user will be moving across an infinite space options like the kinect will not work in capturing their movement. This is because they would be confined to the local space it can capture. For this scene we designed a controller that allows the user to manipulate a joystick to traverse the scene. This joystick responds to the Leap Motion hands and applies a directional force vector to a ball. The user is attached this invisible ball which creates a natural style of movement, slowing down on hills, and speeding up while going downhill. 
+\begin{figure}[H]
+	\centerline{\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{mover.png}}
+	\caption{Ball Controller mover}
+	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
+	\label{fig:moveTerrain}
+	\end{figure}
 
 \subsubsection{Interaction and User Inputs}
 The user begins the scene by moving from their desk to the front of the room. From here they may prepare any presentation materials they configured through Qt such as a PowerPoint presentation. Movement will be controlled via the Kinect sensor, we plan to control object interactions with LeapMotion. 
@@ -1890,9 +1895,9 @@ it can be installed from ~\\\url{https://www.qt.io/download-open-source/}
 For help with installation or more detailed instructions see
 http://doc.qt.io/qt-5/gettingstarted.html 
 \item Install Unity:
-Our Project uses Unity 5.3.4 
+Our Project uses Unity 5.3.2.1f 
 it can be installed from 
-~\\\url{https://unity3d.com/unity/whats-new/unity-5.3.4}
+~\\\url{https://unity3d.com/get-unity/download/archive}
 For help with installation or more detailed instructions see
 ~\\\url{http://docs.unity3d.com/Manual/InstallingUnity.html}
 \item Oculus Rift SDK:

@@ -1658,35 +1658,37 @@ Terrain stitching is done to connect the verticies of adjacent chunks so they ar
 	\label{code:terrainStitchCode}
 \end{figure}
 \pagebreak
-In our implementation, we optimized the gerneration process, by instantiating 100 chunks off camera at one position in the map 
-Terrain movement is handeled in all cardinal directions, when the user moves from the center tile the grid is redrawn so that the current tile is in the center, corresponding planes are removed and created, and the necessary planes are restitched. 
-\begin{figure}[H]
-	\centerline{\includegraphics[scale=0.2,keepaspectratio]{terrainMove.png}}
-	\caption{Terrain North move Example}
-	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
-	\label{fig:moveTerrain}
-	\end{figure}
+
 	
 \begin{figure}[H]
 	\centerline{\lstinputlisting [language = C, basicstyle=\small] {terrainMove.txt}}
 	\caption{Chunk Movement Pseudocode by Eric Momper and Peter Lomason}
 	\label{code:terrainMoveCode}
 \end{figure}
+In our implementation, we optimized the generation process, by instantiating 100 chunks off camera at one position in the map 
+Terrain movement is handled in all cardinal directions, when the user moves from the center tile the grid is redrawn so that the current tile is in the center, corresponding planes are removed and created, and the necessary planes are restitched. 
+
+\begin{figure}[H]
+	\centerline{\includegraphics[scale=0.5,keepaspectratio]{terrainMove.png}}
+	\caption{Terrain North move Example}
+	%Figure \ref{fig:gpgpuImg} shows our blockDiagram.
+	\label{fig:moveTerrain}
+	\end{figure}
 
 \pagebreak
 
 
 \paragraph{Object Spawning}
-Each Chunk has a set of objects that are scaled and spawned randomly across the plane, the object include two trees, three rocks and mountains. The example script below shows the spawning process for a chunk, which is exexuted once its loaded. 
+Each Chunk has a set of objects that are scaled and spawned randomly across the plane, the object include two trees, three rocks and mountains. The example script below shows the spawning process for a chunk, which is executed once its loaded. 
 \begin{figure}[H]
 	\centerline{\lstinputlisting [language = C, basicstyle=\small] {spawn.txt}}
 	\label{fig:terrainMoveCode}
-	\caption{Chunk movement pseudocode by Eric Momper}
+	\caption{Object Spawning pseudocode by Eric Momper}
 \end{figure}
 
 
 \paragraph{Movement}
-Since the user will be moving across an infinite space options like the kinect will not work in capturing their movement. This is because they would be confined to the local space it can capture. For this scene we designed a controller that allows the user to manipulate a joystick to traverse the scene. This joystick responds to the Leap Motion hands and applies a directional force vector to a ball. The user is attached this invisible ball which creates a natural style of movement, slowing down on hills, and speeding up while going downhill. 
+Since the user will be moving across an infinite space options like the Kinect will not work in capturing their movement. This is because they would be confined to the local space it can capture. For this scene we designed a controller that allows the user to manipulate a joystick to traverse the scene. This joystick responds to the Leap Motion hands and applies a directional force vector to a ball. The user is attached this invisible ball which creates a natural style of movement, slowing down on hills, and speeding up while going downhill. 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{mover.png}}
 	\caption{Ball Controller mover}

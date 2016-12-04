@@ -1120,7 +1120,7 @@ acquire treatment data and provide feedback to their patients. \cite{vrPhobia}
 \subsubsection{Stress Analysis}
 After our status presentation it came to our attention we had no plan for providing users feedback of their progress so we began research on this topic. It turns out, measuring stress is a difficult task, especially without a psychologist.
 \par~\\
-%JOHN SURVEY PIECE ON STRESS ANALYSIS ADD MORE??
+
 \subsubsection{Stress Questionnaire}
 As a stand-in for a psychologist, the program itself will be issuing a stress questionnaire. After the user finishes either the Acrophobia scene or the social anxiety scene they are given the option of responding to questions with the goal of assessing their current level of stress and feelings about the scene. This data is analyzed alongside other metrics (see below) for the specific scene, and then this information is given to the user in graph form. Over multiple sessions this data should provide insight to the user as to whether or not the treatment is providing any benefit.
 
@@ -1735,15 +1735,15 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 		This figure shows the program flow for different user options, including configuration, launching, recording, and vie
 		\pagebreak
 
-%TODO JSON CONFIG JOHN
 \subsubsection {Configuration Design Details}
 (See figure \ref{fig:qtMockupMap})
 \begin{itemize}
 \item Users can Select the scene to edit the configurations, with the set scene options we have added, new scenes could be added to the drop-down if new scenes were created.
-\item Configurations will be saved to a specific .ini or settings file that will be parsed by the unity scene on load.
-\item Basic settings such as resolution, quality options, and other static options will be in dialog boxes.
-\item The scene maps will be encoded with some options and other available settings for scenes, this file will be read in by Qt and setup the configuration options for the user.
-\item The configuration can be saved and will be used to launch the app.
+\item Configurations are saved to a settings json file that will be parsed by the unity scene on load.
+\item These items are saved per user/per scene in said file, and are re-saved every time a scene is launched
+\item The color option is saved between different scenes
+\item Basic settings such as resolution and quality options are done in the unity launcher.
+\item When unity is launched it reads in the file item by item and adjust the current scene's settings based on which scene it is running and which user was passed to the scene
 
 \end{itemize}
 \begin{figure}[H]
@@ -1756,7 +1756,7 @@ As detailed above, this scene is generated randomly to provide a unique explorab
 (See figure \ref{fig:qtMockupData})
 %JOHN SURVEY DESIGN
   \begin{itemize}
-  \item User stress data from surveys will be displayed in a graph that shows the aggregate pre-stess, post-stress, and the sum of the survey questions
+  \item User stress data from surveys is in a graph that shows the aggregate pre-stess, post-stress, and the sum of the survey questions
   \item Any other analysis will be shown as dialog boxes or additional readouts next to the graph.
   \item Other Scene specific data could also be recorded and graphed to provide additional feedback some examples for the specific modules include:
 	\begin{itemize}
